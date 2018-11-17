@@ -14,10 +14,10 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class Opis
     {
-        public int idOpis { get; set; }
+        public int OpisId { get; set; }
         public string OpisOgolny { get; set; }
         public string Wyposazenie { get; set; }
-        public int Samochod_IdSamochodu { get; set; }
+        public int SamochodId { get; set; }
     
         public virtual Samochod Samochod { get; set; }
     }

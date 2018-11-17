@@ -162,67 +162,82 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Akcesoria.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cennik.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Dostepnosc.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Klient.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    <Compile Include="Models\DowodOsobisty.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DowodRejestracyjny.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KlientFirma.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KlientIndywidualny.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Opis.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Osoba.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Paszport.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pracownik.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PracownikWypozyczenie.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PrawoJazdy.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Przeglad.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rozliczenie.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Samochod.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Serwis.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ubezpieczenie.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Wydarzenie.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WypozyczalniaModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WypozyczalniaModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WypozyczalniaModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WypozyczalniaModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WypozyczalniaModel.edmx</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Wypozyczenie.cs">
-      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypozyczenieModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WypozyczenieModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypozyczenieModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypozyczenieModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypSam.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -239,29 +254,29 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\WypozyczalniaModel.Context.tt">
+    <Content Include="Models\WypozyczenieModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>WypozyczalniaModel.Context.cs</LastGenOutput>
-      <DependentUpon>WypozyczalniaModel.edmx</DependentUpon>
+      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
+      <LastGenOutput>WypozyczenieModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\WypozyczalniaModel.tt">
+    <Content Include="Models\WypozyczenieModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WypozyczalniaModel.edmx</DependentUpon>
-      <LastGenOutput>WypozyczalniaModel.cs</LastGenOutput>
+      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
+      <LastGenOutput>WypozyczenieModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\WypozyczalniaModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WypozyczalniaModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\WypozyczalniaModel.edmx.diagram">
-      <DependentUpon>WypozyczalniaModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Adm\Views\web.config" />
+    <EntityDeploy Include="Models\WypozyczenieModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WypozyczenieModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\WypozyczenieModel.edmx.diagram">
+      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

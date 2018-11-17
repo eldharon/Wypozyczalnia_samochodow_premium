@@ -15,9 +15,10 @@ namespace WypożyczalniaSamochodówPremium.Models
     public partial class Akcesoria
     {
         public int IdAkcesoria { get; set; }
-        public string NazwaOpis { get; set; }
+        public string Nazwa { get; set; }
+        public string Opis { get; set; }
         public double Cena { get; set; }
-        public Nullable<int> Wypozyczenie_IdWypozyczenie { get; set; }
+        public int WypozyczenieId { get; set; }
     
         public virtual Wypozyczenie Wypozyczenie { get; set; }
     }

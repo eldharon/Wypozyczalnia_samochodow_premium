@@ -17,23 +17,38 @@ namespace WypożyczalniaSamochodówPremium.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Osoba()
         {
-            this.Klients = new HashSet<Klient>();
-            this.Pracowniks = new HashSet<Pracownik>();
+            this.DowodOsobisty = new HashSet<DowodOsobisty>();
+            this.KlientFirma = new HashSet<KlientFirma>();
+            this.KlientIndywidualny = new HashSet<KlientIndywidualny>();
+            this.Paszport = new HashSet<Paszport>();
+            this.Pracownik = new HashSet<Pracownik>();
+            this.PrawoJazdy = new HashSet<PrawoJazdy>();
+            this.Wypozyczenie = new HashSet<Wypozyczenie>();
         }
     
-        public int IdOsoba { get; set; }
-        public string ImieNazwisko { get; set; }
+        public int OsobaId { get; set; }
+        public string Imie { get; set; }
+        public string Nazwisko { get; set; }
         public System.DateTime DataUrodzenia { get; set; }
         public string Adres { get; set; }
         public string KodPocztowy { get; set; }
         public string Kraj { get; set; }
         public string NrTelefonu { get; set; }
-        public int Uzytkownik_IdUzytkownik { get; set; }
         public string Miasto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Klient> Klients { get; set; }
+        public virtual ICollection<DowodOsobisty> DowodOsobisty { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pracownik> Pracowniks { get; set; }
+        public virtual ICollection<KlientFirma> KlientFirma { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KlientIndywidualny> KlientIndywidualny { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Paszport> Paszport { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pracownik> Pracownik { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PrawoJazdy> PrawoJazdy { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Wypozyczenie> Wypozyczenie { get; set; }
     }
 }

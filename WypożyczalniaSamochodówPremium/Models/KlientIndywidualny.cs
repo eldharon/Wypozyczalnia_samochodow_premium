@@ -14,11 +14,10 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class KlientIndywidualny
     {
-        public int IdKlient { get; set; }
-        public int IdKlientIndywidualny { get; set; }
-        public int PrawoJazdy_IdPrawaJazdy { get; set; }
-        public Nullable<int> RabatInd { get; set; }
+        public int KlientIndywidualnyId { get; set; }
+        public Nullable<int> Rabat { get; set; }
+        public Nullable<int> OsobaId { get; set; }
     
-        public virtual Klient Klient { get; set; }
+        public virtual Osoba Osoba { get; set; }
     }
 }

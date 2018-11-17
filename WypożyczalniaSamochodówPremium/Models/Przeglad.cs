@@ -14,11 +14,11 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class Przeglad
     {
-        public int IdPrzeglad { get; set; }
+        public int PrzegladId { get; set; }
         public System.DateTime DataPrzegladu { get; set; }
         public System.DateTime DataKolejnegoPrzegladu { get; set; }
         public string Uwagi { get; set; }
-        public int Samochod_IdSamochodu { get; set; }
+        public int SamochodId { get; set; }
     
         public virtual Samochod Samochod { get; set; }
     }

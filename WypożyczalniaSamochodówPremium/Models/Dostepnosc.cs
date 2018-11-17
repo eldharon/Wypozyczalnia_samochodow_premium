@@ -14,10 +14,10 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class Dostepnosc
     {
-        public int IdDostepnosc { get; set; }
+        public int DostepnoscId { get; set; }
         public Nullable<System.DateTime> NiedostepnyOd { get; set; }
         public System.DateTime NiedostepnyDo { get; set; }
-        public Nullable<int> Samochod_IdSamochodu { get; set; }
+        public int SamochodId { get; set; }
     
         public virtual Samochod Samochod { get; set; }
     }

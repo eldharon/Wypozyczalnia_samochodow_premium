@@ -12,13 +12,13 @@ namespace WypożyczalniaSamochodówPremium.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Klient
+    public partial class PracownikWypozyczenie
     {
-        public int IdKlient { get; set; }
-        public int Osoba_IdOsoba { get; set; }
+        public int PracownikWypozyczenieId { get; set; }
+        public int PracownikId { get; set; }
+        public int WypozyczenieId { get; set; }
     
-        public virtual Osoba Osoba { get; set; }
-        public virtual KlientFirma KlientFirma { get; set; }
-        public virtual KlientIndywidualny KlientIndywidualny { get; set; }
+        public virtual Pracownik Pracownik { get; set; }
+        public virtual Wypozyczenie Wypozyczenie { get; set; }
     }
 }
