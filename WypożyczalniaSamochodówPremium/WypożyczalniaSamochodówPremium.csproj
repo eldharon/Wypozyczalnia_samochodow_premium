@@ -46,10 +46,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -148,13 +156,81 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Adm\AdmAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Akcesoria.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cennik.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dostepnosc.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Klient.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KlientFirma.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KlientIndywidualny.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Opis.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Osoba.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pracownik.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Przeglad.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rozliczenie.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Samochod.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Serwis.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ubezpieczenie.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Wydarzenie.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypozyczalniaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WypozyczalniaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypozyczalniaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypozyczalniaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WypozyczalniaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Wypozyczenie.cs">
+      <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\TempDbWypozyczalnia.mdf" />
+    <Content Include="App_Data\TempDbWypozyczalnia_log.ldf">
+      <DependentUpon>TempDbWypozyczalnia.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -163,11 +239,29 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\WypozyczalniaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>WypozyczalniaModel.Context.cs</LastGenOutput>
+      <DependentUpon>WypozyczalniaModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\WypozyczalniaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WypozyczalniaModel.edmx</DependentUpon>
+      <LastGenOutput>WypozyczalniaModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EntityDeploy Include="Models\WypozyczalniaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WypozyczalniaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\WypozyczalniaModel.edmx.diagram">
+      <DependentUpon>WypozyczalniaModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Adm\Views\web.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -195,8 +289,10 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Adm\Controllers\" />
+    <Folder Include="Areas\Adm\Models\" />
+    <Folder Include="Areas\Adm\Views\Panel\" />
+    <Folder Include="Areas\Adm\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -210,6 +306,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

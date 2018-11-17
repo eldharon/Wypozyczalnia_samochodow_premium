@@ -1,0 +1,1164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WypozyczalniaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Akcesoria">
+          <Key>
+            <PropertyRef Name="IdAkcesoria" />
+          </Key>
+          <Property Name="IdAkcesoria" Type="int" Nullable="false" />
+          <Property Name="NazwaOpis" Type="varchar(max)" Nullable="false" />
+          <Property Name="Cena" Type="float" Nullable="false" />
+          <Property Name="Wypozyczenie_IdWypozyczenie" Type="int" />
+        </EntityType>
+        <EntityType Name="Cennik">
+          <Key>
+            <PropertyRef Name="IdCennik" />
+          </Key>
+          <Property Name="IdCennik" Type="int" Nullable="false" />
+          <Property Name="Cennik_1" Type="float" Nullable="false" />
+          <Property Name="Cennik_2" Type="float" Nullable="false" />
+          <Property Name="Cennik_3" Type="float" Nullable="false" />
+          <Property Name="Cennik_4" Type="float" Nullable="false" />
+          <Property Name="Cennik_5" Type="float" Nullable="false" />
+          <Property Name="Cennik_6" Type="float" Nullable="false" />
+          <Property Name="Samochod_IdSamochodu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dostepnosc">
+          <Key>
+            <PropertyRef Name="IdDostepnosc" />
+          </Key>
+          <Property Name="IdDostepnosc" Type="int" Nullable="false" />
+          <Property Name="NiedostepnyOd" Type="datetime" />
+          <Property Name="NiedostepnyDo" Type="datetime" Nullable="false" />
+          <Property Name="Samochod_IdSamochodu" Type="int" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="IdKlient" />
+          </Key>
+          <Property Name="IdKlient" Type="int" Nullable="false" />
+          <Property Name="Paszport_NrPaszportu" Type="varchar" MaxLength="64" />
+          <Property Name="DowodOsobisty_PESEL" Type="int" />
+          <Property Name="Osoba_IdOsoba" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KlientFirma">
+          <Key>
+            <PropertyRef Name="IdKlient" />
+          </Key>
+          <Property Name="IdKlient" Type="int" Nullable="false" />
+          <Property Name="IdKlientFirma" Type="int" Nullable="false" />
+          <Property Name="NazwaFrimy" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="NIP" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="PrawoJazdy_IdPrawaJazdy" Type="int" Nullable="false" />
+          <Property Name="RabatFirma" Type="int" />
+          <Property Name="AdresFirmy" Type="varchar" MaxLength="6" />
+          <Property Name="KodPocztowy" Type="varchar" MaxLength="16" />
+          <Property Name="Miasto" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="KlientIndywidualny">
+          <Key>
+            <PropertyRef Name="IdKlient" />
+          </Key>
+          <Property Name="IdKlient" Type="int" Nullable="false" />
+          <Property Name="IdKlientIndywidualny" Type="int" Nullable="false" />
+          <Property Name="PrawoJazdy_IdPrawaJazdy" Type="int" Nullable="false" />
+          <Property Name="RabatInd" Type="int" />
+        </EntityType>
+        <EntityType Name="Opis">
+          <Key>
+            <PropertyRef Name="idOpis" />
+          </Key>
+          <Property Name="idOpis" Type="int" Nullable="false" />
+          <Property Name="OpisOgolny" Type="varchar(max)" Nullable="false" />
+          <Property Name="Wyposazenie" Type="varchar(max)" Nullable="false" />
+          <Property Name="Samochod_IdSamochodu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Osoba">
+          <Key>
+            <PropertyRef Name="IdOsoba" />
+          </Key>
+          <Property Name="IdOsoba" Type="int" Nullable="false" />
+          <Property Name="ImieNazwisko" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="DataUrodzenia" Type="date" Nullable="false" />
+          <Property Name="Adres" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="KodPocztowy" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Kraj" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="NrTelefonu" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Uzytkownik_IdUzytkownik" Type="int" Nullable="false" />
+          <Property Name="Miasto" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pracownik">
+          <Key>
+            <PropertyRef Name="IdPracownik" />
+          </Key>
+          <Property Name="IdPracownik" Type="int" Nullable="false" />
+          <Property Name="DataZatrudnienia" Type="date" Nullable="false" />
+          <Property Name="DataZwolnienia" Type="date" />
+          <Property Name="Pensja" Type="float" Nullable="false" />
+          <Property Name="Premia" Type="float" />
+          <Property Name="Stanowisko" Type="varchar" MaxLength="32" />
+          <Property Name="Osoba_IdOsoba" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Przeglad">
+          <Key>
+            <PropertyRef Name="IdPrzeglad" />
+          </Key>
+          <Property Name="IdPrzeglad" Type="int" Nullable="false" />
+          <Property Name="DataPrzegladu" Type="date" Nullable="false" />
+          <Property Name="DataKolejnegoPrzegladu" Type="date" Nullable="false" />
+          <Property Name="Uwagi" Type="varchar(max)" />
+          <Property Name="Samochod_IdSamochodu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rozliczenie">
+          <Key>
+            <PropertyRef Name="IdRozliczenie" />
+          </Key>
+          <Property Name="IdRozliczenie" Type="int" Nullable="false" />
+          <Property Name="DodatkoweOplaty" Type="float" />
+          <Property Name="Zaliczka" Type="float" Nullable="false" />
+          <Property Name="DodatkowyRabat" Type="float" />
+          <Property Name="CalkowityKoszt" Type="float" Nullable="false" />
+          <Property Name="Wypozyczenie_IdWypozyczenie" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Samochod">
+          <Key>
+            <PropertyRef Name="IdSamochodu" />
+          </Key>
+          <Property Name="IdSamochodu" Type="int" Nullable="false" />
+          <Property Name="Marka" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Wersja" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="RokProdukcji" Type="date" Nullable="false" />
+          <Property Name="RodzajSilnika" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="PojemnoscSilnika" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="SkrzyniaBiegow" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="LiczbaDrzwi" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Kolor" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="DowodRejestracyjny_IdDowodRej" Type="int" Nullable="false" />
+          <Property Name="Cennik_IdCennik" Type="int" Nullable="false" />
+          <Property Name="Przebieg" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Serwis">
+          <Key>
+            <PropertyRef Name="IdSerwis" />
+          </Key>
+          <Property Name="IdSerwis" Type="int" Nullable="false" />
+          <Property Name="DataOddania" Type="date" Nullable="false" />
+          <Property Name="DataOdbioru" Type="date" Nullable="false" />
+          <Property Name="Koszt" Type="float" Nullable="false" />
+          <Property Name="Uwagi" Type="varchar(max)" />
+          <Property Name="Samochod_IdSamochodu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ubezpieczenie">
+          <Key>
+            <PropertyRef Name="IdUbezpieczenie" />
+          </Key>
+          <Property Name="IdUbezpieczenie" Type="int" Nullable="false" />
+          <Property Name="NumerPolisy" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="WazneOd" Type="date" Nullable="false" />
+          <Property Name="WazneDo" Type="date" Nullable="false" />
+          <Property Name="Samochod_IdSamochodu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wydarzenie">
+          <Key>
+            <PropertyRef Name="IdWydarzenie" />
+          </Key>
+          <Property Name="IdWydarzenie" Type="int" Nullable="false" />
+          <Property Name="NazwaWydarzenia" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Opis" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Wypozyczenie">
+          <Key>
+            <PropertyRef Name="IdWypozyczenie" />
+          </Key>
+          <Property Name="IdWypozyczenie" Type="int" Nullable="false" />
+          <Property Name="DataWypozyczenia" Type="date" Nullable="false" />
+          <Property Name="DataZwrotu" Type="date" Nullable="false" />
+          <Property Name="CzyDostarczany" Type="bit" Nullable="false" />
+          <Property Name="CzyKierowca" Type="bit" Nullable="false" />
+          <Property Name="Uzytkownik_IdUzytkownik" Type="int" Nullable="false" />
+          <Property Name="AdresDojazdu" Type="varchar" MaxLength="64" />
+          <Property Name="Rozliczenie_IdRozliczenie" Type="int" Nullable="false" />
+          <Property Name="Wydarzenie_IdWydarzenie" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'inzS13989.dbo.WypSam' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WypSam">
+          <Key>
+            <PropertyRef Name="Wypozyczenie_IdWypozyczenie" />
+            <PropertyRef Name="Samochod_IdSamochodu" />
+          </Key>
+          <Property Name="Wypozyczenie_IdWypozyczenie" Type="int" Nullable="false" />
+          <Property Name="Samochod_IdSamochodu" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="Akcesoria_Wypozyczenie_FK">
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="0..1" />
+          <End Role="Akcesoria" Type="Self.Akcesoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wypozyczenie">
+              <PropertyRef Name="IdWypozyczenie" />
+            </Principal>
+            <Dependent Role="Akcesoria">
+              <PropertyRef Name="Wypozyczenie_IdWypozyczenie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cennik_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="Cennik" Type="Self.Cennik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Cennik">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Dostepnosc_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="0..1" />
+          <End Role="Dostepnosc" Type="Self.Dostepnosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Dostepnosc">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Klient_Osoba_FK">
+          <End Role="Osoba" Type="Self.Osoba" Multiplicity="1" />
+          <End Role="Klient" Type="Self.Klient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="IdOsoba" />
+            </Principal>
+            <Dependent Role="Klient">
+              <PropertyRef Name="Osoba_IdOsoba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KlientFirma_Klient_FK">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="1" />
+          <End Role="KlientFirma" Type="Self.KlientFirma" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="IdKlient" />
+            </Principal>
+            <Dependent Role="KlientFirma">
+              <PropertyRef Name="IdKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KlientIndywidualny_Klient_FK">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="1" />
+          <End Role="KlientIndywidualny" Type="Self.KlientIndywidualny" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="IdKlient" />
+            </Principal>
+            <Dependent Role="KlientIndywidualny">
+              <PropertyRef Name="IdKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Opis_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="Opis" Type="Self.Opis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Opis">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pracownik_Osoba_FK">
+          <End Role="Osoba" Type="Self.Osoba" Multiplicity="1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="IdOsoba" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="Osoba_IdOsoba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'PrawoJazdy_KlientFirma_FK' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="PrawoJazdy_KlientFirma_FK" />-->
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'PrawoJazdy_KlientIndywidualny_FK' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="PrawoJazdy_KlientIndywidualny_FK" />-->
+        <Association Name="Przeglad_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="Przeglad" Type="Self.Przeglad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Przeglad">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Rozliczenie_Wypozyczenie_FK">
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="1" />
+          <End Role="Rozliczenie" Type="Self.Rozliczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wypozyczenie">
+              <PropertyRef Name="IdWypozyczenie" />
+            </Principal>
+            <Dependent Role="Rozliczenie">
+              <PropertyRef Name="Wypozyczenie_IdWypozyczenie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Samochod_Cennik_FK">
+          <End Role="Cennik" Type="Self.Cennik" Multiplicity="1" />
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cennik">
+              <PropertyRef Name="IdCennik" />
+            </Principal>
+            <Dependent Role="Samochod">
+              <PropertyRef Name="Cennik_IdCennik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Serwis_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="Serwis" Type="Self.Serwis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Serwis">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ubezpieczenie_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="Ubezpieczenie" Type="Self.Ubezpieczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Ubezpieczenie">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenie_Rozliczenie_FK">
+          <End Role="Rozliczenie" Type="Self.Rozliczenie" Multiplicity="1" />
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rozliczenie">
+              <PropertyRef Name="IdRozliczenie" />
+            </Principal>
+            <Dependent Role="Wypozyczenie">
+              <PropertyRef Name="Rozliczenie_IdRozliczenie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenie_Wydarzenie_FK">
+          <End Role="Wydarzenie" Type="Self.Wydarzenie" Multiplicity="1" />
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wydarzenie">
+              <PropertyRef Name="IdWydarzenie" />
+            </Principal>
+            <Dependent Role="Wypozyczenie">
+              <PropertyRef Name="Wydarzenie_IdWydarzenie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WypSam_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="WypSam" Type="Self.WypSam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="WypSam">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WypSam_Wypozyczenie_FK">
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="1" />
+          <End Role="WypSam" Type="Self.WypSam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wypozyczenie">
+              <PropertyRef Name="IdWypozyczenie" />
+            </Principal>
+            <Dependent Role="WypSam">
+              <PropertyRef Name="Wypozyczenie_IdWypozyczenie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WypozyczalniaModelStoreContainer">
+          <EntitySet Name="Akcesoria" EntityType="Self.Akcesoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cennik" EntityType="Self.Cennik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dostepnosc" EntityType="Self.Dostepnosc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klient" EntityType="Self.Klient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KlientFirma" EntityType="Self.KlientFirma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KlientIndywidualny" EntityType="Self.KlientIndywidualny" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Opis" EntityType="Self.Opis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Osoba" EntityType="Self.Osoba" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pracownik" EntityType="Self.Pracownik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Przeglad" EntityType="Self.Przeglad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rozliczenie" EntityType="Self.Rozliczenie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Samochod" EntityType="Self.Samochod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Serwis" EntityType="Self.Serwis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ubezpieczenie" EntityType="Self.Ubezpieczenie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wydarzenie" EntityType="Self.Wydarzenie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wypozyczenie" EntityType="Self.Wypozyczenie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WypSam" EntityType="Self.WypSam" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WypSam].[Wypozyczenie_IdWypozyczenie] AS [Wypozyczenie_IdWypozyczenie], 
+    [WypSam].[Samochod_IdSamochodu] AS [Samochod_IdSamochodu]
+    FROM [dbo].[WypSam] AS [WypSam]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Akcesoria_Wypozyczenie_FK" Association="Self.Akcesoria_Wypozyczenie_FK">
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+            <End Role="Akcesoria" EntitySet="Akcesoria" />
+          </AssociationSet>
+          <AssociationSet Name="Cennik_Samochod_FK" Association="Self.Cennik_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochod" />
+            <End Role="Cennik" EntitySet="Cennik" />
+          </AssociationSet>
+          <AssociationSet Name="Dostepnosc_Samochod_FK" Association="Self.Dostepnosc_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochod" />
+            <End Role="Dostepnosc" EntitySet="Dostepnosc" />
+          </AssociationSet>
+          <AssociationSet Name="Klient_Osoba_FK" Association="Self.Klient_Osoba_FK">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="Klient" EntitySet="Klient" />
+          </AssociationSet>
+          <AssociationSet Name="KlientFirma_Klient_FK" Association="Self.KlientFirma_Klient_FK">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="KlientFirma" EntitySet="KlientFirma" />
+          </AssociationSet>
+          <AssociationSet Name="KlientIndywidualny_Klient_FK" Association="Self.KlientIndywidualny_Klient_FK">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="KlientIndywidualny" EntitySet="KlientIndywidualny" />
+          </AssociationSet>
+          <AssociationSet Name="Opis_Samochod_FK" Association="Self.Opis_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochod" />
+            <End Role="Opis" EntitySet="Opis" />
+          </AssociationSet>
+          <AssociationSet Name="Pracownik_Osoba_FK" Association="Self.Pracownik_Osoba_FK">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="Przeglad_Samochod_FK" Association="Self.Przeglad_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochod" />
+            <End Role="Przeglad" EntitySet="Przeglad" />
+          </AssociationSet>
+          <AssociationSet Name="Rozliczenie_Wypozyczenie_FK" Association="Self.Rozliczenie_Wypozyczenie_FK">
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+            <End Role="Rozliczenie" EntitySet="Rozliczenie" />
+          </AssociationSet>
+          <AssociationSet Name="Samochod_Cennik_FK" Association="Self.Samochod_Cennik_FK">
+            <End Role="Cennik" EntitySet="Cennik" />
+            <End Role="Samochod" EntitySet="Samochod" />
+          </AssociationSet>
+          <AssociationSet Name="Serwis_Samochod_FK" Association="Self.Serwis_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochod" />
+            <End Role="Serwis" EntitySet="Serwis" />
+          </AssociationSet>
+          <AssociationSet Name="Ubezpieczenie_Samochod_FK" Association="Self.Ubezpieczenie_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochod" />
+            <End Role="Ubezpieczenie" EntitySet="Ubezpieczenie" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenie_Rozliczenie_FK" Association="Self.Wypozyczenie_Rozliczenie_FK">
+            <End Role="Rozliczenie" EntitySet="Rozliczenie" />
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenie_Wydarzenie_FK" Association="Self.Wypozyczenie_Wydarzenie_FK">
+            <End Role="Wydarzenie" EntitySet="Wydarzenie" />
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+          </AssociationSet>
+          <AssociationSet Name="WypSam_Samochod_FK" Association="Self.WypSam_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochod" />
+            <End Role="WypSam" EntitySet="WypSam" />
+          </AssociationSet>
+          <AssociationSet Name="WypSam_Wypozyczenie_FK" Association="Self.WypSam_Wypozyczenie_FK">
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+            <End Role="WypSam" EntitySet="WypSam" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WypozyczalniaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Akcesoria">
+          <Key>
+            <PropertyRef Name="IdAkcesoria" />
+          </Key>
+          <Property Name="IdAkcesoria" Type="Int32" Nullable="false" />
+          <Property Name="NazwaOpis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cena" Type="Double" Nullable="false" />
+          <Property Name="Wypozyczenie_IdWypozyczenie" Type="Int32" />
+          <NavigationProperty Name="Wypozyczenie" Relationship="Self.Akcesoria_Wypozyczenie_FK" FromRole="Akcesoria" ToRole="Wypozyczenie" />
+        </EntityType>
+        <EntityType Name="Cennik">
+          <Key>
+            <PropertyRef Name="IdCennik" />
+          </Key>
+          <Property Name="IdCennik" Type="Int32" Nullable="false" />
+          <Property Name="Cena" Type="Double" Nullable="false" />
+          <Property Name="Samochod_IdSamochodu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Samochod" Relationship="Self.Cennik_Samochod_FK" FromRole="Cennik" ToRole="Samochod" />
+        </EntityType>
+        <EntityType Name="Dostepnosc">
+          <Key>
+            <PropertyRef Name="IdDostepnosc" />
+          </Key>
+          <Property Name="IdDostepnosc" Type="Int32" Nullable="false" />
+          <Property Name="NiedostepnyOd" Type="DateTime" Precision="3" />
+          <Property Name="NiedostepnyDo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Samochod_IdSamochodu" Type="Int32" />
+          <NavigationProperty Name="Samochod" Relationship="Self.Dostepnosc_Samochod_FK" FromRole="Dostepnosc" ToRole="Samochod" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="IdKlient" />
+          </Key>
+          <Property Name="IdKlient" Type="Int32" Nullable="false" />
+          <Property Name="Osoba_IdOsoba" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Osoba" Relationship="Self.Klient_Osoba_FK" FromRole="Klient" ToRole="Osoba" />
+          <NavigationProperty Name="KlientFirma" Relationship="Self.KlientFirma_Klient_FK" FromRole="Klient" ToRole="KlientFirma" />
+          <NavigationProperty Name="KlientIndywidualny" Relationship="Self.KlientIndywidualny_Klient_FK" FromRole="Klient" ToRole="KlientIndywidualny" />
+        </EntityType>
+        <EntityType Name="KlientFirma">
+          <Key>
+            <PropertyRef Name="IdKlient" />
+          </Key>
+          <Property Name="IdKlient" Type="Int32" Nullable="false" />
+          <Property Name="IdKlientFirma" Type="Int32" Nullable="false" />
+          <Property Name="NazwaFrimy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NIP" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RabatFirma" Type="Int32" />
+          <Property Name="AdresFirmy" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="KodPocztowy" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Miasto" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Klient" Relationship="Self.KlientFirma_Klient_FK" FromRole="KlientFirma" ToRole="Klient" />
+        </EntityType>
+        <EntityType Name="KlientIndywidualny">
+          <Key>
+            <PropertyRef Name="IdKlient" />
+          </Key>
+          <Property Name="IdKlient" Type="Int32" Nullable="false" />
+          <Property Name="IdKlientIndywidualny" Type="Int32" Nullable="false" />
+          <Property Name="PrawoJazdy_IdPrawaJazdy" Type="Int32" Nullable="false" />
+          <Property Name="RabatInd" Type="Int32" />
+          <NavigationProperty Name="Klient" Relationship="Self.KlientIndywidualny_Klient_FK" FromRole="KlientIndywidualny" ToRole="Klient" />
+        </EntityType>
+        <EntityType Name="Opis">
+          <Key>
+            <PropertyRef Name="idOpis" />
+          </Key>
+          <Property Name="idOpis" Type="Int32" Nullable="false" />
+          <Property Name="OpisOgolny" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Wyposazenie" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Samochod_IdSamochodu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Samochod" Relationship="Self.Opis_Samochod_FK" FromRole="Opis" ToRole="Samochod" />
+        </EntityType>
+        <EntityType Name="Osoba">
+          <Key>
+            <PropertyRef Name="IdOsoba" />
+          </Key>
+          <Property Name="IdOsoba" Type="Int32" Nullable="false" />
+          <Property Name="ImieNazwisko" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DataUrodzenia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Adres" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KodPocztowy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kraj" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NrTelefonu" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Uzytkownik_IdUzytkownik" Type="Int32" Nullable="false" />
+          <Property Name="Miasto" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Klients" Relationship="Self.Klient_Osoba_FK" FromRole="Osoba" ToRole="Klient" />
+          <NavigationProperty Name="Pracowniks" Relationship="Self.Pracownik_Osoba_FK" FromRole="Osoba" ToRole="Pracownik" />
+        </EntityType>
+        <EntityType Name="Pracownik">
+          <Key>
+            <PropertyRef Name="IdPracownik" />
+          </Key>
+          <Property Name="IdPracownik" Type="Int32" Nullable="false" />
+          <Property Name="DataZatrudnienia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataZwolnienia" Type="DateTime" Precision="0" />
+          <Property Name="Pensja" Type="Double" Nullable="false" />
+          <Property Name="Premia" Type="Double" />
+          <Property Name="Stanowisko" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Osoba_IdOsoba" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Osoba" Relationship="Self.Pracownik_Osoba_FK" FromRole="Pracownik" ToRole="Osoba" />
+        </EntityType>
+        <EntityType Name="Przeglad">
+          <Key>
+            <PropertyRef Name="IdPrzeglad" />
+          </Key>
+          <Property Name="IdPrzeglad" Type="Int32" Nullable="false" />
+          <Property Name="DataPrzegladu" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataKolejnegoPrzegladu" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Uwagi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Samochod_IdSamochodu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Samochod" Relationship="Self.Przeglad_Samochod_FK" FromRole="Przeglad" ToRole="Samochod" />
+        </EntityType>
+        <EntityType Name="Rozliczenie">
+          <Key>
+            <PropertyRef Name="IdRozliczenie" />
+          </Key>
+          <Property Name="IdRozliczenie" Type="Int32" Nullable="false" />
+          <Property Name="DodatkoweOplaty" Type="Double" />
+          <Property Name="Zaliczka" Type="Double" Nullable="false" />
+          <Property Name="DodatkowyRabat" Type="Double" />
+          <Property Name="CalkowityKoszt" Type="Double" Nullable="false" />
+          <Property Name="Wypozyczenie_IdWypozyczenie" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Wypozyczenie" Relationship="Self.Rozliczenie_Wypozyczenie_FK" FromRole="Rozliczenie" ToRole="Wypozyczenie" />
+        </EntityType>
+        <EntityType Name="Samochod">
+          <Key>
+            <PropertyRef Name="IdSamochodu" />
+          </Key>
+          <Property Name="IdSamochodu" Type="Int32" Nullable="false" />
+          <Property Name="Marka" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Wersja" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RokProdukcji" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RodzajSilnika" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PojemnoscSilnika" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SkrzyniaBiegow" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LiczbaDrzwi" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kolor" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DowodRejestracyjny_IdDowodRej" Type="Int32" Nullable="false" />
+          <Property Name="Cennik_IdCennik" Type="Int32" Nullable="false" />
+          <Property Name="Przebieg" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cenniks" Relationship="Self.Cennik_Samochod_FK" FromRole="Samochod" ToRole="Cennik" />
+          <NavigationProperty Name="Dostepnoscs" Relationship="Self.Dostepnosc_Samochod_FK" FromRole="Samochod" ToRole="Dostepnosc" />
+          <NavigationProperty Name="Opis" Relationship="Self.Opis_Samochod_FK" FromRole="Samochod" ToRole="Opis" />
+          <NavigationProperty Name="Przeglads" Relationship="Self.Przeglad_Samochod_FK" FromRole="Samochod" ToRole="Przeglad" />
+          <NavigationProperty Name="Serwis" Relationship="Self.Serwis_Samochod_FK" FromRole="Samochod" ToRole="Serwis" />
+          <NavigationProperty Name="Ubezpieczenies" Relationship="Self.Ubezpieczenie_Samochod_FK" FromRole="Samochod" ToRole="Ubezpieczenie" />
+          <NavigationProperty Name="Wypozyczenies" Relationship="Self.WypSam" FromRole="Samochod" ToRole="Wypozyczenie" />
+        </EntityType>
+        <EntityType Name="Serwis">
+          <Key>
+            <PropertyRef Name="IdSerwis" />
+          </Key>
+          <Property Name="IdSerwis" Type="Int32" Nullable="false" />
+          <Property Name="DataOddania" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataOdbioru" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Koszt" Type="Double" Nullable="false" />
+          <Property Name="Uwagi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Samochod_IdSamochodu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Samochod" Relationship="Self.Serwis_Samochod_FK" FromRole="Serwis" ToRole="Samochod" />
+        </EntityType>
+        <EntityType Name="Ubezpieczenie">
+          <Key>
+            <PropertyRef Name="IdUbezpieczenie" />
+          </Key>
+          <Property Name="IdUbezpieczenie" Type="Int32" Nullable="false" />
+          <Property Name="NumerPolisy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WazneOd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="WazneDo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Samochod_IdSamochodu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Samochod" Relationship="Self.Ubezpieczenie_Samochod_FK" FromRole="Ubezpieczenie" ToRole="Samochod" />
+        </EntityType>
+        <EntityType Name="Wydarzenie">
+          <Key>
+            <PropertyRef Name="IdWydarzenie" />
+          </Key>
+          <Property Name="IdWydarzenie" Type="Int32" Nullable="false" />
+          <Property Name="NazwaWydarzenia" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Wypozyczenies" Relationship="Self.Wypozyczenie_Wydarzenie_FK" FromRole="Wydarzenie" ToRole="Wypozyczenie" />
+        </EntityType>
+        <EntityType Name="Wypozyczenie">
+          <Key>
+            <PropertyRef Name="IdWypozyczenie" />
+          </Key>
+          <Property Name="IdWypozyczenie" Type="Int32" Nullable="false" />
+          <Property Name="DataWypozyczenia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataZwrotu" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CzyDostarczany" Type="Boolean" Nullable="false" />
+          <Property Name="CzyKierowca" Type="Boolean" Nullable="false" />
+          <Property Name="Uzytkownik_IdUzytkownik" Type="Int32" Nullable="false" />
+          <Property Name="AdresDojazdu" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Rozliczenie_IdRozliczenie" Type="Int32" Nullable="false" />
+          <Property Name="Wydarzenie_IdWydarzenie" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Akcesoria" Relationship="Self.Akcesoria_Wypozyczenie_FK" FromRole="Wypozyczenie" ToRole="Akcesoria" />
+          <NavigationProperty Name="Rozliczenia" Relationship="Self.Rozliczenie_Wypozyczenie_FK" FromRole="Wypozyczenie" ToRole="Rozliczenie" />
+          <NavigationProperty Name="Wydarzenia" Relationship="Self.Wypozyczenie_Wydarzenie_FK" FromRole="Wypozyczenie" ToRole="Wydarzenie" />
+          <NavigationProperty Name="Samochody" Relationship="Self.WypSam" FromRole="Wypozyczenie" ToRole="Samochod" />
+        </EntityType>
+        <Association Name="Akcesoria_Wypozyczenie_FK">
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="0..1" />
+          <End Role="Akcesoria" Type="Self.Akcesoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wypozyczenie">
+              <PropertyRef Name="IdWypozyczenie" />
+            </Principal>
+            <Dependent Role="Akcesoria">
+              <PropertyRef Name="Wypozyczenie_IdWypozyczenie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cennik_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="Cennik" Type="Self.Cennik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Cennik">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Dostepnosc_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="0..1" />
+          <End Role="Dostepnosc" Type="Self.Dostepnosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Dostepnosc">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Klient_Osoba_FK">
+          <End Role="Osoba" Type="Self.Osoba" Multiplicity="1" />
+          <End Role="Klient" Type="Self.Klient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="IdOsoba" />
+            </Principal>
+            <Dependent Role="Klient">
+              <PropertyRef Name="Osoba_IdOsoba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KlientFirma_Klient_FK">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="1" />
+          <End Role="KlientFirma" Type="Self.KlientFirma" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="IdKlient" />
+            </Principal>
+            <Dependent Role="KlientFirma">
+              <PropertyRef Name="IdKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KlientIndywidualny_Klient_FK">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="1" />
+          <End Role="KlientIndywidualny" Type="Self.KlientIndywidualny" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="IdKlient" />
+            </Principal>
+            <Dependent Role="KlientIndywidualny">
+              <PropertyRef Name="IdKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Opis_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="Opis" Type="WypozyczalniaModel.Opis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Opis">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pracownik_Osoba_FK">
+          <End Role="Osoba" Type="Self.Osoba" Multiplicity="1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="IdOsoba" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="Osoba_IdOsoba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Przeglad_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="Przeglad" Type="Self.Przeglad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Przeglad">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Rozliczenie_Wypozyczenie_FK">
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="1" />
+          <End Role="Rozliczenie" Type="Self.Rozliczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wypozyczenie">
+              <PropertyRef Name="IdWypozyczenie" />
+            </Principal>
+            <Dependent Role="Rozliczenie">
+              <PropertyRef Name="Wypozyczenie_IdWypozyczenie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Serwis_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="Serwis" Type="WypozyczalniaModel.Serwis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Serwis">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ubezpieczenie_Samochod_FK">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="Ubezpieczenie" Type="Self.Ubezpieczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="IdSamochodu" />
+            </Principal>
+            <Dependent Role="Ubezpieczenie">
+              <PropertyRef Name="Samochod_IdSamochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenie_Wydarzenie_FK">
+          <End Role="Wydarzenie" Type="Self.Wydarzenie" Multiplicity="1" />
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wydarzenie">
+              <PropertyRef Name="IdWydarzenie" />
+            </Principal>
+            <Dependent Role="Wypozyczenie">
+              <PropertyRef Name="Wydarzenie_IdWydarzenie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WypSam">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="*" />
+          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="WypozyczalniaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Akcesorias" EntityType="Self.Akcesoria" />
+          <EntitySet Name="Cenniks" EntityType="Self.Cennik" />
+          <EntitySet Name="Dostepnoscs" EntityType="Self.Dostepnosc" />
+          <EntitySet Name="Klients" EntityType="Self.Klient" />
+          <EntitySet Name="KlientFirmas" EntityType="Self.KlientFirma" />
+          <EntitySet Name="KlientIndywidualnies" EntityType="Self.KlientIndywidualny" />
+          <EntitySet Name="Opis1" EntityType="WypozyczalniaModel.Opis" />
+          <EntitySet Name="Osobas" EntityType="Self.Osoba" />
+          <EntitySet Name="Pracowniks" EntityType="Self.Pracownik" />
+          <EntitySet Name="Przeglads" EntityType="Self.Przeglad" />
+          <EntitySet Name="Rozliczenies" EntityType="Self.Rozliczenie" />
+          <EntitySet Name="Samochods" EntityType="Self.Samochod" />
+          <EntitySet Name="Serwis1" EntityType="WypozyczalniaModel.Serwis" />
+          <EntitySet Name="Ubezpieczenies" EntityType="Self.Ubezpieczenie" />
+          <EntitySet Name="Wydarzenies" EntityType="Self.Wydarzenie" />
+          <EntitySet Name="Wypozyczenies" EntityType="Self.Wypozyczenie" />
+          <AssociationSet Name="Akcesoria_Wypozyczenie_FK" Association="Self.Akcesoria_Wypozyczenie_FK">
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenies" />
+            <End Role="Akcesoria" EntitySet="Akcesorias" />
+          </AssociationSet>
+          <AssociationSet Name="Cennik_Samochod_FK" Association="Self.Cennik_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochods" />
+            <End Role="Cennik" EntitySet="Cenniks" />
+          </AssociationSet>
+          <AssociationSet Name="Dostepnosc_Samochod_FK" Association="Self.Dostepnosc_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochods" />
+            <End Role="Dostepnosc" EntitySet="Dostepnoscs" />
+          </AssociationSet>
+          <AssociationSet Name="Klient_Osoba_FK" Association="Self.Klient_Osoba_FK">
+            <End Role="Osoba" EntitySet="Osobas" />
+            <End Role="Klient" EntitySet="Klients" />
+          </AssociationSet>
+          <AssociationSet Name="KlientFirma_Klient_FK" Association="Self.KlientFirma_Klient_FK">
+            <End Role="Klient" EntitySet="Klients" />
+            <End Role="KlientFirma" EntitySet="KlientFirmas" />
+          </AssociationSet>
+          <AssociationSet Name="KlientIndywidualny_Klient_FK" Association="Self.KlientIndywidualny_Klient_FK">
+            <End Role="Klient" EntitySet="Klients" />
+            <End Role="KlientIndywidualny" EntitySet="KlientIndywidualnies" />
+          </AssociationSet>
+          <AssociationSet Name="Opis_Samochod_FK" Association="Self.Opis_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochods" />
+            <End Role="Opis" EntitySet="Opis1" />
+          </AssociationSet>
+          <AssociationSet Name="Pracownik_Osoba_FK" Association="Self.Pracownik_Osoba_FK">
+            <End Role="Osoba" EntitySet="Osobas" />
+            <End Role="Pracownik" EntitySet="Pracowniks" />
+          </AssociationSet>
+          <AssociationSet Name="Przeglad_Samochod_FK" Association="Self.Przeglad_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochods" />
+            <End Role="Przeglad" EntitySet="Przeglads" />
+          </AssociationSet>
+          <AssociationSet Name="Rozliczenie_Wypozyczenie_FK" Association="Self.Rozliczenie_Wypozyczenie_FK">
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenies" />
+            <End Role="Rozliczenie" EntitySet="Rozliczenies" />
+          </AssociationSet>
+          <AssociationSet Name="Serwis_Samochod_FK" Association="Self.Serwis_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochods" />
+            <End Role="Serwis" EntitySet="Serwis1" />
+          </AssociationSet>
+          <AssociationSet Name="Ubezpieczenie_Samochod_FK" Association="Self.Ubezpieczenie_Samochod_FK">
+            <End Role="Samochod" EntitySet="Samochods" />
+            <End Role="Ubezpieczenie" EntitySet="Ubezpieczenies" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenie_Wydarzenie_FK" Association="Self.Wypozyczenie_Wydarzenie_FK">
+            <End Role="Wydarzenie" EntitySet="Wydarzenies" />
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenies" />
+          </AssociationSet>
+          <AssociationSet Name="WypSam" Association="Self.WypSam">
+            <End Role="Samochod" EntitySet="Samochods" />
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WypozyczalniaModelStoreContainer" CdmEntityContainer="WypozyczalniaEntities">
+          <EntitySetMapping Name="Akcesorias">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Akcesoria">
+              <MappingFragment StoreEntitySet="Akcesoria">
+                <ScalarProperty Name="IdAkcesoria" ColumnName="IdAkcesoria" />
+                <ScalarProperty Name="NazwaOpis" ColumnName="NazwaOpis" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Wypozyczenie_IdWypozyczenie" ColumnName="Wypozyczenie_IdWypozyczenie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cenniks">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Cennik">
+              <MappingFragment StoreEntitySet="Cennik">
+                <ScalarProperty Name="IdCennik" ColumnName="IdCennik" />
+                <ScalarProperty Name="Cena" ColumnName="Cennik_1" />
+                <ScalarProperty Name="Samochod_IdSamochodu" ColumnName="Samochod_IdSamochodu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dostepnoscs">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Dostepnosc">
+              <MappingFragment StoreEntitySet="Dostepnosc">
+                <ScalarProperty Name="IdDostepnosc" ColumnName="IdDostepnosc" />
+                <ScalarProperty Name="NiedostepnyOd" ColumnName="NiedostepnyOd" />
+                <ScalarProperty Name="NiedostepnyDo" ColumnName="NiedostepnyDo" />
+                <ScalarProperty Name="Samochod_IdSamochodu" ColumnName="Samochod_IdSamochodu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klients">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Klient">
+              <MappingFragment StoreEntitySet="Klient">
+                <ScalarProperty Name="IdKlient" ColumnName="IdKlient" />
+                <ScalarProperty Name="Osoba_IdOsoba" ColumnName="Osoba_IdOsoba" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KlientFirmas">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.KlientFirma">
+              <MappingFragment StoreEntitySet="KlientFirma">
+                <ScalarProperty Name="IdKlient" ColumnName="IdKlient" />
+                <ScalarProperty Name="IdKlientFirma" ColumnName="IdKlientFirma" />
+                <ScalarProperty Name="NazwaFrimy" ColumnName="NazwaFrimy" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+                <ScalarProperty Name="RabatFirma" ColumnName="RabatFirma" />
+                <ScalarProperty Name="AdresFirmy" ColumnName="AdresFirmy" />
+                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KlientIndywidualnies">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.KlientIndywidualny">
+              <MappingFragment StoreEntitySet="KlientIndywidualny">
+                <ScalarProperty Name="IdKlient" ColumnName="IdKlient" />
+                <ScalarProperty Name="IdKlientIndywidualny" ColumnName="IdKlientIndywidualny" />
+                <ScalarProperty Name="PrawoJazdy_IdPrawaJazdy" ColumnName="PrawoJazdy_IdPrawaJazdy" />
+                <ScalarProperty Name="RabatInd" ColumnName="RabatInd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Opis1">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Opis">
+              <MappingFragment StoreEntitySet="Opis">
+                <ScalarProperty Name="idOpis" ColumnName="idOpis" />
+                <ScalarProperty Name="OpisOgolny" ColumnName="OpisOgolny" />
+                <ScalarProperty Name="Wyposazenie" ColumnName="Wyposazenie" />
+                <ScalarProperty Name="Samochod_IdSamochodu" ColumnName="Samochod_IdSamochodu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Osobas">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Osoba">
+              <MappingFragment StoreEntitySet="Osoba">
+                <ScalarProperty Name="IdOsoba" ColumnName="IdOsoba" />
+                <ScalarProperty Name="ImieNazwisko" ColumnName="ImieNazwisko" />
+                <ScalarProperty Name="DataUrodzenia" ColumnName="DataUrodzenia" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+                <ScalarProperty Name="Kraj" ColumnName="Kraj" />
+                <ScalarProperty Name="NrTelefonu" ColumnName="NrTelefonu" />
+                <ScalarProperty Name="Uzytkownik_IdUzytkownik" ColumnName="Uzytkownik_IdUzytkownik" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pracowniks">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Pracownik">
+              <MappingFragment StoreEntitySet="Pracownik">
+                <ScalarProperty Name="IdPracownik" ColumnName="IdPracownik" />
+                <ScalarProperty Name="DataZatrudnienia" ColumnName="DataZatrudnienia" />
+                <ScalarProperty Name="DataZwolnienia" ColumnName="DataZwolnienia" />
+                <ScalarProperty Name="Pensja" ColumnName="Pensja" />
+                <ScalarProperty Name="Premia" ColumnName="Premia" />
+                <ScalarProperty Name="Stanowisko" ColumnName="Stanowisko" />
+                <ScalarProperty Name="Osoba_IdOsoba" ColumnName="Osoba_IdOsoba" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Przeglads">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Przeglad">
+              <MappingFragment StoreEntitySet="Przeglad">
+                <ScalarProperty Name="IdPrzeglad" ColumnName="IdPrzeglad" />
+                <ScalarProperty Name="DataPrzegladu" ColumnName="DataPrzegladu" />
+                <ScalarProperty Name="DataKolejnegoPrzegladu" ColumnName="DataKolejnegoPrzegladu" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="Samochod_IdSamochodu" ColumnName="Samochod_IdSamochodu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rozliczenies">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Rozliczenie">
+              <MappingFragment StoreEntitySet="Rozliczenie">
+                <ScalarProperty Name="IdRozliczenie" ColumnName="IdRozliczenie" />
+                <ScalarProperty Name="DodatkoweOplaty" ColumnName="DodatkoweOplaty" />
+                <ScalarProperty Name="Zaliczka" ColumnName="Zaliczka" />
+                <ScalarProperty Name="DodatkowyRabat" ColumnName="DodatkowyRabat" />
+                <ScalarProperty Name="CalkowityKoszt" ColumnName="CalkowityKoszt" />
+                <ScalarProperty Name="Wypozyczenie_IdWypozyczenie" ColumnName="Wypozyczenie_IdWypozyczenie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Samochods">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Samochod">
+              <MappingFragment StoreEntitySet="Samochod">
+                <ScalarProperty Name="IdSamochodu" ColumnName="IdSamochodu" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Wersja" ColumnName="Wersja" />
+                <ScalarProperty Name="RokProdukcji" ColumnName="RokProdukcji" />
+                <ScalarProperty Name="RodzajSilnika" ColumnName="RodzajSilnika" />
+                <ScalarProperty Name="PojemnoscSilnika" ColumnName="PojemnoscSilnika" />
+                <ScalarProperty Name="SkrzyniaBiegow" ColumnName="SkrzyniaBiegow" />
+                <ScalarProperty Name="LiczbaDrzwi" ColumnName="LiczbaDrzwi" />
+                <ScalarProperty Name="Kolor" ColumnName="Kolor" />
+                <ScalarProperty Name="DowodRejestracyjny_IdDowodRej" ColumnName="DowodRejestracyjny_IdDowodRej" />
+                <ScalarProperty Name="Cennik_IdCennik" ColumnName="Cennik_IdCennik" />
+                <ScalarProperty Name="Przebieg" ColumnName="Przebieg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Serwis1">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Serwis">
+              <MappingFragment StoreEntitySet="Serwis">
+                <ScalarProperty Name="IdSerwis" ColumnName="IdSerwis" />
+                <ScalarProperty Name="DataOddania" ColumnName="DataOddania" />
+                <ScalarProperty Name="DataOdbioru" ColumnName="DataOdbioru" />
+                <ScalarProperty Name="Koszt" ColumnName="Koszt" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="Samochod_IdSamochodu" ColumnName="Samochod_IdSamochodu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ubezpieczenies">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Ubezpieczenie">
+              <MappingFragment StoreEntitySet="Ubezpieczenie">
+                <ScalarProperty Name="IdUbezpieczenie" ColumnName="IdUbezpieczenie" />
+                <ScalarProperty Name="NumerPolisy" ColumnName="NumerPolisy" />
+                <ScalarProperty Name="WazneOd" ColumnName="WazneOd" />
+                <ScalarProperty Name="WazneDo" ColumnName="WazneDo" />
+                <ScalarProperty Name="Samochod_IdSamochodu" ColumnName="Samochod_IdSamochodu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wydarzenies">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Wydarzenie">
+              <MappingFragment StoreEntitySet="Wydarzenie">
+                <ScalarProperty Name="IdWydarzenie" ColumnName="IdWydarzenie" />
+                <ScalarProperty Name="NazwaWydarzenia" ColumnName="NazwaWydarzenia" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wypozyczenies">
+            <EntityTypeMapping TypeName="WypozyczalniaModel.Wypozyczenie">
+              <MappingFragment StoreEntitySet="Wypozyczenie">
+                <ScalarProperty Name="IdWypozyczenie" ColumnName="IdWypozyczenie" />
+                <ScalarProperty Name="DataWypozyczenia" ColumnName="DataWypozyczenia" />
+                <ScalarProperty Name="DataZwrotu" ColumnName="DataZwrotu" />
+                <ScalarProperty Name="CzyDostarczany" ColumnName="CzyDostarczany" />
+                <ScalarProperty Name="CzyKierowca" ColumnName="CzyKierowca" />
+                <ScalarProperty Name="Uzytkownik_IdUzytkownik" ColumnName="Uzytkownik_IdUzytkownik" />
+                <ScalarProperty Name="AdresDojazdu" ColumnName="AdresDojazdu" />
+                <ScalarProperty Name="Rozliczenie_IdRozliczenie" ColumnName="Rozliczenie_IdRozliczenie" />
+                <ScalarProperty Name="Wydarzenie_IdWydarzenie" ColumnName="Wydarzenie_IdWydarzenie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="WypSam" TypeName="WypozyczalniaModel.WypSam" StoreEntitySet="WypSam">
+            <EndProperty Name="Samochod">
+              <ScalarProperty Name="IdSamochodu" ColumnName="Samochod_IdSamochodu" />
+            </EndProperty>
+            <EndProperty Name="Wypozyczenie">
+              <ScalarProperty Name="IdWypozyczenie" ColumnName="Wypozyczenie_IdWypozyczenie" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
