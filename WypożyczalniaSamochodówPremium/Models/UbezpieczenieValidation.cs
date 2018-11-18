@@ -17,7 +17,7 @@ namespace WypożyczalniaSamochodówPremium.Models
     {
         [HiddenInput(DisplayValue = false), ScaffoldColumn(false)]
         public int UbezpieczenieId { get; set; }
-        [DisplayName("Numer polisy")]
+        [Required(ErrorMessage = "Proszę podać numer polisy"), DisplayName("Numer polisy")]
         public string NumerPolisy { get; set; }
         [Required(ErrorMessage = "Proszę podać datę od kiedy ubezpieczenie obowiązuje"), DataType(DataType.Date), DisplayName("Ważne od")]
         public System.DateTime WazneOd { get; set; }
