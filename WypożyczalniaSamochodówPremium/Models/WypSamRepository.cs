@@ -11,17 +11,17 @@ namespace WypożyczalniaSamochodówPremium.Models
 
         public IQueryable<WypSam> FindAllWypSam()
         {
-            return entities.WypSam;
+            return entities.wypozyczeniaSamochody;
         }
 
         public void Add(WypSam wypSam)
         {
-            entities.WypSam.Add(wypSam);
+            entities.wypozyczeniaSamochody.Add(wypSam);
         }
 
         public void Delete(WypSam wypSam)
         {
-            entities.WypSam.Remove(wypSam);
+            entities.wypozyczeniaSamochody.Remove(wypSam);
         }
 
         public void Save()

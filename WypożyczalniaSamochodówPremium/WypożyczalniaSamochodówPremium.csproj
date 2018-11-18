@@ -192,37 +192,48 @@
     <Compile Include="Models\Osoba.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OsobaRepository.cs" />
     <Compile Include="Models\Paszport.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PaszportRepository.cs" />
     <Compile Include="Models\Pracownik.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PracownikRepository.cs" />
     <Compile Include="Models\PracownikWypozyczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PracownikWypozycznieRepository.cs" />
     <Compile Include="Models\PrawoJazdy.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PrawoJazdyRepository.cs" />
     <Compile Include="Models\Przeglad.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PrzegladRepository.cs" />
     <Compile Include="Models\Rozliczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RozliczenieRepository.cs" />
     <Compile Include="Models\Samochod.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SamochodRepository.cs" />
     <Compile Include="Models\Serwis.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SerwisRepository.cs" />
     <Compile Include="Models\Ubezpieczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UbezpieczenieRepository.cs" />
     <Compile Include="Models\UbezpieczenieValidation.cs" />
     <Compile Include="Models\Wydarzenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\WydarzenieRepository.cs" />
     <Compile Include="Models\Wypozyczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -236,6 +247,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\WypozyczenieRepository.cs" />
     <Compile Include="Models\WypSam.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
