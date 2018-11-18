@@ -792,7 +792,7 @@
           <Property Name="DataOddania" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DataOdbioru" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Koszt" Type="Double" Nullable="false" />
-          <Property Name="Uwagi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Uwagi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="true" />
           <Property Name="SamochodId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Samochod" Relationship="Self.FK__Serwis__Samochod__5E8A0973" FromRole="Serwis" ToRole="Samochod" />
         </EntityType>
