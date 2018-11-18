@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WypozyczenieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WypozyczenieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Akcesoria">
           <Key>
-            <PropertyRef Name="IdAkcesoria" />
+            <PropertyRef Name="AkcesoriaId" />
           </Key>
-          <Property Name="IdAkcesoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AkcesoriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nazwa" Type="varchar(max)" Nullable="false" />
           <Property Name="Opis" Type="varchar(max)" Nullable="false" />
           <Property Name="Cena" Type="float" Nullable="false" />
@@ -35,9 +35,10 @@
         </EntityType>
         <EntityType Name="DowodOsobisty">
           <Key>
-            <PropertyRef Name="PESEL" />
+            <PropertyRef Name="DowodOsobistyId" />
           </Key>
-          <Property Name="PESEL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DowodOsobistyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PESEL" Type="int" Nullable="false" />
           <Property Name="NrDowodu" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="TerminWaznosci" Type="date" Nullable="false" />
           <Property Name="OsobaId" Type="int" Nullable="false" />
@@ -222,7 +223,7 @@
           <Property Name="SamochodId" Type="int" Nullable="false" />
           <Property Name="WypozyczenieId" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Akcesoria__Wypoz__6BE40491">
+        <Association Name="FK__Akcesoria__Wypoz__7E02B4CC">
           <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="1" />
           <End Role="Akcesoria" Type="Self.Akcesoria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -258,7 +259,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DowodOsob__Osoba__690797E6">
+        <Association Name="FK__DowodOsob__Osoba__7B264821">
           <End Role="Osoba" Type="Self.Osoba" Multiplicity="1" />
           <End Role="DowodOsobisty" Type="Self.DowodOsobisty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -496,7 +497,7 @@
           <EntitySet Name="Wydarzenie" EntityType="Self.Wydarzenie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wypozyczenie" EntityType="Self.Wypozyczenie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WypSam" EntityType="Self.WypSam" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Akcesoria__Wypoz__6BE40491" Association="Self.FK__Akcesoria__Wypoz__6BE40491">
+          <AssociationSet Name="FK__Akcesoria__Wypoz__7E02B4CC" Association="Self.FK__Akcesoria__Wypoz__7E02B4CC">
             <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
             <End Role="Akcesoria" EntitySet="Akcesoria" />
           </AssociationSet>
@@ -508,7 +509,7 @@
             <End Role="Samochod" EntitySet="Samochod" />
             <End Role="Dostepnosc" EntitySet="Dostepnosc" />
           </AssociationSet>
-          <AssociationSet Name="FK__DowodOsob__Osoba__690797E6" Association="Self.FK__DowodOsob__Osoba__690797E6">
+          <AssociationSet Name="FK__DowodOsob__Osoba__7B264821" Association="Self.FK__DowodOsob__Osoba__7B264821">
             <End Role="Osoba" EntitySet="Osoba" />
             <End Role="DowodOsobisty" EntitySet="DowodOsobisty" />
           </AssociationSet>
@@ -581,22 +582,10 @@
             <End Role="WypSam" EntitySet="WypSam" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WypozyczenieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Akcesoria">
-          <Key>
-            <PropertyRef Name="IdAkcesoria" />
-          </Key>
-          <Property Name="IdAkcesoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nazwa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Cena" Type="Double" Nullable="false" />
-          <Property Name="WypozyczenieId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Wypozyczenie" Relationship="Self.FK__Akcesoria__Wypoz__6BE40491" FromRole="Akcesoria" ToRole="Wypozyczenie" />
-        </EntityType>
         <EntityType Name="Cennik">
           <Key>
             <PropertyRef Name="CennikId" />
@@ -616,16 +605,6 @@
           <Property Name="NiedostepnyDo" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SamochodId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Samochod" Relationship="Self.FK__Dostepnos__Samoc__69FBBC1F" FromRole="Dostepnosc" ToRole="Samochod" />
-        </EntityType>
-        <EntityType Name="DowodOsobisty">
-          <Key>
-            <PropertyRef Name="PESEL" />
-          </Key>
-          <Property Name="PESEL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NrDowodu" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TerminWaznosci" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="OsobaId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Osoba" Relationship="Self.FK__DowodOsob__Osoba__690797E6" FromRole="DowodOsobisty" ToRole="Osoba" />
         </EntityType>
         <EntityType Name="DowodRejestracyjny">
           <Key>
@@ -684,13 +663,13 @@
           <Property Name="Kraj" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NrTelefonu" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Miasto" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="DowodOsobisty" Relationship="Self.FK__DowodOsob__Osoba__690797E6" FromRole="Osoba" ToRole="DowodOsobisty" />
           <NavigationProperty Name="KlientFirma" Relationship="Self.FK__KlientFir__Osoba__3D2915A8" FromRole="Osoba" ToRole="KlientFirma" />
           <NavigationProperty Name="KlientIndywidualny" Relationship="Self.FK__KlientInd__Osoba__395884C4" FromRole="Osoba" ToRole="KlientIndywidualny" />
           <NavigationProperty Name="Paszport" Relationship="Self.FK__Paszport__OsobaI__65370702" FromRole="Osoba" ToRole="Paszport" />
           <NavigationProperty Name="Pracownik" Relationship="Self.FK__Pracownik__Osoba__72910220" FromRole="Osoba" ToRole="Pracownik" />
           <NavigationProperty Name="PrawoJazdy" Relationship="Self.FK__PrawoJazd__Osoba__634EBE90" FromRole="Osoba" ToRole="PrawoJazdy" />
           <NavigationProperty Name="Wypozyczenie" Relationship="Self.FK__Wypozycze__Osoba__6CD828CA" FromRole="Osoba" ToRole="Wypozyczenie" />
+          <NavigationProperty Name="DowodOsobisty" Relationship="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821" FromRole="Osoba" ToRole="DowodOsobisty" />
         </EntityType>
         <EntityType Name="Paszport">
           <Key>
@@ -828,12 +807,12 @@
           <Property Name="AdresDojazdu" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="WydarzenieId" Type="Int32" Nullable="false" />
           <Property Name="OsobaId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Akcesoria" Relationship="Self.FK__Akcesoria__Wypoz__6BE40491" FromRole="Wypozyczenie" ToRole="Akcesoria" />
           <NavigationProperty Name="Osoba" Relationship="Self.FK__Wypozycze__Osoba__6CD828CA" FromRole="Wypozyczenie" ToRole="Osoba" />
           <NavigationProperty Name="PracownikWypozyczenie" Relationship="Self.FK__Pracownik__Wypoz__7755B73D" FromRole="Wypozyczenie" ToRole="PracownikWypozyczenie" />
           <NavigationProperty Name="Rozliczenie" Relationship="Self.FK__Rozliczen__Wypoz__607251E5" FromRole="Wypozyczenie" ToRole="Rozliczenie" />
           <NavigationProperty Name="Wydarzenie" Relationship="Self.FK__Wypozycze__Wydar__5CA1C101" FromRole="Wypozyczenie" ToRole="Wydarzenie" />
           <NavigationProperty Name="WypSam" Relationship="Self.FK__WypSam__Wypozycz__5BAD9CC8" FromRole="Wypozyczenie" ToRole="WypSam" />
+          <NavigationProperty Name="Akcesoria" Relationship="WypozyczenieModel.FK__Akcesoria__Wypoz__7E02B4CC" FromRole="Wypozyczenie" ToRole="Akcesoria" />
         </EntityType>
         <EntityType Name="WypSam">
           <Key>
@@ -845,18 +824,6 @@
           <NavigationProperty Name="Samochod" Relationship="Self.FK__WypSam__Samochod__5AB9788F" FromRole="WypSam" ToRole="Samochod" />
           <NavigationProperty Name="Wypozyczenie" Relationship="Self.FK__WypSam__Wypozycz__5BAD9CC8" FromRole="WypSam" ToRole="Wypozyczenie" />
         </EntityType>
-        <Association Name="FK__Akcesoria__Wypoz__6BE40491">
-          <End Role="Wypozyczenie" Type="Self.Wypozyczenie" Multiplicity="1" />
-          <End Role="Akcesoria" Type="Self.Akcesoria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Wypozyczenie">
-              <PropertyRef Name="WypozyczenieId" />
-            </Principal>
-            <Dependent Role="Akcesoria">
-              <PropertyRef Name="WypozyczenieId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Cennik__Samochod__6AEFE058">
           <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
           <End Role="Cennik" Type="Self.Cennik" Multiplicity="*" />
@@ -878,18 +845,6 @@
             </Principal>
             <Dependent Role="Dostepnosc">
               <PropertyRef Name="SamochodId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DowodOsob__Osoba__690797E6">
-          <End Role="Osoba" Type="Self.Osoba" Multiplicity="1" />
-          <End Role="DowodOsobisty" Type="Self.DowodOsobisty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoba">
-              <PropertyRef Name="OsobaId" />
-            </Principal>
-            <Dependent Role="DowodOsobisty">
-              <PropertyRef Name="OsobaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1098,10 +1053,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WypozyczenieEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Akcesoria" EntityType="Self.Akcesoria" />
           <EntitySet Name="Cennik" EntityType="Self.Cennik" />
           <EntitySet Name="Dostepnosc" EntityType="Self.Dostepnosc" />
-          <EntitySet Name="DowodOsobisty" EntityType="Self.DowodOsobisty" />
           <EntitySet Name="DowodRejestracyjny" EntityType="Self.DowodRejestracyjny" />
           <EntitySet Name="KlientFirma" EntityType="Self.KlientFirma" />
           <EntitySet Name="KlientIndywidualny" EntityType="Self.KlientIndywidualny" />
@@ -1119,10 +1072,6 @@
           <EntitySet Name="Wydarzenie" EntityType="Self.Wydarzenie" />
           <EntitySet Name="Wypozyczenie" EntityType="Self.Wypozyczenie" />
           <EntitySet Name="WypSam" EntityType="Self.WypSam" />
-          <AssociationSet Name="FK__Akcesoria__Wypoz__6BE40491" Association="Self.FK__Akcesoria__Wypoz__6BE40491">
-            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
-            <End Role="Akcesoria" EntitySet="Akcesoria" />
-          </AssociationSet>
           <AssociationSet Name="FK__Cennik__Samochod__6AEFE058" Association="Self.FK__Cennik__Samochod__6AEFE058">
             <End Role="Samochod" EntitySet="Samochod" />
             <End Role="Cennik" EntitySet="Cennik" />
@@ -1130,10 +1079,6 @@
           <AssociationSet Name="FK__Dostepnos__Samoc__69FBBC1F" Association="Self.FK__Dostepnos__Samoc__69FBBC1F">
             <End Role="Samochod" EntitySet="Samochod" />
             <End Role="Dostepnosc" EntitySet="Dostepnosc" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DowodOsob__Osoba__690797E6" Association="Self.FK__DowodOsob__Osoba__690797E6">
-            <End Role="Osoba" EntitySet="Osoba" />
-            <End Role="DowodOsobisty" EntitySet="DowodOsobisty" />
           </AssociationSet>
           <AssociationSet Name="FK__DowodReje__Samoc__671F4F74" Association="Self.FK__DowodReje__Samoc__671F4F74">
             <End Role="Samochod" EntitySet="Samochod" />
@@ -1203,24 +1148,69 @@
             <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
             <End Role="WypSam" EntitySet="WypSam" />
           </AssociationSet>
+          <EntitySet Name="DowodOsobisty" EntityType="WypozyczenieModel.DowodOsobisty" />
+          <AssociationSet Name="FK__DowodOsob__Osoba__7B264821" Association="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="DowodOsobisty" EntitySet="DowodOsobisty" />
+          </AssociationSet>
+          <EntitySet Name="Akcesoria" EntityType="WypozyczenieModel.Akcesoria" />
+          <AssociationSet Name="FK__Akcesoria__Wypoz__7E02B4CC" Association="WypozyczenieModel.FK__Akcesoria__Wypoz__7E02B4CC">
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+            <End Role="Akcesoria" EntitySet="Akcesoria" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="DowodOsobisty">
+          <Key>
+            <PropertyRef Name="DowodOsobistyId" />
+          </Key>
+          <Property Name="DowodOsobistyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PESEL" Type="Int32" Nullable="false" />
+          <Property Name="NrDowodu" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TerminWaznosci" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OsobaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821" FromRole="DowodOsobisty" ToRole="Osoba" />
+        </EntityType>
+        <Association Name="FK__DowodOsob__Osoba__7B264821">
+          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
+          <End Type="WypozyczenieModel.DowodOsobisty" Role="DowodOsobisty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="OsobaId" />
+            </Principal>
+            <Dependent Role="DowodOsobisty">
+              <PropertyRef Name="OsobaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Akcesoria">
+          <Key>
+            <PropertyRef Name="AkcesoriaId" />
+          </Key>
+          <Property Name="AkcesoriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Opis" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cena" Type="Double" Nullable="false" />
+          <Property Name="WypozyczenieId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Wypozyczenie" Relationship="WypozyczenieModel.FK__Akcesoria__Wypoz__7E02B4CC" FromRole="Akcesoria" ToRole="Wypozyczenie" />
+        </EntityType>
+        <Association Name="FK__Akcesoria__Wypoz__7E02B4CC">
+          <End Type="WypozyczenieModel.Wypozyczenie" Role="Wypozyczenie" Multiplicity="1" />
+          <End Type="WypozyczenieModel.Akcesoria" Role="Akcesoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wypozyczenie">
+              <PropertyRef Name="WypozyczenieId" />
+            </Principal>
+            <Dependent Role="Akcesoria">
+              <PropertyRef Name="WypozyczenieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="WypozyczenieModelStoreContainer" CdmEntityContainer="WypozyczenieEntities">
-          <EntitySetMapping Name="Akcesoria">
-            <EntityTypeMapping TypeName="WypozyczenieModel.Akcesoria">
-              <MappingFragment StoreEntitySet="Akcesoria">
-                <ScalarProperty Name="IdAkcesoria" ColumnName="IdAkcesoria" />
-                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
-                <ScalarProperty Name="Opis" ColumnName="Opis" />
-                <ScalarProperty Name="Cena" ColumnName="Cena" />
-                <ScalarProperty Name="WypozyczenieId" ColumnName="WypozyczenieId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Cennik">
             <EntityTypeMapping TypeName="WypozyczenieModel.Cennik">
               <MappingFragment StoreEntitySet="Cennik">
@@ -1238,16 +1228,6 @@
                 <ScalarProperty Name="NiedostepnyOd" ColumnName="NiedostepnyOd" />
                 <ScalarProperty Name="NiedostepnyDo" ColumnName="NiedostepnyDo" />
                 <ScalarProperty Name="SamochodId" ColumnName="SamochodId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DowodOsobisty">
-            <EntityTypeMapping TypeName="WypozyczenieModel.DowodOsobisty">
-              <MappingFragment StoreEntitySet="DowodOsobisty">
-                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
-                <ScalarProperty Name="NrDowodu" ColumnName="NrDowodu" />
-                <ScalarProperty Name="TerminWaznosci" ColumnName="TerminWaznosci" />
-                <ScalarProperty Name="OsobaId" ColumnName="OsobaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1445,6 +1425,28 @@
                 <ScalarProperty Name="WypSamId" ColumnName="WypSamId" />
                 <ScalarProperty Name="SamochodId" ColumnName="SamochodId" />
                 <ScalarProperty Name="WypozyczenieId" ColumnName="WypozyczenieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DowodOsobisty">
+            <EntityTypeMapping TypeName="WypozyczenieModel.DowodOsobisty">
+              <MappingFragment StoreEntitySet="DowodOsobisty">
+                <ScalarProperty Name="OsobaId" ColumnName="OsobaId" />
+                <ScalarProperty Name="TerminWaznosci" ColumnName="TerminWaznosci" />
+                <ScalarProperty Name="NrDowodu" ColumnName="NrDowodu" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+                <ScalarProperty Name="DowodOsobistyId" ColumnName="DowodOsobistyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Akcesoria">
+            <EntityTypeMapping TypeName="WypozyczenieModel.Akcesoria">
+              <MappingFragment StoreEntitySet="Akcesoria">
+                <ScalarProperty Name="WypozyczenieId" ColumnName="WypozyczenieId" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="AkcesoriaId" ColumnName="AkcesoriaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

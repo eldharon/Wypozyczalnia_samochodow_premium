@@ -5,10 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="827c95f14e3f48e29d9846c9a83a04e9" Name="Diagram1" ZoomLevel="94">
-        <EntityTypeShape EntityType="WypozyczenieModel.Akcesoria" Width="1.5" PointX="6" PointY="24.25" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.Cennik" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.Dostepnosc" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczenieModel.DowodOsobisty" Width="1.5" PointX="3.75" PointY="30.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.DowodRejestracyjny" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.KlientFirma" Width="1.5" PointX="3.75" PointY="32.875" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.KlientIndywidualny" Width="1.5" PointX="3.75" PointY="36.375" IsExpanded="true" />
@@ -26,10 +24,8 @@
         <EntityTypeShape EntityType="WypozyczenieModel.Wydarzenie" Width="1.5" PointX="0.625" PointY="28.5" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.Wypozyczenie" Width="1.5" PointX="3.875" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.WypSam" Width="1.5" PointX="6" PointY="12" IsExpanded="true" />
-        <AssociationConnector Association="WypozyczenieModel.FK__Akcesoria__Wypoz__6BE40491" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__Cennik__Samochod__6AEFE058" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__Dostepnos__Samoc__69FBBC1F" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczenieModel.FK__DowodOsob__Osoba__690797E6" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__DowodReje__Samoc__671F4F74" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__KlientInd__Osoba__395884C4" ManuallyRouted="false" />
@@ -47,6 +43,10 @@
         <AssociationConnector Association="WypozyczenieModel.FK__WypSam__Samochod__5AB9788F" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__Wypozycze__Wydar__5CA1C101" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__WypSam__Wypozycz__5BAD9CC8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WypozyczenieModel.DowodOsobisty" Width="1.5" PointX="3.5" PointY="29.625" />
+        <AssociationConnector Association="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Akcesoria" Width="1.5" PointX="6.125" PointY="23.875" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Akcesoria__Wypoz__7E02B4CC" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
