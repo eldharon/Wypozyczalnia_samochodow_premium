@@ -218,6 +218,7 @@
     <Compile Include="Models\Ubezpieczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UbezpieczenieValidation.cs" />
     <Compile Include="Models\Wydarzenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
