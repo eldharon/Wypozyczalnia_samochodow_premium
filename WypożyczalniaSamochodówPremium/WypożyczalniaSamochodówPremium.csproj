@@ -164,6 +164,7 @@
     <Compile Include="Models\Akcesoria.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AkcesoriaRepository.cs" />
     <Compile Include="Models\AkcesoriaValidation.cs" />
     <Compile Include="Models\Cennik.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
@@ -230,11 +231,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WypozyczenieModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WypozyczenieModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\WypozyczenieModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -264,9 +260,7 @@
       <LastGenOutput>WypozyczenieModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\WypozyczenieModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
-      <LastGenOutput>WypozyczenieModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
