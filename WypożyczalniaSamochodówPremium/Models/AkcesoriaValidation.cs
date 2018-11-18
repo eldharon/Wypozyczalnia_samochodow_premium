@@ -8,7 +8,11 @@ using System.Web.Mvc;
 
 namespace WypożyczalniaSamochodówPremium.Models
 {
-    public class AkcesoriaValidation
+    [MetadataType(typeof(AkcesoriaValidation))]
+    public partial class Akcesoria
+    {
+    }
+        public class AkcesoriaValidation
     {
         [HiddenInput(DisplayValue = false), ScaffoldColumn(false)]
         public int IdAkcesoria { get; set; }
