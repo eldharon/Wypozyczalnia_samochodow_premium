@@ -17,14 +17,14 @@ namespace WypożyczalniaSamochodówPremium.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Wydarzenie()
         {
-            this.Wypozyczenies = new HashSet<Wypozyczenie>();
+            this.Wypozyczenie = new HashSet<Wypozyczenie>();
         }
     
-        public int IdWydarzenie { get; set; }
+        public int WydarzenieId { get; set; }
         public string NazwaWydarzenia { get; set; }
         public string Opis { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Wypozyczenie> Wypozyczenies { get; set; }
+        public virtual ICollection<Wypozyczenie> Wypozyczenie { get; set; }
     }
 }

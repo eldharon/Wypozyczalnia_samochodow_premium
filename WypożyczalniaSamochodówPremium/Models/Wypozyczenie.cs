@@ -18,26 +18,29 @@ namespace WypożyczalniaSamochodówPremium.Models
         public Wypozyczenie()
         {
             this.Akcesoria = new HashSet<Akcesoria>();
-            this.Rozliczenia = new HashSet<Rozliczenie>();
-            this.Samochody = new HashSet<Samochod>();
+            this.PracownikWypozyczenie = new HashSet<PracownikWypozyczenie>();
+            this.Rozliczenie = new HashSet<Rozliczenie>();
+            this.WypSam = new HashSet<WypSam>();
         }
     
-        public int IdWypozyczenie { get; set; }
+        public int WypozyczenieId { get; set; }
         public System.DateTime DataWypozyczenia { get; set; }
         public System.DateTime DataZwrotu { get; set; }
         public bool CzyDostarczany { get; set; }
         public bool CzyKierowca { get; set; }
-        public int Uzytkownik_IdUzytkownik { get; set; }
         public string AdresDojazdu { get; set; }
-        public int Rozliczenie_IdRozliczenie { get; set; }
-        public int Wydarzenie_IdWydarzenie { get; set; }
+        public int WydarzenieId { get; set; }
+        public int OsobaId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Akcesoria> Akcesoria { get; set; }
+        public virtual Osoba Osoba { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rozliczenie> Rozliczenia { get; set; }
-        public virtual Wydarzenie Wydarzenia { get; set; }
+        public virtual ICollection<PracownikWypozyczenie> PracownikWypozyczenie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Samochod> Samochody { get; set; }
+        public virtual ICollection<Rozliczenie> Rozliczenie { get; set; }
+        public virtual Wydarzenie Wydarzenie { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WypSam> WypSam { get; set; }
     }
 }

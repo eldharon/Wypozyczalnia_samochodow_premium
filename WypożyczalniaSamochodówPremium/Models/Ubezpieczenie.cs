@@ -14,11 +14,11 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class Ubezpieczenie
     {
-        public int IdUbezpieczenie { get; set; }
+        public int UbezpieczenieId { get; set; }
         public string NumerPolisy { get; set; }
         public System.DateTime WazneOd { get; set; }
         public System.DateTime WazneDo { get; set; }
-        public int Samochod_IdSamochodu { get; set; }
+        public int SamochodId { get; set; }
     
         public virtual Samochod Samochod { get; set; }
     }

@@ -14,12 +14,12 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class Serwis
     {
-        public int IdSerwis { get; set; }
+        public int SerwisId { get; set; }
         public System.DateTime DataOddania { get; set; }
         public System.DateTime DataOdbioru { get; set; }
         public double Koszt { get; set; }
         public string Uwagi { get; set; }
-        public int Samochod_IdSamochodu { get; set; }
+        public int SamochodId { get; set; }
     
         public virtual Samochod Samochod { get; set; }
     }

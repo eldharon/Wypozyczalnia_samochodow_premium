@@ -14,9 +14,10 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class Cennik
     {
-        public int IdCennik { get; set; }
+        public int CennikId { get; set; }
+        public string Opis { get; set; }
         public double Cena { get; set; }
-        public int Samochod_IdSamochodu { get; set; }
+        public int SamochodId { get; set; }
     
         public virtual Samochod Samochod { get; set; }
     }

@@ -14,12 +14,12 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class Rozliczenie
     {
-        public int IdRozliczenie { get; set; }
+        public int RozliczenieId { get; set; }
         public Nullable<double> DodatkoweOplaty { get; set; }
         public double Zaliczka { get; set; }
         public Nullable<double> DodatkowyRabat { get; set; }
         public double CalkowityKoszt { get; set; }
-        public int Wypozyczenie_IdWypozyczenie { get; set; }
+        public int WypozyczenieId { get; set; }
     
         public virtual Wypozyczenie Wypozyczenie { get; set; }
     }
