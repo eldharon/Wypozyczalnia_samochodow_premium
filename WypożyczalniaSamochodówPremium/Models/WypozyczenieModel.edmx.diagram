@@ -23,8 +23,8 @@
         <EntityTypeShape EntityType="WypozyczenieModel.Samochod" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.Serwis" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.Ubezpieczenie" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Wydarzenie" Width="1.5" PointX="1.5" PointY="28.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Wypozyczenie" Width="1.5" PointX="3.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Wydarzenie" Width="1.5" PointX="0.625" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Wypozyczenie" Width="1.5" PointX="3.875" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.WypSam" Width="1.5" PointX="6" PointY="12" IsExpanded="true" />
         <AssociationConnector Association="WypozyczenieModel.FK__Akcesoria__Wypoz__6BE40491" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__Cennik__Samochod__6AEFE058" ManuallyRouted="false" />
