@@ -219,14 +219,17 @@
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PrawoJazdyRepository.cs" />
+    <Compile Include="Models\PrawoJazdyValidation.cs" />
     <Compile Include="Models\Przeglad.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PrzegladRepository.cs" />
+    <Compile Include="Models\PrzegladValidation.cs" />
     <Compile Include="Models\Rozliczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RozliczenieRepository.cs" />
+    <Compile Include="Models\RozliczenieValidation.cs" />
     <Compile Include="Models\Samochod.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
