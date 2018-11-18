@@ -243,6 +243,7 @@
     <Compile Include="Models\WypSam.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\WypSamRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
