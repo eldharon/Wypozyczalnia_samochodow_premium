@@ -167,6 +167,7 @@
     <Compile Include="Models\Cennik.cs">
       <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CennikValidation.cs" />
     <Compile Include="Models\Dostepnosc.cs">
       <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
     </Compile>
@@ -182,6 +183,7 @@
     <Compile Include="Models\Opis.cs">
       <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OpisValidation.cs" />
     <Compile Include="Models\Osoba.cs">
       <DependentUpon>WypozyczalniaModel.tt</DependentUpon>
     </Compile>
