@@ -17,7 +17,7 @@ namespace WypożyczalniaSamochodówPremium.Models
     {
         [HiddenInput(DisplayValue = false), ScaffoldColumn(false)]
         public int CennikId { get; set; }
-        [DisplayName("Opis")]
+        [DisplayName("Opis"), MaxLength(64)]
         public string Opis { get; set; }
         [Required(ErrorMessage = "Proszę wprowadzić cenę"), DisplayName("Cena")]
         public double Cena { get; set; }

@@ -191,6 +191,7 @@
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KlientIndywidualnyRepository.cs" />
+    <Compile Include="Models\KlientIndywidualnyValidation.cs" />
     <Compile Include="Models\Opis.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -200,9 +201,11 @@
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OsobaRepository.cs" />
+    <Compile Include="Models\OsobaValidation.cs" />
     <Compile Include="Models\Paszport.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PaszportValidation.cs" />
     <Compile Include="Models\PaszportRepository.cs" />
     <Compile Include="Models\Pracownik.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
@@ -228,9 +231,11 @@
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SamochodRepository.cs" />
+    <Compile Include="Models\SamochodValidation.cs" />
     <Compile Include="Models\Serwis.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SerwisValidation.cs" />
     <Compile Include="Models\SerwisRepository.cs" />
     <Compile Include="Models\Ubezpieczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
@@ -248,6 +253,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WypozyczenieModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypozyczenieModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WypozyczenieModel.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -280,7 +290,9 @@
       <LastGenOutput>WypozyczenieModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\WypozyczenieModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
+      <LastGenOutput>WypozyczenieModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

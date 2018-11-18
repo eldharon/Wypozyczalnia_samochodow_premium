@@ -20,7 +20,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         public string Nazwa { get; set; }
         [Required(ErrorMessage = "Proszę wprowadzić opis"), DisplayName("Opis akcesorium")]
         public string Opis { get; set; }
-        [Required(ErrorMessage = "Proszę wprowadzić cenę"), DisplayName("Cena akcesorium")]
+        [Required(ErrorMessage = "Proszę wprowadzić cenę"), DataType(DataType.Currency), DisplayName("Cena akcesorium")]
         public double Cena { get; set; }
     }
 }
