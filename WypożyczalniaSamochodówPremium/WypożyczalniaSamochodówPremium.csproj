@@ -168,6 +168,7 @@
     <Compile Include="Models\Cennik.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CennikValidation.cs" />
     <Compile Include="Models\Dostepnosc.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -186,6 +187,7 @@
     <Compile Include="Models\Opis.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OpisValidation.cs" />
     <Compile Include="Models\Osoba.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -216,6 +218,7 @@
     <Compile Include="Models\Ubezpieczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UbezpieczenieValidation.cs" />
     <Compile Include="Models\Wydarzenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -303,6 +306,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Adm\Controllers\" />
