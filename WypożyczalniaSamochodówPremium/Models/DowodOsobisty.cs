@@ -14,6 +14,7 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class DowodOsobisty
     {
+        public int DowodOsobistyId { get; set; }
         public int PESEL { get; set; }
         public string NrDowodu { get; set; }
         public System.DateTime TerminWaznosci { get; set; }

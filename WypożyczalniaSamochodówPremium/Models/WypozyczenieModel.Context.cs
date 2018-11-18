@@ -24,27 +24,27 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             throw new UnintentionalCodeFirstException();
         }
-    
-        public virtual DbSet<Akcesoria> Akcesoria { get; set; }
-        public virtual DbSet<Cennik> Cennik { get; set; }
-        public virtual DbSet<Dostepnosc> Dostepnosc { get; set; }
-        public virtual DbSet<DowodOsobisty> DowodOsobisty { get; set; }
-        public virtual DbSet<DowodRejestracyjny> DowodRejestracyjny { get; set; }
-        public virtual DbSet<KlientFirma> KlientFirma { get; set; }
-        public virtual DbSet<KlientIndywidualny> KlientIndywidualny { get; set; }
-        public virtual DbSet<Opis> Opis { get; set; }
-        public virtual DbSet<Osoba> Osoba { get; set; }
-        public virtual DbSet<Paszport> Paszport { get; set; }
-        public virtual DbSet<Pracownik> Pracownik { get; set; }
-        public virtual DbSet<PracownikWypozyczenie> PracownikWypozyczenie { get; set; }
-        public virtual DbSet<PrawoJazdy> PrawoJazdy { get; set; }
-        public virtual DbSet<Przeglad> Przeglad { get; set; }
-        public virtual DbSet<Rozliczenie> Rozliczenie { get; set; }
-        public virtual DbSet<Samochod> Samochod { get; set; }
-        public virtual DbSet<Serwis> Serwis { get; set; }
-        public virtual DbSet<Ubezpieczenie> Ubezpieczenie { get; set; }
-        public virtual DbSet<Wydarzenie> Wydarzenie { get; set; }
-        public virtual DbSet<Wypozyczenie> Wypozyczenie { get; set; }
-        public virtual DbSet<WypSam> WypSam { get; set; }
+
+        public virtual DbSet<Akcesoria> akcesoria { get; set; }
+        public virtual DbSet<Cennik> cenniki { get; set; }
+        public virtual DbSet<Dostepnosc> dostepnosci { get; set; }
+        public virtual DbSet<DowodOsobisty> dowodyOsobiste { get; set; }
+        public virtual DbSet<DowodRejestracyjny> dowodyRejestracyjne { get; set; }
+        public virtual DbSet<KlientFirma> klienciFirmy { get; set; }
+        public virtual DbSet<KlientIndywidualny> klienciIndywidualni { get; set; }
+        public virtual DbSet<Opis> opisy { get; set; }
+        public virtual DbSet<Osoba> osoby { get; set; }
+        public virtual DbSet<Paszport> paszporty { get; set; }
+        public virtual DbSet<Pracownik> pracownicy { get; set; }
+        public virtual DbSet<PracownikWypozyczenie> pracownicyWypozyczenia { get; set; }
+        public virtual DbSet<PrawoJazdy> prawaJazdy { get; set; }
+        public virtual DbSet<Przeglad> przeglady { get; set; }
+        public virtual DbSet<Rozliczenie> rozliczenia { get; set; }
+        public virtual DbSet<Samochod> samochody { get; set; }
+        public virtual DbSet<Serwis> serwisy { get; set; }
+        public virtual DbSet<Ubezpieczenie> ubezpieczenia { get; set; }
+        public virtual DbSet<Wydarzenie> wydarzenia { get; set; }
+        public virtual DbSet<Wypozyczenie> wypozyczenia { get; set; }
+        public virtual DbSet<WypSam> wypozyczeniaSamochody { get; set; }
     }
 }
