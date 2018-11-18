@@ -205,8 +205,8 @@
     <Compile Include="Models\Paszport.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PaszportValidation.cs" />
     <Compile Include="Models\PaszportRepository.cs" />
+    <Compile Include="Models\PaszportValidation.cs" />
     <Compile Include="Models\Pracownik.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -235,8 +235,8 @@
     <Compile Include="Models\Serwis.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SerwisValidation.cs" />
     <Compile Include="Models\SerwisRepository.cs" />
+    <Compile Include="Models\SerwisValidation.cs" />
     <Compile Include="Models\Ubezpieczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
