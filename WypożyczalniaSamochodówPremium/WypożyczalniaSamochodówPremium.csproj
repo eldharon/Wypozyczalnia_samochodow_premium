@@ -175,18 +175,22 @@
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DostepnoscRepository.cs" />
+    <Compile Include="Models\DostepnoscValidation.cs" />
     <Compile Include="Models\DowodOsobisty.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DowodOsobistyRepository.cs" />
+    <Compile Include="Models\DowodOsobistyValidation.cs" />
     <Compile Include="Models\DowodRejestracyjny.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DowodRejestracyjnyRepository.cs" />
+    <Compile Include="Models\DowodRejestracyjnyValidation.cs" />
     <Compile Include="Models\KlientFirma.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KlientFirmaRepository.cs" />
+    <Compile Include="Models\KlientFirmaValidation.cs" />
     <Compile Include="Models\KlientIndywidualny.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -211,9 +215,11 @@
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PracownikRepository.cs" />
+    <Compile Include="Models\PracownikValidation.cs" />
     <Compile Include="Models\PracownikWypozyczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PracownikWypozyczenieValidation.cs" />
     <Compile Include="Models\PracownikWypozycznieRepository.cs" />
     <Compile Include="Models\PrawoJazdy.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
@@ -249,6 +255,7 @@
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WydarzenieRepository.cs" />
+    <Compile Include="Models\WydarzenieValidation.cs" />
     <Compile Include="Models\Wypozyczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -268,10 +275,12 @@
       <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\WypozyczenieRepository.cs" />
+    <Compile Include="Models\WypozyczenieValidation.cs" />
     <Compile Include="Models\WypSam.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WypSamRepository.cs" />
+    <Compile Include="Models\WypSamValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
