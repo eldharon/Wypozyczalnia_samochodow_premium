@@ -15,10 +15,10 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Adm_default",
-                "Adm/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+                "adm_default",
+                "adm/{controller}/{action}/{id}",
+                new { controller = "Panel", action = "Index", id = UrlParameter.Optional }
+                );
         }
     }
 }

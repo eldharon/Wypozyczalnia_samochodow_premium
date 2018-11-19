@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Wypożyczalnia samochodów premium</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/kendo")
+    @Styles.Render("~/Content/toastrCSS")
+    @Styles.Render("~/Content/cleveradminCSSstyle")
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed pace-done aside-menu-hidden">
+    <div class="pace  pace-inactive">
+        <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div>
+    </div>
+    <header class="app-header navbar">
+        <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler sidebar-toggler d-md-down-none h-100 b-r-1 px-3" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <ul class="nav navbar-nav ml-auto" style="margin-right: 2%">
+          @RenderSection("top_nav", false)  
+        </ul>
+
+        @*@if (Request.IsAuthenticated)
+            { }*@
+
+
+    </header>
+    @RenderPage("MainMenuControl.cshtml")
+    <main class="main">
+        @RenderBody()
+    </main>
+    <footer></footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/popper")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/cleveradminJS")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/ajax")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
