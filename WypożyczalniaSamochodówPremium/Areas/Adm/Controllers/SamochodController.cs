@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WypożyczalniaSamochodówPremium.Models;
 
-namespace WypożyczalniaSamochodówPremium.Controllers
+namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 {
     public class SamochodController : Controller
     {
