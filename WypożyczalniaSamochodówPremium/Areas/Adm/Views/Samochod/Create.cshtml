@@ -23,99 +23,93 @@
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.Marka, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Marka, new { @class = "form-control" })
-                                    <span class="fa fa-asterisk form-control-feedback"></span>
+                                <div class="col-md-2">
+                                    *
+                                    @Html.DropDownList("Marka", (IEnumerable<SelectListItem>)ViewData["MarkiList"], string.Empty, new { @class = "form-control" })
+
                                     @Html.ValidationMessageFor(model => model.Marka)
                                 </div>
                             </div>
 
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
+                                <div class="col-md-2">
+                                    *
                                     @Html.EditorFor(model => model.Model, new { @class = "form-control" })
-                                    <span class="fa fa-asterisk form-control-feedback"></span>
+
                                     @Html.ValidationMessageFor(model => model.Model)
                                 </div>
                             </div>
 
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.Wersja, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
+                                <div class="col-md-2">
+                                    *
                                     @Html.EditorFor(model => model.Wersja, new { @class = "form-control" })
-                                    <span class="fa fa-asterisk form-control-feedback"></span>
+
                                     @Html.ValidationMessageFor(model => model.Wersja)
                                 </div>
                             </div>
 
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.RokProdukcji, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @*@Html.Kendo().DateTimePickerFor(model => model.RokProdukcji)*@
-                                    <span class="fa fa-asterisk form-control-feedback"></span>
+                                <div class="col-md-2">
+                                    @Html.
+                                     *
                                     @Html.ValidationMessageFor(model => model.RokProdukcji)
                                 </div>
                             </div>
 
                             <div class="row form-group line">
-                                @Html.LabelFor(model => model.RokProdukcji, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.RodzajSilnika, new { @class = "form-control" })
-                                    <span class="fa fa-asterisk form-control-feedback"></span>
-                                    @Html.ValidationMessageFor(model => model.RodzajSilnika)
-                                </div>
-                            </div>
-
-                            <div class="row form-group line">
                                 @Html.LabelFor(model => model.RodzajSilnika, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.RodzajSilnika, new { @class = "form-control" })
-                                    <span class="fa fa-asterisk form-control-feedback"></span>
+                                <div class="col-md-2">
+                                    @Html.DropDownList("Rodzaj silnika", (IEnumerable<SelectListItem>)ViewData["RodzajSilnikaList"], string.Empty, new { @class = "form-control" })
+                                     *
                                     @Html.ValidationMessageFor(model => model.RodzajSilnika)
                                 </div>
                             </div>
 
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.PojemnoscSilnika, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
+                                <div class="col-md-2">
                                     @Html.EditorFor(model => model.PojemnoscSilnika, new { @class = "form-control" })
-                                    <span class="fa fa-asterisk form-control-feedback"></span>
+                                     *
                                     @Html.ValidationMessageFor(model => model.PojemnoscSilnika)
                                 </div>
                             </div>
 
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.SkrzyniaBiegow, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.SkrzyniaBiegow, new { @class = "form-control" })
-                                    <span class="fa fa-asterisk form-control-feedback"></span>
+                                <div class="col-md-2">
+                                    @Html.DropDownList("Rodzaj skrzyni", (IEnumerable<SelectListItem>)ViewData["RodzajSkrzyniList"], string.Empty, new { @class = "form-control" })
+                                     *
                                     @Html.ValidationMessageFor(model => model.SkrzyniaBiegow)
                                 </div>
                             </div>
 
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.LiczbaDrzwi, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.LiczbaDrzwi, new { @class = "form-control" })
-                                    <span class="fa fa-asterisk form-control-feedback"></span>
+                                <div class="col-md-2">
+                                    @Html.DropDownList("Liczba drzwi", (IEnumerable<SelectListItem>)ViewData["LiczbaDrzwiList"], string.Empty, new { @class = "form-control" })
+                                     *
                                     @Html.ValidationMessageFor(model => model.LiczbaDrzwi)
                                 </div>
                             </div>
 
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.Kolor, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
+                                <div class="col-md-2">
                                     @Html.EditorFor(model => model.Kolor, new { @class = "form-control" })
-                                    <span class="fa fa-asterisk form-control-feedback"></span>
+                                     *
                                     @Html.ValidationMessageFor(model => model.Kolor)
                                 </div>
                             </div>
 
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.Przebieg, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
+                                <div class="col-md-2">
                                     @Html.EditorFor(model => model.Przebieg, new { @class = "form-control" })
-                                    <span class="fa fa-asterisk form-control-feedback"></span>
+                                     *
                                     @Html.ValidationMessageFor(model => model.Przebieg)
                                 </div>
                             </div>
