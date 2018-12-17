@@ -15,7 +15,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         public class AkcesoriaValidation
     {
         [HiddenInput(DisplayValue = false), ScaffoldColumn(false)]
-        public int IdAkcesoria { get; set; }
+        public int AkcesoriaId { get; set; }
         [Required(ErrorMessage = "Proszę wpisać nazwę"), DisplayName("Nazwa akcesorium")]
         public string Nazwa { get; set; }
         [Required(ErrorMessage = "Proszę wprowadzić opis"), DisplayName("Opis akcesorium")]

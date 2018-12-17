@@ -15,7 +15,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         }
         public Akcesoria GetAkcesoriaById(int id)
         {
-            return entities.akcesoria.SingleOrDefault(h => h.IdAkcesoria == id);
+            return entities.akcesoria.SingleOrDefault(h => h.AkcesoriaId == id);
         }
         public void Add(Akcesoria akcesoria)
         {

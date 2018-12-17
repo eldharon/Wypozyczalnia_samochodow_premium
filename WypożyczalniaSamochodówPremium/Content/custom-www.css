@@ -1,0 +1,110 @@
+﻿body {
+    /*padding-top: 50px;*/
+    padding-bottom: 20px;
+    font-family: 'Lato', "Helvetica Neue", Arial, sans-serif;
+    background-color: #1d2027;
+    color: #ffffd5;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+h1 {
+    color: #ffffd5;
+    font-size: 36px;
+}
+
+a {
+    color: #ffffd5;
+    text-decoration:underline;
+}
+
+    a:hover {
+        color: #ffffd5;
+        text-decoration: none;
+    }
+
+.text-secondary {
+    color: #bdbdbf !important;
+    font-size:14px;
+}
+
+.text-secondary a {
+    color: #bdbdbf !important;
+    text-decoration: underline;
+}
+.text-secondary a:hover {
+    color: #bdbdbf !important;
+    text-decoration: none;
+}
+
+h2.secondary {
+    color: #bdbdbf !important;
+    font-size: 24px;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    padding: 0px 10px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #E30000;
+}
+
+    .field-validation-error:before {
+        position: relative;
+        font-family: FontAwesome;
+        top: 0;
+        left: -5px;
+        content: "\f071";
+    }
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #E30000 !important;
+    border-radius: 0px;
+    color: #E30000 !important;
+    padding: 4px 6px !important;
+}
+
+.validation-summary-errors {
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    font-weight: normal;
+    color: #ff5454;
+}
+
+    .validation-summary-errors > ul {
+        padding: 0px;
+        margin-left: 20px;
+    }
+
+.validation-summary-valid {
+    display: none;
+}
+
+.required:after {
+    content: " *";
+    color: #e30000;
+}
