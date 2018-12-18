@@ -125,8 +125,15 @@
 
                     </div>
                     <div class="card-footer">
-                        @Html.IconActionLink("fa fa-plus-circle ", "Nowy samochód", "Create", "Samochod", null, new { @class = "btn btn-primary" })
-                    </div>
+                        @using (Html.BeginForm("PopulateAutaBaza", "Samochod", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <input type="file" name="file" id="file" class="btn btn-secondary float-right" />
+                            <input type="submit" value="Upload" class="btn btn-primary float-right" />
+                            @ViewBag.Message
+                            @Html.IconActionLink("fa fa-plus-circle ", "Nowy samochód", "Create", "Samochod", null, new { @class = "btn btn-primary" })
+                            @*@Html.IconActionLink("fa fa-download ", "Załaduj JSON", "PopulateAutaBaza", "Samochod", null, new { @class = "btn btn-default float-right" })*@
+                        }
+                        </div>
                 </div>
             </div>
         </div>

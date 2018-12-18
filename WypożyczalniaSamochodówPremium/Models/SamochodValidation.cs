@@ -12,6 +12,8 @@ namespace WypożyczalniaSamochodówPremium.Models
     [MetadataType(typeof(SamochodValidation))]
     public partial class Samochod
     {
+        public List<string> Marki { get; set; }
+        public List<string> Modele { get; set; }
     }
 
     public class SamochodValidation
@@ -20,8 +22,10 @@ namespace WypożyczalniaSamochodówPremium.Models
         public int SamochodId { get; set; }
         [Required(ErrorMessage = "Proszę podać markę"),MaxLength(32)]
         public string Marka { get; set; }
+        
         [Required(ErrorMessage = "Proszę podać model"), MaxLength(32)]
         public string Model { get; set; }
+        
         [Required(ErrorMessage = "Proszę podać wersję"), MaxLength(64)]
         public string Wersja { get; set; }
         [Required(ErrorMessage = "Proszę podać rok produkcji"), DataType(DataType.Date), DisplayName("Rok produkcji")]
