@@ -7,74 +7,6 @@ namespace WypożyczalniaSamochodówPremium.Models
 {
     public class SamochodSelectLists
     {
-        static readonly List<string> Marki = new List<string>(new string[]
-        {
-            "Abarth",
-            "Alfa Romeo",
-            "Aston Martin",
-            "Audi",
-            "Bentley",
-            "BMW",
-            "Bugatti",
-            "Cadillac",
-            "Chevrolet",
-            "Chrysler",
-            "Citroën",
-            "Dacia",
-            "Daewoo",
-            "Daihatsu",
-            "Dodge",
-            "Donkervoort",
-            "DS",
-            "Ferrari",
-            "Fiat",
-            "Fisker",
-            "Ford",
-            "Honda",
-            "Hummer",
-            "Hyundai",
-            "Infiniti",
-            "Iveco",
-            "Jaguar",
-            "Jeep",
-            "Kia",
-            "KTM",
-            "Lada",
-            "Lamborghini",
-            "Lancia",
-            "Land Rover",
-            "Landwind",
-            "Lexus",
-            "Lotus",
-            "Maserati",
-            "Maybach",
-            "Mazda",
-            "McLaren",
-            "Mercedes-Benz",
-            "MG",
-            "Mini",
-            "Mitsubishi",
-            "Morgan",
-            "Nissan",
-            "Opel",
-            "Peugeot",
-            "Porsche",
-            "Renault",
-            "Rolls-Royce",
-            "Rover",
-            "Saab",
-            "Seat",
-            "Skoda",
-            "Smart",
-            "SsangYong",
-            "Subaru",
-            "Suzuki",
-            "Tesla",
-            "Toyota",
-            "Volkswagen",
-            "Volvo"
-        });
-
         static readonly List<string> Paliwa = new List<string>(new string[]
         {
             "Benzyna",
@@ -98,11 +30,6 @@ namespace WypożyczalniaSamochodówPremium.Models
             "Automatyczna"
         });
 
-
-        public static List<string> MarkiList
-        {
-            get { return Marki; }
-        }
         public static List<string> PaliwaList
         {
             get { return Paliwa; }

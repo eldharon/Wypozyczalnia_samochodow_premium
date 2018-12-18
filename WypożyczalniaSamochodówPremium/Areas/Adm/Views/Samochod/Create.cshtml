@@ -1,6 +1,7 @@
 ﻿@model WypożyczalniaSamochodówPremium.Models.Samochod
 @{
     ViewBag.Title = "Samochody";
+    Layout = "~/Areas/Adm/Views/Shared/_LayoutScript.cshtml";
 }
 
 
@@ -10,7 +11,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <i class="fa fa-pencil"></i> Samochod - Dodaj samochód
+                    <i class="fa fa-car"></i> Dodaj samochód
                 </div>
                 @{Html.EnableClientValidation();}
                 @using (Html.BeginForm("Create", "Samochod", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -24,9 +25,9 @@
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.Marka, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
-                                    *
-                                    @Html.DropDownList("Marka", (IEnumerable<SelectListItem>)ViewData["MarkiList"], string.Empty, new { @class = "form-control" })
-
+                                    <form id="myForm">
+                                        <select class="form-control" id="markiDropdown" name="markiDropdown"></select>
+                                    </form>
                                     @Html.ValidationMessageFor(model => model.Marka)
                                 </div>
                             </div>
@@ -34,7 +35,6 @@
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
-                                    *
                                     @Html.EditorFor(model => model.Model, new { @class = "form-control" })
 
                                     @Html.ValidationMessageFor(model => model.Model)
@@ -44,7 +44,6 @@
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.Wersja, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
-                                    *
                                     @Html.EditorFor(model => model.Wersja, new { @class = "form-control" })
 
                                     @Html.ValidationMessageFor(model => model.Wersja)
@@ -54,8 +53,7 @@
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.RokProdukcji, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
-                                    @Html.
-                                     *
+                                    @Html.EditorFor(model => model.RokProdukcji, new { @class = "form-control" })                                 
                                     @Html.ValidationMessageFor(model => model.RokProdukcji)
                                 </div>
                             </div>
@@ -63,8 +61,7 @@
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.RodzajSilnika, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
-                                    @Html.DropDownList("Rodzaj silnika", (IEnumerable<SelectListItem>)ViewData["RodzajSilnikaList"], string.Empty, new { @class = "form-control" })
-                                     *
+                                    @Html.DropDownList("RodzajSilnika", (IEnumerable<SelectListItem>)ViewData["RodzajSilnika"], string.Empty, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.RodzajSilnika)
                                 </div>
                             </div>
@@ -73,7 +70,6 @@
                                 @Html.LabelFor(model => model.PojemnoscSilnika, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
                                     @Html.EditorFor(model => model.PojemnoscSilnika, new { @class = "form-control" })
-                                     *
                                     @Html.ValidationMessageFor(model => model.PojemnoscSilnika)
                                 </div>
                             </div>
@@ -81,8 +77,7 @@
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.SkrzyniaBiegow, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
-                                    @Html.DropDownList("Rodzaj skrzyni", (IEnumerable<SelectListItem>)ViewData["RodzajSkrzyniList"], string.Empty, new { @class = "form-control" })
-                                     *
+                                    @Html.DropDownList("SkrzyniaBiegow", (IEnumerable<SelectListItem>)ViewData["SkrzyniaBiegow"], string.Empty, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.SkrzyniaBiegow)
                                 </div>
                             </div>
@@ -90,8 +85,7 @@
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.LiczbaDrzwi, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
-                                    @Html.DropDownList("Liczba drzwi", (IEnumerable<SelectListItem>)ViewData["LiczbaDrzwiList"], string.Empty, new { @class = "form-control" })
-                                     *
+                                    @Html.DropDownList("LiczbaDrzwi", (IEnumerable<SelectListItem>)ViewData["LiczbaDrzwi"], string.Empty, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.LiczbaDrzwi)
                                 </div>
                             </div>
@@ -100,7 +94,6 @@
                                 @Html.LabelFor(model => model.Kolor, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
                                     @Html.EditorFor(model => model.Kolor, new { @class = "form-control" })
-                                     *
                                     @Html.ValidationMessageFor(model => model.Kolor)
                                 </div>
                             </div>
@@ -109,7 +102,6 @@
                                 @Html.LabelFor(model => model.Przebieg, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
                                     @Html.EditorFor(model => model.Przebieg, new { @class = "form-control" })
-                                     *
                                     @Html.ValidationMessageFor(model => model.Przebieg)
                                 </div>
                             </div>
@@ -126,3 +118,41 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Samochod/PopulateMarkiDropdown",
+            data: "{}",
+            success: function (data) {
+                var s = '<option value="-1">Proszę wybrać markę</option>';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i] + '">' + data[i] + '</option>';
+                }
+                $("#markiDropdown").html(s);
+            }
+        });
+    });
+    @*$('#Marka').change(function () {
+                var selectedMarka = $("#Marka").val();
+                var modeleSelect = $('#Model');
+                modeleSelect.empty();
+        if (selectedMarka != null && selectedMarka != '') {
+                    $.getJSON('@Url.Action("GetRegions")', { marka: selectedMarka }, function (modele) {
+                        if (modele != null && !jQuery.isEmptyObject(modele))
+                        {
+                            regionsSelect.append($('<option/>', {
+                                value: null,
+                                text: ""
+                            }));
+                            $.each(models, function (index, region) {
+                                regionsSelect.append($('<option/>', {
+                                    value: region.Value,
+                                    text: region.Text
+                                }));
+                            });
+                        };
+                    });
+                }
+            });*@
+</script>

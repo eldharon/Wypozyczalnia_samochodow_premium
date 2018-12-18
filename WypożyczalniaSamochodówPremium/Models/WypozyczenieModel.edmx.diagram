@@ -47,6 +47,7 @@
         <AssociationConnector Association="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821" />
         <EntityTypeShape EntityType="WypozyczenieModel.Akcesoria" Width="1.5" PointX="6.125" PointY="23.875" />
         <AssociationConnector Association="WypozyczenieModel.FK__Akcesoria__Wypoz__7E02B4CC" />
+        <EntityTypeShape EntityType="WypozyczenieModel.AutaBaza" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

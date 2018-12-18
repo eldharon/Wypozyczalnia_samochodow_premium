@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,17 +24,15 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
         public ActionResult Create()
         {
-            var MarkiSelectList = SamochodSelectLists.MarkiList.Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
-            ViewData["MarkiList"] = MarkiSelectList;
 
             var RodzajSkrzyniSelectList = SamochodSelectLists.RodzajSkrzyniList.Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
-            ViewData["RodzajSkrzyniList"] = RodzajSkrzyniSelectList;
+            ViewData["SkrzyniaBiegow"] = RodzajSkrzyniSelectList;
 
             var LiczbaDrzwiSelectList = SamochodSelectLists.LiczbaDrzwiList.Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
-            ViewData["LiczbaDrzwiList"] = LiczbaDrzwiSelectList;
+            ViewData["LiczbaDrzwi"] = LiczbaDrzwiSelectList;
 
             var RodzajSilnikaSelectList = SamochodSelectLists.PaliwaList.Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
-            ViewData["RodzajSilnikaList"] = RodzajSilnikaSelectList;
+            ViewData["RodzajSilnika"] = RodzajSilnikaSelectList;
 
             Samochod samochod = new Samochod();
 
@@ -41,6 +42,10 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         [HttpPost]
         public ActionResult Create(Samochod samochod, FormCollection collection)
         {
+            //samochod.Marka = collection.
+            //samochod.SkrzyniaBiegow = ViewData["SkrzyniaBiegow"].ToString();
+            //samochod.LiczbaDrzwi = ViewData["LiczbaDrzwi"].ToString();
+            //samochod.RodzajSilnika = ViewData["RodzajSilnika"].ToString();
 
             if (ModelState.IsValid)
             {
@@ -76,6 +81,85 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 TempData["errorMessage"] = "Wystąpił błąd : "+e;
                 return RedirectToAction("Index", "Samochod");
             }
+        }
+        public ActionResult PopulateAutaBaza(FormCollection collection, HttpPostedFileBase file)
+        {
+            AutaBazaRepository autaBazaRepository = new AutaBazaRepository();
+            string extension = Path.GetExtension(file.FileName);
+            List<string> ErrorObjects = new List<string>();
+            List<AutaBaza> Objects = new List<AutaBaza>();
+            if (Path.GetExtension(file.FileName).ToLower() == ".json" && file!=null)
+            {
+                try
+                {
+                        List<string> rows = new List<string>();
+                        StreamReader reader = new StreamReader(file.InputStream);
+                    string record = reader.ReadToEnd();
+                        List<AutaBazaDTO> ABD = JsonConvert.DeserializeObject<List<AutaBazaDTO>>(record);
+                    foreach (var row in ABD)
+                    {
+                        foreach (var item in row.models)
+                        {
+                            AutaBaza Auto = new AutaBaza();
+                            Auto.Marka = row.brand; 
+                            Auto.Model = item;
+                            
+                            if (autaBazaRepository.GetRecordByMakeModel(Auto.Marka, Auto.Model).Count()==0) //Przeszukiwanie bazy czy nie ma już takiego rekordu
+                            {
+                                Objects.Add(Auto);
+                            }
+                            else
+                            {
+                                ErrorObjects.Add("Rekord : " + Auto.Marka + ", " + Auto.Model + " figuruje już w bazie danych!");
+                            }                        
+                        }
+                        
+                    }
+                    if (Objects.Count() > 0)
+                    {
+                        foreach (var item in Objects)
+                        {
+                            if (ModelState.IsValid)
+                            {
+                                autaBazaRepository.Add(item);
+                                autaBazaRepository.Save();
+                            }
+                            else
+                            {
+                                TempData["errorMessage"] = "Wystąpił błąd przy dodawaniu samochodu "+item.Marka+" "+item.Model+ "; ModelState.IsValid==false!";
+                                return RedirectToAction("Index", "Samochod");
+                            }
+                        }
+                       
+                        TempData["okMessage"] = "Dodano samochody (" + Objects.Count() + ")";
+                        if(ErrorObjects.Count>0)
+                        {
+                            TempData["okMessage"] += "Pominięto samochody (" + ErrorObjects.Count() + ")";
+                        }
+                        return RedirectToAction("Index", "Samochod");
+                    }
+                    else
+                    {
+                        TempData["errorMessage"] = "Nie dodano żadnych samochodów!";
+                        return RedirectToAction("Index", "Samochod");
+                    }
+                }
+                catch(Exception e)
+                {
+                    TempData["errorMessage"] = "Wystąpił błąd : "+e;
+                    return RedirectToAction("Index", "Samochod");
+                }
+            }
+            else
+            {
+                TempData["errorMessage"] = "Proszę używać tylko plików o formacie .json!";
+                return RedirectToAction("Index", "Samochod");
+            }
+        }
+        public ActionResult PopulateMarkiDropdown()
+        {
+            AutaBazaRepository autaBazaRepository = new AutaBazaRepository();
+            return Json(autaBazaRepository.GetAllMarki(), JsonRequestBehavior.AllowGet);
         }
     }
 }

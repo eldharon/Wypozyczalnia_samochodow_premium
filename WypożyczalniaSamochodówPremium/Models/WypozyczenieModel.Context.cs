@@ -46,5 +46,6 @@ namespace WypożyczalniaSamochodówPremium.Models
         public virtual DbSet<Wydarzenie> wydarzenia { get; set; }
         public virtual DbSet<Wypozyczenie> wypozyczenia { get; set; }
         public virtual DbSet<WypSam> wypozyczeniaSamochody { get; set; }
+        public virtual DbSet<AutaBaza> autaBaza { get; set; }
     }
 }

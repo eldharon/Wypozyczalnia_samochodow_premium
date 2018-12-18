@@ -17,10 +17,10 @@ namespace WypożyczalniaSamochodówPremium.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Wypozyczenie()
         {
-            this.Akcesoria = new HashSet<Akcesoria>();
             this.PracownikWypozyczenie = new HashSet<PracownikWypozyczenie>();
             this.Rozliczenie = new HashSet<Rozliczenie>();
             this.WypSam = new HashSet<WypSam>();
+            this.Akcesoria = new HashSet<Akcesoria>();
         }
     
         public int WypozyczenieId { get; set; }
@@ -32,8 +32,6 @@ namespace WypożyczalniaSamochodówPremium.Models
         public int WydarzenieId { get; set; }
         public int OsobaId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Akcesoria> Akcesoria { get; set; }
         public virtual Osoba Osoba { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PracownikWypozyczenie> PracownikWypozyczenie { get; set; }
@@ -42,5 +40,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         public virtual Wydarzenie Wydarzenie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WypSam> WypSam { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Akcesoria> Akcesoria { get; set; }
     }
 }

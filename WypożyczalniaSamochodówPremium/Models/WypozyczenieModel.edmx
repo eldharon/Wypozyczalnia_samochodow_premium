@@ -15,6 +15,14 @@
           <Property Name="Cena" Type="float" Nullable="false" />
           <Property Name="WypozyczenieId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="AutaBaza">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marka" Type="varchar(max)" Nullable="false" />
+          <Property Name="Model" Type="varchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Cennik">
           <Key>
             <PropertyRef Name="CennikId" />
@@ -477,6 +485,7 @@
         </Association>
         <EntityContainer Name="WypozyczenieModelStoreContainer">
           <EntitySet Name="Akcesoria" EntityType="Self.Akcesoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutaBaza" EntityType="Self.AutaBaza" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cennik" EntityType="Self.Cennik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dostepnosc" EntityType="Self.Dostepnosc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DowodOsobisty" EntityType="Self.DowodOsobisty" Schema="dbo" store:Type="Tables" />
@@ -1158,6 +1167,7 @@
             <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
             <End Role="Akcesoria" EntitySet="Akcesoria" />
           </AssociationSet>
+          <EntitySet Name="AutaBaza" EntityType="WypozyczenieModel.AutaBaza" />
         </EntityContainer>
         <EntityType Name="DowodOsobisty">
           <Key>
@@ -1205,6 +1215,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AutaBaza">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marka" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1447,6 +1465,15 @@
                 <ScalarProperty Name="Opis" ColumnName="Opis" />
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
                 <ScalarProperty Name="AkcesoriaId" ColumnName="AkcesoriaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutaBaza">
+            <EntityTypeMapping TypeName="WypozyczenieModel.AutaBaza">
+              <MappingFragment StoreEntitySet="AutaBaza">
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
