@@ -1,0 +1,102 @@
+﻿@model WypożyczalniaSamochodówPremium.Models.Osoba
+@using WypożyczalniaSamochodówPremium.Helpers;
+@{
+    ViewBag.Title = "Samochody";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (TempData["okMessage"] != null)
+{
+    Html.RenderPartial("MessageOKControl");
+}
+
+@if (TempData["warningMessage"] != null)
+{
+    Html.RenderPartial("MessageWarningControl");
+}
+
+@if (TempData["errorMessage"] != null)
+{
+    Html.RenderPartial("MessageErrorControl");
+}
+
+<div class="container-fluid mt-5">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-male"></i> Szczegóły
+                    </div>
+                    <div class="card-body">
+                        <div class="form-horizontal">
+                            <h4>Osoba</h4>
+                            <hr>
+                            <hr />
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.Imie, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.Imie)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.Nazwisko, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.Nazwisko)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.DataUrodzenia, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.DataUrodzenia)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.Adres, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.Adres)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.KodPocztowy, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.KodPocztowy)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.Kraj, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.Kraj)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.NrTelefonu, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.NrTelefonu)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.Miasto, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.Miasto)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
