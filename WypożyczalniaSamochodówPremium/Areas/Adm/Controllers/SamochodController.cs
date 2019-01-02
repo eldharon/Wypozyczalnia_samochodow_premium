@@ -75,7 +75,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 samochodRepository.Add(samochod);
                 samochodRepository.Save();
 
-                TempData["okMessage"] = "Samochod: " + samochod.Marka + " " + samochod.Marka + " został zapisany";
+                TempData["okMessage"] = "Samochod: " + samochod.Marka + " " + samochod.Model + " został zapisany";
                 return RedirectToAction("Index");
             }
             else

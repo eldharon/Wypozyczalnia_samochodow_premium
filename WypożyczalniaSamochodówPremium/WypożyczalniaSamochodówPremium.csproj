@@ -164,6 +164,7 @@
     <Compile Include="Areas\Adm\AdmAreaRegistration.cs" />
     <Compile Include="Areas\Adm\Controllers\PanelController.cs" />
     <Compile Include="Areas\Adm\Controllers\SamochodController.cs" />
+    <Compile Include="Areas\Adm\Controllers\WydarzenieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -469,6 +470,8 @@
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
     <Content Include="Areas\Adm\Views\Samochod\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Wydarzenie\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Wydarzenie\Details.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
