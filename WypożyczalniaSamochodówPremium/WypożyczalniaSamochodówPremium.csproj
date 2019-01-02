@@ -211,6 +211,7 @@
     </Compile>
     <Compile Include="Models\KlientIndywidualnyRepository.cs" />
     <Compile Include="Models\KlientIndywidualnyValidation.cs" />
+    <Compile Include="Models\ModelRepository.cs" />
     <Compile Include="Models\Opis.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
