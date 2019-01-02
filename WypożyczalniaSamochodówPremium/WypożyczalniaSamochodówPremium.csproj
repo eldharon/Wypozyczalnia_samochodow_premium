@@ -164,6 +164,7 @@
     <Compile Include="Areas\Adm\AdmAreaRegistration.cs" />
     <Compile Include="Areas\Adm\Controllers\PanelController.cs" />
     <Compile Include="Areas\Adm\Controllers\SamochodController.cs" />
+    <Compile Include="Areas\Adm\Controllers\WydarzenieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -302,10 +303,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\TempDbWypozyczalnia.mdf" />
-    <Content Include="App_Data\TempDbWypozyczalnia_log.ldf">
-      <DependentUpon>TempDbWypozyczalnia.mdf</DependentUpon>
+    <Content Include="App_Data\WypozyczalniaSamochodowPremiumLocalDB.mdf" />
+    <Content Include="App_Data\WypozyczalniaSamochodowPremiumLocalDB_log.ldf">
+      <DependentUpon>WypozyczalniaSamochodowPremiumLocalDB.mdf</DependentUpon>
     </Content>
+    <Content Include="BazaKłeriDwa%28local%29.sql" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -411,6 +413,7 @@
     </EntityDeploy>
     <Content Include="Models\WypozyczenieModel.edmx.diagram">
       <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\Adm\Views\Shared\MainMenuControl.cshtml" />
     <Content Include="Areas\Adm\Views\Shared\MessageErrorControl.cshtml" />
@@ -467,6 +470,8 @@
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
     <Content Include="Areas\Adm\Views\Samochod\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Wydarzenie\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Wydarzenie\Details.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
