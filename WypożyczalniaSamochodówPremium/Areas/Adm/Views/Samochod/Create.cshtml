@@ -5,7 +5,6 @@
 }
 
 
-
 <div class="container-fluid">
     <div class="animated fadeIn">
         <div class="col-lg-12">
@@ -21,9 +20,34 @@
                         <div class="form-horizontal">
                             <h4>Samochód</h4>
                             <hr />
+
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.Marka, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-5">
+                                        @Html.DropDownListFor(x => Model.Marka, (IEnumerable<SelectListItem>)ViewData["Marka"], string.Empty, htmlAttributes: new { @class = "form-control", @id = "Marka" })
+                                        @Html.ValidationMessageFor(x => x.Marka, "", new { @class = "text-danger" })
+                                    </div>                   
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-5">
+                                    @Html.DropDownListFor(x => Model.Model, (IEnumerable<SelectListItem>)ViewData["Model"], string.Empty, htmlAttributes: new { @class = "form-control", @id = "Model" })
+                                    @Html.ValidationMessageFor(x => x.Model, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+                            @*<div class="row form-group line">
+                                @Html.LabelFor(model => model.Marka, htmlAttributes: new { @class = "control-label col-md-2", id = "markaID" })
                                 <div class="col-md-2">
                                     <form id="myForm">
                                         <select class="form-control" id="markiDropdown" name="markiDropdown"></select>
@@ -32,6 +56,8 @@
                                 </div>
                             </div>
 
+
+
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
@@ -39,7 +65,7 @@
 
                                     @Html.ValidationMessageFor(model => model.Model)
                                 </div>
-                            </div>
+                            </div>*@
 
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.Wersja, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -53,7 +79,7 @@
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.RokProdukcji, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-2">
-                                    @Html.EditorFor(model => model.RokProdukcji, new { @class = "form-control" })                                 
+                                    @Html.EditorFor(model => model.RokProdukcji, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.RokProdukcji)
                                 </div>
                             </div>
@@ -119,40 +145,41 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $.ajax({
-            type: "GET",
-            url: "/Samochod/PopulateMarkiDropdown",
-            data: "{}",
-            success: function (data) {
-                var s = '<option value="-1">Proszę wybrać markę</option>';
-                for (var i = 0; i < data.length; i++) {
-                    s += '<option value="' + data[i] + '">' + data[i] + '</option>';
-                }
-                $("#markiDropdown").html(s);
-            }
-        });
-    });
-    @*$('#Marka').change(function () {
+    //$(document).ready(function () {
+    //    $.ajax({
+    //        type: "GET",
+    //        url: "/Samochod/PopulateMarkiDropdown",
+    //        data: "{}",
+    //        success: function (data) {
+    //            var s = '<option value="-1">Proszę wybrać markę</option>';
+    //            for (var i = 0; i < data.length; i++) {
+    //                s += '<option value="' + data[i] + '">' + data[i] + '</option>';
+    //            }
+    //            $("#markiDropdown").html(s);
+    //        }
+    //    });
+    //});
+
+    $('#Marka').change(function () {
                 var selectedMarka = $("#Marka").val();
                 var modeleSelect = $('#Model');
                 modeleSelect.empty();
         if (selectedMarka != null && selectedMarka != '') {
-                    $.getJSON('@Url.Action("GetRegions")', { marka: selectedMarka }, function (modele) {
+                    $.getJSON('@Url.Action("PopulateModeleDropdown")', { marka: selectedMarka }, function (modele) {
                         if (modele != null && !jQuery.isEmptyObject(modele))
                         {
-                            regionsSelect.append($('<option/>', {
-                                value: null,
+                            modeleSelect.append($('<option/>', {
+                                value: "",
                                 text: ""
                             }));
-                            $.each(models, function (index, region) {
-                                regionsSelect.append($('<option/>', {
-                                    value: region.Value,
-                                    text: region.Text
+                            $.each(modele, function (index, model) {
+                                modeleSelect.append($('<option/>', {
+                                    value: model.Value,
+                                    text: model.Text
                                 }));
                             });
                         };
                     });
                 }
-            });*@
+            });
 </script>
