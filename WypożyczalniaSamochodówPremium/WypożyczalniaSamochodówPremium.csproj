@@ -162,6 +162,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Adm\AdmAreaRegistration.cs" />
+    <Compile Include="Areas\Adm\Controllers\AutaBazaController.cs" />
     <Compile Include="Areas\Adm\Controllers\PanelController.cs" />
     <Compile Include="Areas\Adm\Controllers\SamochodController.cs" />
     <Compile Include="Areas\Adm\Controllers\WydarzenieController.cs" />
@@ -472,6 +473,7 @@
     <Content Include="Areas\Adm\Views\Samochod\Delete.cshtml" />
     <Content Include="Areas\Adm\Views\Wydarzenie\Index.cshtml" />
     <Content Include="Areas\Adm\Views\Wydarzenie\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\AutaBaza\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

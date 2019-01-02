@@ -83,6 +83,10 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 return View(samochod);
             }
         }
+
+        
+
+
         public ActionResult Delete(int id)
         {
             var auto = samochodRepository.GetSamochodById(id);
@@ -197,6 +201,6 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
         }
 
-        
+
     }
 }
