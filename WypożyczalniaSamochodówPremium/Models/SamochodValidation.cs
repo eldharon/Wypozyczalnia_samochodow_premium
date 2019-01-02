@@ -12,8 +12,6 @@ namespace WypożyczalniaSamochodówPremium.Models
     [MetadataType(typeof(SamochodValidation))]
     public partial class Samochod
     {
-        public List<string> Marki { get; set; }
-        public List<string> Modele { get; set; }
     }
 
     public class SamochodValidation

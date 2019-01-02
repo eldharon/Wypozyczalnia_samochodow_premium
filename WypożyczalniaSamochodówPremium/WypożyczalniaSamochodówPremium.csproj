@@ -211,6 +211,7 @@
     </Compile>
     <Compile Include="Models\KlientIndywidualnyRepository.cs" />
     <Compile Include="Models\KlientIndywidualnyValidation.cs" />
+    <Compile Include="Models\ModelRepository.cs" />
     <Compile Include="Models\Opis.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -301,10 +302,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\TempDbWypozyczalnia.mdf" />
-    <Content Include="App_Data\TempDbWypozyczalnia_log.ldf">
-      <DependentUpon>TempDbWypozyczalnia.mdf</DependentUpon>
+    <Content Include="App_Data\WypozyczalniaSamochodowPremiumLocalDB.mdf" />
+    <Content Include="App_Data\WypozyczalniaSamochodowPremiumLocalDB_log.ldf">
+      <DependentUpon>WypozyczalniaSamochodowPremiumLocalDB.mdf</DependentUpon>
     </Content>
+    <Content Include="BazaKłeriDwa%28local%29.sql" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -410,6 +412,7 @@
     </EntityDeploy>
     <Content Include="Models\WypozyczenieModel.edmx.diagram">
       <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\Adm\Views\Shared\MainMenuControl.cshtml" />
     <Content Include="Areas\Adm\Views\Shared\MessageErrorControl.cshtml" />
