@@ -11,12 +11,12 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <i class="fa fa-car"></i> Dodaj samochód
+                    <i class="fa fa-car"></i> Edytuj samochód
                 </div>
                 @{Html.EnableClientValidation();}
-                @using (Html.BeginForm("Create", "Samochod", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("Edit", "Samochod", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    <div class="card-body" id="newCar">
+                    <div class="card-body">
                         <div id="autaBazaLoading" style="display:none; text-align:center; position:relative;">
                             <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                         </div>
@@ -116,7 +116,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <input type="submit" value="Dodaj" class="btn btn-primary" /> &nbsp; @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })
+                        <input type="submit" value="Zapisz" class="btn btn-primary" /> &nbsp; @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })
                     </div>
                 }
             </div>

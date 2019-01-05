@@ -474,6 +474,8 @@
     <Content Include="Areas\Adm\Views\Wydarzenie\Index.cshtml" />
     <Content Include="Areas\Adm\Views\Wydarzenie\Details.cshtml" />
     <Content Include="Areas\Adm\Views\AutaBaza\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Samochod\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Samochod\Details.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
