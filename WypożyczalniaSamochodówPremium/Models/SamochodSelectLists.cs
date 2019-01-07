@@ -7,6 +7,7 @@ namespace WypożyczalniaSamochodówPremium.Models
 {
     public class SamochodSelectLists
     {
+
         static readonly List<string> Paliwa = new List<string>(new string[]
         {
             "Benzyna",
@@ -14,7 +15,7 @@ namespace WypożyczalniaSamochodówPremium.Models
             "Benzyna + LPG",
             "CNG",
             "Hybryda",
-            "Elektryczny"            
+            "Elektryczny"
         });
 
         static readonly List<string> LiczbaDrzwi = new List<string>(new string[]
@@ -30,6 +31,7 @@ namespace WypożyczalniaSamochodówPremium.Models
             "Manualna",
             "Automatyczna"
         });
+
 
         public static List<string> PaliwaList
         {
