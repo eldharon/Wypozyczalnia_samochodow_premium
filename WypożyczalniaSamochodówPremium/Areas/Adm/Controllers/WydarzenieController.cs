@@ -22,5 +22,26 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             var wydarzenie = wydarzenieRepository.GetWydarzenieById(id);
             return View(wydarzenie);
         }
+        public ActionResult Create()
+        {
+            Wydarzenie wydarzenie = new Wydarzenie();
+            return View(wydarzenie);
+        }
+        [HttpPost]
+        public ActionResult Create(Wydarzenie wydarzenie, FormCollection collection)
+        {
+            if (ModelState.IsValid)
+            {
+                wydarzenieRepository.Add(wydarzenie);
+                wydarzenieRepository.Save();
+
+                TempData["okMessage"] = "Wydarzenie: " + wydarzenie.NazwaWydarzenia+ " zostało zapisane.";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(wydarzenie);
+            }
+        }
     }
 }
