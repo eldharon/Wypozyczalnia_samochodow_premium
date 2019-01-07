@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="WypozyczenieModel.Cennik" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.Dostepnosc" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.DowodRejestracyjny" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WypozyczenieModel.KlientFirma" Width="1.5" PointX="3.75" PointY="32.875" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.KlientIndywidualny" Width="1.5" PointX="3.75" PointY="36.375" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.Opis" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="WypozyczenieModel.Osoba" Width="1.5" PointX="1.5" PointY="23.625" IsExpanded="true" />
@@ -27,7 +26,6 @@
         <AssociationConnector Association="WypozyczenieModel.FK__Cennik__Samochod__6AEFE058" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__Dostepnos__Samoc__69FBBC1F" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__DowodReje__Samoc__671F4F74" ManuallyRouted="false" />
-        <AssociationConnector Association="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__KlientInd__Osoba__395884C4" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__Opis__SamochodId__662B2B3B" ManuallyRouted="false" />
         <AssociationConnector Association="WypozyczenieModel.FK__Paszport__OsobaI__65370702" ManuallyRouted="false" />
@@ -48,6 +46,8 @@
         <EntityTypeShape EntityType="WypozyczenieModel.Akcesoria" Width="1.5" PointX="6.125" PointY="23.875" />
         <AssociationConnector Association="WypozyczenieModel.FK__Akcesoria__Wypoz__7E02B4CC" />
         <EntityTypeShape EntityType="WypozyczenieModel.AutaBaza" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WypozyczenieModel.KlientFirma" Width="1.5" PointX="3.75" PointY="48.25" />
+        <AssociationConnector Association="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -18,7 +18,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         [HiddenInput(DisplayValue = false), ScaffoldColumn(false)]
         public int KlientFirmaId { get; set; }
         [Required(ErrorMessage = "Proszę podać nazwę firmy"), DisplayName("Nazwa firmy"), MaxLength(32)]
-        public string NazwaFrimy { get; set; }
+        public string NazwaFirmy { get; set; }
         [Required(ErrorMessage = "Proszę podać nazwę firmy"), MaxLength(64)]
         public string NIP { get; set; }
         [DisplayName("Rabat firmy"), DataType(DataType.Currency)]

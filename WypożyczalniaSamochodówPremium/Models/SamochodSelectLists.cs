@@ -11,7 +11,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             "Benzyna",
             "Diesel",
-            "LPG",
+            "Benzyna + LPG",
             "CNG",
             "Hybryda",
             "Elektryczny"            
@@ -20,6 +20,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         static readonly List<string> LiczbaDrzwi = new List<string>(new string[]
         {
             "Trzydrzwiowy",
+            "Czterodrzwiowy",
             "Pięciodrzwiowy",
             "Wielodrzwiowy"
         });
