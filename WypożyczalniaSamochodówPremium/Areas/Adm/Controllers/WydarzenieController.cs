@@ -27,6 +27,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             Wydarzenie wydarzenie = new Wydarzenie();
             return View(wydarzenie);
         }
+        
+
         [HttpPost]
         public ActionResult Create(Wydarzenie wydarzenie, FormCollection collection)
         {
@@ -40,6 +42,28 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             }
             else
             {
+                TempData["errorMessage"] = "Nie dodano wydarzenia";
+                return View(wydarzenie);
+            }
+        }
+        public ActionResult Edit(int id)
+        {
+            Wydarzenie wydarzenie = wydarzenieRepository.GetWydarzenieById(id);
+            return View(wydarzenie);
+        }
+        [HttpPost]
+        public ActionResult Edit(int id , FormCollection collection)
+        {
+            Wydarzenie wydarzenie = wydarzenieRepository.GetWydarzenieById(id);
+            if(TryUpdateModel(wydarzenie))
+            {
+                wydarzenieRepository.Save();
+                TempData["okMessage"] = "Wydarzenie " + wydarzenie.NazwaWydarzenia + " zostało zapisane!";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["errorMessage"] = "Wydarzenie " + wydarzenie.NazwaWydarzenia + "nie zostało zapisane!";
                 return View(wydarzenie);
             }
         }
