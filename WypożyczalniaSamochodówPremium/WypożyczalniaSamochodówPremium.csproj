@@ -165,8 +165,11 @@
     <Compile Include="Areas\Adm\Controllers\KlientFirmaController.cs" />
     <Compile Include="Areas\Adm\Controllers\OsobaController.cs" />
     <Compile Include="Areas\Adm\Controllers\PanelController.cs" />
+    <Compile Include="Areas\Adm\Controllers\PracownikController.cs" />
+    <Compile Include="Areas\Adm\Controllers\RozliczenieController.cs" />
     <Compile Include="Areas\Adm\Controllers\SamochodController.cs" />
     <Compile Include="Areas\Adm\Controllers\WydarzenieController.cs" />
+    <Compile Include="Areas\Adm\Controllers\WypozyczenieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -477,6 +480,13 @@
     <Content Include="Areas\Adm\Views\Osoba\Index.cshtml" />
     <Content Include="Areas\Adm\Views\Osoba\Details.cshtml" />
     <Content Include="Areas\Adm\Views\KlientFirma\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\KlientFirma\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Pracownik\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Pracownik\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Wypozyczenie\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Wypozyczenie\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Rozliczenie\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Rozliczenie\Details.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

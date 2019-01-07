@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WypożyczalniaSamochodówPremium.Models.KlientFirma>
+﻿@model IEnumerable<WypożyczalniaSamochodówPremium.Models.Wypozyczenie>
 @using WypożyczalniaSamochodówPremium.Helpers;
 @{
     ViewBag.Title = "Samochody";
@@ -29,31 +29,29 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-building"></i></div>
+                        <i class="fa fa-road"></i> Wypozyczenie
+                    </div>
                     <div class="card-body">
                         <table class="table table-striped table-responsive-sm">
                             <thead>
                                 <tr>
                                     <th></th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.NazwaFirmy) 
+                                        @Html.DisplayNameFor(model => model.DataWypozyczenia)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DataZwrotu)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CzyDostarczany)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CzyKierowca)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.AdresDojazdu)
+                                    </th>
 
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.NIP)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.RabatFirma)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.AdresFirmy)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.KodPocztowy)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Miasto)
-                                    </th>
                                 </tr>
                             </thead>
                             @foreach (var item in Model)
@@ -66,34 +64,31 @@
                                                 Akcja
                                             </button>
                                             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                @Html.IconActionLink("fa fa-edit", "Edytuj", "Edit", "KlientFirma", new { id = item.KlientFirmaId }, new { @class = "dropdown-item" })
-                                                @Html.IconActionLink("fa fa-list-ol", "Szczegóły", "Details", "KlientFirma", new { id = item.KlientFirmaId }, new { @class = "dropdown-item" })
-                                                @Html.IconActionLink("fa fa-trash", "Usuń", "Delete", "KlientFirma", new { id = item.KlientFirmaId }, new { @class = "dropdown-item" })
+                                                @Html.IconActionLink("fa fa-edit", "Edytuj", "Edit", "Wypozyczenie", new { id = item.WypozyczenieId }, new { @class = "dropdown-item" })
+                                                @Html.IconActionLink("fa fa-list-ol", "Szczegóły", "Details", "Wypozyczenie", new { id = item.WypozyczenieId }, new { @class = "dropdown-item" })
+                                                @Html.IconActionLink("fa fa-trash", "Usuń", "Delete", "Wypozyczenie", new { id = item.WypozyczenieId }, new { @class = "dropdown-item" })
                                             </div>
-
 
                                         </div>
                                     </td>
                                     <td>
-                                        @item.NazwaFirmy
-
+                                        @item.DataWypozyczenia
                                     </td>
                                     <td>
-                                        @item.NIP
+                                        @item.DataZwrotu
                                     </td>
                                     <td>
-                                        @item.RabatFirma
+                                        @item.CzyDostarczany
                                     </td>
                                     <td>
-                                        @item.AdresFirmy
+                                        @item.CzyKierowca
                                     </td>
                                     <td>
-                                        @item.KodPocztowy
+                                        @item.CzyKierowca
                                     </td>
                                     <td>
-                                        @item.Miasto
+                                        @item.AdresDojazdu
                                     </td>
-
                                 </tr>
 
                             }
@@ -102,7 +97,7 @@
 
                     </div>
                     <div class="card-footer">
-                        @Html.IconActionLink("fa fa-plus-circle ", "Nowy Klient Firmowy", "Create", "KlientFirma", null, new { @class = "btn btn-primary" })
+                        @Html.IconActionLink("fa fa-plus-circle ", "Nowe Wypozyczenie", "Create", "Wypozyczenie", null, new { @class = "btn btn-primary" })
                     </div>
                 </div>
             </div>
