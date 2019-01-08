@@ -32,8 +32,8 @@
                             <div class="form-group row">
                                 @Html.LabelFor(model => model.Marka, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.DropDownListFor(x => Model.Marka, (IEnumerable<SelectListItem>)ViewData["Marka"], string.Empty, htmlAttributes: new { @class = "form-control", @id = "Marka" })
-                                    @Html.ValidationMessageFor(x => x.Marka, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.Marka, (IEnumerable<SelectListItem>)ViewData["Marka"], new { @class = "form-control" })                   
+                                    @Html.ValidationMessageFor(model => model.Marka, "", new { @class = "text-danger" })
                                 </div>
                                 <a data-toggle="modal" data-remote="@Url.Action("Create", "AutaBaza", null)" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj</a>
                             </div>
@@ -41,8 +41,8 @@
                             <div class="form-group row">
                                 @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.DropDownListFor(x => Model.Model, (IEnumerable<SelectListItem>)ViewData["Model"], string.Empty, htmlAttributes: new { @class = "form-control", @id = "Model" })
-                                    @Html.ValidationMessageFor(x => x.Model, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.Model, (IEnumerable<SelectListItem>)ViewData["Model"], htmlAttributes: new { @class = "form-control", @id = "Model" })
+                                    @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
@@ -60,13 +60,14 @@
                                 <div class="col-md-6">
                                     @Html.EditorFor(model => model.RokProdukcji, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.RokProdukcji)
+                                   
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 @Html.LabelFor(model => model.RodzajSilnika, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.DropDownList("RodzajSilnika", (IEnumerable<SelectListItem>)ViewData["RodzajSilnika"], string.Empty, new { @class = "form-control" })
+                                    @Html.DropDownList("RodzajSilnika", (IEnumerable<SelectListItem>)ViewData["RodzajSilnika"], new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.RodzajSilnika)
                                 </div>
                             </div>
@@ -82,7 +83,7 @@
                             <div class="form-group row">
                                 @Html.LabelFor(model => model.SkrzyniaBiegow, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.DropDownList("SkrzyniaBiegow", (IEnumerable<SelectListItem>)ViewData["SkrzyniaBiegow"], string.Empty, new { @class = "form-control" })
+                                    @Html.DropDownList("SkrzyniaBiegow", (IEnumerable<SelectListItem>)ViewData["SkrzyniaBiegow"],  new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.SkrzyniaBiegow)
                                 </div>
                             </div>
@@ -90,7 +91,7 @@
                             <div class="form-group row">
                                 @Html.LabelFor(model => model.LiczbaDrzwi, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.DropDownList("LiczbaDrzwi", (IEnumerable<SelectListItem>)ViewData["LiczbaDrzwi"], string.Empty, new { @class = "form-control" })
+                                    @Html.DropDownList("LiczbaDrzwi", (IEnumerable<SelectListItem>)ViewData["LiczbaDrzwi"],  new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.LiczbaDrzwi)
                                 </div>
                             </div>
