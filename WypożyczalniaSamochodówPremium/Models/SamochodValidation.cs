@@ -27,6 +27,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         [Required(ErrorMessage = "Proszę podać wersję"), MaxLength(64)]
         public string Wersja { get; set; }
         [Required(ErrorMessage = "Proszę podać rok produkcji"), DataType(DataType.Date), DisplayName("Rok produkcji")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime RokProdukcji { get; set; }
         [Required(ErrorMessage = "Proszę podać rodzaj silnika"), MaxLength(16), DisplayName("Rodzaj silnika")]
         public string RodzajSilnika { get; set; }
