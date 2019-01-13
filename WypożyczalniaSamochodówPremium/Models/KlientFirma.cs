@@ -15,7 +15,7 @@ namespace WypożyczalniaSamochodówPremium.Models
     public partial class KlientFirma
     {
         public int KlientFirmaId { get; set; }
-        public string NazwaFrimy { get; set; }
+        public string NazwaFirmy { get; set; }
         public string NIP { get; set; }
         public Nullable<int> RabatFirma { get; set; }
         public string AdresFirmy { get; set; }

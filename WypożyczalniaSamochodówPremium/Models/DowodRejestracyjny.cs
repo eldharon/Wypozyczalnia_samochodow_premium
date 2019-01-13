@@ -14,12 +14,6 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class DowodRejestracyjny
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DowodRejestracyjny()
-        {
-            this.ImageDowodRejestracyjny = new HashSet<ImageDowodRejestracyjny>();
-        }
-    
         public int DowodRejId { get; set; }
         public string VIN { get; set; }
         public int Seria { get; set; }
@@ -27,7 +21,5 @@ namespace WypożyczalniaSamochodówPremium.Models
         public int SamochodId { get; set; }
     
         public virtual Samochod Samochod { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ImageDowodRejestracyjny> ImageDowodRejestracyjny { get; set; }
     }
 }

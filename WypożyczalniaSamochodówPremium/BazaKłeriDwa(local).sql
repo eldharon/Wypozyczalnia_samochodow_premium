@@ -428,10 +428,10 @@ ADD CONSTRAINT [PK_Osoba]
     PRIMARY KEY CLUSTERED ([OsobaId] ASC);
 GO
 
--- Creating primary key on [PaszportId] in table 'Paszport'
+-- Creating primary key on [NrPaszportu] in table 'Paszport'
 ALTER TABLE [dbo].[Paszport]
 ADD CONSTRAINT [PK_Paszport]
-    PRIMARY KEY CLUSTERED ([PaszportId] ASC);
+    PRIMARY KEY CLUSTERED ([NrPaszportu] ASC);
 GO
 
 -- Creating primary key on [PracownikId] in table 'Pracownik'
