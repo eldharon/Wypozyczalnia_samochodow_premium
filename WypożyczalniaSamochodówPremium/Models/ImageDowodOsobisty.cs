@@ -12,17 +12,14 @@ namespace WypożyczalniaSamochodówPremium.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class KlientFirma
+    public partial class ImageDowodOsobisty
     {
-        public int KlientFirmaId { get; set; }
-        public string NazwaFrimy { get; set; }
-        public string NIP { get; set; }
-        public Nullable<int> RabatFirma { get; set; }
-        public string AdresFirmy { get; set; }
-        public string KodPocztowy { get; set; }
-        public string Miasto { get; set; }
-        public Nullable<int> OsobaId { get; set; }
+        public int ImageDowodId { get; set; }
+        public int ImageId { get; set; }
+        public int DowodOsobistyId { get; set; }
+        public string Opis { get; set; }
     
-        public virtual Osoba Osoba { get; set; }
+        public virtual DowodOsobisty DowodOsobisty { get; set; }
+        public virtual Image Image { get; set; }
     }
 }

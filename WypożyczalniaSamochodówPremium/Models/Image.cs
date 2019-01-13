@@ -12,35 +12,30 @@ namespace WypożyczalniaSamochodówPremium.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Wypozyczenie
+    public partial class Image
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Wypozyczenie()
+        public Image()
         {
-            this.Akcesoria = new HashSet<Akcesoria>();
-            this.PracownikWypozyczenie = new HashSet<PracownikWypozyczenie>();
-            this.Rozliczenie = new HashSet<Rozliczenie>();
-            this.WypSam = new HashSet<WypSam>();
+            this.ImageDowodOsobisty = new HashSet<ImageDowodOsobisty>();
+            this.ImageDowodRejestracyjny = new HashSet<ImageDowodRejestracyjny>();
+            this.ImagePaszport = new HashSet<ImagePaszport>();
+            this.ImageSamochod = new HashSet<ImageSamochod>();
         }
     
-        public int WypozyczenieId { get; set; }
-        public System.DateTime DataWypozyczenia { get; set; }
-        public System.DateTime DataZwrotu { get; set; }
-        public bool CzyDostarczany { get; set; }
-        public bool CzyKierowca { get; set; }
-        public string AdresDojazdu { get; set; }
-        public int WydarzenieId { get; set; }
-        public int OsobaId { get; set; }
+        public int ImageId { get; set; }
+        public string ImageName { get; set; }
+        public string ImageAlt { get; set; }
+        public byte[] ImageData { get; set; }
+        public string ContentType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Akcesoria> Akcesoria { get; set; }
-        public virtual Osoba Osoba { get; set; }
+        public virtual ICollection<ImageDowodOsobisty> ImageDowodOsobisty { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PracownikWypozyczenie> PracownikWypozyczenie { get; set; }
+        public virtual ICollection<ImageDowodRejestracyjny> ImageDowodRejestracyjny { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rozliczenie> Rozliczenie { get; set; }
-        public virtual Wydarzenie Wydarzenie { get; set; }
+        public virtual ICollection<ImagePaszport> ImagePaszport { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WypSam> WypSam { get; set; }
+        public virtual ICollection<ImageSamochod> ImageSamochod { get; set; }
     }
 }

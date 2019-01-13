@@ -239,6 +239,21 @@
     <Compile Include="Models\DowodRejestracyjnyRepository.cs" />
     <Compile Include="Models\DowodRejestracyjnyValidation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImageDowodOsobisty.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImageDowodRejestracyjny.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImagePaszport.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImageSamochod.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\KlientFirma.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -431,6 +446,7 @@
     <Content Include="Content\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Kłeri_po_image%283%29.sql" />
     <Content Include="Models\WypozyczenieModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WypozyczenieModel.edmx</DependentUpon>

@@ -20,6 +20,7 @@ namespace WypożyczalniaSamochodówPremium.Models
             this.Cennik = new HashSet<Cennik>();
             this.Dostepnosc = new HashSet<Dostepnosc>();
             this.DowodRejestracyjny = new HashSet<DowodRejestracyjny>();
+            this.ImageSamochod = new HashSet<ImageSamochod>();
             this.Opis = new HashSet<Opis>();
             this.Przeglad = new HashSet<Przeglad>();
             this.Serwis = new HashSet<Serwis>();
@@ -45,6 +46,8 @@ namespace WypożyczalniaSamochodówPremium.Models
         public virtual ICollection<Dostepnosc> Dostepnosc { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DowodRejestracyjny> DowodRejestracyjny { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ImageSamochod> ImageSamochod { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Opis> Opis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

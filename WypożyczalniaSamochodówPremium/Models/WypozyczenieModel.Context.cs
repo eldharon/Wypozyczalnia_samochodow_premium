@@ -24,6 +24,13 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             throw new UnintentionalCodeFirstException();
         }
+    
+        
+        public virtual DbSet<Image> image { get; set; }
+        public virtual DbSet<ImageDowodOsobisty> imageDowodyOsobiste { get; set; }
+        public virtual DbSet<ImageDowodRejestracyjny> imageDowodyRejestracyjne { get; set; }
+        public virtual DbSet<ImagePaszport> imagePaszporty { get; set; }
+        public virtual DbSet<ImageSamochod> imageSamochody { get; set; }
 
         public virtual DbSet<Akcesoria> akcesoria { get; set; }
         public virtual DbSet<Cennik> cenniki { get; set; }

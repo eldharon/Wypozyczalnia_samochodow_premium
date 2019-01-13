@@ -14,11 +14,19 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class Paszport
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Paszport()
+        {
+            this.ImagePaszport = new HashSet<ImagePaszport>();
+        }
+    
         public int PaszportId { get; set; }
         public string NrPaszportu { get; set; }
         public Nullable<System.DateTime> TerminWaznosci { get; set; }
         public int OsobaId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ImagePaszport> ImagePaszport { get; set; }
         public virtual Osoba Osoba { get; set; }
     }
 }

@@ -14,6 +14,12 @@ namespace WypożyczalniaSamochodówPremium.Models
     
     public partial class DowodOsobisty
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DowodOsobisty()
+        {
+            this.ImageDowodOsobisty = new HashSet<ImageDowodOsobisty>();
+        }
+    
         public int DowodOsobistyId { get; set; }
         public int PESEL { get; set; }
         public string NrDowodu { get; set; }
@@ -21,5 +27,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         public int OsobaId { get; set; }
     
         public virtual Osoba Osoba { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ImageDowodOsobisty> ImageDowodOsobisty { get; set; }
     }
 }
