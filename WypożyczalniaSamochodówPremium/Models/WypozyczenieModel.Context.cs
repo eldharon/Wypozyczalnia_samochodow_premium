@@ -26,11 +26,11 @@ namespace WypożyczalniaSamochodówPremium.Models
         }
     
         
-        public virtual DbSet<Image> image { get; set; }
-        public virtual DbSet<ImageDowodOsobisty> imageDowodyOsobiste { get; set; }
-        public virtual DbSet<ImageDowodRejestracyjny> imageDowodyRejestracyjne { get; set; }
-        public virtual DbSet<ImagePaszport> imagePaszporty { get; set; }
-        public virtual DbSet<ImageSamochod> imageSamochody { get; set; }
+        public virtual DbSet<Image> images { get; set; }
+        public virtual DbSet<ImageDowodOsobisty> imagesDowodOsobisty { get; set; }
+        public virtual DbSet<ImageDowodRejestracyjny> imagesDowodRejestracyjny { get; set; }
+        public virtual DbSet<ImagePaszport> imagesPaszport { get; set; }
+        public virtual DbSet<ImageSamochod> imagesSamochod { get; set; }
 
         public virtual DbSet<Akcesoria> akcesoria { get; set; }
         public virtual DbSet<Cennik> cenniki { get; set; }

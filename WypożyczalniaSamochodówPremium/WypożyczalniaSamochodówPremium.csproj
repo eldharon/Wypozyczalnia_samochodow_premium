@@ -245,15 +245,20 @@
     <Compile Include="Models\ImageDowodOsobisty.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImageDowodOsobistyRepository.cs" />
     <Compile Include="Models\ImageDowodRejestracyjny.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImageDowodRejestracyjnyRepository.cs" />
     <Compile Include="Models\ImagePaszport.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImagePaszportRepository.cs" />
+    <Compile Include="Models\ImageRepository.cs" />
     <Compile Include="Models\ImageSamochod.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImageSamochodRepository.cs" />
     <Compile Include="Models\KlientFirma.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -280,6 +285,8 @@
     </Compile>
     <Compile Include="Models\PaszportRepository.cs" />
     <Compile Include="Models\PaszportValidation.cs" />
+    <Compile Include="Models\PhotoProp.cs" />
+    <Compile Include="Models\PhotoViewModel.cs" />
     <Compile Include="Models\Pracownik.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
