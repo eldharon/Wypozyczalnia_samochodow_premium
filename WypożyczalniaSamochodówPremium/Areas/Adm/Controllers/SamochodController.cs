@@ -15,7 +15,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         SamochodRepository samochodRepository = new SamochodRepository();
         AutaBazaRepository autaBazaRepository = new AutaBazaRepository();
         ModelRepository modelRepository = new ModelRepository();
-        ImageSamochodRepository imagesSamochodRepository = new ImageSamochodRepository();
+        //ImageSamochodRepository imagesSamochodRepository = new ImageSamochodRepository();
 
 
 
@@ -282,7 +282,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             byte[] tempImg = new byte[length];
             file.InputStream.Read(tempImg, 0, length);
             photoVM.Image = tempImg;
-            imagesSamochodRepository.AddImage(photoVM, photo.id);
+            //imagesSamochodRepository.AddImage(photoVM, photo.id);
 
             return View();
 
