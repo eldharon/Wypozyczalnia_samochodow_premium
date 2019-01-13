@@ -15,6 +15,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         SamochodRepository samochodRepository = new SamochodRepository();
         AutaBazaRepository autaBazaRepository = new AutaBazaRepository();
         ModelRepository modelRepository = new ModelRepository();
+        ImageSamochodRepository imagesSamochodRepository = new ImageSamochodRepository();
+
 
 
         // GET: Samochod
@@ -259,6 +261,30 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 return Json(modelRepository.GetModels(marka), JsonRequestBehavior.AllowGet);
             }
             return null;
+
+        }
+        public ActionResult AddImage(int id)
+        {
+            ViewBag["id"] = id;
+            return View();
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Upload(PhotoProp photo)
+        {
+            PhotoViewModel photoVM = new PhotoViewModel();
+            HttpPostedFileBase file = Request.Files["OriginalLocation"];
+            photoVM.Name = photo.Name;
+            photoVM.AlternateText = photo.AlternateText;
+
+            photoVM.ContentType = file.ContentType;
+
+            Int32 length = file.ContentLength;
+            byte[] tempImg = new byte[length];
+            file.InputStream.Read(tempImg, 0, length);
+            photoVM.Image = tempImg;
+            imagesSamochodRepository.AddImage(photoVM, photo.id);
+
+            return View();
 
         }
 

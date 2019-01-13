@@ -96,11 +96,40 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" }) &nbsp; <a data-toggle="modal" data-remote="@Url.Action("AddImage", "Samochod", Model.SamochodId)" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie</a>
                     </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+    $('#modal').on('show.bs.modal', function (e) {
+
+        var button = $(e.relatedTarget);
+        var modal = $(this);
+
+        // load content from HTML string
+        //modal.find('.modal-body').html("Nice modal body baby...");
+
+        // or, load content from value of data-remote url
+        modal.find('.modal-content').load(button.data("remote"));
+
+    });
+    function HideModal() {
+
+        $('#modal').modal('hide');
+        $(document.body).on('hidden.bs.modal', function () {
+            $('#modal').removeData('bs.modal')
+        });
+        $('#modal').data('modal', null);
+    }
+
+    $(document.body).on('hidden.bs.modal', function () {
+        $('#modal').removeData('bs.modal')
+    });
+
+</script>
 
 
