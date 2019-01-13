@@ -5,33 +5,33 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="827c95f14e3f48e29d9846c9a83a04e9" Name="Diagram1" ZoomLevel="94">
-        <EntityTypeShape EntityType="WypozyczenieModel.Akcesoria" Width="1.5" PointX="6" PointY="35.125" />
-        <EntityTypeShape EntityType="WypozyczenieModel.AutaBaza" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Cennik" Width="1.5" PointX="3" PointY="28.125" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Dostepnosc" Width="1.5" PointX="3" PointY="22.25" />
-        <EntityTypeShape EntityType="WypozyczenieModel.DowodOsobisty" Width="1.5" PointX="3.75" PointY="46.5" />
-        <EntityTypeShape EntityType="WypozyczenieModel.DowodRejestracyjny" Width="1.5" PointX="3" PointY="16.25" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Image" Width="1.5" PointX="3.75" PointY="1.25" />
-        <EntityTypeShape EntityType="WypozyczenieModel.ImageDowodOsobisty" Width="1.5" PointX="6" PointY="24" />
-        <EntityTypeShape EntityType="WypozyczenieModel.ImageDowodRejestracyjny" Width="1.5" PointX="5.25" PointY="17.25" />
-        <EntityTypeShape EntityType="WypozyczenieModel.ImagePaszport" Width="1.5" PointX="6" PointY="27.5" />
-        <EntityTypeShape EntityType="WypozyczenieModel.ImageSamochod" Width="1.5" PointX="6" PointY="10.625" />
-        <EntityTypeShape EntityType="WypozyczenieModel.KlientFirma" Width="1.5" PointX="3.75" PointY="52.5" />
-        <EntityTypeShape EntityType="WypozyczenieModel.KlientIndywidualny" Width="1.5" PointX="3.75" PointY="37.5" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Opis" Width="1.5" PointX="3" PointY="13.5" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Akcesoria" Width="1.5" PointX="3" PointY="39" />
+        <EntityTypeShape EntityType="WypozyczenieModel.AutaBaza" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Cennik" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Dostepnosc" Width="1.5" PointX="3" PointY="25.375" />
+        <EntityTypeShape EntityType="WypozyczenieModel.DowodOsobisty" Width="1.5" PointX="3.75" PointY="46" />
+        <EntityTypeShape EntityType="WypozyczenieModel.DowodRejestracyjny" Width="1.5" PointX="3" PointY="10.625" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Image" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="WypozyczenieModel.ImageDowodOsobisty" Width="1.5" PointX="6" PointY="23.75" />
+        <EntityTypeShape EntityType="WypozyczenieModel.ImageDowodRejestracyjny" Width="1.5" PointX="5.25" PointY="10.625" />
+        <EntityTypeShape EntityType="WypozyczenieModel.ImagePaszport" Width="1.5" PointX="6" PointY="17.5" />
+        <EntityTypeShape EntityType="WypozyczenieModel.ImageSamochod" Width="1.5" PointX="6" PointY="13.625" />
+        <EntityTypeShape EntityType="WypozyczenieModel.KlientFirma" Width="1.5" PointX="3.75" PointY="34.5" />
+        <EntityTypeShape EntityType="WypozyczenieModel.KlientIndywidualny" Width="1.5" PointX="3.75" PointY="55.5" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Opis" Width="1.5" PointX="3" PointY="28.125" />
         <EntityTypeShape EntityType="WypozyczenieModel.Osoba" Width="1.5" PointX="1.5" PointY="31.375" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Paszport" Width="1.5" PointX="3.75" PointY="49.625" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Pracownik" Width="1.5" PointX="3.75" PointY="43" />
-        <EntityTypeShape EntityType="WypozyczenieModel.PracownikWypozyczenie" Width="1.5" PointX="6" PointY="38.25" />
-        <EntityTypeShape EntityType="WypozyczenieModel.PrawoJazdy" Width="1.5" PointX="3.75" PointY="40.125" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Przeglad" Width="1.5" PointX="3" PointY="4.875" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Rozliczenie" Width="1.5" PointX="6" PointY="32" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Paszport" Width="1.5" PointX="3.75" PointY="31.5" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Pracownik" Width="1.5" PointX="3.75" PointY="52" />
+        <EntityTypeShape EntityType="WypozyczenieModel.PracownikWypozyczenie" Width="1.5" PointX="6" PointY="29.25" />
+        <EntityTypeShape EntityType="WypozyczenieModel.PrawoJazdy" Width="1.5" PointX="3.75" PointY="49" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Przeglad" Width="1.5" PointX="3" PointY="19.375" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Rozliczenie" Width="1.5" PointX="3" PointY="42" />
         <EntityTypeShape EntityType="WypozyczenieModel.Samochod" Width="1.5" PointX="0.75" PointY="12.25" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Serwis" Width="1.5" PointX="3" PointY="25" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Ubezpieczenie" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Serwis" Width="1.5" PointX="3" PointY="22.25" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Ubezpieczenie" Width="1.5" PointX="3" PointY="4.875" />
         <EntityTypeShape EntityType="WypozyczenieModel.Wydarzenie" Width="1.5" PointX="1.5" PointY="36.25" />
-        <EntityTypeShape EntityType="WypozyczenieModel.Wypozyczenie" Width="1.5" PointX="3.75" PointY="32.75" />
-        <EntityTypeShape EntityType="WypozyczenieModel.WypSam" Width="1.5" PointX="6" PointY="13.625" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Wypozyczenie" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="WypozyczenieModel.WypSam" Width="1.5" PointX="3" PointY="13.625" />
         <AssociationConnector Association="WypozyczenieModel.FK__Akcesoria__Wypoz__7E02B4CC" />
         <AssociationConnector Association="WypozyczenieModel.FK__Cennik__Samochod__6AEFE058" />
         <AssociationConnector Association="WypozyczenieModel.FK__Dostepnos__Samoc__69FBBC1F" />
