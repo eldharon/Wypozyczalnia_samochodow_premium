@@ -208,149 +208,60 @@
     <Compile Include="Helpers\ImageActionLinkHelper.cs" />
     <Compile Include="Helpers\LangHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Akcesoria.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AkcesoriaRepository.cs" />
     <Compile Include="Models\AkcesoriaValidation.cs" />
-    <Compile Include="Models\AutaBaza.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AutaBazaDTO.cs" />
     <Compile Include="Models\AutaBazaRepository.cs" />
-    <Compile Include="Models\Cennik.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\CennikRepository.cs" />
     <Compile Include="Models\CennikValidation.cs" />
-    <Compile Include="Models\Dostepnosc.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DostepnoscRepository.cs" />
     <Compile Include="Models\DostepnoscValidation.cs" />
-    <Compile Include="Models\DowodOsobisty.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DowodOsobistyRepository.cs" />
     <Compile Include="Models\DowodOsobistyValidation.cs" />
-    <Compile Include="Models\DowodRejestracyjny.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DowodRejestracyjnyRepository.cs" />
     <Compile Include="Models\DowodRejestracyjnyValidation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Image.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ImageDowodOsobisty.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ImageDowodRejestracyjny.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ImagePaszport.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ImageSamochod.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\KlientFirma.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\ImageDowodOsobistyRepository.cs" />
+    <Compile Include="Models\ImageDowodRejestracyjnyRepository.cs" />
+    <Compile Include="Models\ImagePaszportRepository.cs" />
+    <Compile Include="Models\ImageRepository.cs" />
+    <Compile Include="Models\ImageSamochodRepository.cs" />
     <Compile Include="Models\KlientFirmaRepository.cs" />
     <Compile Include="Models\KlientFirmaValidation.cs" />
-    <Compile Include="Models\KlientIndywidualny.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\KlientIndywidualnyRepository.cs" />
     <Compile Include="Models\KlientIndywidualnyValidation.cs" />
     <Compile Include="Models\ModelRepository.cs" />
-    <Compile Include="Models\Opis.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\OpisRepository.cs" />
     <Compile Include="Models\OpisValidation.cs" />
-    <Compile Include="Models\Osoba.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\OsobaRepository.cs" />
     <Compile Include="Models\OsobaValidation.cs" />
-    <Compile Include="Models\Paszport.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\PaszportRepository.cs" />
     <Compile Include="Models\PaszportValidation.cs" />
-    <Compile Include="Models\Pracownik.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\PhotoProp.cs" />
+    <Compile Include="Models\PhotoViewModel.cs" />
     <Compile Include="Models\PracownikRepository.cs" />
     <Compile Include="Models\PracownikSelectList.cs" />
     <Compile Include="Models\PracownikValidation.cs" />
-    <Compile Include="Models\PracownikWypozyczenie.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\PracownikWypozyczenieValidation.cs" />
     <Compile Include="Models\PracownikWypozycznieRepository.cs" />
-    <Compile Include="Models\PrawoJazdy.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\PrawoJazdyRepository.cs" />
     <Compile Include="Models\PrawoJazdyValidation.cs" />
-    <Compile Include="Models\Przeglad.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\PrzegladRepository.cs" />
     <Compile Include="Models\PrzegladValidation.cs" />
-    <Compile Include="Models\Rozliczenie.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\RozliczenieRepository.cs" />
     <Compile Include="Models\RozliczenieValidation.cs" />
-    <Compile Include="Models\Samochod.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SamochodRepository.cs" />
     <Compile Include="Models\SamochodSelectLists.cs" />
     <Compile Include="Models\SamochodValidation.cs" />
     <Compile Include="Models\SamochodViewModel.cs" />
-    <Compile Include="Models\Serwis.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SerwisRepository.cs" />
     <Compile Include="Models\SerwisValidation.cs" />
-    <Compile Include="Models\Ubezpieczenie.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\UbezpieczenieRepository.cs" />
     <Compile Include="Models\UbezpieczenieValidation.cs" />
-    <Compile Include="Models\Wydarzenie.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\WydarzenieRepository.cs" />
     <Compile Include="Models\WydarzenieValidation.cs" />
-    <Compile Include="Models\Wypozyczenie.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WypozyczenieModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WypozyczenieModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WypozyczenieModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WypozyczenieModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\WypozyczenieRepository.cs" />
     <Compile Include="Models\WypozyczenieValidation.cs" />
-    <Compile Include="Models\WypSam.cs">
-      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\WypSamRepository.cs" />
     <Compile Include="Models\WypSamValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -447,28 +358,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Kłeri_po_image%283%29.sql" />
-    <Content Include="Models\WypozyczenieModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
-      <LastGenOutput>WypozyczenieModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\WypozyczenieModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
-      <LastGenOutput>WypozyczenieModel.cs</LastGenOutput>
-    </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\Adm\Views\web.config" />
-    <EntityDeploy Include="Models\WypozyczenieModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WypozyczenieModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\WypozyczenieModel.edmx.diagram">
-      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Areas\Adm\Views\Shared\MainMenuControl.cshtml" />
     <Content Include="Areas\Adm\Views\Shared\MessageErrorControl.cshtml" />
     <Content Include="Areas\Adm\Views\Shared\MessageOKControl.cshtml" />
