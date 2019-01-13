@@ -1,162 +1,4 @@
-
--- --------------------------------------------------
--- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
--- --------------------------------------------------
--- Date Created: 01/02/2019 17:22:51
--- Generated from EDMX file: C:\Users\MarcinChajewski\Source\Repos\Wypozyczalnia_samochodow_premium\WypożyczalniaSamochodówPremium\Models\WypozyczenieModel.edmx
--- --------------------------------------------------
-
-SET QUOTED_IDENTIFIER OFF;
-GO
-USE [inzS13989];
-GO
-IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
-GO
-
--- --------------------------------------------------
--- Dropping existing FOREIGN KEY constraints
--- --------------------------------------------------
-
-IF OBJECT_ID(N'[dbo].[FK__Akcesoria__Wypoz__7E02B4CC]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Akcesoria] DROP CONSTRAINT [FK__Akcesoria__Wypoz__7E02B4CC];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Cennik__Samochod__6AEFE058]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Cennik] DROP CONSTRAINT [FK__Cennik__Samochod__6AEFE058];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Dostepnos__Samoc__69FBBC1F]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Dostepnosc] DROP CONSTRAINT [FK__Dostepnos__Samoc__69FBBC1F];
-GO
-IF OBJECT_ID(N'[dbo].[FK__DowodOsob__Osoba__7B264821]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DowodOsobisty] DROP CONSTRAINT [FK__DowodOsob__Osoba__7B264821];
-GO
-IF OBJECT_ID(N'[dbo].[FK__DowodReje__Samoc__671F4F74]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DowodRejestracyjny] DROP CONSTRAINT [FK__DowodReje__Samoc__671F4F74];
-GO
-IF OBJECT_ID(N'[dbo].[FK__KlientFir__Osoba__3D2915A8]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[KlientFirma] DROP CONSTRAINT [FK__KlientFir__Osoba__3D2915A8];
-GO
-IF OBJECT_ID(N'[dbo].[FK__KlientInd__Osoba__395884C4]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[KlientIndywidualny] DROP CONSTRAINT [FK__KlientInd__Osoba__395884C4];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Opis__SamochodId__662B2B3B]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Opis] DROP CONSTRAINT [FK__Opis__SamochodId__662B2B3B];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Paszport__OsobaI__65370702]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Paszport] DROP CONSTRAINT [FK__Paszport__OsobaI__65370702];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Pracownik__Osoba__72910220]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pracownik] DROP CONSTRAINT [FK__Pracownik__Osoba__72910220];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Pracownik__Praco__76619304]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PracownikWypozyczenie] DROP CONSTRAINT [FK__Pracownik__Praco__76619304];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Pracownik__Wypoz__7755B73D]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PracownikWypozyczenie] DROP CONSTRAINT [FK__Pracownik__Wypoz__7755B73D];
-GO
-IF OBJECT_ID(N'[dbo].[FK__PrawoJazd__Osoba__634EBE90]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PrawoJazdy] DROP CONSTRAINT [FK__PrawoJazd__Osoba__634EBE90];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Przeglad__Samoch__6166761E]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Przeglad] DROP CONSTRAINT [FK__Przeglad__Samoch__6166761E];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Rozliczen__Wypoz__607251E5]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Rozliczenie] DROP CONSTRAINT [FK__Rozliczen__Wypoz__607251E5];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Serwis__Samochod__5E8A0973]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Serwis] DROP CONSTRAINT [FK__Serwis__Samochod__5E8A0973];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Ubezpiecz__Samoc__5D95E53A]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Ubezpieczenie] DROP CONSTRAINT [FK__Ubezpiecz__Samoc__5D95E53A];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Wypozycze__Osoba__6CD828CA]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Wypozyczenie] DROP CONSTRAINT [FK__Wypozycze__Osoba__6CD828CA];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Wypozycze__Wydar__5CA1C101]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Wypozyczenie] DROP CONSTRAINT [FK__Wypozycze__Wydar__5CA1C101];
-GO
-IF OBJECT_ID(N'[dbo].[FK__WypSam__Samochod__5AB9788F]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[WypSam] DROP CONSTRAINT [FK__WypSam__Samochod__5AB9788F];
-GO
-IF OBJECT_ID(N'[dbo].[FK__WypSam__Wypozycz__5BAD9CC8]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[WypSam] DROP CONSTRAINT [FK__WypSam__Wypozycz__5BAD9CC8];
-GO
-
--- --------------------------------------------------
--- Dropping existing tables
--- --------------------------------------------------
-
-IF OBJECT_ID(N'[dbo].[Akcesoria]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Akcesoria];
-GO
-IF OBJECT_ID(N'[dbo].[AutaBaza]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[AutaBaza];
-GO
-IF OBJECT_ID(N'[dbo].[Cennik]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Cennik];
-GO
-IF OBJECT_ID(N'[dbo].[Dostepnosc]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Dostepnosc];
-GO
-IF OBJECT_ID(N'[dbo].[DowodOsobisty]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DowodOsobisty];
-GO
-IF OBJECT_ID(N'[dbo].[DowodRejestracyjny]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DowodRejestracyjny];
-GO
-IF OBJECT_ID(N'[dbo].[KlientFirma]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[KlientFirma];
-GO
-IF OBJECT_ID(N'[dbo].[KlientIndywidualny]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[KlientIndywidualny];
-GO
-IF OBJECT_ID(N'[dbo].[Opis]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Opis];
-GO
-IF OBJECT_ID(N'[dbo].[Osoba]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Osoba];
-GO
-IF OBJECT_ID(N'[dbo].[Paszport]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Paszport];
-GO
-IF OBJECT_ID(N'[dbo].[Pracownik]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Pracownik];
-GO
-IF OBJECT_ID(N'[dbo].[PracownikWypozyczenie]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[PracownikWypozyczenie];
-GO
-IF OBJECT_ID(N'[dbo].[PrawoJazdy]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[PrawoJazdy];
-GO
-IF OBJECT_ID(N'[dbo].[Przeglad]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Przeglad];
-GO
-IF OBJECT_ID(N'[dbo].[Rozliczenie]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Rozliczenie];
-GO
-IF OBJECT_ID(N'[dbo].[Samochod]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Samochod];
-GO
-IF OBJECT_ID(N'[dbo].[Serwis]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Serwis];
-GO
-IF OBJECT_ID(N'[dbo].[Ubezpieczenie]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Ubezpieczenie];
-GO
-IF OBJECT_ID(N'[dbo].[Wydarzenie]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Wydarzenie];
-GO
-IF OBJECT_ID(N'[dbo].[Wypozyczenie]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Wypozyczenie];
-GO
-IF OBJECT_ID(N'[dbo].[WypSam]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[WypSam];
-GO
-
--- --------------------------------------------------
--- Creating all tables
--- --------------------------------------------------
-
--- Creating table 'Cennik'
+﻿-- Creating table 'Cennik'
 CREATE TABLE [dbo].[Cennik] (
     [CennikId] int IDENTITY(1,1) NOT NULL,
     [Opis] varchar(64)  NULL,
@@ -838,5 +680,56 @@ ON [dbo].[Akcesoria]
 GO
 
 -- --------------------------------------------------
--- Script has ended
+-- Script has ended DODAWANIE ZDJĘĆ
 -- --------------------------------------------------
+CREATE TABLE [dbo].[Image] (
+    [ImageId]     INT           IDENTITY (1, 1) NOT NULL,
+    [ImageName]   VARCHAR (50)  NOT NULL,
+    [ImageAlt]    VARCHAR (50)  NULL,
+    [ImageData]   IMAGE         NOT NULL,
+    [ContentType] NVARCHAR (50) NULL,
+    CONSTRAINT [Image_PK] PRIMARY KEY CLUSTERED ([ImageId] ASC)
+);
+
+CREATE TABLE [dbo].[ImageDowodOsobisty] (
+    [ImageDowodId]    INT          IDENTITY (1, 1) NOT NULL,
+    [ImageId]         INT          NOT NULL,
+    [DowodOsobistyId] INT          NOT NULL,
+    [Opis]            VARCHAR (50) NULL,
+    CONSTRAINT [PK_ImageDowod] PRIMARY KEY CLUSTERED ([ImageDowodId] ASC),
+    CONSTRAINT [FK_Image_ImageDowod] FOREIGN KEY ([ImageId]) REFERENCES [dbo].[Image] ([ImageId]),
+    CONSTRAINT [FK_Dowod_ImageDowod] FOREIGN KEY ([DowodOsobistyId]) REFERENCES [dbo].[DowodOsobisty] ([DowodOsobistyId])
+);
+
+
+CREATE TABLE [dbo].[ImageDowodRejestracyjny] (
+    [ImageDowodRejestracyjnyId] INT          IDENTITY (1, 1) NOT NULL,
+    [ImageId]                   INT          NOT NULL,
+    [DowodRejestracyjnyId]      INT          NOT NULL,
+    [Opis]                      VARCHAR (50) NULL,
+    CONSTRAINT [PK_ImageDowodRejestracyjny] PRIMARY KEY CLUSTERED ([ImageDowodRejestracyjnyId] ASC),
+    CONSTRAINT [FK_Image_ImageDowodRejestracyjny] FOREIGN KEY ([ImageId]) REFERENCES [dbo].[Image] ([ImageId]),
+    CONSTRAINT [FK_DowodRejestracyjny_ImageDowodRejestracyjny] FOREIGN KEY ([DowodRejestracyjnyId]) REFERENCES [dbo].[DowodRejestracyjny] ([DowodRejId])
+);
+
+CREATE TABLE [dbo].[ImagePaszport] (
+    [ImagePaszportId] INT          IDENTITY (1, 1) NOT NULL,
+    [ImageId]         INT          NOT NULL,
+    [PaszportId]      INT          NOT NULL,
+    [Opis]            VARCHAR (50) NULL,
+    CONSTRAINT [PK_ImagePaszport] PRIMARY KEY CLUSTERED ([ImagePaszportId] ASC),
+    CONSTRAINT [FK_Image_ImagePaszport] FOREIGN KEY ([ImageId]) REFERENCES [dbo].[Image] ([ImageId]),
+    CONSTRAINT [FK_Paszport_ImagePaszport] FOREIGN KEY ([PaszportId]) REFERENCES [dbo].[Paszport] ([PaszportId])
+);
+
+
+
+CREATE TABLE [dbo].[ImageSamochod] (
+    [ImageSamochodId]    INT          IDENTITY (1, 1) NOT NULL,
+    [ImageId]         INT          NOT NULL,
+    [SamochodId] INT          NOT NULL,
+    [Opis]            VARCHAR (50) NULL,
+    CONSTRAINT [PK_ImageSamochodId] PRIMARY KEY CLUSTERED ([ImageSamochodId] ASC),
+    CONSTRAINT [FK_Image_ImageSamochod] FOREIGN KEY ([ImageId]) REFERENCES [dbo].[Image] ([ImageId]),
+    CONSTRAINT [FK_Dowod_ImageSamochod] FOREIGN KEY ([SamochodId]) REFERENCES [dbo].[Samochod] ([SamochodId])
+);

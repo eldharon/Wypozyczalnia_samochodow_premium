@@ -79,6 +79,15 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.8.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
       <Private>True</Private>
@@ -87,8 +96,26 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -160,6 +187,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Adm\AdmAreaRegistration.cs" />
     <Compile Include="Areas\Adm\Controllers\AutaBazaController.cs" />
@@ -171,6 +199,7 @@
     <Compile Include="Areas\Adm\Controllers\SamochodController.cs" />
     <Compile Include="Areas\Adm\Controllers\WydarzenieController.cs" />
     <Compile Include="Areas\Adm\Controllers\WypozyczenieController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,58 +207,150 @@
     <Compile Include="Helpers\IconActionLinkHelper.cs" />
     <Compile Include="Helpers\ImageActionLinkHelper.cs" />
     <Compile Include="Helpers\LangHelper.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Akcesoria.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AkcesoriaRepository.cs" />
     <Compile Include="Models\AkcesoriaValidation.cs" />
+    <Compile Include="Models\AutaBaza.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AutaBazaDTO.cs" />
     <Compile Include="Models\AutaBazaRepository.cs" />
+    <Compile Include="Models\Cennik.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CennikRepository.cs" />
     <Compile Include="Models\CennikValidation.cs" />
+    <Compile Include="Models\Dostepnosc.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DostepnoscRepository.cs" />
     <Compile Include="Models\DostepnoscValidation.cs" />
+    <Compile Include="Models\DowodOsobisty.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DowodOsobistyRepository.cs" />
     <Compile Include="Models\DowodOsobistyValidation.cs" />
+    <Compile Include="Models\DowodRejestracyjny.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DowodRejestracyjnyRepository.cs" />
     <Compile Include="Models\DowodRejestracyjnyValidation.cs" />
-    <Compile Include="Models\ImageDowodRejestracyjnyRepository.cs" />
-    <Compile Include="Models\ImagePaszportRepository.cs" />
-    <Compile Include="Models\ImageDowodOsobistyRepository.cs" />
-    <Compile Include="Models\ImageSamochodRepository.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImageDowodOsobisty.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImageDowodRejestracyjny.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImagePaszport.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImageSamochod.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KlientFirma.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\KlientFirmaRepository.cs" />
     <Compile Include="Models\KlientFirmaValidation.cs" />
+    <Compile Include="Models\KlientIndywidualny.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\KlientIndywidualnyRepository.cs" />
     <Compile Include="Models\KlientIndywidualnyValidation.cs" />
     <Compile Include="Models\ModelRepository.cs" />
+    <Compile Include="Models\Opis.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\OpisRepository.cs" />
     <Compile Include="Models\OpisValidation.cs" />
-    <Compile Include="Models\ImageRepository.cs" />
+    <Compile Include="Models\Osoba.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\OsobaRepository.cs" />
     <Compile Include="Models\OsobaValidation.cs" />
+    <Compile Include="Models\Paszport.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PaszportRepository.cs" />
     <Compile Include="Models\PaszportValidation.cs" />
-    <Compile Include="Models\PhotoProp.cs" />
-    <Compile Include="Models\PhotoViewModel.cs" />
+    <Compile Include="Models\Pracownik.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PracownikRepository.cs" />
+    <Compile Include="Models\PracownikSelectList.cs" />
     <Compile Include="Models\PracownikValidation.cs" />
+    <Compile Include="Models\PracownikWypozyczenie.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PracownikWypozyczenieValidation.cs" />
     <Compile Include="Models\PracownikWypozycznieRepository.cs" />
+    <Compile Include="Models\PrawoJazdy.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PrawoJazdyRepository.cs" />
     <Compile Include="Models\PrawoJazdyValidation.cs" />
+    <Compile Include="Models\Przeglad.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PrzegladRepository.cs" />
     <Compile Include="Models\PrzegladValidation.cs" />
+    <Compile Include="Models\Rozliczenie.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RozliczenieRepository.cs" />
     <Compile Include="Models\RozliczenieValidation.cs" />
+    <Compile Include="Models\Samochod.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SamochodRepository.cs" />
     <Compile Include="Models\SamochodSelectLists.cs" />
     <Compile Include="Models\SamochodValidation.cs" />
     <Compile Include="Models\SamochodViewModel.cs" />
+    <Compile Include="Models\Serwis.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SerwisRepository.cs" />
     <Compile Include="Models\SerwisValidation.cs" />
+    <Compile Include="Models\Ubezpieczenie.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UbezpieczenieRepository.cs" />
     <Compile Include="Models\UbezpieczenieValidation.cs" />
+    <Compile Include="Models\Wydarzenie.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\WydarzenieRepository.cs" />
     <Compile Include="Models\WydarzenieValidation.cs" />
+    <Compile Include="Models\Wypozyczenie.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypozyczenieModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WypozyczenieModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypozyczenieModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypozyczenieModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\WypozyczenieRepository.cs" />
     <Compile Include="Models\WypozyczenieValidation.cs" />
+    <Compile Include="Models\WypSam.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\WypSamRepository.cs" />
     <Compile Include="Models\WypSamValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -325,10 +446,29 @@
     <Content Include="Content\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Kłeri_po_image%283%29.sql" />
+    <Content Include="Models\WypozyczenieModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
+      <LastGenOutput>WypozyczenieModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\WypozyczenieModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
+      <LastGenOutput>WypozyczenieModel.cs</LastGenOutput>
+    </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\Adm\Views\web.config" />
+    <EntityDeploy Include="Models\WypozyczenieModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WypozyczenieModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\WypozyczenieModel.edmx.diagram">
+      <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Adm\Views\Shared\MainMenuControl.cshtml" />
     <Content Include="Areas\Adm\Views\Shared\MessageErrorControl.cshtml" />
     <Content Include="Areas\Adm\Views\Shared\MessageOKControl.cshtml" />
@@ -400,6 +540,7 @@
     <Content Include="Areas\Adm\Views\AutaBaza\Create.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\Edit.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Pracownik\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

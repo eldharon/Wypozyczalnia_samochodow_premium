@@ -10,6 +10,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
     public class PracownikController : Controller
     {
         PracownikRepository pracownikRepository = new PracownikRepository();
+        OsobaRepository osobaRepository = new OsobaRepository();
+
         // GET: Adm/Wydarzenie
         public ActionResult Index()
         {
@@ -19,8 +21,24 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
         public ActionResult Details(int id)
         {
-            var wydarzenie = pracownikRepository.GetPracownikById(id);
-            return View(wydarzenie);
+            var pracownik = pracownikRepository.GetPracownikById(id);
+            return View(pracownik);
         }
+
+        public ActionResult Create()
+        {
+            List<SelectListItem> stanowiskoList = new SelectList(PracownikSelectList.StanowikoList, "Key", "Value").ToList();
+            ViewData["stanowiskoList"] = stanowiskoList;
+
+            List<SelectListItem> osobaList = new SelectList(osobaRepository.FindAllOsoba(), "OsobaId", "Nazwisko").ToList();
+            ViewData["osobaList"] = osobaList;
+
+
+            Pracownik pracownik = new Pracownik();
+
+            return View(pracownik);
+        }
+
+
     }
 }
