@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="827c95f14e3f48e29d9846c9a83a04e9" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="WypozyczenieModel.Akcesoria" Width="1.5" PointX="6" PointY="32" />
+        <EntityTypeShape EntityType="WypozyczenieModel.AutaBaza" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Cennik" Width="1.5" PointX="3" PointY="19.5" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Dostepnosc" Width="1.5" PointX="3" PointY="28.125" />
+        <EntityTypeShape EntityType="WypozyczenieModel.DowodOsobisty" Width="1.5" PointX="3.75" PointY="40.5" />
+        <EntityTypeShape EntityType="WypozyczenieModel.DowodRejestracyjny" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Image" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="WypozyczenieModel.ImageDowodOsobisty" Width="1.5" PointX="6" PointY="22.75" />
+        <EntityTypeShape EntityType="WypozyczenieModel.ImageDowodRejestracyjny" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="WypozyczenieModel.ImagePaszport" Width="1.5" PointX="6" PointY="19.125" />
+        <EntityTypeShape EntityType="WypozyczenieModel.ImageSamochod" Width="1.5" PointX="6" PointY="13.625" />
+        <EntityTypeShape EntityType="WypozyczenieModel.KlientFirma" Width="1.5" PointX="3.75" PointY="49.625" />
+        <EntityTypeShape EntityType="WypozyczenieModel.KlientIndywidualny" Width="1.5" PointX="3.75" PointY="43.625" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Opis" Width="1.5" PointX="3" PointY="11" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Osoba" Width="1.5" PointX="1.5" PointY="31.375" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Paszport" Width="1.5" PointX="3.75" PointY="37.5" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Pracownik" Width="1.5" PointX="3.75" PointY="46.125" />
+        <EntityTypeShape EntityType="WypozyczenieModel.PracownikWypozyczenie" Width="1.5" PointX="6" PointY="39.875" />
+        <EntityTypeShape EntityType="WypozyczenieModel.PrawoJazdy" Width="1.5" PointX="3.75" PointY="53.125" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Przeglad" Width="1.5" PointX="3" PointY="22.25" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Rozliczenie" Width="1.5" PointX="6" PointY="35" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Samochod" Width="1.5" PointX="0.75" PointY="12.25" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Serwis" Width="1.5" PointX="3" PointY="13.75" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Ubezpieczenie" Width="1.5" PointX="3" PointY="25.25" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Wydarzenie" Width="1.5" PointX="1.5" PointY="36.25" />
+        <EntityTypeShape EntityType="WypozyczenieModel.Wypozyczenie" Width="1.5" PointX="3.75" PointY="32.875" />
+        <EntityTypeShape EntityType="WypozyczenieModel.WypSam" Width="1.5" PointX="6" PointY="10.75" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Akcesoria__Wypoz__7E02B4CC" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Cennik__Samochod__6AEFE058" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Dostepnos__Samoc__69FBBC1F" />
+        <AssociationConnector Association="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821" />
+        <AssociationConnector Association="WypozyczenieModel.FK_Dowod_ImageDowod" />
+        <AssociationConnector Association="WypozyczenieModel.FK__DowodReje__Samoc__671F4F74" />
+        <AssociationConnector Association="WypozyczenieModel.FK_DowodRejestracyjny_ImageDowodRejestracyjny" />
+        <AssociationConnector Association="WypozyczenieModel.FK_Image_ImageDowod" />
+        <AssociationConnector Association="WypozyczenieModel.FK_Image_ImageDowodRejestracyjny" />
+        <AssociationConnector Association="WypozyczenieModel.FK_Image_ImagePaszport" />
+        <AssociationConnector Association="WypozyczenieModel.FK_Image_ImageSamochod" />
+        <AssociationConnector Association="WypozyczenieModel.FK_Paszport_ImagePaszport" />
+        <AssociationConnector Association="WypozyczenieModel.FK_Dowod_ImageSamochod" />
+        <AssociationConnector Association="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" />
+        <AssociationConnector Association="WypozyczenieModel.FK__KlientInd__Osoba__395884C4" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Opis__SamochodId__662B2B3B" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Paszport__OsobaI__65370702" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Pracownik__Osoba__72910220" />
+        <AssociationConnector Association="WypozyczenieModel.FK__PrawoJazd__Osoba__634EBE90" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Wypozycze__Osoba__6CD828CA" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Pracownik__Praco__76619304" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Pracownik__Wypoz__7755B73D" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Przeglad__Samoch__6166761E" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Rozliczen__Wypoz__607251E5" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Serwis__Samochod__5E8A0973" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Ubezpiecz__Samoc__5D95E53A" />
+        <AssociationConnector Association="WypozyczenieModel.FK__WypSam__Samochod__5AB9788F" />
+        <AssociationConnector Association="WypozyczenieModel.FK__Wypozycze__Wydar__5CA1C101" />
+        <AssociationConnector Association="WypozyczenieModel.FK__WypSam__Wypozycz__5BAD9CC8" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
