@@ -199,6 +199,7 @@
     <Compile Include="Areas\Adm\Controllers\SamochodController.cs" />
     <Compile Include="Areas\Adm\Controllers\WydarzenieController.cs" />
     <Compile Include="Areas\Adm\Controllers\WypozyczenieController.cs" />
+    <Compile Include="Areas\Adm\Controllers\WypSamController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -548,6 +549,10 @@
     <Content Include="Areas\Adm\Views\Samochod\Edit.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\Details.cshtml" />
     <Content Include="Areas\Adm\Views\Pracownik\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Osoba\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Osoba\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Wydarzenie\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Wypozyczenie\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -589,6 +594,7 @@
   <ItemGroup>
     <Folder Include="Areas\Adm\Models\" />
     <Folder Include="Areas\Adm\Views\Cennik\" />
+    <Folder Include="Areas\Adm\Views\WypSam\" />
     <Folder Include="Content\CleverAdmin\img\" />
   </ItemGroup>
   <ItemGroup>

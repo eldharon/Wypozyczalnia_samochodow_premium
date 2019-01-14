@@ -18,12 +18,12 @@ namespace WypożyczalniaSamochodówPremium.Models
         public Osoba()
         {
             this.DowodOsobisty = new HashSet<DowodOsobisty>();
-            this.KlientFirma = new HashSet<KlientFirma>();
             this.KlientIndywidualny = new HashSet<KlientIndywidualny>();
             this.Paszport = new HashSet<Paszport>();
             this.Pracownik = new HashSet<Pracownik>();
             this.PrawoJazdy = new HashSet<PrawoJazdy>();
             this.Wypozyczenie = new HashSet<Wypozyczenie>();
+            this.KlientFirma = new HashSet<KlientFirma>();
         }
     
         public int OsobaId { get; set; }
@@ -39,8 +39,6 @@ namespace WypożyczalniaSamochodówPremium.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DowodOsobisty> DowodOsobisty { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KlientFirma> KlientFirma { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KlientIndywidualny> KlientIndywidualny { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Paszport> Paszport { get; set; }
@@ -50,5 +48,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         public virtual ICollection<PrawoJazdy> PrawoJazdy { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Wypozyczenie> Wypozyczenie { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KlientFirma> KlientFirma { get; set; }
     }
 }
