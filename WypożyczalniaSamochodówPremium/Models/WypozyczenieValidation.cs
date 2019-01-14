@@ -17,9 +17,9 @@ namespace WypożyczalniaSamochodówPremium.Models
     {
         [HiddenInput(DisplayValue = false), ScaffoldColumn(false)]
         public int WypozyczenieId { get; set; }
-        [Required(ErrorMessage = "Proszę podać datę wypożyczenia"), DataType(DataType.DateTime), DisplayName("Data wypożyczenia")]
+        [Required(ErrorMessage = "Proszę podać datę wypożyczenia"), DataType(DataType.Date), DisplayName("Data wypożyczenia")]
         public System.DateTime DataWypozyczenia { get; set; }
-        [Required(ErrorMessage = "Proszę podać datę zwrotu"), DataType(DataType.DateTime), DisplayName("Data zwrotu")]
+        [Required(ErrorMessage = "Proszę podać datę zwrotu"), DataType(DataType.Date), DisplayName("Data zwrotu")]
         public System.DateTime DataZwrotu { get; set; }
         [Required(ErrorMessage = "Proszę wybrac czy samochod ma byc dostarczony")]
         public bool CzyDostarczany { get; set; }

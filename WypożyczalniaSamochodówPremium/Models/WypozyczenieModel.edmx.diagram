@@ -16,7 +16,6 @@
         <EntityTypeShape EntityType="WypozyczenieModel.ImageDowodRejestracyjny" Width="1.5" PointX="5.25" PointY="10.625" />
         <EntityTypeShape EntityType="WypozyczenieModel.ImagePaszport" Width="1.5" PointX="6" PointY="17.5" />
         <EntityTypeShape EntityType="WypozyczenieModel.ImageSamochod" Width="1.5" PointX="6" PointY="13.625" />
-        <EntityTypeShape EntityType="WypozyczenieModel.KlientFirma" Width="1.5" PointX="3.75" PointY="34.5" />
         <EntityTypeShape EntityType="WypozyczenieModel.KlientIndywidualny" Width="1.5" PointX="3.75" PointY="55.5" />
         <EntityTypeShape EntityType="WypozyczenieModel.Opis" Width="1.5" PointX="3" PointY="28.125" />
         <EntityTypeShape EntityType="WypozyczenieModel.Osoba" Width="1.5" PointX="1.5" PointY="31.375" />
@@ -45,7 +44,6 @@
         <AssociationConnector Association="WypozyczenieModel.FK_Image_ImageSamochod" />
         <AssociationConnector Association="WypozyczenieModel.FK_Paszport_ImagePaszport" />
         <AssociationConnector Association="WypozyczenieModel.FK_Dowod_ImageSamochod" />
-        <AssociationConnector Association="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" />
         <AssociationConnector Association="WypozyczenieModel.FK__KlientInd__Osoba__395884C4" />
         <AssociationConnector Association="WypozyczenieModel.FK__Opis__SamochodId__662B2B3B" />
         <AssociationConnector Association="WypozyczenieModel.FK__Paszport__OsobaI__65370702" />
@@ -61,6 +59,8 @@
         <AssociationConnector Association="WypozyczenieModel.FK__WypSam__Samochod__5AB9788F" />
         <AssociationConnector Association="WypozyczenieModel.FK__Wypozycze__Wydar__5CA1C101" />
         <AssociationConnector Association="WypozyczenieModel.FK__WypSam__Wypozycz__5BAD9CC8" />
+        <EntityTypeShape EntityType="WypozyczenieModel.KlientFirma" Width="1.5" PointX="3.75" PointY="35" />
+        <AssociationConnector Association="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
