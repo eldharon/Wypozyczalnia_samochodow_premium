@@ -8,6 +8,8 @@ namespace WypożyczalniaSamochodówPremium
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+                "~/Content/bootstrap.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
@@ -43,6 +45,8 @@ namespace WypożyczalniaSamochodówPremium
                 "~/Content/CleverAdmin/css/style.css",
                 "~/Content/font-awesome.min.css"
                 ));
+            
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/flag-icon.min.css",
