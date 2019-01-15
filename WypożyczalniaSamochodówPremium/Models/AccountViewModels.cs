@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WypożyczalniaSamochodówPremium.Models
@@ -79,6 +80,12 @@ namespace WypożyczalniaSamochodówPremium.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public Guid UserHash { get; set; }
+
+        public string aaa { get; set; }
+
+        public string UserRoles { get; set; }
     }
 
     public class ResetPasswordViewModel

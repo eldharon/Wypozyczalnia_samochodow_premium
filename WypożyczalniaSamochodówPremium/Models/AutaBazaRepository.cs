@@ -21,6 +21,10 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             return (from autaBaza in entities.autaBaza select autaBaza.Marka).Distinct().OrderBy(a => a).ToList();
         }
+        public List<string> GetModeleForView(string make)
+        {
+            return (from autaBaza in entities.autaBaza where autaBaza.Marka == make select autaBaza.Model).OrderBy(m => m).ToList();
+        }
         public AutaBaza GetRecordById(int id)
         {
             return entities.autaBaza.SingleOrDefault(s => s.AutoId == id);
