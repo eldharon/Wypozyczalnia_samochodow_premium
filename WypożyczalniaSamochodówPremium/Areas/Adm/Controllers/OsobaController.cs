@@ -9,7 +9,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 {
     public class OsobaController : Controller
     {
-       OsobaRepository osobaRepository = new OsobaRepository();
+        OsobaRepository osobaRepository = new OsobaRepository();
         // GET: Adm/Wydarzenie
         public ActionResult Index()
         {
@@ -21,6 +21,53 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         {
             var wydarzenie = osobaRepository.GetOsobaById(id);
             return View(wydarzenie);
+        }
+
+        public ActionResult Create()
+        {
+            Osoba osoba = new Osoba();
+            return View(osoba);
+        }
+
+
+        [HttpPost]
+        public ActionResult Create(Osoba osoba, FormCollection collection)
+        {
+            if (ModelState.IsValid)
+            {
+                osobaRepository.Add(osoba);
+                osobaRepository.Save();
+
+                TempData["okMessage"] = "Osoba: " + osoba.Imie + " " + osoba.Nazwisko + " została dodana.";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["errorMessage"] = "Nie dodano osoby";
+                return View(osoba);
+            }
+        }
+
+        public ActionResult Edit(int id)
+        {
+            Osoba osoba = osobaRepository.GetOsobaById(id);
+            return View(osoba);
+        }
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            Osoba osoba = osobaRepository.GetOsobaById(id);
+            if (TryUpdateModel(osoba))
+            {
+                osobaRepository.Save();
+                TempData["okMessage"] = "Osoba: " + osoba.Imie+" "+osoba.Nazwisko + " została zapisana!";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["errorMessage"] = "Osoba: " + osoba.Imie + " " + osoba.Nazwisko + "nie została zapisana!";
+                return View(osoba);
+            }
         }
     }
 }

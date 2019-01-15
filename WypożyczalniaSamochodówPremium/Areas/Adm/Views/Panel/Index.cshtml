@@ -1,19 +1,39 @@
-﻿
+﻿@using WypożyczalniaSamochodówPremium.Helpers;
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Adm/Views/Shared/_Layout.cshtml";
 }
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <div class="animated fadeIn">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header"></div>
-                    <div class="card-body" style="text-align:center">
-                        <h2>Witamy w panelu administracyjnym!</h2>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header"><h2>Witamy w panelu administracyjnym!</h2></div>
+
+                <div class="card-body">
+                    <div class="form-horizontal">
+
+                        @if (ViewBag.displayMenu == "Yes")
+                        {
+                            <div class="form-group row">
+                                <div class="control-label col-md-2 font-weight-bold">
+                                    Zarejestruj pracownika
+                                </div>
+                                <div class="col-md-10">
+                                    <a href="/Account/RegisterADM" class="font-weight-bold"><i class="fa fa-plus-circle" style="font-size:20px;"> Dodaj</i></a>
+                                    @*@Html.IconActionLink("fa fa-plus-circle", "Dodaj pracownika", "RegisterADM", "Account", null, new { @class = "btn btn-primary" })*@
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <h5>  Witaj <strong>@ViewBag.Name</strong>!</h5>
+                        }
+
+
                     </div>
-                    <div class="card-footer"></div>
                 </div>
+                <div class="card-footer"></div>
             </div>
         </div>
     </div>

@@ -14,6 +14,13 @@ namespace WypożyczalniaSamochodówPremium
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+            "RegisterADM", // Pages route
+            "Account/RegisterADM", //URL with parameters
+            new { controller = "Account", action = "RegisterADM" },
+            new[] { "WypożyczalniaSamochodówPremium.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

@@ -89,6 +89,16 @@
                                     @Html.DisplayFor(model => model.Miasto)
                                 </div>
                             </div>
+                           
+                            <div class="row form-group line">
+
+                               <div class="control-label col-md-2 font-weight-bold">
+                                   Wypożyczenie
+                               </div>
+                                <div class="col-md-10">
+                                    @Html.IconActionLink("fa fa-plus-circle", "Dodaj wypożyczenie", "Create", "Wypozyczenie", new { id = Model.OsobaId }, new { @class = "btn btn-primary" })
+                                </div>
+                            </div>
 
                         </div>
                     </div>

@@ -112,7 +112,7 @@
             <PropertyRef Name="KlientFirmaId" />
           </Key>
           <Property Name="KlientFirmaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NazwaFrimy" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="NazwaFirmy" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="NIP" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="RabatFirma" Type="int" />
           <Property Name="AdresFirmy" Type="varchar" MaxLength="64" />
@@ -786,7 +786,6 @@
           <EntitySet Name="ImageDowodRejestracyjny" EntityType="WypozyczenieModel.ImageDowodRejestracyjny" />
           <EntitySet Name="ImagePaszport" EntityType="WypozyczenieModel.ImagePaszport" />
           <EntitySet Name="ImageSamochod" EntityType="WypozyczenieModel.ImageSamochod" />
-          <EntitySet Name="KlientFirma" EntityType="WypozyczenieModel.KlientFirma" />
           <EntitySet Name="KlientIndywidualny" EntityType="WypozyczenieModel.KlientIndywidualny" />
           <EntitySet Name="Opis" EntityType="WypozyczenieModel.Opis" />
           <EntitySet Name="Osoba" EntityType="WypozyczenieModel.Osoba" />
@@ -854,10 +853,6 @@
             <End Role="Samochod" EntitySet="Samochod" />
             <End Role="ImageSamochod" EntitySet="ImageSamochod" />
           </AssociationSet>
-          <AssociationSet Name="FK__KlientFir__Osoba__3D2915A8" Association="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8">
-            <End Role="Osoba" EntitySet="Osoba" />
-            <End Role="KlientFirma" EntitySet="KlientFirma" />
-          </AssociationSet>
           <AssociationSet Name="FK__KlientInd__Osoba__395884C4" Association="WypozyczenieModel.FK__KlientInd__Osoba__395884C4">
             <End Role="Osoba" EntitySet="Osoba" />
             <End Role="KlientIndywidualny" EntitySet="KlientIndywidualny" />
@@ -917,6 +912,11 @@
           <AssociationSet Name="FK__WypSam__Wypozycz__5BAD9CC8" Association="WypozyczenieModel.FK__WypSam__Wypozycz__5BAD9CC8">
             <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
             <End Role="WypSam" EntitySet="WypSam" />
+          </AssociationSet>
+          <EntitySet Name="KlientFirma" EntityType="WypozyczenieModel.KlientFirma" />
+          <AssociationSet Name="FK__KlientFir__Osoba__3D2915A8" Association="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="KlientFirma" EntitySet="KlientFirma" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Akcesoria">
@@ -1040,20 +1040,6 @@
           <NavigationProperty Name="Image" Relationship="WypozyczenieModel.FK_Image_ImageSamochod" FromRole="ImageSamochod" ToRole="Image" />
           <NavigationProperty Name="Samochod" Relationship="WypozyczenieModel.FK_Dowod_ImageSamochod" FromRole="ImageSamochod" ToRole="Samochod" />
         </EntityType>
-        <EntityType Name="KlientFirma">
-          <Key>
-            <PropertyRef Name="KlientFirmaId" />
-          </Key>
-          <Property Name="KlientFirmaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NazwaFrimy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="NIP" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="RabatFirma" Type="Int32" />
-          <Property Name="AdresFirmy" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="KodPocztowy" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="Miasto" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="OsobaId" Type="Int32" />
-          <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" FromRole="KlientFirma" ToRole="Osoba" />
-        </EntityType>
         <EntityType Name="KlientIndywidualny">
           <Key>
             <PropertyRef Name="KlientIndywidualnyId" />
@@ -1087,12 +1073,12 @@
           <Property Name="NrTelefonu" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="Miasto" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DowodOsobisty" Relationship="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821" FromRole="Osoba" ToRole="DowodOsobisty" />
-          <NavigationProperty Name="KlientFirma" Relationship="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" FromRole="Osoba" ToRole="KlientFirma" />
           <NavigationProperty Name="KlientIndywidualny" Relationship="WypozyczenieModel.FK__KlientInd__Osoba__395884C4" FromRole="Osoba" ToRole="KlientIndywidualny" />
           <NavigationProperty Name="Paszport" Relationship="WypozyczenieModel.FK__Paszport__OsobaI__65370702" FromRole="Osoba" ToRole="Paszport" />
           <NavigationProperty Name="Pracownik" Relationship="WypozyczenieModel.FK__Pracownik__Osoba__72910220" FromRole="Osoba" ToRole="Pracownik" />
           <NavigationProperty Name="PrawoJazdy" Relationship="WypozyczenieModel.FK__PrawoJazd__Osoba__634EBE90" FromRole="Osoba" ToRole="PrawoJazdy" />
           <NavigationProperty Name="Wypozyczenie" Relationship="WypozyczenieModel.FK__Wypozycze__Osoba__6CD828CA" FromRole="Osoba" ToRole="Wypozyczenie" />
+          <NavigationProperty Name="KlientFirma" Relationship="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" FromRole="Osoba" ToRole="KlientFirma" />
         </EntityType>
         <EntityType Name="Paszport">
           <Key>
@@ -1405,18 +1391,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KlientFir__Osoba__3D2915A8">
-          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="0..1" />
-          <End Type="WypozyczenieModel.KlientFirma" Role="KlientFirma" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoba">
-              <PropertyRef Name="OsobaId" />
-            </Principal>
-            <Dependent Role="KlientFirma">
-              <PropertyRef Name="OsobaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__KlientInd__Osoba__395884C4">
           <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="0..1" />
           <End Type="WypozyczenieModel.KlientIndywidualny" Role="KlientIndywidualny" Multiplicity="*" />
@@ -1597,6 +1571,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="KlientFirma">
+          <Key>
+            <PropertyRef Name="KlientFirmaId" />
+          </Key>
+          <Property Name="KlientFirmaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaFirmy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="NIP" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="RabatFirma" Type="Int32" />
+          <Property Name="AdresFirmy" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="KodPocztowy" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Miasto" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="OsobaId" Type="Int32" />
+          <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" FromRole="KlientFirma" ToRole="Osoba" />
+        </EntityType>
+        <Association Name="FK__KlientFir__Osoba__3D2915A8">
+          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="0..1" />
+          <End Type="WypozyczenieModel.KlientFirma" Role="KlientFirma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="OsobaId" />
+            </Principal>
+            <Dependent Role="KlientFirma">
+              <PropertyRef Name="OsobaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1713,20 +1713,6 @@
                 <ScalarProperty Name="SamochodId" ColumnName="SamochodId" />
                 <ScalarProperty Name="ImageId" ColumnName="ImageId" />
                 <ScalarProperty Name="ImageSamochodId" ColumnName="ImageSamochodId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KlientFirma">
-            <EntityTypeMapping TypeName="WypozyczenieModel.KlientFirma">
-              <MappingFragment StoreEntitySet="KlientFirma">
-                <ScalarProperty Name="OsobaId" ColumnName="OsobaId" />
-                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
-                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
-                <ScalarProperty Name="AdresFirmy" ColumnName="AdresFirmy" />
-                <ScalarProperty Name="RabatFirma" ColumnName="RabatFirma" />
-                <ScalarProperty Name="NIP" ColumnName="NIP" />
-                <ScalarProperty Name="NazwaFrimy" ColumnName="NazwaFrimy" />
-                <ScalarProperty Name="KlientFirmaId" ColumnName="KlientFirmaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1899,6 +1885,20 @@
                 <ScalarProperty Name="WypozyczenieId" ColumnName="WypozyczenieId" />
                 <ScalarProperty Name="SamochodId" ColumnName="SamochodId" />
                 <ScalarProperty Name="WypSamId" ColumnName="WypSamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KlientFirma">
+            <EntityTypeMapping TypeName="WypozyczenieModel.KlientFirma">
+              <MappingFragment StoreEntitySet="KlientFirma">
+                <ScalarProperty Name="OsobaId" ColumnName="OsobaId" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+                <ScalarProperty Name="AdresFirmy" ColumnName="AdresFirmy" />
+                <ScalarProperty Name="RabatFirma" ColumnName="RabatFirma" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+                <ScalarProperty Name="NazwaFirmy" ColumnName="NazwaFirmy" />
+                <ScalarProperty Name="KlientFirmaId" ColumnName="KlientFirmaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
