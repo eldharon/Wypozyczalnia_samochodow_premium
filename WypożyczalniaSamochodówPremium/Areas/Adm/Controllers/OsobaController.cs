@@ -69,5 +69,28 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 return View(osoba);
             }
         }
+
+        public ActionResult Delete(int id)
+        {
+            var osoba = osobaRepository.GetOsobaById(id);
+            return View(osoba);
+        }
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                var osoba = osobaRepository.GetOsobaById(id);
+                osobaRepository.Delete(osoba);
+                osobaRepository.Save();
+                TempData["okMessage"] = "Usunięto " + osoba.Imie + " " + osoba.Nazwisko + "!";
+                return RedirectToAction("Index", "Osoba");
+            }
+            catch (Exception e)
+            {
+                TempData["errorMessage"] = "Wystąpił błąd : " + e;
+                return RedirectToAction("Index", "Osoba");
+            }
+        }
     }
 }
