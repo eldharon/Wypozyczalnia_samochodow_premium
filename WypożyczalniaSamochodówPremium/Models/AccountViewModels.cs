@@ -82,6 +82,10 @@ namespace WypożyczalniaSamochodówPremium.Models
         public string ConfirmPassword { get; set; }
 
         public Guid UserHash { get; set; }
+
+        public string aaa { get; set; }
+
+        public string UserRoles { get; set; }
     }
 
     public class ResetPasswordViewModel
