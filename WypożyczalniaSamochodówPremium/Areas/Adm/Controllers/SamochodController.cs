@@ -15,6 +15,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         SamochodRepository samochodRepository = new SamochodRepository();
         AutaBazaRepository autaBazaRepository = new AutaBazaRepository();
         ModelRepository modelRepository = new ModelRepository();
+        WypozyczenieRepository wypozyczenieRepository = new WypozyczenieRepository();
         //ImageSamochodRepository imagesSamochodRepository = new ImageSamochodRepository();
 
 
@@ -298,7 +299,13 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             return View();
 
         }
-
-
+        public ActionResult CarsForAjax(DateTime from, DateTime to)
+        {
+            var model = new SamochodTimeRangeSelectionVM();
+            model.Samochod = wypozyczenieRepository.FindCarsForTimeRange(from, to);
+            model.ListaMarki = new SelectList(model.Samochod.Select(f => f.Marka).Distinct(), "Marka", "Marka");
+            model.ListaModele = new SelectList(model.Samochod.Select(f => f.Model), "Model", "Model");
+            return PartialView(model);
+        }
     }
 }

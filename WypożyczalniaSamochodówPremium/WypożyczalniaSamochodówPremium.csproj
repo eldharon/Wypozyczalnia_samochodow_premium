@@ -326,6 +326,7 @@
     <Compile Include="Models\SamochodSelectLists.cs" />
     <Compile Include="Models\SamochodValidation.cs" />
     <Compile Include="Models\SamochodViewModel.cs" />
+    <Compile Include="Models\SamochodTimeRangeSelectionVM.cs" />
     <Compile Include="Models\SamochodVM.cs" />
     <Compile Include="Models\Serwis.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
