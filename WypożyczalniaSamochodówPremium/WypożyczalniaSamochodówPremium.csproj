@@ -223,6 +223,7 @@
     </Compile>
     <Compile Include="Models\AutaBazaDTO.cs" />
     <Compile Include="Models\AutaBazaRepository.cs" />
+    <Compile Include="Models\AutaBazaSelectListDTO.cs" />
     <Compile Include="Models\Cennik.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -325,6 +326,7 @@
     <Compile Include="Models\SamochodSelectLists.cs" />
     <Compile Include="Models\SamochodValidation.cs" />
     <Compile Include="Models\SamochodViewModel.cs" />
+    <Compile Include="Models\SamochodVM.cs" />
     <Compile Include="Models\Serwis.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
