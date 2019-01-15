@@ -1,4 +1,4 @@
-﻿@model WypożyczalniaSamochodówPremium.Models.Samochod
+﻿@model WypożyczalniaSamochodówPremium.Models.SamochodVM
 @using WypożyczalniaSamochodówPremium.Helpers
 @{
     ViewBag.Title = "Samochody";
@@ -28,87 +28,86 @@
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.Marka, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Samochod.Marka, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.DropDownListFor(model => model.Marka, (IEnumerable<SelectListItem>)ViewData["Marka"], new { @class = "form-control" })                   
-                                    @Html.ValidationMessageFor(model => model.Marka, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.Samochod.Marka, Model.ListaMarki, new { @class = "form-control", @id = "Marka" })                   
+                                    @Html.ValidationMessageFor(model => model.Samochod.Marka, "", new { @class = "text-danger" })
                                 </div>
                                 <a data-toggle="modal" data-remote="@Url.Action("Create", "AutaBaza", null)" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj</a>
                             </div>
 
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Samochod.Model, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.DropDownListFor(model => model.Model, (IEnumerable<SelectListItem>)ViewData["Model"], htmlAttributes: new { @class = "form-control", @id = "Model" })
-                                    @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.Samochod.Model, Model.ListaModele, new { @class = "form-control", @id = "Model"})
+                                    @Html.ValidationMessageFor(model => model.Samochod.Model, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.Wersja, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Samochod.Wersja, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.TextBoxFor(model => model.Wersja, new { @class = "form-control" })
+                                    @Html.TextBoxFor(model => model.Samochod.Wersja, new { @class = "form-control" })
 
-                                    @Html.ValidationMessageFor(model => model.Wersja)
+                                    @Html.ValidationMessageFor(model => model.Samochod.Wersja)
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.RokProdukcji, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Samochod.RokProdukcji, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.EditorFor(model => model.RokProdukcji, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.RokProdukcji)
+                                    @Html.EditorFor(model => model.Samochod.RokProdukcji, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Samochod.RokProdukcji)
                                    
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.RodzajSilnika, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Samochod.RodzajSilnika, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
                                     @Html.DropDownList("RodzajSilnika", (IEnumerable<SelectListItem>)ViewData["RodzajSilnika"], new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.RodzajSilnika)
+                                    @Html.ValidationMessageFor(model => model.Samochod.RodzajSilnika)
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.PojemnoscSilnika, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Samochod.PojemnoscSilnika, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.TextBoxFor(model => model.PojemnoscSilnika, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.PojemnoscSilnika)
+                                    @Html.TextBoxFor(model => model.Samochod.PojemnoscSilnika, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Samochod.PojemnoscSilnika)
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.SkrzyniaBiegow, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Samochod.SkrzyniaBiegow, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
                                     @Html.DropDownList("SkrzyniaBiegow", (IEnumerable<SelectListItem>)ViewData["SkrzyniaBiegow"],  new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.SkrzyniaBiegow)
+                                    @Html.ValidationMessageFor(model => model.Samochod.SkrzyniaBiegow)
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.LiczbaDrzwi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Samochod.LiczbaDrzwi, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
                                     @Html.DropDownList("LiczbaDrzwi", (IEnumerable<SelectListItem>)ViewData["LiczbaDrzwi"],  new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.LiczbaDrzwi)
+                                    @Html.ValidationMessageFor(model => model.Samochod.LiczbaDrzwi)
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.Kolor, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Samochod.Kolor, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.TextBoxFor(model => model.Kolor, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Kolor)
+                                    @Html.TextBoxFor(model => model.Samochod.Kolor, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Samochod.Kolor)
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.Przebieg, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Samochod.Przebieg, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-6">
-                                    @Html.EditorFor(model => model.Przebieg, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Przebieg)
+                                    @Html.EditorFor(model => model.Samochod.Przebieg, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Samochod.Przebieg)
                                 </div>
                             </div>
 

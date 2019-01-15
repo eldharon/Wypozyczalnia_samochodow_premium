@@ -95,11 +95,21 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
         public ActionResult Edit(int id)
         {
-            var MarkiSelectList = autaBazaRepository.GetAllMarki().Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
-            ViewData["Marka"] = MarkiSelectList;
+            var samochod = samochodRepository.GetSamochodById(id);
+            var autoVM = new SamochodVM();
+            autoVM.Samochod = samochod;
+            List<AutaBazaSelectListDTO> LisMar = new List<AutaBazaSelectListDTO>();
+            foreach (var item in autaBazaRepository.GetAllMarki())
+            {
+                AutaBazaSelectListDTO a = new AutaBazaSelectListDTO();
+                a.Marka = item;
+                LisMar.Add(a);
+            } 
+            var MarkiList = new SelectList(LisMar, "Marka", "Marka");
+            autoVM.ListaMarki = MarkiList;
 
-            var ModeleSelectList = new List<string>().Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
-            ViewData["Model"] = ModeleSelectList;
+            var ModeleList = new SelectList(autaBazaRepository.GetModelsForMake(samochod.Marka), "Model", "Model");
+            autoVM.ListaModele = ModeleList;
 
             var RodzajSkrzyniSelectList = SamochodSelectLists.RodzajSkrzyniList.Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
             ViewData["SkrzyniaBiegow"] = RodzajSkrzyniSelectList;
@@ -111,20 +121,22 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             ViewData["RodzajSilnika"] = RodzajSilnikaSelectList;
 
 
-            var samochod = samochodRepository.GetSamochodById(id);
+            ViewBag.Marki = samochod.Model;
+            ViewBag.Modele = samochod.Marka;
 
-            return View(samochod);
+            return View(autoVM);
         }
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            var MarkiSelectList = autaBazaRepository.GetAllMarki().Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
-            ViewData["Marka"] = MarkiSelectList;
+            var samochod = samochodRepository.GetSamochodById(id);
+            //var MarkiSelectList = autaBazaRepository.GetAllMarki().Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
+            //ViewData["Marka"] = MarkiSelectList;
 
-            var ModeleSelectList = new List<string>().Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
-            ViewData["Model"] = ModeleSelectList;
-
+            //var ModeleSelectList = new List<string>().Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
+            //ViewData["Model"] = ModeleSelectList;
+            
             var RodzajSkrzyniSelectList = SamochodSelectLists.RodzajSkrzyniList.Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
             ViewData["SkrzyniaBiegow"] = RodzajSkrzyniSelectList;
 
@@ -134,7 +146,6 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             var RodzajSilnikaSelectList = SamochodSelectLists.PaliwaList.Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
             ViewData["RodzajSilnika"] = RodzajSilnikaSelectList;
 
-            var samochod = samochodRepository.GetSamochodById(id);
 
             if(TryUpdateModel(samochod))
             {
