@@ -11,10 +11,11 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
     {
         WypozyczenieRepository wypozyczenieRepository = new WypozyczenieRepository();
         WydarzenieRepository wydarzenieRepository = new WydarzenieRepository();
+        WypSamRepository WypSamRepository = new WypSamRepository();
         // GET: Adm/Wydarzenie
         public ActionResult Index()
         {
-            var model = wypozyczenieRepository.FindAllWypyczenia();
+            var model = wypozyczenieRepository.FindAllWypozyczenia();
             return View(model);
         }
 
@@ -29,20 +30,23 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             List<SelectListItem> wydarzenieList = new SelectList(wydarzenieRepository.FindAllWydarzenie(), "WydarzenieId", "NazwaWydarzenia").ToList();
             ViewData["wydarzenieList"] = wydarzenieList;
 
-            Wypozyczenie wypozyczenie = new Wypozyczenie();
-            wypozyczenie.OsobaId = id;
-            return View(wypozyczenie);
+            WypozyczenieVM wyp = new WypozyczenieVM();
+            wyp.wypozyczenie.OsobaId = id;
+            return View(wyp);
         }
 
         [HttpPost]
-        public ActionResult Create(Wypozyczenie wypozyczenie, FormCollection collection)
+        public ActionResult Create(WypozyczenieVM wyp, FormCollection collection)
         {
+            new 
             List<SelectListItem> wydarzenieList = new SelectList(wydarzenieRepository.FindAllWydarzenie(), "WydarzenieId", "NazwaWydarzenia").ToList();
             ViewData["wydarzenieList"] = wydarzenieList;
 
             if (ModelState.IsValid)
             {
-                wypozyczenieRepository.Add(wypozyczenie);
+
+                wypSamRepository.Add
+                wypozyczenieRepository.Add(wyp.wypozyczenie);
                 wypozyczenieRepository.Save();
 
                 TempData["okMessage"] = "Wypożyczenie zostało dodane.";
@@ -51,7 +55,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             else
             {
                 TempData["errorMessage"] = "Nie dodano osoby";
-                return View(wypozyczenie);
+                return View(wyp);
             }
         }
     }

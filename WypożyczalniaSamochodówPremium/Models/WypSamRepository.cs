@@ -13,6 +13,14 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             return entities.wypozyczeniaSamochody;
         }
+        public IQueryable<WypSam> FindWypSamForIdWypozyczenie(int id)
+        {
+            return entities.wypozyczeniaSamochody.Where(x => x.WypozyczenieId == id);
+        }
+        public WypSam GetWypSamById(int id)
+        {
+            return entities.wypozyczeniaSamochody.SingleOrDefault(x => x.WypSamId == id);
+        }
 
         public void Add(WypSam wypSam)
         {
