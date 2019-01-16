@@ -4101,6 +4101,7 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Account\RegisterADM.cshtml" />
+    <Content Include="Views\Shared\_LayoutScript.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Adm\Models\" />
