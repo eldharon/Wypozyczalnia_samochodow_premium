@@ -3845,6 +3845,8 @@
     <Content Include="Content\Unify\slick-carousel\slick\slick.js" />
     <Content Include="Content\Unify\slick-carousel\slick\slick.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\Simple-Line-Icons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Kłeri_po_image%283%29.sql" />
     <Content Include="Models\WypozyczenieModel.Context.tt">
@@ -4060,6 +4062,15 @@
     <Content Include="Content\Unify\slick-carousel\slick\slick-theme.scss" />
     <Content Include="Content\Unify\slick-carousel\slick\slick.less" />
     <Content Include="Content\Unify\slick-carousel\slick\slick.scss" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\Simple-Line-Icons.eot" />
+    <Content Include="fonts\Simple-Line-Icons.ttf" />
+    <Content Include="fonts\Simple-Line-Icons.woff" />
+    <Content Include="fonts\Simple-Line-Icons.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
