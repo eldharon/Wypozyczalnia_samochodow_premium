@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WypożyczalniaSamochodówPremium.Models.Opis>
+@using WypożyczalniaSamochodówPremium.Helpers;
+<div id="OpisTarget">
+    @if (Model.Count() > 0)
+    {
+
+        <h3>
+            Opisy:
+        </h3>
+        <hr />
+        <div class="row form-group line">
+            <div class="col-md-5">
+                <b>Opis Ogólny</b>
+            </div>
+            <div class="col-md-5">
+                <b>Opis Wyposażenia</b>
+            </div>
+        </div>
+
+
+        foreach (var item in Model)
+        {
+            <div class="row form-group line">
+                <div class="col-md-5">
+                    @item.OpisOgolny
+                </div>
+                <div class="col-md-5">
+                    @item.Wyposazenie
+                </div>
+                <div class="col-md-2">
+                    @*@Html.IconActionLink("fa fa-trash", "Usuń", "Delete", "Opis", new { id = item.OpisId }, new { data_toggle = "modal", data_target = "#modal", @class = "btn btn-sm btn-danger" })*@
+                    @Html.IconActionLink("fa fa-trash", "Usuń", "Delete", "Opis", new { id = item.OpisId }, new { @class = "dropdown-item" })
+                    @*<a data-toggle="modal" data-remote="@Url.Action("DeleteSamochodAjax", "WypSam", new { id = item.WypSamId }, null)" href="#" data-target="#modal"><i class="fa fa-trash-o"></i> Usuń</a>*@
+                </div>
+            </div>
+
+        }
+        <hr />
+    }
+    else
+    {
+        <div>
+            Brak opisów....
+        </div>
+    }
+</div>
