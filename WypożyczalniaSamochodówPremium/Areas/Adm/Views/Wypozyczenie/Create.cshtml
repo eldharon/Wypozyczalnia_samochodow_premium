@@ -12,10 +12,10 @@
                     <i class="fa fa-male"></i> Dodaj Wypożyczenie
                 </div>
                 @{Html.EnableClientValidation();}
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Create", "Wypozyczenie", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <div class="card-body">
-                        <div class="card-body">
+                        <div class="card-body" id="newajax">
                             <div id="autaBazaLoading" style="display:none; text-align:center; position:relative;">
                                 <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                             </div>
@@ -29,7 +29,7 @@
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.DataWypozyczenia, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.DataWypozyczenia, new { @class = "form-control", @id = "from" })
+                                    @Html.EditorFor(model => model.DataWypozyczenia, new { @class = "form-control"})
 
                                     @Html.ValidationMessageFor(model => model.DataWypozyczenia)
                                 </div>
@@ -39,12 +39,12 @@
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.DataZwrotu, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-4">
-                                    @Html.EditorFor(model => model.DataZwrotu, new { @class = "form-control", @id = "to" })
+                                    @Html.EditorFor(model => model.DataZwrotu, new { @class = "form-control" })
                                      
                                     @Html.ValidationMessageFor(model => model.DataZwrotu)
                                 </div>
                                 <div class="col-md-5">
-                                    <a data-toggle="modal" href='@Url.Action("CarsForAjax", "Samochod")' onclick='navigate(this.href);' data-target="#modal"><i class="fa fa-plus-circle"></i>Wybierz auto</a>
+                                    <a data-toggle="modal" data-remote="false" href='@Url.Action("CarsForAjax", "Samochod", null)' onclick='navigate(this.href);' data-target="#modal"><i class="fa fa-plus-circle"></i>Wybierz auto</a>
                                 </div>
                             </div>
 
@@ -115,13 +115,25 @@
 
     function navigate(target)
     {
-        $.data(target, { from: $("#from").val(), to: $("#to").val() });
+        var from = document.getElementById('DataWypozyczenia').value;
+        var to = document.getElementById('DataZwrotu').value;
+
+        //Perform your navigation
+        window.location.href = target + "/" + from + '/' + to;
     }
 
     $('#modal').on('show.bs.modal', function (e)
     {
         var button = $(e.relatedTarget);
-        $(this).find('.modal-body').load(button.attr("href"));
+        //$(window).on('load', function () { ... });
+        var url = button.attr("href");
+        var modal = $(this);
+        modal.find('.modal-content').load(url);
+
+
+
+
+            //on('load', function () { button.attr("action", url) });
 
     });
     function HideModal() {

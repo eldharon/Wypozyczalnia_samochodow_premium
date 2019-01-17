@@ -33,6 +33,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             var samochod = samochodRepository.GetSamochodById(id);
 
             return View(samochod);
+            
         }
 
         public ActionResult Create()
