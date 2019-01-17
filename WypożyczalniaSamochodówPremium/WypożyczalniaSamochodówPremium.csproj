@@ -212,6 +212,7 @@
     <Compile Include="Areas\Adm\AdmAreaRegistration.cs" />
     <Compile Include="Areas\Adm\Controllers\AutaBazaController.cs" />
     <Compile Include="Areas\Adm\Controllers\KlientFirmaController.cs" />
+    <Compile Include="Areas\Adm\Controllers\OpisController.cs" />
     <Compile Include="Areas\Adm\Controllers\OsobaController.cs" />
     <Compile Include="Areas\Adm\Controllers\PanelController.cs" />
     <Compile Include="Areas\Adm\Controllers\PracownikController.cs" />
@@ -4071,6 +4072,10 @@
     <Content Include="fonts\Simple-Line-Icons.ttf" />
     <Content Include="fonts\Simple-Line-Icons.woff" />
     <Content Include="fonts\Simple-Line-Icons.woff2" />
+    <Content Include="Areas\Adm\Views\Opis\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Opis\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Opis\DisplayOpisy.cshtml" />
+    <Content Include="Areas\Adm\Views\Opis\Delete.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

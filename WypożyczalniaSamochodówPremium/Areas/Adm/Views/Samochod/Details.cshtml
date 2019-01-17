@@ -13,91 +13,102 @@
                 <div class="card-header">
                     <i class="fa fa-car"></i> Szczegóły samochodu
                 </div>
-                    <div class="card-body">
-                        <div id="autaBazaLoading" style="display:none; text-align:center; position:relative;">
-                            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                        </div>
-                        <div class="form-horizontal">
-                            <h4>Samochód</h4>
-                            <hr />
-                            <div class="form-group row ">
-                                @Html.LabelFor(model => model.Marka, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-6">
-                                    @Html.DisplayFor(model => model.Marka)
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-6">
-                                    @Html.DisplayFor(model => model.Model)
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.Wersja, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-6">
-                                    @Html.DisplayFor(model => model.Wersja)
-
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.RokProdukcji, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-6">
-                                    @Html.DisplayFor(model => model.RokProdukcji)
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.RodzajSilnika, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-6">
-                                    @Html.DisplayFor(model => model.RodzajSilnika)
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.PojemnoscSilnika, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-6">
-                                    @Html.DisplayFor(model => model.PojemnoscSilnika)
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.SkrzyniaBiegow, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-6">
-                                    @Html.DisplayFor(model => model.SkrzyniaBiegow)
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.LiczbaDrzwi, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-6">
-                                    @Html.DisplayFor(model => model.LiczbaDrzwi)
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.Kolor, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-6">
-                                    @Html.DisplayFor(model => model.Kolor)
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.Przebieg, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-6">
-                                    @Html.DisplayFor(model => model.Przebieg)
-                                </div>
-                            </div>
-
-
-
-                        </div>
+                <div class="card-body">
+                    <div id="autaBazaLoading" style="display:none; text-align:center; position:relative;">
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                     </div>
-                    <div class="card-footer">
-                        @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" }) &nbsp; <a data-toggle="modal" data-remote="@Url.Action("AddImage", "Samochod", Model.SamochodId)" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie</a>
+                    <div class="form-horizontal">
+                        <h4>Samochód</h4>
+                        <hr />
+                        <div class="form-group row ">
+                            @Html.LabelFor(model => model.Marka, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            <div class="col-md-6">
+                                @Html.DisplayFor(model => model.Marka)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            <div class="col-md-6">
+                                @Html.DisplayFor(model => model.Model)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Wersja, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            <div class="col-md-6">
+                                @Html.DisplayFor(model => model.Wersja)
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.RokProdukcji, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            <div class="col-md-6">
+                                @Html.DisplayFor(model => model.RokProdukcji)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.RodzajSilnika, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            <div class="col-md-6">
+                                @Html.DisplayFor(model => model.RodzajSilnika)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.PojemnoscSilnika, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            <div class="col-md-6">
+                                @Html.DisplayFor(model => model.PojemnoscSilnika)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.SkrzyniaBiegow, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            <div class="col-md-6">
+                                @Html.DisplayFor(model => model.SkrzyniaBiegow)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.LiczbaDrzwi, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            <div class="col-md-6">
+                                @Html.DisplayFor(model => model.LiczbaDrzwi)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Kolor, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            <div class="col-md-6">
+                                @Html.DisplayFor(model => model.Kolor)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Przebieg, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            <div class="col-md-6">
+                                @Html.DisplayFor(model => model.Przebieg)
+                            </div>
+                        </div>
+
+
+
+                        @*@Html.IconActionLink("fa fa-plus-circle", "Opisy", "Index", "Opis", new { id = Model.SamochodId }, new { @class = "btn btn-primary" })*@
+
+                        <div class="form-group row">
+                            @if (Model.Opis.Count()>0)
+                            {
+                                @Html.LabelFor(model => model.Opis.ElementAt(0).OpisOgolny, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            }
+                        </div>
+                        @Html.Action("DisplayOpisy", "Opis", new { id = Model.SamochodId })
+
                     </div>
+                </div>
+                <div class="card-footer">
+                    @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" }) &nbsp; <a data-toggle="modal" data-remote="@Url.Action("AddImage", "Samochod", Model.SamochodId)" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie</a>
+                    @Html.IconActionLink("fa fa-plus-circle", "Dodaj Opis", "Create", "Opis", new { id = Model.SamochodId }, new { @class = "btn btn-primary", @style = "float: right" })
+                </div>
             </div>
         </div>
     </div>

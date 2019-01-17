@@ -19,8 +19,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
         public ActionResult Details(int id)
         {
-            var wydarzenie = osobaRepository.GetOsobaById(id);
-            return View(wydarzenie);
+            var osoba = osobaRepository.GetOsobaById(id);
+            return View(osoba);
         }
 
         public ActionResult Create()

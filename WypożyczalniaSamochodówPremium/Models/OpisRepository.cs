@@ -29,5 +29,9 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             entities.SaveChanges();
         }
+        public IQueryable<Opis> GetOpisForSamochodId(int id)
+        {
+            return entities.opisy.Where(x => x.SamochodId == id);
+        }
     }
 }
