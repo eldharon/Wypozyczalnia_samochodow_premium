@@ -277,11 +277,11 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             return null;
 
         }
-        public ActionResult PopulateModeleDropdownAJAX(string marka, DateTime startDate, DateTime endDate)
+        public ActionResult PopulateModeleDropdownAJAX(string marka, string startDate, string endDate)
         {
             if (!string.IsNullOrWhiteSpace(marka))
             {
-                return Json(wypozyczenieRepository.FindCarsForTimeRange(startDate, endDate).Select(f => f.Model), JsonRequestBehavior.AllowGet);
+                return Json(wypozyczenieRepository.FindCarsForTimeRange(Convert.ToDateTime(startDate), Convert.ToDateTime(endDate)).Select(f => f.Model), JsonRequestBehavior.AllowGet);
             }
             return null;
 
@@ -319,16 +319,12 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             model.from = from;
             model.to = to;
             //wypozyczenieRepository.FindCarsForTimeRange(from, to).Select(f => f.Model)
-            return PartialView("CarsForAjax", model);
+            return PartialView(model);
         }
         [HttpPost]
         public ActionResult CarsForAjax(SamochodTimeRangeSelectionVM model, FormCollection collection)
         {
-            var mod = new WypozyczenieVM();
-            mod.wypozyczenie.DataWypozyczenia = model.from;
-            mod.wypozyczenie.DataZwrotu = model.to;
-            mod.samochod = model.Samochod;
-            return RedirectToAction("Create", "Wypozyczenie", model);
+            return RedirectToAction("Create", "Wypozyczenie", null);
         }
 
         public ActionResult SamochodyForWypozyczenie(int id)

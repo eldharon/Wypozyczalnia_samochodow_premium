@@ -4081,8 +4081,8 @@
     <Content Include="Areas\Adm\Views\Opis\DisplayOpisy.cshtml" />
     <Content Include="Areas\Adm\Views\Opis\Delete.cshtml" />
     <Content Include="Areas\Adm\Views\Osoba\Delete.cshtml" />
-    <Content Include="Areas\Adm\Views\Samochod\CarsForAjax.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\_SamochodyForWypozyczenie.cshtml" />
+    <Content Include="Areas\Adm\Views\Samochod\CarsForAjax.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
