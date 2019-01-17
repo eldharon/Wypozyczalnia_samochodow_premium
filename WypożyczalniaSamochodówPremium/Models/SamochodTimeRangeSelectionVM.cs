@@ -8,7 +8,9 @@ namespace WypożyczalniaSamochodówPremium.Models
 {
     public class SamochodTimeRangeSelectionVM
     {
-        public IEnumerable<Samochod> Samochod { get; set; }
+        public DateTime from { get; set; }
+        public DateTime to { get; set; }
+        public Samochod Samochod { get; set; }
         public SelectList ListaMarki { get; set; }
         public SelectList ListaModele { get; set; }
     }

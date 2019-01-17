@@ -245,6 +245,7 @@
     </Compile>
     <Compile Include="Models\CennikRepository.cs" />
     <Compile Include="Models\CennikValidation.cs" />
+    <Compile Include="Models\CustomDataAnnotations.cs" />
     <Compile Include="Models\Dostepnosc.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -379,6 +380,7 @@
     </Compile>
     <Compile Include="Models\WypozyczenieRepository.cs" />
     <Compile Include="Models\WypozyczenieValidation.cs" />
+    <Compile Include="Models\WypozyczenieVM.cs" />
     <Compile Include="Models\WypSam.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>

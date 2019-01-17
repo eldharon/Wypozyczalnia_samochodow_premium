@@ -25,7 +25,7 @@ namespace WypożyczalniaSamochodówPremium.Models
                 (wypsam, sam) => new { WypSam = wypsam, Samochod = sam }).Select(x => x.Samochod);
             return entities.samochody.Except(temp);
         }
-        public IQueryable<Wypozyczenie> FindAllWypyczenia()
+        public IQueryable<Wypozyczenie> FindAllWypozyczenia()
         {
             return entities.wypozyczenia;
         }
