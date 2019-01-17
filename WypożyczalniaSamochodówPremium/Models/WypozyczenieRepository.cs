@@ -8,8 +8,24 @@ namespace WypożyczalniaSamochodówPremium.Models
     public class WypozyczenieRepository
     {
         WypozyczenieEntities entities = new WypozyczenieEntities();
-
-        public IQueryable<Wypozyczenie> FindAllWypyczenia()
+        public IEnumerable<Samochod> FindCarsForTimeRange(DateTime from, DateTime to)
+        {
+            var temp = entities.wypozyczenia.Where(x => (x.DataWypozyczenia <= from && x.DataZwrotu >= to)
+           || (x.DataWypozyczenia >= from && x.DataZwrotu <= to)
+           || (x.DataWypozyczenia < from && x.DataZwrotu <= to && x.DataZwrotu > from)
+           || (x.DataWypozyczenia >= from && x.DataZwrotu >= to && x.DataWypozyczenia <= from))
+          .Join(entities.wypozyczeniaSamochody,
+                wyp => wyp.WypozyczenieId,
+                wypsam => wypsam.WypozyczenieId,
+                (wyp, wypsam) => new { Wypozyczenie = wyp, WypSam = wypsam })
+                .Select(x => x.WypSam)
+          .Join(entities.samochody,
+                wypsam => wypsam.SamochodId,
+                sam => sam.SamochodId,
+                (wypsam, sam) => new { WypSam = wypsam, Samochod = sam }).Select(x => x.Samochod);
+            return entities.samochody.Except(temp);
+        }
+        public IQueryable<Wypozyczenie> FindAllWypozyczenia()
         {
             return entities.wypozyczenia;
         }

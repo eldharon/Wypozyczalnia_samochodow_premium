@@ -8,7 +8,8 @@ namespace WypożyczalniaSamochodówPremium.Models
     public class WydarzenieRepository
     {
         WypozyczenieEntities entities = new WypozyczenieEntities();
-
+        
+        
         public IQueryable<Wydarzenie> FindAllWydarzenie()
         {
             return entities.wydarzenia;

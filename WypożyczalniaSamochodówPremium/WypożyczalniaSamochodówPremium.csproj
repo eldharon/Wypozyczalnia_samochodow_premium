@@ -246,6 +246,7 @@
     </Compile>
     <Compile Include="Models\CennikRepository.cs" />
     <Compile Include="Models\CennikValidation.cs" />
+    <Compile Include="Models\CustomDataAnnotations.cs" />
     <Compile Include="Models\Dostepnosc.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -343,6 +344,7 @@
     <Compile Include="Models\SamochodSelectLists.cs" />
     <Compile Include="Models\SamochodValidation.cs" />
     <Compile Include="Models\SamochodViewModel.cs" />
+    <Compile Include="Models\SamochodTimeRangeSelectionVM.cs" />
     <Compile Include="Models\SamochodVM.cs" />
     <Compile Include="Models\Serwis.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
@@ -379,6 +381,7 @@
     </Compile>
     <Compile Include="Models\WypozyczenieRepository.cs" />
     <Compile Include="Models\WypozyczenieValidation.cs" />
+    <Compile Include="Models\WypozyczenieVM.cs" />
     <Compile Include="Models\WypSam.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -406,6 +409,7 @@
     <Content Include="Content\flag-icon.min.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\hs-icons.svg" />
+    <Content Include="Content\Graphics\HomeLogo.jpg" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\editor.png" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\imagebrowser.png" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\indeterminate.gif" />
@@ -4076,6 +4080,7 @@
     <Content Include="Areas\Adm\Views\Opis\Index.cshtml" />
     <Content Include="Areas\Adm\Views\Opis\DisplayOpisy.cshtml" />
     <Content Include="Areas\Adm\Views\Opis\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Osoba\Delete.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -4123,8 +4128,6 @@
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />

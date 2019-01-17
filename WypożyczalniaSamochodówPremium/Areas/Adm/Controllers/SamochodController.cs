@@ -15,6 +15,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         SamochodRepository samochodRepository = new SamochodRepository();
         AutaBazaRepository autaBazaRepository = new AutaBazaRepository();
         ModelRepository modelRepository = new ModelRepository();
+        WypozyczenieRepository wypozyczenieRepository = new WypozyczenieRepository();
+        WypSamRepository wypSamRepository = new WypSamRepository();
         //ImageSamochodRepository imagesSamochodRepository = new ImageSamochodRepository();
 
 
@@ -274,6 +276,16 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             return null;
 
         }
+        public ActionResult PopulateModeleDropdownAJAX(string marka, DateTime from, DateTime to)
+        {
+            if (!string.IsNullOrWhiteSpace(marka))
+            {
+                return Json(wypozyczenieRepository.FindCarsForTimeRange(from, to).Select(f => f.Model), JsonRequestBehavior.AllowGet);
+            }
+            return null;
+
+        }
+
         public ActionResult AddImage(int id)
         {
             ViewBag["id"] = id;
@@ -298,7 +310,36 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             return View();
 
         }
+        public ActionResult CarsForAjax(DateTime from, DateTime to)
+        {
+            var model = new SamochodTimeRangeSelectionVM();
+            model.ListaMarki = new SelectList(wypozyczenieRepository.FindCarsForTimeRange(from, to).GroupBy(x=>x.Marka).Select(group => group.First()), "Marka", "Marka");
+            model.ListaModele = new SelectList(new List<Samochod>(), "Model", "Model");
+            model.from = from;
+            model.to = to;
+            //wypozyczenieRepository.FindCarsForTimeRange(from, to).Select(f => f.Model)
+            return PartialView("CarsForAjax", model);
+        }
+        [HttpPost]
+        public ActionResult CarsForAjax(SamochodTimeRangeSelectionVM model, FormCollection collection)
+        {
+            var mod = new WypozyczenieVM();
+            mod.wypozyczenie.DataWypozyczenia = model.from;
+            mod.wypozyczenie.DataZwrotu = model.to;
+            mod.samochod = model.Samochod;
+            return RedirectToAction("Create", "Wypozyczenie", model);
+        }
 
-
+        public ActionResult SamochodyForWypozyczenie(int id)
+        {
+            var model = new WypSam();           
+            var list = wypSamRepository.FindWypSamForIdWypozyczenie(id);
+            if (list != null)
+            {
+                model.WypSamList = list;
+            }
+            return PartialView("_SamochodyForWypozyczenie", model);
+        }
+        
     }
 }

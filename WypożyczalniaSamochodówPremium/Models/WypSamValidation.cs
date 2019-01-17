@@ -10,6 +10,7 @@ namespace WypożyczalniaSamochodówPremium.Models
     [MetadataType(typeof(WypSamValidation))]
     public partial class WypSam
     {
+        public IEnumerable<WypSam> WypSamList { get; set; }
     }
 
     public class WypSamValidation
