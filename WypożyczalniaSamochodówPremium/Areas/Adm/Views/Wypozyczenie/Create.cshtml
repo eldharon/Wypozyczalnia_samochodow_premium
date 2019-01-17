@@ -44,7 +44,7 @@
                                     @Html.ValidationMessageFor(model => model.DataZwrotu)
                                 </div>
                                 <div class="col-md-5">
-                                    <a data-toggle="modal" data-remote="@Url.Action("CarsForAjax", "Samochod", new { from = Model.DataWypozyczenia, to = Model.DataZwrotu })" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i>Wybierz auto</a>
+                                    <a data-toggle="modal" href='@Url.Action("CarsForAjax", "Samochod")' onclick='navigate(this.href);' data-target="#modal"><i class="fa fa-plus-circle"></i>Wybierz auto</a>
                                 </div>
                             </div>
 
@@ -104,22 +104,24 @@
 </div>
 <script type="text/javascript">
 
+    
+
+
     @*@Url.Action("CarsForAjax", "Samochod", new { from = Model.DataWypozyczenia, to = Model.DataZwrotu })*@
-    $("#from").change(function () {
+    @*$("#from").change(function () {
     var startDate = $("#from").val();
     $.get('@Url.Action("CarsForAjax", "Samochod")', { from: startDate });
-  });
+  });*@
 
-    $('#modal').on('show.bs.modal', function (e) {
+    function navigate(target)
+    {
+        $.data(target, { from: $("#from").val(), to: $("#to").val() });
+    }
 
+    $('#modal').on('show.bs.modal', function (e)
+    {
         var button = $(e.relatedTarget);
-        var modal = $(this);
-
-        // load content from HTML string
-        //modal.find('.modal-body').html("Nice modal body baby...");
-
-        // or, load content from value of data-remote url
-        modal.find('.modal-content').load(button.data("remote"));
+        $(this).find('.modal-body').load(button.attr("href"));
 
     });
     function HideModal() {
