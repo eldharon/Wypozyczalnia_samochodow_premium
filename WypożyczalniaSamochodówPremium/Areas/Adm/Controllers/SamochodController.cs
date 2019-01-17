@@ -276,11 +276,11 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             return null;
 
         }
-        public ActionResult PopulateModeleDropdownAJAX(string marka, DateTime from, DateTime to)
+        public ActionResult PopulateModeleDropdownAJAX(string marka, DateTime startDate, DateTime endDate)
         {
             if (!string.IsNullOrWhiteSpace(marka))
             {
-                return Json(wypozyczenieRepository.FindCarsForTimeRange(from, to).Select(f => f.Model), JsonRequestBehavior.AllowGet);
+                return Json(wypozyczenieRepository.FindCarsForTimeRange(startDate, endDate).Select(f => f.Model), JsonRequestBehavior.AllowGet);
             }
             return null;
 

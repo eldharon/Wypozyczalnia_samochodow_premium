@@ -1,4 +1,4 @@
-﻿@model WypożyczalniaSamochodówPremium.Models.WypozyczenieVM
+﻿@model WypożyczalniaSamochodówPremium.Models.Wypozyczenie
 @{
     ViewBag.Title = "Create";
     Layout = "~/Areas/Adm/Views/Shared/_LayoutScript.cshtml";
@@ -40,7 +40,7 @@
                                 @Html.LabelFor(model => model.DataZwrotu, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-4">
                                     @Html.EditorFor(model => model.DataZwrotu, new { @class = "form-control", @id = "to" })
-
+                                     
                                     @Html.ValidationMessageFor(model => model.DataZwrotu)
                                 </div>
                                 <div class="col-md-5">
@@ -104,6 +104,12 @@
 </div>
 <script type="text/javascript">
 
+    @*@Url.Action("CarsForAjax", "Samochod", new { from = Model.DataWypozyczenia, to = Model.DataZwrotu })*@
+    $("#from").change(function () {
+    var startDate = $("#from").val();
+    $.get('@Url.Action("CarsForAjax", "Samochod")', { from: startDate });
+  });
+
     $('#modal').on('show.bs.modal', function (e) {
 
         var button = $(e.relatedTarget);
@@ -151,7 +157,7 @@
                 var to = $("#to").val();
                 modeleSelect.empty();
         if (selectedMarka != null && selectedMarka != '') {
-                    $.getJSON('@Url.Action("PopulateModeleDropdownAJAX")', { marka : selectedMarka, from : from, to : to }, function (modele) {
+            $.getJSON('@Url.Action("PopulateModeleDropdownAJAX")', { marka: selectedMarka, startDate : from, endDate : to }, function (modele) {
                         if (modele != null && !jQuery.isEmptyObject(modele))
                         {
                             modeleSelect.append($('<option/>', {
@@ -167,5 +173,6 @@
                         };
                     });
                 }
-            });
+    });
+
 </script>

@@ -30,22 +30,19 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             List<SelectListItem> wydarzenieList = new SelectList(wydarzenieRepository.FindAllWydarzenie(), "WydarzenieId", "NazwaWydarzenia").ToList();
             ViewData["wydarzenieList"] = wydarzenieList;
 
-            WypozyczenieVM wyp = new WypozyczenieVM();
-            wyp.wypozyczenie.OsobaId = id;
-            return View(wyp);
+            Wypozyczenie wypozyczenie = new Wypozyczenie();
+            wypozyczenie.OsobaId = id; 
+
+            return View(wypozyczenie);
         }
 
         [HttpPost]
         public ActionResult Create(WypozyczenieVM wyp, FormCollection collection)
         {
-            new 
-            List<SelectListItem> wydarzenieList = new SelectList(wydarzenieRepository.FindAllWydarzenie(), "WydarzenieId", "NazwaWydarzenia").ToList();
-            ViewData["wydarzenieList"] = wydarzenieList;
 
             if (ModelState.IsValid)
             {
 
-                wypSamRepository.Add
                 wypozyczenieRepository.Add(wyp.wypozyczenie);
                 wypozyczenieRepository.Save();
 
