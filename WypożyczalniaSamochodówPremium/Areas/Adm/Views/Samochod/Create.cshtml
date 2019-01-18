@@ -35,7 +35,7 @@
                                     @Html.DropDownListFor(x => Model.Marka, (IEnumerable<SelectListItem>)ViewData["Marka"], string.Empty, htmlAttributes: new { @class = "form-control", @id = "Marka" })
                                     @Html.ValidationMessageFor(x => x.Marka, "", new { @class = "text-danger" })
                                 </div>
-                                <a data-toggle="modal" data-remote="@Url.Action("Create", "AutaBaza", null)" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj</a>
+                                <a data-toggle="modal" data-remote="false" href="@Url.Action("Create", "AutaBaza", null)" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj</a>
                              </div>
 
                             <div class="form-group row">
@@ -142,7 +142,7 @@
         //modal.find('.modal-body').html("Nice modal body baby...");
 
         // or, load content from value of data-remote url
-        modal.find('.modal-content').load(button.data("remote"));
+        modal.find('.modal-content').load(button.attr("href"));
 
     });
     function HideModal() {

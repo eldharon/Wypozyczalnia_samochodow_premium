@@ -32,7 +32,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                     autaBazaRepository.Add(autaBaza);
                     autaBazaRepository.Save();
 
-                    return RedirectToAction("Index", "Samochod");
+                    return RedirectToAction("Create", "Samochod");
                 }
                 catch
                 {
