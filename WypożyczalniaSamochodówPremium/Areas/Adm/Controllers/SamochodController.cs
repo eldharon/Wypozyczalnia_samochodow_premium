@@ -281,7 +281,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         {
             if (!string.IsNullOrWhiteSpace(marka))
             {
-                return Json(wypozyczenieRepository.FindCarsForTimeRange(Convert.ToDateTime(startDate), Convert.ToDateTime(endDate)).Select(f => f.Model), JsonRequestBehavior.AllowGet);
+                return Json(wypozyczenieRepository.GetModelsForTimeRange(marka,Convert.ToDateTime(startDate), Convert.ToDateTime(endDate)), JsonRequestBehavior.AllowGet);
             }
             return null;
 

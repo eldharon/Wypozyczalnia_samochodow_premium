@@ -48,30 +48,4 @@
         <button type="submit" class="btn btn-primary btn-danger">Dodaj</button>
     </div>
 }
-<script>
-    $('#Marka').change(function () {
-                var selectedMarka = $("#Marka").val();
-                var modeleSelect = $('#Model');
-                var from = "@(Model.from)";
-                var to = "@(Model.to)";
-                modeleSelect.empty();
-        if (selectedMarka != null && selectedMarka != '') {
-            $.getJSON('@Url.Action("PopulateModeleDropdownAJAX")', { marka: selectedMarka, startDate : from, endDate : to }, function (modele) {
-                        if (modele != null && !jQuery.isEmptyObject(modele))
-                        {
-                            modeleSelect.append($('<option/>', {
-                                value: "",
-                                text: ""
-                            }));
-                            $.each(modele, function (index, model) {
-                                modeleSelect.append($('<option/>', {
-                                    value: model.Value,
-                                    text: model.Text
-                                }));
-                            });
-                        };
-                    });
-                }
-    });
-</script>
 

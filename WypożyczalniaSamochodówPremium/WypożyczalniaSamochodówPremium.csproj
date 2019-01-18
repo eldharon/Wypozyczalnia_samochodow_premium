@@ -3837,8 +3837,6 @@
     <Content Include="Content\Unify\imagesloaded\test\unit\non-element.js" />
     <Content Include="Content\Unify\imagesloaded\test\unit\selector-string.js" />
     <Content Include="Content\Unify\imagesloaded\test\unit\single-element.js" />
-    <Content Include="Content\Unify\jquery-migrate\jquery-migrate.min.js" />
-    <Content Include="Content\Unify\jquery\jquery.min.js" />
     <Content Include="Content\Unify\masonry\dist\masonry.pkgd.js" />
     <Content Include="Content\Unify\masonry\dist\masonry.pkgd.min.js" />
     <Content Include="Content\Unify\masonry\masonry.js" />
