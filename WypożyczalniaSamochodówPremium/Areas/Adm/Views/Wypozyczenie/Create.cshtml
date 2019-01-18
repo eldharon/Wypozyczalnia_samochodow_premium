@@ -44,7 +44,7 @@
                                     @Html.ValidationMessageFor(model => model.DataZwrotu)
                                 </div>
                                 <div class="col-md-5">
-                                    <a data-toggle="modal" data-remote="@Url.Action("CarsForAjax", "Samochod", new { from = Model.DataWypozyczenia, to = Model.DataZwrotu })" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i>Wybierz auto</a>
+                                    <a data-toggle="modal" data-remote="/adm/Samochod/CarsForAjax/@Model.DataWypozyczenia/@Model.DataZwrotu" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i>Wybierz auto</a>
                                 </div>
                             </div>
 
