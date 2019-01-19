@@ -4,18 +4,45 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Wypożyczalnia samochodów premium</title>
-    @Styles.Render("~/Content/UnifyCSS")
-    @Styles.Render("~/Content/UnifyCustomCSS")
-    @Scripts.Render("~/bundles/WWW_js_global_compulsory")
-    @Scripts.Render("~/bundles/WWW_js_implementing_plugins_home")
-    @Scripts.Render("~/bundles/WWW_js_unify")
-    @Scripts.Render("~/bundles/WWW_js_custom")
-    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+
+
+    @*CSS*@
+    @Styles.Render("BootstrapUNIFY")
+    @Styles.Render("IconsUNIFY")
+
+
+
+
+    @*END CSS*@
+
+    @*JS*@
+    @Scripts.Render("JQueryUNIFY")
+
+
+
+    @*END JS*@
+
+
+
+
+
+
+
+
+
+    @*@Styles.Render("~/Content/UnifyCSS")
+        @Styles.Render("~/Content/UnifyCustomCSS")*@
+    @*@Scripts.Render("~/bundles/WWW_js_global_compulsory")
+        @Scripts.Render("~/bundles/WWW_js_implementing_plugins_home")
+        @Scripts.Render("~/bundles/WWW_js_unify")
+        @Scripts.Render("~/bundles/WWW_js_custom")
+        @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")*@
     @RenderSection("scripts", required: false)
 
     @*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")*@
     <script>
+
         $(document).on('ready', function () {
             // initialization of carousel
             $.HSCore.components.HSCarousel.init('.js-carousel');
@@ -23,11 +50,23 @@
             // initialization of tabs
             $.HSCore.components.HSTabs.init('[role="tablist"]');
 
-            // initialization of scroll animation
-            $.HSCore.components.HSOnScrollAnimation.init('[data-animation]');
+            // initialization of popups
+            $.HSCore.components.HSPopup.init('.js-fancybox');
 
             // initialization of go to
             $.HSCore.components.HSGoTo.init('.js-go-to');
+
+            // initialization of text animation (typing)
+            $(".u-text-animation.u-text-animation--typing").typed({
+                strings: [
+                    "an awesome template",
+                    "perfect template",
+                    "just like a boss"
+                ],
+                typeSpeed: 60,
+                loop: true,
+                backDelay: 1500
+            });
         });
 
         $(window).on('load', function () {
@@ -41,11 +80,6 @@
                 pageContainer: $('.container'),
                 breakpoint: 991
             });
-
-            // initialization of sticky blocks
-            setTimeout(function () { // important in this case
-                $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
-            }, 300);
         });
 
         $(window).on('resize', function () {

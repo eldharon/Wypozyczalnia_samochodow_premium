@@ -162,7 +162,33 @@
     //        }
     //    });
     //});from = Model.DataWypozyczenia, to = Model.DataZwrotu
+    @*"@(Model.from)";
+     "@(Model.to)";*@
 
+ $('#Marka').change(function () {
+                var selectedMarka = $("#Marka").val();
+                var modeleSelect = $('#Model');
+                var from = $("#Marka").val();
+                var to =   
+                modeleSelect.empty();
+        if (selectedMarka != null && selectedMarka != '') {
+            $.getJSON('@Url.Action("PopulateModeleDropdownAJAX","Samochod")', { marka: selectedMarka, startDate : from, endDate : to }, function (modele) {
+                        if (modele != null && !jQuery.isEmptyObject(modele))
+                        {
+                            modeleSelect.append($('<option/>', {
+                                value: "",
+                                text: ""
+                            }));
+                            $.each(modele, function (index, model) {
+                                modeleSelect.append($('<option/>', {
+                                    value: model.Value,
+                                    text: model.Text
+                                }));
+                            });
+                        };
+                    });
+                }
+    });
     
 
 </script>
