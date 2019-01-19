@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WypożyczalniaSamochodówPremium.Models;
@@ -24,7 +26,7 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             context = new ApplicationDbContext();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -36,9 +38,9 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -78,11 +80,13 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
 
-            //var userid = UserManager.FindByEmail(model.Email).Id;
-            //if (!UserManager.IsEmailConfirmed(userid))
-            //{
-            //    return View("EmailNotConfirmed");
-            //}
+            ViewBag.UserEmail = model.Email;
+
+            var userid = UserManager.FindByEmail(model.Email).Id;
+            if (!UserManager.IsEmailConfirmed(userid))
+            {
+                return View("EmailNotConfirm");
+            }
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
@@ -128,7 +132,7 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -166,7 +170,7 @@ namespace WypożyczalniaSamochodówPremium.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -440,6 +444,83 @@ namespace WypożyczalniaSamochodówPremium.Controllers
 
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
+        }
+
+        public ActionResult UserList(string roleName)
+        {
+            var usersWithRoles = (from user in context.Users
+                                  select new
+                                  {
+                                      Id = user.Id,
+                                      Username = user.UserName,
+                                      RoleNames = (from userRole in user.Roles
+                                                   join role in context.Roles on userRole.RoleId
+                                                   equals role.Id
+                                                   select role.Name).ToList()
+                                  }).ToList().Select(p => new UserListViewModel()
+
+                                  {
+                                      UserId = p.Id,
+                                      Username = p.Username,
+                                      Role = string.Join(",", p.RoleNames)
+                                  });
+
+
+            return View(usersWithRoles);
+        }
+
+        public ActionResult EditUser(string id)
+        {
+            ApplicationUser appUser = new ApplicationUser();
+            appUser = UserManager.FindById(id);
+
+            var userRoles = UserManager.GetRoles(appUser.Id);
+
+            UserListViewModel user = new UserListViewModel();
+            user.UserId = appUser.Id;
+            user.Username = appUser.Email;
+            user.RolesList = context.Roles.ToList().Select(r => new SelectListItem
+            {
+                Selected = userRoles.Contains(r.Name),
+                Text = r.Name,
+                Value = r.Name
+            }).OrderBy(r => r.Text);
+            //user.Role = (from userRole in appUser.Roles
+            //             join role in context.Roles on userRole.RoleId
+            //             equals role.Id
+            //             select role.Name).SingleOrDefault();
+
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult EditUser(UserListViewModel user, FormCollection collection)
+        {
+            if (ModelState.IsValid)
+            {
+                // THIS LINE IS IMPORTANT
+                var oldUser = UserManager.FindById(user.UserId);
+                if (oldUser.Roles.SingleOrDefault(u => u.UserId == user.UserId) == null)
+                {
+                    UserManager.AddToRole(oldUser.Id, user.Role);
+                }
+                else
+                {
+                    var oldRoleId = oldUser.Roles.SingleOrDefault().RoleId;
+                    var oldRoleName = context.Roles.SingleOrDefault(r => r.Id == oldRoleId).Name;
+
+                    if (oldRoleName != user.Role)
+                    {
+                        UserManager.RemoveFromRole(oldUser.Id, oldRoleName);
+                        UserManager.AddToRole(oldUser.Id, user.Role);
+                    }
+                }
+                //context.Entry(user).State = EntityState.Modified;
+
+                return RedirectToAction("UserList", "Account");
+            }
+            return View(user);
         }
 
         //

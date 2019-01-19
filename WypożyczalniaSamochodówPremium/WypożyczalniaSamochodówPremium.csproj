@@ -358,6 +358,7 @@
     </Compile>
     <Compile Include="Models\UbezpieczenieRepository.cs" />
     <Compile Include="Models\UbezpieczenieValidation.cs" />
+    <Compile Include="Models\UserListViewModel.cs" />
     <Compile Include="Models\Wydarzenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -4141,6 +4142,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Account\RegisterADM.cshtml" />
     <Content Include="Views\Shared\_LayoutScript.cshtml" />
+    <Content Include="Views\Account\EmailNotConfirm.cshtml" />
+    <Content Include="Views\Account\UserList.cshtml" />
+    <Content Include="Views\Account\EditUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Adm\Models\" />

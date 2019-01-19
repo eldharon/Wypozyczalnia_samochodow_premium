@@ -1,0 +1,34 @@
+﻿@using System.Web.UI.WebControls
+@using Microsoft.AspNet.Identity
+@model WypożyczalniaSamochodówPremium.Models.UserListViewModel
+
+
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditUser</h2>
+
+@{Html.EnableClientValidation();}
+@using (Html.BeginForm("EditUser", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <table id="ChooseRole" class="table table-bordered table-hover" style="width: 100%">
+
+        @Html.HiddenFor(model => model.UserId)
+        <thead>
+            <tr>
+                <th>
+
+
+                        @Html.DropDownListFor(model => model.Role, Model.RolesList, "Select Role ...")
+
+                </th>
+            </tr>
+        </thead>
+
+
+    </table>
+    <input type="submit" value="Zapisz" class="btn btn-primary" /> @Html.ActionLink("Anuluj", "UserList", null, new { @class = "btn btn-secondary" })
+}
