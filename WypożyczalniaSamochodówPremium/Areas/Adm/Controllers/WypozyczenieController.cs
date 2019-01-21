@@ -12,6 +12,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         WypozyczenieRepository wypozyczenieRepository = new WypozyczenieRepository();
         WydarzenieRepository wydarzenieRepository = new WydarzenieRepository();
         WypSamRepository WypSamRepository = new WypSamRepository();
+        WypozyczenieTempRepository wypozyczenieTempRepository = new WypozyczenieTempRepository();
         // GET: Adm/Wydarzenie
         public ActionResult Index()
         {
@@ -31,29 +32,63 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             ViewData["wydarzenieList"] = wydarzenieList;
 
             Wypozyczenie wypozyczenie = new Wypozyczenie();
-            wypozyczenie.OsobaId = id; 
+            wypozyczenie.DataWypozyczenia = DateTime.Now;
+            wypozyczenie.DataZwrotu = DateTime.Now.AddDays(1);
+            wypozyczenie.OsobaId = id;
+            ViewBag.OsobaId = id;
 
             return View(wypozyczenie);
         }
 
         [HttpPost]
-        public ActionResult Create(WypozyczenieVM wyp, FormCollection collection)
+        public ActionResult Create(Wypozyczenie wypozyczenie, FormCollection collection)
         {
+            List<SelectListItem> wydarzenieList = new SelectList(wydarzenieRepository.FindAllWydarzenie(), "WydarzenieId", "NazwaWydarzenia").ToList();
+            ViewData["wydarzenieList"] = wydarzenieList;
 
-            if (ModelState.IsValid)
+            var wypTemp = wypozyczenieTempRepository.FindWypozyczenieTempForOsobaId(wypozyczenie.OsobaId);
+            try
             {
+                if (ModelState.IsValid)
+                {
 
-                wypozyczenieRepository.Add(wyp.wypozyczenie);
-                wypozyczenieRepository.Save();
+                    wypozyczenieRepository.Add(wypozyczenie);
+                    wypozyczenieRepository.Save();
 
-                TempData["okMessage"] = "Wypożyczenie zostało dodane.";
-                return RedirectToAction("Index");
+                
+                    foreach (var item in wypTemp)
+                    {
+                        WypSam wypSam = new WypSam();
+                        wypSam.SamochodId = item.SamochodId;
+                        wypSam.WypozyczenieId = wypozyczenie.WypozyczenieId;
+
+                        WypSamRepository.Add(wypSam);
+                       
+                    }
+                    WypSamRepository.Save();
+
+                    foreach (var item in wypTemp)
+                    {
+                        wypozyczenieTempRepository.Delete(item);
+                    }
+                    wypozyczenieTempRepository.Save();
+
+                    TempData["okMessage"] = "Wypożyczenie zostało dodane.";
+                    return RedirectToAction("Details",new { id = wypozyczenie.WypozyczenieId});
+
+                }
+                else
+                {
+                    TempData["errorMessage"] = "Nie dodano wypożyczenia";
+                    return View(wypozyczenie);
+                }
             }
-            else
+            catch (Exception e)
             {
-                TempData["errorMessage"] = "Nie dodano osoby";
-                return View(wyp);
+                TempData["errorMessage"] = "Wystąpił błąd : " + e;
+                return View();
             }
+
         }
     }
 }

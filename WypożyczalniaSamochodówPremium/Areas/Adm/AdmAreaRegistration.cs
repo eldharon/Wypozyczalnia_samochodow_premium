@@ -16,8 +16,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm
         {
             context.MapRoute(
             "adm_CarsForAjax", // Pages route
-            "adm/Samochod/CarsForAjax/{from}/{to}", //URL with parameters
-            new { controller = "Samochod", action = "CarsForAjax", from = "", to = "" }
+            "adm/Samochod/CarsForAjax/{from}/{to}/{osobaId}", //URL with parameters
+            new { controller = "Samochod", action = "CarsForAjax", from = "", to = "", osobaId = "" }
             );
 
             context.MapRoute(

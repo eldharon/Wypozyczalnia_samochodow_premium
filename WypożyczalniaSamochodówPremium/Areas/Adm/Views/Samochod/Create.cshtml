@@ -36,7 +36,7 @@
                                     @Html.ValidationMessageFor(x => x.Marka, "", new { @class = "text-danger" })
                                 </div>
                                 <a data-toggle="modal" data-remote="false" href="@Url.Action("Create", "AutaBaza", null)" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj</a>
-                             </div>
+                            </div>
 
                             <div class="form-group row">
                                 @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -108,6 +108,14 @@
                                 <div class="col-md-6">
                                     @Html.EditorFor(model => model.Przebieg, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.Przebieg)
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.Status, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Status)
                                 </div>
                             </div>
 

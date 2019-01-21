@@ -26,6 +26,7 @@ namespace WypożyczalniaSamochodówPremium.Models
             this.Serwis = new HashSet<Serwis>();
             this.Ubezpieczenie = new HashSet<Ubezpieczenie>();
             this.WypSam = new HashSet<WypSam>();
+            this.WypozyczenieTemp = new HashSet<WypozyczenieTemp>();
         }
     
         public int SamochodId { get; set; }
@@ -39,6 +40,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         public string LiczbaDrzwi { get; set; }
         public string Kolor { get; set; }
         public int Przebieg { get; set; }
+        public string Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cennik> Cennik { get; set; }
@@ -58,5 +60,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         public virtual ICollection<Ubezpieczenie> Ubezpieczenie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WypSam> WypSam { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WypozyczenieTemp> WypozyczenieTemp { get; set; }
     }
 }

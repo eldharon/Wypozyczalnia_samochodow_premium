@@ -1,11 +1,18 @@
 ﻿@model WypożyczalniaSamochodówPremium.Models.SamochodTimeRangeSelectionVM
 @using WypożyczalniaSamochodówPremium.Helpers
 
-@using (Ajax.BeginForm("CarsForAjax", "Samochod", new { from = Model.from, to = Model.to }, new AjaxOptions
+@using (Ajax.BeginForm("CarsForAjax", "Samochod", new
+{
+    model = ViewBag.Model,
+    marka = ViewBag.Marka,
+    osobaId = ViewBag.OsobaId,
+    dataWyp = ViewBag.DataWyp,
+    dataZwr = ViewBag.DataZwr
+    }, new AjaxOptions
 {
     HttpMethod = "POST",
     InsertionMode = InsertionMode.Replace,
-    UpdateTargetId = "newajax",
+    UpdateTargetId = "samochodyWypozyczenie",
     LoadingElementId = "autaBazaLoading",
     OnComplete = "",
     OnBegin = "HideModal",
@@ -23,22 +30,28 @@
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+            @Html.HiddenFor(model => model.OsobaId)
+
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Samochod.Marka, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Marka, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Samochod.Marka, Model.ListaMarki, new { htmlAttributes = new { @class = "form-control"} })
-                    @Html.ValidationMessageFor(model => model.Samochod.Marka, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(model => model.Marka, Model.ListaMarki, string.Empty, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Marka, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Samochod.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Samochod.Model, Model.ListaModele, new { htmlAttributes = new { @class = "form-control"} })
-                    @Html.ValidationMessageFor(model => model.Samochod.Model, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(model => model.Model, Model.ListaModele, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
                 </div>
             </div>
+            @{
+                ViewBag.Model = Model.Model;
+                ViewBag.Marka = Model.Marka;
+            }
 
         </div>
 
@@ -48,4 +61,32 @@
         <button type="submit" class="btn btn-primary btn-danger">Dodaj</button>
     </div>
 }
+
+<script>
+     $('#Marka').change(function () {
+                var selectedMarka = $("#Marka").val();
+                var modeleSelect = $('#Model');
+                var from = "@Model.from.ToString()";
+                var to = "@Model.to.ToString()";
+                var osobaId = "@Model.OsobaId"   
+                modeleSelect.empty();
+        if (selectedMarka != null && selectedMarka != '') {
+            $.getJSON('@Url.Action("PopulateModeleDropdownAJAX","Samochod")', { marka: selectedMarka, startDate : from, endDate : to, osobaId : osobaId }, function (modele) {
+                        if (modele != null && !jQuery.isEmptyObject(modele))
+                        {
+                            modeleSelect.append($('<option/>', {
+                                value: "",
+                                text: ""
+                            }));
+                            $.each(modele, function (index, model) {
+                                modeleSelect.append($('<option/>', {
+                                    value: model.Value,
+                                    text: model.Text
+                                }));
+                            });
+                        };
+                    });
+                }
+    });
+</script>
 

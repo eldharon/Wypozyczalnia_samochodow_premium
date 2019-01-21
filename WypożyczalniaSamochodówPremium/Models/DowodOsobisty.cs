@@ -26,8 +26,8 @@ namespace WypożyczalniaSamochodówPremium.Models
         public System.DateTime TerminWaznosci { get; set; }
         public int OsobaId { get; set; }
     
-        public virtual Osoba Osoba { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ImageDowodOsobisty> ImageDowodOsobisty { get; set; }
+        public virtual Osoba Osoba { get; set; }
     }
 }

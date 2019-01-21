@@ -383,6 +383,11 @@
       <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\WypozyczenieRepository.cs" />
+    <Compile Include="Models\WypozyczenieTemp.cs">
+      <DependentUpon>WypozyczenieModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WypozyczenieTempRepository.cs" />
+    <Compile Include="Models\WypozyczenieTempValidation.cs" />
     <Compile Include="Models\WypozyczenieValidation.cs" />
     <Compile Include="Models\WypozyczenieVM.cs" />
     <Compile Include="Models\WypSam.cs">
@@ -412,6 +417,7 @@
     <Content Include="Content\flag-icon.min.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\hs-icons.svg" />
+    <Content Include="Content\Graphics\100z100.jpg" />
     <Content Include="Content\Graphics\HomeLogo.jpg" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\editor.png" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\imagebrowser.png" />
@@ -4084,6 +4090,7 @@
     <Content Include="Areas\Adm\Views\Osoba\Delete.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\_SamochodyForWypozyczenie.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\CarsForAjax.cshtml" />
+    <Content Include="Areas\Adm\Views\Samochod\_SamochodyForWypozyczenieTemp.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
