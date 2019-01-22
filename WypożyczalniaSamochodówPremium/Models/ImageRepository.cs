@@ -13,10 +13,22 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             return entities.images;
         }
-
+        
         public Image GetImageById(int id)
         {
             return entities.images.SingleOrDefault(o => o.ImageId == id);
+        }
+
+        public PhotoViewModel GetImageVMById(int id)
+        {
+            return entities.images.Where(x => x.ImageId == id).Select
+            (c => new PhotoViewModel
+            {
+                AlternateText = c.ImageAlt,
+                Name = c.ImageName,
+                ContentType = c.ContentType,
+                Image = c.ImageData
+            }).FirstOrDefault();
         }
 
         public void Add(Image image)
