@@ -36,7 +36,7 @@
                                     @Html.ValidationMessageFor(x => x.Marka, "", new { @class = "text-danger" })
                                 </div>
                                 <a data-toggle="modal" data-remote="false" href="@Url.Action("Create", "AutaBaza", null)" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj</a>
-                             </div>
+                            </div>
 
                             <div class="form-group row">
                                 @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -118,6 +118,35 @@
                     <div class="card-footer">
                         <input type="submit" value="Dodaj" class="btn btn-primary" /> &nbsp; @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })
                     </div>
+                    <form method="post" enctype="multipart/form-data" action="Samochod/Upload">
+                        <div>
+                            <span>
+                                Name:
+                            </span>
+                            <span>
+                                <input type="text" id="Name" name="Name" />
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                Alternate Text:
+                            </span>
+                            <span>
+                                <input type="text" id="AlternateText" name="AlternateText" />
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                Image
+                            </span>
+                            <span>
+                                <input type="file" id="OriginalLocation" name="OriginalLocation" />
+                            </span>
+                        </div>
+                        <div>
+                            <input type="submit" value="Upload" />
+                        </div>
+                    </form>
                 }
             </div>
         </div>

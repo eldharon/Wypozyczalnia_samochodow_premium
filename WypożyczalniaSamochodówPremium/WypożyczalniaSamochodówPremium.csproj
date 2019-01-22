@@ -280,6 +280,7 @@
     </Compile>
     <Compile Include="Models\ImagePaszportRepository.cs" />
     <Compile Include="Models\ImageRepository.cs" />
+    <Compile Include="Models\ImageResult.cs" />
     <Compile Include="Models\ImageSamochod.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>

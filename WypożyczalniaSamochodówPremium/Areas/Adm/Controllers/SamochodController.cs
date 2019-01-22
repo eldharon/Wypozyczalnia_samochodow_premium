@@ -17,7 +17,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         ModelRepository modelRepository = new ModelRepository();
         WypozyczenieRepository wypozyczenieRepository = new WypozyczenieRepository();
         WypSamRepository wypSamRepository = new WypSamRepository();
-        //ImageSamochodRepository imagesSamochodRepository = new ImageSamochodRepository();
+        ImageSamochodRepository imageSamochodRepository = new ImageSamochodRepository();
+        ImageRepository imageRepository = new ImageRepository();
 
 
 
@@ -287,13 +288,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
         }
 
-        public ActionResult AddImage(int id)
-        {
-            ViewBag["id"] = id;
-            return View();
-        }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Upload(PhotoProp photo)
+        public ActionResult Upload(PhotoProp photo, int id)
         {
             PhotoViewModel photoVM = new PhotoViewModel();
             HttpPostedFileBase file = Request.Files["OriginalLocation"];
@@ -306,7 +302,20 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             byte[] tempImg = new byte[length];
             file.InputStream.Read(tempImg, 0, length);
             photoVM.Image = tempImg;
-            //imagesSamochodRepository.AddImage(photoVM, photo.id);
+            Image image = new Image();
+            image.ImageName = photoVM.Name;
+            image.ImageAlt = photoVM.AlternateText;
+            image.ContentType = photoVM.ContentType;
+            image.ImageData = photoVM.Image;
+            imageRepository.Add(image);
+            imageRepository.Save();
+
+            ImageSamochod imageSamochod = new ImageSamochod();
+            imageSamochod.Opis = photoVM.AlternateText;
+            imageSamochod.ImageId = image.ImageId;
+            imageSamochod.SamochodId = id;
+            imageSamochodRepository.Add(imageSamochod);
+            imageSamochodRepository.Save();
 
             return View();
 
