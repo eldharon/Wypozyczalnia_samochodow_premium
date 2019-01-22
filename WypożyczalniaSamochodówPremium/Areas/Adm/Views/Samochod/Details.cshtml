@@ -91,12 +91,21 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <div class="col-md-2">
+                                FOTECZKA :)))))
+                            </div>
+                            <div class="col-md-6">
+                                <img  src="/Adm/Samochod/ShowPhoto/1"  alt="TU POWINNA BYĆ FOTA" height="100%" width="100%"  />
+                            </div>
+                        </div>
+                        
 
 
                         @*@Html.IconActionLink("fa fa-plus-circle", "Opisy", "Index", "Opis", new { id = Model.SamochodId }, new { @class = "btn btn-primary" })*@
 
                         <div class="form-group row">
-                            @if (Model.Opis.Count()>0)
+                            @if (Model.Opis.Count() > 0)
                             {
                                 @Html.LabelFor(model => model.Opis.ElementAt(0).OpisOgolny, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
                             }
@@ -106,13 +115,20 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" }) &nbsp; <a data-toggle="modal" data-remote="@Url.Action("AddImage", "Samochod", Model.SamochodId)" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie</a>
-                    @Html.IconActionLink("fa fa-plus-circle", "Dodaj Opis", "Create", "Opis", new { id = Model.SamochodId }, new { @class = "btn btn-primary", @style = "float: right" })
+                    @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" }) &nbsp; <a data-toggle="modal" data-remote="@Url.Action("Upload", "Samochod", new { id = Model.SamochodId })" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie</a>
+                    @Html.IconActionLink("fa fa-plus-circle", "Dodaj Opis", "Create", "Opis", new { id = Model.SamochodId }, new { @class = "btn btn-primary", @style = "float: right" })                   
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="modal inmodal in" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
 
 <script type="text/javascript">
 
@@ -140,6 +156,8 @@
     $(document.body).on('hidden.bs.modal', function () {
         $('#modal').removeData('bs.modal')
     });
+
+
 
 </script>
 

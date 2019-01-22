@@ -126,6 +126,35 @@
                     <div class="card-footer">
                         <input type="submit" value="Dodaj" class="btn btn-primary" /> &nbsp; @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })
                     </div>
+                    <form method="post" enctype="multipart/form-data" action="Samochod/Upload">
+                        <div>
+                            <span>
+                                Name:
+                            </span>
+                            <span>
+                                <input type="text" id="Name" name="Name" />
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                Alternate Text:
+                            </span>
+                            <span>
+                                <input type="text" id="AlternateText" name="AlternateText" />
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                Image
+                            </span>
+                            <span>
+                                <input type="file" id="OriginalLocation" name="OriginalLocation" />
+                            </span>
+                        </div>
+                        <div>
+                            <input type="submit" value="Upload" />
+                        </div>
+                    </form>
                 }
             </div>
         </div>

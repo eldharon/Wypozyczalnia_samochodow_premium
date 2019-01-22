@@ -281,6 +281,7 @@
     </Compile>
     <Compile Include="Models\ImagePaszportRepository.cs" />
     <Compile Include="Models\ImageRepository.cs" />
+    <Compile Include="Models\ImageResult.cs" />
     <Compile Include="Models\ImageSamochod.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -4092,6 +4093,7 @@
     <Content Include="Areas\Adm\Views\Samochod\_SamochodyForWypozyczenie.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\CarsForAjax.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\_SamochodyForWypozyczenieTemp.cshtml" />
+    <Content Include="Areas\Adm\Views\Samochod\Upload.cshtml" />
     <Content Include="Areas\Adm\Views\WypozyczenieTemp\_Delete.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

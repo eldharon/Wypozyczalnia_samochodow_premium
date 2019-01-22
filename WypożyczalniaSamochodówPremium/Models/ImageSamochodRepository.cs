@@ -36,22 +36,5 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             entities.SaveChanges();
         }
-        //public void AddImage(PhotoViewModel photoVM, int id)
-        //{
-        //    Image image = new Image();
-        //    image.ImageName = photoVM.Name;
-        //    image.ImageAlt = photoVM.AlternateText;
-        //    image.ContentType = photoVM.ContentType;
-        //    image.ImageData = photoVM.Image;
-        //    imageRepository.Add(image);
-        //    imageRepository.Save();
-
-        //    ImageSamochod imageSamochod = new ImageSamochod();
-        //    imageSamochod.Opis = photoVM.AlternateText;
-        //    imageSamochod.ImageId = image.ImageId;
-        //    imageSamochod.SamochodId = id;
-        //    imageSamochodRepository.Add(imageSamochod);
-        //    imageSamochodRepository.Save();
-        //}
     }
 }
