@@ -15,76 +15,80 @@
                 @{Html.EnableClientValidation();}
                 @using (Html.BeginForm("Create", "Wypozyczenie", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    <div class="card-body" id="newajax">
-                        <div id="autaBazaLoading" style="display:none; text-align:center; position:relative;">
-                            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                        </div>
-                        @Html.ValidationSummary(true)
-                        <h4>Wypożyczenie</h4>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                        @Html.HiddenFor(model => model.OsobaId)
-
-                        <div class="row form-group line">
-                            @Html.LabelFor(model => model.DataWypozyczenia, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.DataWypozyczenia, new { @class = "form-control" })
-
-                                @Html.ValidationMessageFor(model => model.DataWypozyczenia)
-                            </div>
-                        </div>
-                        @*@Html.Action("CarsForAjax", "Samochod", new { from = Model.DataWypozyczenia, to = Model.DataZwrotu })*@
-
-                        <div class="row form-group line">
-                            @Html.LabelFor(model => model.DataZwrotu, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-4">
-                                @Html.EditorFor(model => model.DataZwrotu, new { @class = "form-control" })
-
-                                @Html.ValidationMessageFor(model => model.DataZwrotu)
-                            </div>
-                            <div class="col-md-5">
-                                <a data-toggle="modal" data-remote="false" href="@Url.Action("CarsForAjax", "Samochod", null)" data-target="#modal"><i class="fa fa-plus-circle"></i>Wybierz auto</a>
-                            </div>
-                        </div>
-
-                        <div class="row form-group line">
-                            @Html.LabelFor(model => model.CzyDostarczany, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.CzyDostarczany, new { @class = "form-control" })
-
-                                @Html.ValidationMessageFor(model => model.CzyDostarczany)
-                            </div>
-                        </div>
-
-                        <div class="row form-group line">
-                            @Html.LabelFor(model => model.CzyKierowca, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.CzyKierowca, new { @class = "form-control" })
-
-                                @Html.ValidationMessageFor(model => model.CzyKierowca)
-                            </div>
-                        </div>
-
-                        <div class="row form-group line">
-                            @Html.LabelFor(model => model.AdresDojazdu, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.AdresDojazdu, new { @class = "form-control" })
-
-                                @Html.ValidationMessageFor(model => model.AdresDojazdu)
-                            </div>
-                        </div>
-
-                        <div class="row form-group line">
-                            @Html.LabelFor(model => model.WydarzenieId, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownList("WydarzenieId", (IEnumerable<SelectListItem>)ViewData["wydarzenieList"], string.Empty, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.WydarzenieId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        @Html.Action("SamochodyForWypozyczenie", "Samochod", new { id = Model.WypozyczenieId })
-
+                <div class="card-body" id="newajax">
+                    <div id="autaBazaLoading" style="display:none; text-align:center; position:relative;">
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                     </div>
+                    @Html.ValidationSummary(true)
+                    <h4>Wypożyczenie</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @Html.HiddenFor(model => model.OsobaId)
+
+
+                    <div class="row form-group line">
+                        @Html.LabelFor(model => model.DataWypozyczenia, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DataWypozyczenia, new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(model => model.DataWypozyczenia)
+                        </div>
+                    </div>
+                    @*@Html.Action("CarsForAjax", "Samochod", new { from = Model.DataWypozyczenia, to = Model.DataZwrotu })*@
+
+
+
+                    <div class="row form-group line">
+                        @Html.LabelFor(model => model.DataZwrotu, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.DataZwrotu, new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(model => model.DataZwrotu)
+                        </div>
+                        <div class="col-md-5">
+                            <a data-toggle="modal" data-remote="false" href="@Url.Action("CarsForAjax", "Samochod", null)" data-target="#modal"><i class="fa fa-plus-circle"></i>Wybierz auto</a>
+                        </div>
+                    </div>
+
+                    <div class="row form-group line">
+                        @Html.LabelFor(model => model.CzyDostarczany, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CzyDostarczany, new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(model => model.CzyDostarczany)
+                        </div>
+                    </div>
+
+                    <div class="row form-group line">
+                        @Html.LabelFor(model => model.CzyKierowca, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CzyKierowca, new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(model => model.CzyKierowca)
+                        </div>
+                    </div>
+
+                    <div class="row form-group line">
+                        @Html.LabelFor(model => model.AdresDojazdu, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.AdresDojazdu, new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(model => model.AdresDojazdu)
+                        </div>
+                    </div>
+
+                    <div class="row form-group line">
+                        @Html.LabelFor(model => model.WydarzenieId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("WydarzenieId", (IEnumerable<SelectListItem>)ViewData["wydarzenieList"], string.Empty, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.WydarzenieId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div id="samochodyWypozyczenie">
+                        @Html.Action("SamochodyForWypozyczenieTemp", "Samochod", new { osobaId = Model.OsobaId })
+                    </div>
+                </div>
                     <div class="card-footer">
                         <input type="submit" value="Dodaj" class="btn btn-primary" /> &nbsp; @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })
                     </div>
@@ -124,10 +128,11 @@
 
         var from = document.getElementById('DataWypozyczenia').value;
         var to = document.getElementById('DataZwrotu').value;
+        var osobaId = document.getElementById('OsobaId').value;
         var button = $(e.relatedTarget);
         //$(window).on('load', function () { ... });
         var modal = $(this);
-        modal.find('.modal-content').load(button.attr("href") + "/" + from + "/" + to);
+        modal.find('.modal-content').load(button.attr("href") + "/" + from + "/" + to +"/"+ osobaId);
 
 
 
@@ -165,11 +170,11 @@
     @*"@(Model.from)";
      "@(Model.to)";*@
 
- $('#Marka').change(function () {
+ @*$('#Marka').change(function () {
                 var selectedMarka = $("#Marka").val();
                 var modeleSelect = $('#Model');
-                var from = $("#Marka").val();
-                var to =   
+                var from = $("#DataWypozyczenia").val();
+                var to = $("#DataZwrotu").val();
                 modeleSelect.empty();
         if (selectedMarka != null && selectedMarka != '') {
             $.getJSON('@Url.Action("PopulateModeleDropdownAJAX","Samochod")', { marka: selectedMarka, startDate : from, endDate : to }, function (modele) {
@@ -188,7 +193,7 @@
                         };
                     });
                 }
-    });
-    
+    });*@
+
 
 </script>

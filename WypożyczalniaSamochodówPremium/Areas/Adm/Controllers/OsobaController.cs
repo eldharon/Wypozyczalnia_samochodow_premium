@@ -33,6 +33,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         [HttpPost]
         public ActionResult Create(Osoba osoba, FormCollection collection)
         {
+            osoba.Hash = Guid.NewGuid();
             if (ModelState.IsValid)
             {
                 osobaRepository.Add(osoba);

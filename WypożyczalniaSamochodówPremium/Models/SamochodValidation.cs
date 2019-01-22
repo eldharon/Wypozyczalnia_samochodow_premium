@@ -41,6 +41,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         public string Kolor { get; set; }
         [Required]
         public int Przebieg { get; set; }
+        public string Status { get; set; }
 
     }
 }

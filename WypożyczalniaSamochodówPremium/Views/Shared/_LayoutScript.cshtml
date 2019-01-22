@@ -6,21 +6,11 @@
     <title>@ViewBag.Title - Wypożyczalnia samochodów premium</title>
 
 
-    @*CSS*@
-    @Styles.Render("BootstrapUNIFY")
+
+    @*@Styles.Render("BootstrapUNIFY")
     @Styles.Render("IconsUNIFY")
 
-
-
-
-    @*END CSS*@
-
-    @*JS*@
-    @Scripts.Render("JQueryUNIFY")
-
-
-
-    @*END JS*@
+    @Scripts.Render("JQueryUNIFY")*@
 
 
 
@@ -30,13 +20,16 @@
 
 
 
-    @*@Styles.Render("~/Content/UnifyCSS")
-        @Styles.Render("~/Content/UnifyCustomCSS")*@
-    @*@Scripts.Render("~/bundles/WWW_js_global_compulsory")
+
+
+
+    @Styles.Render("~/Content/UnifyCSS")
+        @Styles.Render("~/Content/UnifyCustomCSS")
+    @Scripts.Render("~/bundles/WWW_js_global_compulsory")
         @Scripts.Render("~/bundles/WWW_js_implementing_plugins_home")
         @Scripts.Render("~/bundles/WWW_js_unify")
         @Scripts.Render("~/bundles/WWW_js_custom")
-        @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")*@
+        @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
     @RenderSection("scripts", required: false)
 
     @*@Scripts.Render("~/bundles/jquery")

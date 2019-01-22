@@ -1,0 +1,46 @@
+﻿@model WypożyczalniaSamochodówPremium.Models.WypozyczenieTemp
+
+<div id="SamTarget">
+    @if (Model.WypTempList.Count() > 0)
+    {
+
+        <h3>
+            Samochody:
+        </h3>
+        <hr />
+        <div class="row form-group line">
+            <div class="col-md-2">
+                <b>Marka</b>
+            </div>
+            <div class="col-md-10">
+                <b>Model</b>
+            </div>
+        </div>
+        var count = 1;
+
+        foreach (var item in Model.WypTempList)
+        {
+            <div class="row form-group line">
+                <div class="col-md-2">
+                    @count. @item.Samochod.Marka
+                </div>
+                <div class="col-md-2">
+                    @item.Samochod.Model
+                </div>
+                <div class="col-md-2">
+                    @*@Html.IconActionLink("fa fa-trash", "Usuń", "DeleteAjax", "OrderService", new { id = item.OrderServiceID }, new { data_toggle = "modal", data_target = "#modal", @class = "btn btn-sm btn-danger" })*@
+                    <a data-toggle="modal" data-remote="@Url.Action("DeleteSamochodAjax", "WypSam", new { id = item.WypozyczenieTempId }, null)" href="#" data-target="#modal"><i class="fa fa-trash-o"></i> Usuń</a>
+                </div>
+            </div>
+            count++;
+        }
+        <hr />
+    }
+    else
+    {
+        <div>
+            Brak samochodów...
+        </div>
+    }
+</div>
+

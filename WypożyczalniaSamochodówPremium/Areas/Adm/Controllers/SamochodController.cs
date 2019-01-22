@@ -17,6 +17,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         ModelRepository modelRepository = new ModelRepository();
         WypozyczenieRepository wypozyczenieRepository = new WypozyczenieRepository();
         WypSamRepository wypSamRepository = new WypSamRepository();
+        WypozyczenieTempRepository wypozyczenieTempRepository = new WypozyczenieTempRepository();
+        //ImageSamochodRepository imagesSamochodRepository = new ImageSamochodRepository();
         ImageSamochodRepository imageSamochodRepository = new ImageSamochodRepository();
         ImageRepository imageRepository = new ImageRepository();
 
@@ -34,7 +36,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             var samochod = samochodRepository.GetSamochodById(id);
 
             return View(samochod);
-            
+
         }
 
         public ActionResult Create()
@@ -55,6 +57,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             ViewData["RodzajSilnika"] = RodzajSilnikaSelectList;
 
             Samochod samochod = new Samochod();
+            samochod.RokProdukcji = DateTime.Now.AddYears(-5);
+            samochod.Status = "nowe";
 
             return View(samochod);
         }
@@ -108,7 +112,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 AutaBazaSelectListDTO a = new AutaBazaSelectListDTO();
                 a.Marka = item;
                 LisMar.Add(a);
-            } 
+            }
             var MarkiList = new SelectList(LisMar, "Marka", "Marka");
             autoVM.ListaMarki = MarkiList;
 
@@ -140,7 +144,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
             //var ModeleSelectList = new List<string>().Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
             //ViewData["Model"] = ModeleSelectList;
-            
+
             var RodzajSkrzyniSelectList = SamochodSelectLists.RodzajSkrzyniList.Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
             ViewData["SkrzyniaBiegow"] = RodzajSkrzyniSelectList;
 
@@ -151,7 +155,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             ViewData["RodzajSilnika"] = RodzajSilnikaSelectList;
 
 
-            if(TryUpdateModel(samochod))
+            if (TryUpdateModel(samochod))
             {
                 samochodRepository.Save();
                 TempData["okMessage"] = "Samochod: " + samochod.Marka + " " + samochod.Model + " został zaaktualizowany";
@@ -178,12 +182,12 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 var auto = samochodRepository.GetSamochodById(id);
                 samochodRepository.Delete(auto);
                 samochodRepository.Save();
-                TempData["okMessage"] = "Usunięto "+auto.Marka+" "+auto.Model+"!";
+                TempData["okMessage"] = "Usunięto " + auto.Marka + " " + auto.Model + "!";
                 return RedirectToAction("Index", "Samochod");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                TempData["errorMessage"] = "Wystąpił błąd : "+e;
+                TempData["errorMessage"] = "Wystąpił błąd : " + e;
                 return RedirectToAction("Index", "Samochod");
             }
         }
@@ -193,32 +197,32 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             string extension = Path.GetExtension(file.FileName);
             List<string> ErrorObjects = new List<string>();
             List<AutaBaza> Objects = new List<AutaBaza>();
-            if (Path.GetExtension(file.FileName).ToLower() == ".json" && file!=null)
+            if (Path.GetExtension(file.FileName).ToLower() == ".json" && file != null)
             {
                 try
                 {
-                        List<string> rows = new List<string>();
-                        StreamReader reader = new StreamReader(file.InputStream);
+                    List<string> rows = new List<string>();
+                    StreamReader reader = new StreamReader(file.InputStream);
                     string record = reader.ReadToEnd();
-                        List<AutaBazaDTO> ABD = JsonConvert.DeserializeObject<List<AutaBazaDTO>>(record);
+                    List<AutaBazaDTO> ABD = JsonConvert.DeserializeObject<List<AutaBazaDTO>>(record);
                     foreach (var row in ABD)
                     {
                         foreach (var item in row.models)
                         {
                             AutaBaza Auto = new AutaBaza();
-                            Auto.Marka = row.brand; 
+                            Auto.Marka = row.brand;
                             Auto.Model = item;
-                            
-                            if (autaBazaRepository.GetRecordByMakeModel(Auto.Marka, Auto.Model).Count()==0) //Przeszukiwanie bazy czy nie ma już takiego rekordu
+
+                            if (autaBazaRepository.GetRecordByMakeModel(Auto.Marka, Auto.Model).Count() == 0) //Przeszukiwanie bazy czy nie ma już takiego rekordu
                             {
                                 Objects.Add(Auto);
                             }
                             else
                             {
                                 ErrorObjects.Add("Rekord : " + Auto.Marka + ", " + Auto.Model + " figuruje już w bazie danych!");
-                            }                        
+                            }
                         }
-                        
+
                     }
                     if (Objects.Count() > 0)
                     {
@@ -231,13 +235,13 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                             }
                             else
                             {
-                                TempData["errorMessage"] = "Wystąpił błąd przy dodawaniu samochodu "+item.Marka+" "+item.Model+ "; ModelState.IsValid==false!";
+                                TempData["errorMessage"] = "Wystąpił błąd przy dodawaniu samochodu " + item.Marka + " " + item.Model + "; ModelState.IsValid==false!";
                                 return RedirectToAction("Index", "Samochod");
                             }
                         }
-                       
+
                         TempData["okMessage"] = "Dodano samochody (" + Objects.Count() + ")";
-                        if(ErrorObjects.Count>0)
+                        if (ErrorObjects.Count > 0)
                         {
                             TempData["okMessage"] += "Pominięto samochody (" + ErrorObjects.Count() + ")";
                         }
@@ -249,9 +253,9 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                         return RedirectToAction("Index", "Samochod");
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
-                    TempData["errorMessage"] = "Wystąpił błąd : "+e;
+                    TempData["errorMessage"] = "Wystąpił błąd : " + e;
                     return RedirectToAction("Index", "Samochod");
                 }
             }
@@ -278,11 +282,11 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             return null;
 
         }
-        public ActionResult PopulateModeleDropdownAJAX(string marka, string startDate, string endDate)
+        public ActionResult PopulateModeleDropdownAJAX(string marka, string startDate, string endDate, int osobaId)
         {
             if (!string.IsNullOrWhiteSpace(marka))
             {
-                return Json(wypozyczenieRepository.GetModelsForTimeRange(marka,Convert.ToDateTime(startDate), Convert.ToDateTime(endDate)), JsonRequestBehavior.AllowGet);
+                return Json(wypozyczenieRepository.GetModelsForTimeRange(marka, DateTime.Parse(startDate), DateTime.Parse(endDate), osobaId), JsonRequestBehavior.AllowGet);
             }
             return null;
 
@@ -320,32 +324,66 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             return View();
 
         }
-        public ActionResult CarsForAjax(DateTime from, DateTime to)
+        public ActionResult CarsForAjax(string from, string to, int osobaId)
         {
-            var model = new SamochodTimeRangeSelectionVM();
-            model.ListaMarki = new SelectList(wypozyczenieRepository.FindCarsForTimeRange(from, to).GroupBy(x=>x.Marka).Select(group => group.First()), "Marka", "Marka");
-            model.ListaModele = new SelectList(new List<Samochod>(), "Model", "Model");
-            model.from = from;
-            model.to = to;
-            //wypozyczenieRepository.FindCarsForTimeRange(from, to).Select(f => f.Model)
-            return PartialView(model);
+            SamochodTimeRangeSelectionVM model = new SamochodTimeRangeSelectionVM();
+            var markiTemp = wypozyczenieRepository.FindCarsForTimeRange(DateTime.Parse(from), DateTime.Parse(to), osobaId).GroupBy(x => x.Marka).Select(group => group.First());
+            model.ListaMarki = markiTemp.Select(x => new SelectListItem() { Value = x.Marka, Text = x.Marka }).ToList();
+            model.ListaModele = new List<string>().Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
+
+            ViewBag.OsobaId = osobaId;
+
+            ViewBag.dataWyp = from;
+            ViewBag.dataZwr = to;
+            return PartialView("CarsForAjax",model);
         }
         [HttpPost]
-        public ActionResult CarsForAjax(SamochodTimeRangeSelectionVM model, FormCollection collection)
+        public ActionResult CarsForAjax(string model, string marka, int osobaId, string dataWyp, string dataZwr, FormCollection collection)
         {
-            return RedirectToAction("Create", "Wypozyczenie", null);
+            //var samochod = samochodRepository.GetSamochodIdForMarkaAndModel(marka, model);
+            WypozyczenieTemp wypTemp = new WypozyczenieTemp();
+            wypTemp.SamochodId = int.Parse(model);
+            wypTemp.OsobaId = osobaId;
+            wypTemp.DataWypozyczenia = DateTime.Parse(dataWyp);
+            wypTemp.DataZwrotu = DateTime.Parse(dataZwr);
+
+            if (ModelState.IsValid)
+            {
+                wypozyczenieTempRepository.Add(wypTemp);
+                wypozyczenieTempRepository.Save();
+
+                return RedirectToAction("SamochodyForWypozyczenieTemp", "Samochod", new { osobaId = wypTemp.OsobaId });
+            }
+            else
+            {
+                return View(wypTemp);
+            }
         }
 
-        public ActionResult SamochodyForWypozyczenie(int id)
+        public ActionResult SamochodyForWypozyczenie(int wypId)
         {
-            var model = new WypSam();           
-            var list = wypSamRepository.FindWypSamForIdWypozyczenie(id);
+
+                var model = new WypSam();
+                var list = wypSamRepository.FindWypSamForIdWypozyczenie(wypId);
+                if (list != null)
+                {
+                    model.WypSamList = list;
+                }
+                return PartialView("_SamochodyForWypozyczenie", model);
+        }
+
+        public ActionResult SamochodyForWypozyczenieTemp(int osobaId)
+        {
+
+            var model = new WypozyczenieTemp();
+            var list = wypozyczenieTempRepository.FindWypozyczenieTempForOsobaId(osobaId);
             if (list != null)
             {
-                model.WypSamList = list;
+                model.WypTempList = list;
             }
-            return PartialView("_SamochodyForWypozyczenie", model);
+            return PartialView("_SamochodyForWypozyczenieTemp", model);
         }
-        
     }
 }
+
+

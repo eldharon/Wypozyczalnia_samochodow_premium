@@ -18,12 +18,13 @@ namespace WypożyczalniaSamochodówPremium.Models
         public Osoba()
         {
             this.DowodOsobisty = new HashSet<DowodOsobisty>();
+            this.KlientFirma = new HashSet<KlientFirma>();
             this.KlientIndywidualny = new HashSet<KlientIndywidualny>();
             this.Paszport = new HashSet<Paszport>();
             this.Pracownik = new HashSet<Pracownik>();
             this.PrawoJazdy = new HashSet<PrawoJazdy>();
             this.Wypozyczenie = new HashSet<Wypozyczenie>();
-            this.KlientFirma = new HashSet<KlientFirma>();
+            this.WypozyczenieTemp = new HashSet<WypozyczenieTemp>();
         }
     
         public int OsobaId { get; set; }
@@ -35,9 +36,12 @@ namespace WypożyczalniaSamochodówPremium.Models
         public string Kraj { get; set; }
         public string NrTelefonu { get; set; }
         public string Miasto { get; set; }
+        public System.Guid Hash { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DowodOsobisty> DowodOsobisty { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KlientFirma> KlientFirma { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KlientIndywidualny> KlientIndywidualny { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -49,6 +53,6 @@ namespace WypożyczalniaSamochodówPremium.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Wypozyczenie> Wypozyczenie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KlientFirma> KlientFirma { get; set; }
+        public virtual ICollection<WypozyczenieTemp> WypozyczenieTemp { get; set; }
     }
 }

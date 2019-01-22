@@ -150,6 +150,7 @@
           <Property Name="Kraj" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="NrTelefonu" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="Miasto" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Hash" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Paszport">
           <Key>
@@ -226,6 +227,7 @@
           <Property Name="LiczbaDrzwi" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="Kolor" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="Przebieg" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="Serwis">
           <Key>
@@ -268,6 +270,16 @@
           <Property Name="AdresDojazdu" Type="varchar" MaxLength="64" />
           <Property Name="WydarzenieId" Type="int" Nullable="false" />
           <Property Name="OsobaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WypozyczenieTemp">
+          <Key>
+            <PropertyRef Name="WypozyczenieTempId" />
+          </Key>
+          <Property Name="WypozyczenieTempId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OsobaId" Type="int" Nullable="false" />
+          <Property Name="SamochodId" Type="int" Nullable="false" />
+          <Property Name="DataWypozyczenia" Type="datetime" Nullable="false" />
+          <Property Name="DataZwrotu" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="WypSam">
           <Key>
@@ -625,6 +637,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WypozyczenieTemp_Osoba">
+          <End Role="Osoba" Type="Self.Osoba" Multiplicity="1" />
+          <End Role="WypozyczenieTemp" Type="Self.WypozyczenieTemp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="OsobaId" />
+            </Principal>
+            <Dependent Role="WypozyczenieTemp">
+              <PropertyRef Name="OsobaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WypozyczenieTemp_Samochod">
+          <End Role="Samochod" Type="Self.Samochod" Multiplicity="1" />
+          <End Role="WypozyczenieTemp" Type="Self.WypozyczenieTemp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="SamochodId" />
+            </Principal>
+            <Dependent Role="WypozyczenieTemp">
+              <PropertyRef Name="SamochodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="WypozyczenieModelStoreContainer">
           <EntitySet Name="Akcesoria" EntityType="Self.Akcesoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AutaBaza" EntityType="Self.AutaBaza" Schema="dbo" store:Type="Tables" />
@@ -652,6 +688,7 @@
           <EntitySet Name="Ubezpieczenie" EntityType="Self.Ubezpieczenie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wydarzenie" EntityType="Self.Wydarzenie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wypozyczenie" EntityType="Self.Wypozyczenie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WypozyczenieTemp" EntityType="Self.WypozyczenieTemp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WypSam" EntityType="Self.WypSam" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Akcesoria__Wypoz__7E02B4CC" Association="Self.FK__Akcesoria__Wypoz__7E02B4CC">
             <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
@@ -769,6 +806,14 @@
             <End Role="Paszport" EntitySet="Paszport" />
             <End Role="ImagePaszport" EntitySet="ImagePaszport" />
           </AssociationSet>
+          <AssociationSet Name="FK_WypozyczenieTemp_Osoba" Association="Self.FK_WypozyczenieTemp_Osoba">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="WypozyczenieTemp" EntitySet="WypozyczenieTemp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WypozyczenieTemp_Samochod" Association="Self.FK_WypozyczenieTemp_Samochod">
+            <End Role="Samochod" EntitySet="Samochod" />
+            <End Role="WypozyczenieTemp" EntitySet="WypozyczenieTemp" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -788,7 +833,6 @@
           <EntitySet Name="ImageSamochod" EntityType="WypozyczenieModel.ImageSamochod" />
           <EntitySet Name="KlientIndywidualny" EntityType="WypozyczenieModel.KlientIndywidualny" />
           <EntitySet Name="Opis" EntityType="WypozyczenieModel.Opis" />
-          <EntitySet Name="Osoba" EntityType="WypozyczenieModel.Osoba" />
           <EntitySet Name="Paszport" EntityType="WypozyczenieModel.Paszport" />
           <EntitySet Name="Pracownik" EntityType="WypozyczenieModel.Pracownik" />
           <EntitySet Name="PracownikWypozyczenie" EntityType="WypozyczenieModel.PracownikWypozyczenie" />
@@ -812,10 +856,6 @@
           <AssociationSet Name="FK__Dostepnos__Samoc__69FBBC1F" Association="WypozyczenieModel.FK__Dostepnos__Samoc__69FBBC1F">
             <End Role="Samochod" EntitySet="Samochod" />
             <End Role="Dostepnosc" EntitySet="Dostepnosc" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DowodOsob__Osoba__7B264821" Association="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821">
-            <End Role="Osoba" EntitySet="Osoba" />
-            <End Role="DowodOsobisty" EntitySet="DowodOsobisty" />
           </AssociationSet>
           <AssociationSet Name="FK_Dowod_ImageDowod" Association="WypozyczenieModel.FK_Dowod_ImageDowod">
             <End Role="DowodOsobisty" EntitySet="DowodOsobisty" />
@@ -853,29 +893,9 @@
             <End Role="Samochod" EntitySet="Samochod" />
             <End Role="ImageSamochod" EntitySet="ImageSamochod" />
           </AssociationSet>
-          <AssociationSet Name="FK__KlientInd__Osoba__395884C4" Association="WypozyczenieModel.FK__KlientInd__Osoba__395884C4">
-            <End Role="Osoba" EntitySet="Osoba" />
-            <End Role="KlientIndywidualny" EntitySet="KlientIndywidualny" />
-          </AssociationSet>
           <AssociationSet Name="FK__Opis__SamochodId__662B2B3B" Association="WypozyczenieModel.FK__Opis__SamochodId__662B2B3B">
             <End Role="Samochod" EntitySet="Samochod" />
             <End Role="Opis" EntitySet="Opis" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Paszport__OsobaI__65370702" Association="WypozyczenieModel.FK__Paszport__OsobaI__65370702">
-            <End Role="Osoba" EntitySet="Osoba" />
-            <End Role="Paszport" EntitySet="Paszport" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Pracownik__Osoba__72910220" Association="WypozyczenieModel.FK__Pracownik__Osoba__72910220">
-            <End Role="Osoba" EntitySet="Osoba" />
-            <End Role="Pracownik" EntitySet="Pracownik" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PrawoJazd__Osoba__634EBE90" Association="WypozyczenieModel.FK__PrawoJazd__Osoba__634EBE90">
-            <End Role="Osoba" EntitySet="Osoba" />
-            <End Role="PrawoJazdy" EntitySet="PrawoJazdy" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__Osoba__6CD828CA" Association="WypozyczenieModel.FK__Wypozycze__Osoba__6CD828CA">
-            <End Role="Osoba" EntitySet="Osoba" />
-            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
           </AssociationSet>
           <AssociationSet Name="FK__Pracownik__Praco__76619304" Association="WypozyczenieModel.FK__Pracownik__Praco__76619304">
             <End Role="Pracownik" EntitySet="Pracownik" />
@@ -914,9 +934,43 @@
             <End Role="WypSam" EntitySet="WypSam" />
           </AssociationSet>
           <EntitySet Name="KlientFirma" EntityType="WypozyczenieModel.KlientFirma" />
+          <EntitySet Name="Osoba" EntityType="WypozyczenieModel.Osoba" />
+          <EntitySet Name="WypozyczenieTemp" EntityType="WypozyczenieModel.WypozyczenieTemp" />
+          <AssociationSet Name="FK__DowodOsob__Osoba__7B264821" Association="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="DowodOsobisty" EntitySet="DowodOsobisty" />
+          </AssociationSet>
           <AssociationSet Name="FK__KlientFir__Osoba__3D2915A8" Association="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8">
             <End Role="Osoba" EntitySet="Osoba" />
             <End Role="KlientFirma" EntitySet="KlientFirma" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KlientInd__Osoba__395884C4" Association="WypozyczenieModel.FK__KlientInd__Osoba__395884C4">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="KlientIndywidualny" EntitySet="KlientIndywidualny" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Paszport__OsobaI__65370702" Association="WypozyczenieModel.FK__Paszport__OsobaI__65370702">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="Paszport" EntitySet="Paszport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pracownik__Osoba__72910220" Association="WypozyczenieModel.FK__Pracownik__Osoba__72910220">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrawoJazd__Osoba__634EBE90" Association="WypozyczenieModel.FK__PrawoJazd__Osoba__634EBE90">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="PrawoJazdy" EntitySet="PrawoJazdy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wypozycze__Osoba__6CD828CA" Association="WypozyczenieModel.FK__Wypozycze__Osoba__6CD828CA">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="Wypozyczenie" EntitySet="Wypozyczenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WypozyczenieTemp_Osoba" Association="WypozyczenieModel.FK_WypozyczenieTemp_Osoba">
+            <End Role="Osoba" EntitySet="Osoba" />
+            <End Role="WypozyczenieTemp" EntitySet="WypozyczenieTemp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WypozyczenieTemp_Samochod" Association="WypozyczenieModel.FK_WypozyczenieTemp_Samochod">
+            <End Role="Samochod" EntitySet="Samochod" />
+            <End Role="WypozyczenieTemp" EntitySet="WypozyczenieTemp" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Akcesoria">
@@ -967,8 +1021,8 @@
           <Property Name="NrDowodu" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="TerminWaznosci" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="OsobaId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821" FromRole="DowodOsobisty" ToRole="Osoba" />
           <NavigationProperty Name="ImageDowodOsobisty" Relationship="WypozyczenieModel.FK_Dowod_ImageDowod" FromRole="DowodOsobisty" ToRole="ImageDowodOsobisty" />
+          <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821" FromRole="DowodOsobisty" ToRole="Osoba" />
         </EntityType>
         <EntityType Name="DowodRejestracyjny">
           <Key>
@@ -1059,27 +1113,6 @@
           <Property Name="SamochodId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Samochod" Relationship="WypozyczenieModel.FK__Opis__SamochodId__662B2B3B" FromRole="Opis" ToRole="Samochod" />
         </EntityType>
-        <EntityType Name="Osoba">
-          <Key>
-            <PropertyRef Name="OsobaId" />
-          </Key>
-          <Property Name="OsobaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Imie" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="DataUrodzenia" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Adres" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="KodPocztowy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="Kraj" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="NrTelefonu" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="Miasto" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DowodOsobisty" Relationship="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821" FromRole="Osoba" ToRole="DowodOsobisty" />
-          <NavigationProperty Name="KlientIndywidualny" Relationship="WypozyczenieModel.FK__KlientInd__Osoba__395884C4" FromRole="Osoba" ToRole="KlientIndywidualny" />
-          <NavigationProperty Name="Paszport" Relationship="WypozyczenieModel.FK__Paszport__OsobaI__65370702" FromRole="Osoba" ToRole="Paszport" />
-          <NavigationProperty Name="Pracownik" Relationship="WypozyczenieModel.FK__Pracownik__Osoba__72910220" FromRole="Osoba" ToRole="Pracownik" />
-          <NavigationProperty Name="PrawoJazdy" Relationship="WypozyczenieModel.FK__PrawoJazd__Osoba__634EBE90" FromRole="Osoba" ToRole="PrawoJazdy" />
-          <NavigationProperty Name="Wypozyczenie" Relationship="WypozyczenieModel.FK__Wypozycze__Osoba__6CD828CA" FromRole="Osoba" ToRole="Wypozyczenie" />
-          <NavigationProperty Name="KlientFirma" Relationship="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" FromRole="Osoba" ToRole="KlientFirma" />
-        </EntityType>
         <EntityType Name="Paszport">
           <Key>
             <PropertyRef Name="PaszportId" />
@@ -1102,8 +1135,8 @@
           <Property Name="Premia" Type="Double" />
           <Property Name="Stanowisko" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="OsobaId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK__Pracownik__Osoba__72910220" FromRole="Pracownik" ToRole="Osoba" />
           <NavigationProperty Name="PracownikWypozyczenie" Relationship="WypozyczenieModel.FK__Pracownik__Praco__76619304" FromRole="Pracownik" ToRole="PracownikWypozyczenie" />
+          <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK__Pracownik__Osoba__72910220" FromRole="Pracownik" ToRole="Osoba" />
         </EntityType>
         <EntityType Name="PracownikWypozyczenie">
           <Key>
@@ -1173,6 +1206,8 @@
           <NavigationProperty Name="Serwis" Relationship="WypozyczenieModel.FK__Serwis__Samochod__5E8A0973" FromRole="Samochod" ToRole="Serwis" />
           <NavigationProperty Name="Ubezpieczenie" Relationship="WypozyczenieModel.FK__Ubezpiecz__Samoc__5D95E53A" FromRole="Samochod" ToRole="Ubezpieczenie" />
           <NavigationProperty Name="WypSam" Relationship="WypozyczenieModel.FK__WypSam__Samochod__5AB9788F" FromRole="Samochod" ToRole="WypSam" />
+          <NavigationProperty Name="WypozyczenieTemp" Relationship="WypozyczenieModel.FK_WypozyczenieTemp_Samochod" FromRole="Samochod" ToRole="WypozyczenieTemp" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Serwis">
           <Key>
@@ -1219,11 +1254,11 @@
           <Property Name="WydarzenieId" Type="Int32" Nullable="false" />
           <Property Name="OsobaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Akcesoria" Relationship="WypozyczenieModel.FK__Akcesoria__Wypoz__7E02B4CC" FromRole="Wypozyczenie" ToRole="Akcesoria" />
-          <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK__Wypozycze__Osoba__6CD828CA" FromRole="Wypozyczenie" ToRole="Osoba" />
           <NavigationProperty Name="PracownikWypozyczenie" Relationship="WypozyczenieModel.FK__Pracownik__Wypoz__7755B73D" FromRole="Wypozyczenie" ToRole="PracownikWypozyczenie" />
           <NavigationProperty Name="Rozliczenie" Relationship="WypozyczenieModel.FK__Rozliczen__Wypoz__607251E5" FromRole="Wypozyczenie" ToRole="Rozliczenie" />
           <NavigationProperty Name="Wydarzenie" Relationship="WypozyczenieModel.FK__Wypozycze__Wydar__5CA1C101" FromRole="Wypozyczenie" ToRole="Wydarzenie" />
           <NavigationProperty Name="WypSam" Relationship="WypozyczenieModel.FK__WypSam__Wypozycz__5BAD9CC8" FromRole="Wypozyczenie" ToRole="WypSam" />
+          <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK__Wypozycze__Osoba__6CD828CA" FromRole="Wypozyczenie" ToRole="Osoba" />
         </EntityType>
         <EntityType Name="WypSam">
           <Key>
@@ -1268,18 +1303,6 @@
             </Principal>
             <Dependent Role="Dostepnosc">
               <PropertyRef Name="SamochodId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DowodOsob__Osoba__7B264821">
-          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
-          <End Type="WypozyczenieModel.DowodOsobisty" Role="DowodOsobisty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoba">
-              <PropertyRef Name="OsobaId" />
-            </Principal>
-            <Dependent Role="DowodOsobisty">
-              <PropertyRef Name="OsobaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1391,18 +1414,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KlientInd__Osoba__395884C4">
-          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="0..1" />
-          <End Type="WypozyczenieModel.KlientIndywidualny" Role="KlientIndywidualny" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoba">
-              <PropertyRef Name="OsobaId" />
-            </Principal>
-            <Dependent Role="KlientIndywidualny">
-              <PropertyRef Name="OsobaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Opis__SamochodId__662B2B3B">
           <End Type="WypozyczenieModel.Samochod" Role="Samochod" Multiplicity="1" />
           <End Type="WypozyczenieModel.Opis" Role="Opis" Multiplicity="*" />
@@ -1412,54 +1423,6 @@
             </Principal>
             <Dependent Role="Opis">
               <PropertyRef Name="SamochodId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Paszport__OsobaI__65370702">
-          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
-          <End Type="WypozyczenieModel.Paszport" Role="Paszport" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoba">
-              <PropertyRef Name="OsobaId" />
-            </Principal>
-            <Dependent Role="Paszport">
-              <PropertyRef Name="OsobaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Pracownik__Osoba__72910220">
-          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
-          <End Type="WypozyczenieModel.Pracownik" Role="Pracownik" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoba">
-              <PropertyRef Name="OsobaId" />
-            </Principal>
-            <Dependent Role="Pracownik">
-              <PropertyRef Name="OsobaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PrawoJazd__Osoba__634EBE90">
-          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
-          <End Type="WypozyczenieModel.PrawoJazdy" Role="PrawoJazdy" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoba">
-              <PropertyRef Name="OsobaId" />
-            </Principal>
-            <Dependent Role="PrawoJazdy">
-              <PropertyRef Name="OsobaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wypozycze__Osoba__6CD828CA">
-          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
-          <End Type="WypozyczenieModel.Wypozyczenie" Role="Wypozyczenie" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoba">
-              <PropertyRef Name="OsobaId" />
-            </Principal>
-            <Dependent Role="Wypozyczenie">
-              <PropertyRef Name="OsobaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1585,6 +1548,53 @@
           <Property Name="OsobaId" Type="Int32" />
           <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" FromRole="KlientFirma" ToRole="Osoba" />
         </EntityType>
+        <EntityType Name="Osoba">
+          <Key>
+            <PropertyRef Name="OsobaId" />
+          </Key>
+          <Property Name="OsobaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="DataUrodzenia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Adres" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="KodPocztowy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Kraj" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="NrTelefonu" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Miasto" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Hash" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="DowodOsobisty" Relationship="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821" FromRole="Osoba" ToRole="DowodOsobisty" />
+          <NavigationProperty Name="KlientFirma" Relationship="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" FromRole="Osoba" ToRole="KlientFirma" />
+          <NavigationProperty Name="KlientIndywidualny" Relationship="WypozyczenieModel.FK__KlientInd__Osoba__395884C4" FromRole="Osoba" ToRole="KlientIndywidualny" />
+          <NavigationProperty Name="Paszport" Relationship="WypozyczenieModel.FK__Paszport__OsobaI__65370702" FromRole="Osoba" ToRole="Paszport" />
+          <NavigationProperty Name="Pracownik" Relationship="WypozyczenieModel.FK__Pracownik__Osoba__72910220" FromRole="Osoba" ToRole="Pracownik" />
+          <NavigationProperty Name="PrawoJazdy" Relationship="WypozyczenieModel.FK__PrawoJazd__Osoba__634EBE90" FromRole="Osoba" ToRole="PrawoJazdy" />
+          <NavigationProperty Name="Wypozyczenie" Relationship="WypozyczenieModel.FK__Wypozycze__Osoba__6CD828CA" FromRole="Osoba" ToRole="Wypozyczenie" />
+          <NavigationProperty Name="WypozyczenieTemp" Relationship="WypozyczenieModel.FK_WypozyczenieTemp_Osoba" FromRole="Osoba" ToRole="WypozyczenieTemp" />
+        </EntityType>
+        <EntityType Name="WypozyczenieTemp">
+          <Key>
+            <PropertyRef Name="WypozyczenieTempId" />
+          </Key>
+          <Property Name="WypozyczenieTempId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OsobaId" Type="Int32" Nullable="false" />
+          <Property Name="SamochodId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK_WypozyczenieTemp_Osoba" FromRole="WypozyczenieTemp" ToRole="Osoba" />
+          <NavigationProperty Name="Samochod" Relationship="WypozyczenieModel.FK_WypozyczenieTemp_Samochod" FromRole="WypozyczenieTemp" ToRole="Samochod" />
+          <Property Name="DataWypozyczenia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataZwrotu" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK__DowodOsob__Osoba__7B264821">
+          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
+          <End Type="WypozyczenieModel.DowodOsobisty" Role="DowodOsobisty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="OsobaId" />
+            </Principal>
+            <Dependent Role="DowodOsobisty">
+              <PropertyRef Name="OsobaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__KlientFir__Osoba__3D2915A8">
           <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="0..1" />
           <End Type="WypozyczenieModel.KlientFirma" Role="KlientFirma" Multiplicity="*" />
@@ -1594,6 +1604,90 @@
             </Principal>
             <Dependent Role="KlientFirma">
               <PropertyRef Name="OsobaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KlientInd__Osoba__395884C4">
+          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="0..1" />
+          <End Type="WypozyczenieModel.KlientIndywidualny" Role="KlientIndywidualny" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="OsobaId" />
+            </Principal>
+            <Dependent Role="KlientIndywidualny">
+              <PropertyRef Name="OsobaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Paszport__OsobaI__65370702">
+          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
+          <End Type="WypozyczenieModel.Paszport" Role="Paszport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="OsobaId" />
+            </Principal>
+            <Dependent Role="Paszport">
+              <PropertyRef Name="OsobaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pracownik__Osoba__72910220">
+          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
+          <End Type="WypozyczenieModel.Pracownik" Role="Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="OsobaId" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="OsobaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrawoJazd__Osoba__634EBE90">
+          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
+          <End Type="WypozyczenieModel.PrawoJazdy" Role="PrawoJazdy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="OsobaId" />
+            </Principal>
+            <Dependent Role="PrawoJazdy">
+              <PropertyRef Name="OsobaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wypozycze__Osoba__6CD828CA">
+          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
+          <End Type="WypozyczenieModel.Wypozyczenie" Role="Wypozyczenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="OsobaId" />
+            </Principal>
+            <Dependent Role="Wypozyczenie">
+              <PropertyRef Name="OsobaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WypozyczenieTemp_Osoba">
+          <End Type="WypozyczenieModel.Osoba" Role="Osoba" Multiplicity="1" />
+          <End Type="WypozyczenieModel.WypozyczenieTemp" Role="WypozyczenieTemp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoba">
+              <PropertyRef Name="OsobaId" />
+            </Principal>
+            <Dependent Role="WypozyczenieTemp">
+              <PropertyRef Name="OsobaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WypozyczenieTemp_Samochod">
+          <End Type="WypozyczenieModel.Samochod" Role="Samochod" Multiplicity="1" />
+          <End Type="WypozyczenieModel.WypozyczenieTemp" Role="WypozyczenieTemp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Samochod">
+              <PropertyRef Name="SamochodId" />
+            </Principal>
+            <Dependent Role="WypozyczenieTemp">
+              <PropertyRef Name="SamochodId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1735,21 +1829,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Osoba">
-            <EntityTypeMapping TypeName="WypozyczenieModel.Osoba">
-              <MappingFragment StoreEntitySet="Osoba">
-                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
-                <ScalarProperty Name="NrTelefonu" ColumnName="NrTelefonu" />
-                <ScalarProperty Name="Kraj" ColumnName="Kraj" />
-                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
-                <ScalarProperty Name="Adres" ColumnName="Adres" />
-                <ScalarProperty Name="DataUrodzenia" ColumnName="DataUrodzenia" />
-                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
-                <ScalarProperty Name="Imie" ColumnName="Imie" />
-                <ScalarProperty Name="OsobaId" ColumnName="OsobaId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Paszport">
             <EntityTypeMapping TypeName="WypozyczenieModel.Paszport">
               <MappingFragment StoreEntitySet="Paszport">
@@ -1819,6 +1898,7 @@
           <EntitySetMapping Name="Samochod">
             <EntityTypeMapping TypeName="WypozyczenieModel.Samochod">
               <MappingFragment StoreEntitySet="Samochod">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Przebieg" ColumnName="Przebieg" />
                 <ScalarProperty Name="Kolor" ColumnName="Kolor" />
                 <ScalarProperty Name="LiczbaDrzwi" ColumnName="LiczbaDrzwi" />
@@ -1899,6 +1979,33 @@
                 <ScalarProperty Name="NIP" ColumnName="NIP" />
                 <ScalarProperty Name="NazwaFirmy" ColumnName="NazwaFirmy" />
                 <ScalarProperty Name="KlientFirmaId" ColumnName="KlientFirmaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Osoba">
+            <EntityTypeMapping TypeName="WypozyczenieModel.Osoba">
+              <MappingFragment StoreEntitySet="Osoba">
+                <ScalarProperty Name="Hash" ColumnName="Hash" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+                <ScalarProperty Name="NrTelefonu" ColumnName="NrTelefonu" />
+                <ScalarProperty Name="Kraj" ColumnName="Kraj" />
+                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="DataUrodzenia" ColumnName="DataUrodzenia" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="OsobaId" ColumnName="OsobaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WypozyczenieTemp">
+            <EntityTypeMapping TypeName="WypozyczenieModel.WypozyczenieTemp">
+              <MappingFragment StoreEntitySet="WypozyczenieTemp">
+                <ScalarProperty Name="DataZwrotu" ColumnName="DataZwrotu" />
+                <ScalarProperty Name="DataWypozyczenia" ColumnName="DataWypozyczenia" />
+                <ScalarProperty Name="SamochodId" ColumnName="SamochodId" />
+                <ScalarProperty Name="OsobaId" ColumnName="OsobaId" />
+                <ScalarProperty Name="WypozyczenieTempId" ColumnName="WypozyczenieTempId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

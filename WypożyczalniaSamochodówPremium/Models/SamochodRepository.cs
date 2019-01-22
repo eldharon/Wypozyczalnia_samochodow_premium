@@ -19,6 +19,11 @@ namespace WypożyczalniaSamochodówPremium.Models
             return entities.samochody.SingleOrDefault(s => s.SamochodId == id);
         }
 
+        public Samochod GetSamochodIdForMarkaAndModel(string marka, string model)
+        {
+            return entities.samochody.Where(s => s.Marka == marka && s.Model == model).FirstOrDefault();
+        }
+
         public void Add(Samochod samochod)
         {
             entities.samochody.Add(samochod);

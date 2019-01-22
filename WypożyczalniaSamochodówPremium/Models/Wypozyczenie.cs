@@ -34,7 +34,6 @@ namespace WypożyczalniaSamochodówPremium.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Akcesoria> Akcesoria { get; set; }
-        public virtual Osoba Osoba { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PracownikWypozyczenie> PracownikWypozyczenie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -42,5 +41,6 @@ namespace WypożyczalniaSamochodówPremium.Models
         public virtual Wydarzenie Wydarzenie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WypSam> WypSam { get; set; }
+        public virtual Osoba Osoba { get; set; }
     }
 }

@@ -2609,6 +2609,6 @@ window.requestAnimFrame = (function(){
 jQuery(document).ready(function($){
     dzsscr_init('.scroller-con.auto-init', {init_each: true});
 });
-jQuery(window).load(function(){
+jQuery(window).on('load',function(){
     dzsscr_init('.scroller-con.auto-init-onload', {init_each: true});
 });

@@ -73,27 +73,27 @@ namespace WypożyczalniaSamochodówPremium
             //END ADM
 
 
-            
-            //START UNIFY
-            //CSS
-            bundles.Add(new StyleBundle("BootstrapUNIFY").Include(
-                "~/Content/bootstrap.min.css"               
-                ));
-            bundles.Add(new StyleBundle("IconsUNIFY").Include(
-                "~/Content/font-awesome.min.css"
-                ));
-            //END CSS
-            
-            //JS
-            bundles.Add(new ScriptBundle("JQueryUNIFY").Include(
-                "~/Scripts/jquery-{version}.js"
-                ));
 
-            //END JS
+            ////START UNIFY
+            ////CSS
+            //bundles.Add(new StyleBundle("BootstrapUNIFY").Include(
+            //    "~/Content/bootstrap.min.css"               
+            //    ));
+            //bundles.Add(new StyleBundle("IconsUNIFY").Include(
+            //    "~/Content/font-awesome.min.css"
+            //    ));
+            ////END CSS
+
+            ////JS
+            //bundles.Add(new ScriptBundle("JQueryUNIFY").Include(
+            //    "~/Scripts/jquery-{version}.js"
+            //    ));
+
+            ////END JS
 
 
 
-            //END UNIFY
+            ////END UNIFY
 
 
 
@@ -101,85 +101,85 @@ namespace WypożyczalniaSamochodówPremium
 
             //END---------------------------------------------------------------
 
-            //bundles.Add(new StyleBundle("~/Content/UnifyCSS").Include(
-            //     "~/Content/bootstrap.min.css",
-            //     "~/Content/font-awesome.min.css",
-            //     "~/Content/simple-line-icons.min.css",
-            //     "~/Content/Unify/icon-etlinefont/style.css",
-            //     "~/Content/Unify/icon-line-pro/style.css",
-            //     "~/Content/Unify/icon-hs/style.css",
-            //     "~/Content/Unify/dzsparallaxer/dzsparallaxer.css",
-            //     "~/Content/Unify/dzsparallaxer/dzsscroller/scroller.css",
-            //     "~/Content/Unify/dzsparallaxer/advancedscroller/plugin.css",
-            //     "~/Content/Unify/slick-carousel/slick/slick.css",
-            //     "~/Content/Unify/customcss/animate.css",
-            //     "~/Content/Unify/hs-megamenu/src/hs.megamenu.css",
-            //     "~/Content/Unify/hamburgers/hamburgers.min.css",
-            //     "~/Content/Unify/customcss/unify-core.css",
-            //     "~/Content/Unify/customcss/unify-components.css",
-            //     "~/Content/Unify/customcss/unify-globals.css"
-            //"~/Content/Unify/customcss/custom.css"
-            //));
+            bundles.Add(new StyleBundle("~/Content/UnifyCSS").Include(
+                 "~/Content/bootstrap.min.css",
+                 "~/Content/font-awesome.min.css",
+                 "~/Content/simple-line-icons.min.css",
+                 "~/Content/Unify/icon-etlinefont/style.css",
+                 "~/Content/Unify/icon-line-pro/style.css",
+                 "~/Content/Unify/icon-hs/style.css",
+                 "~/Content/Unify/dzsparallaxer/dzsparallaxer.css",
+                 "~/Content/Unify/dzsparallaxer/dzsscroller/scroller.css",
+                 "~/Content/Unify/dzsparallaxer/advancedscroller/plugin.css",
+                 "~/Content/Unify/slick-carousel/slick/slick.css",
+                 "~/Content/Unify/customcss/animate.css",
+                 "~/Content/Unify/hs-megamenu/src/hs.megamenu.css",
+                 "~/Content/Unify/hamburgers/hamburgers.min.css",
+                 "~/Content/Unify/customcss/unify-core.css",
+                 "~/Content/Unify/customcss/unify-components.css",
+                 "~/Content/Unify/customcss/unify-globals.css",
+            "~/Content/Unify/customcss/custom.css"
+            ));
 
-            //bundles.Add(new StyleBundle("~/Content/UnifyCustomCSS").Include(
-            //    "~/Content/Unify/customcss/custom.css"
-            //    ));
-            //bundles.Add(new ScriptBundle("~/bundles/UnifyJS").Include(
-            //    "~/Content/Unify/hs-megamenu/src/hs.megamenu.js",
-            //    "~/Content/Unify/dzsparallaxer/dzsparallaxer.js",
-            //    "~/Content/Unify/dzsparallaxer/dzsscroller/scroller.js",
-            //    "~/Content/Unify/dzsparallaxer/advancedscroller/plugin.js",
-            //    "~/Content/Unify/chosen/chosen.jquery.js",
-            //    "~/Content/Unify/image-select/src/ImageSelect.jquery.js",
-            //    "~/Content/Unify/masonry/dist/masonry.pkgd.min.js",
-            //    "~/Content/Unify/imagesloaded/imagesloaded.js",
-            //    "~/Content/Unify/slick-carousel/slick/slick.js",
-            //    "~/Content/Unify/components/hs.header.js",
-            //    "~/Content/Unify/helpers/hs.hamburgers.js",
-            //    "~/Content/Unify/components/hs.scroll-nav.js",
-            //    "~/Content/Unify/components/hs.go-to.js",
-            //    "~/Content/Unify/components/hs.sticky-block.js"
-            //    ));
+            bundles.Add(new StyleBundle("~/Content/UnifyCustomCSS").Include(
+                "~/Content/Unify/customcss/custom.css"
+                ));
+            bundles.Add(new ScriptBundle("~/bundles/UnifyJS").Include(
+                "~/Content/Unify/hs-megamenu/src/hs.megamenu.js",
+                "~/Content/Unify/dzsparallaxer/dzsparallaxer.js",
+                "~/Content/Unify/dzsparallaxer/dzsscroller/scroller.js",
+                "~/Content/Unify/dzsparallaxer/advancedscroller/plugin.js",
+                "~/Content/Unify/chosen/chosen.jquery.js",
+                "~/Content/Unify/image-select/src/ImageSelect.jquery.js",
+                "~/Content/Unify/masonry/dist/masonry.pkgd.min.js",
+                "~/Content/Unify/imagesloaded/imagesloaded.js",
+                "~/Content/Unify/slick-carousel/slick/slick.js",
+                "~/Content/Unify/components/hs.header.js",
+                "~/Content/Unify/helpers/hs.hamburgers.js",
+                "~/Content/Unify/components/hs.scroll-nav.js",
+                "~/Content/Unify/components/hs.go-to.js",
+                "~/Content/Unify/components/hs.sticky-block.js"
+                ));
 
-            //bundles.Add(new ScriptBundle("~/bundles/WWW_js_global_compulsory").Include(
-            //    "~/Scripts/jquery-{version}.js",
-            //    "~/Scripts/jquery-migrate-{version}.js",
-            //    "~/Scripts/umd/popper.min.js",
-            //    "~/Scripts/bootstrap.min.js"
-            //    ));
+            bundles.Add(new ScriptBundle("~/bundles/WWW_js_global_compulsory").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/jquery-migrate-{version}.js",
+                "~/Scripts/umd/popper.min.js",
+                "~/Scripts/bootstrap.min.js"
+                ));
 
-            //bundles.Add(new ScriptBundle("~/bundles/WWW_js_implementing_plugins_home").Include(
-            //    "~/Content/Unify/appear.js",
-            //    "~/Content/Unify/slick-carousel/slick/slick.js",
-            //    "~/Content/Unify/hs-megamenu/src/hs.megamenu.js",
-            //    "~/Content/Unify/dzsparallaxer/dzsparallaxer.js",
-            //    "~/Content/Unify/dzsparallaxer/dzsscroller/scroller.js",
-            //    "~/Content/Unify/dzsparallaxer/advancedscroller/plugin.js"
-            //    ));
+            bundles.Add(new ScriptBundle("~/bundles/WWW_js_implementing_plugins_home").Include(
+                "~/Content/Unify/appear.js",
+                "~/Content/Unify/slick-carousel/slick/slick.js",
+                "~/Content/Unify/hs-megamenu/src/hs.megamenu.js",
+                "~/Content/Unify/dzsparallaxer/dzsparallaxer.js",
+                "~/Content/Unify/dzsparallaxer/dzsscroller/scroller.js",
+                "~/Content/Unify/dzsparallaxer/advancedscroller/plugin.js"
+                ));
 
-            //bundles.Add(new ScriptBundle("~/bundles/WWW_js_implementing_plugins_min").Include(
-            //    "~/Content/Unify/appear.js",
-            //    "~/Content/Unify/slick-carousel/slick/slick.js",
-            //    "~/Content/Unify/hs-megamenu/src/hs.megamenu.js",
-            //    "~/Content/Unify/dzsparallaxer/dzsparallaxer.js",
-            //    "~/Content/Unify/dzsparallaxer/dzsscroller/scroller.js",
-            //    "~/Content/Unify/dzsparallaxer/advancedscroller/plugin.js"
-            //    ));
+            bundles.Add(new ScriptBundle("~/bundles/WWW_js_implementing_plugins_min").Include(
+                "~/Content/Unify/appear.js",
+                "~/Content/Unify/slick-carousel/slick/slick.js",
+                "~/Content/Unify/hs-megamenu/src/hs.megamenu.js",
+                "~/Content/Unify/dzsparallaxer/dzsparallaxer.js",
+                "~/Content/Unify/dzsparallaxer/dzsscroller/scroller.js",
+                "~/Content/Unify/dzsparallaxer/advancedscroller/plugin.js"
+                ));
 
-            //bundles.Add(new ScriptBundle("~/bundles/WWW_js_unify").Include(
-            //    "~/Content/Unify/hs.core.js",
-            //    "~/Content/Unify/components/hs.carousel.js",
-            //    "~/Content/Unify/components/hs.header.js",
-            //    "~/Content/Unify/helpers/hs.hamburgers.js",
-            //    "~/Content/Unify/components/hs.tabs.js",
-            //    "~/Content/Unify/components/hs.onscroll-animation.js",
-            //    "~/Content/Unify/components/hs.sticky-block.js",
-            //    "~/Content/Unify/components/hs.go-to.js"
-            //    ));
+            bundles.Add(new ScriptBundle("~/bundles/WWW_js_unify").Include(
+                "~/Content/Unify/hs.core.js",
+                "~/Content/Unify/components/hs.carousel.js",
+                "~/Content/Unify/components/hs.header.js",
+                "~/Content/Unify/helpers/hs.hamburgers.js",
+                "~/Content/Unify/components/hs.tabs.js",
+                "~/Content/Unify/components/hs.onscroll-animation.js",
+                "~/Content/Unify/components/hs.sticky-block.js",
+                "~/Content/Unify/components/hs.go-to.js"
+                ));
 
-            //bundles.Add(new ScriptBundle("~/bundles/WWW_js_custom").Include(
-            //    "~/Content/Unify/customjs/custom.js"
-            //    ));
+            bundles.Add(new ScriptBundle("~/bundles/WWW_js_custom").Include(
+                "~/Content/Unify/customjs/custom.js"
+                ));
         }
 
 

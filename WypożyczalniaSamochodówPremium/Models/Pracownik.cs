@@ -28,8 +28,8 @@ namespace WypożyczalniaSamochodówPremium.Models
         public string Stanowisko { get; set; }
         public int OsobaId { get; set; }
     
-        public virtual Osoba Osoba { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PracownikWypozyczenie> PracownikWypozyczenie { get; set; }
+        public virtual Osoba Osoba { get; set; }
     }
 }
