@@ -220,6 +220,7 @@
     <Compile Include="Areas\Adm\Controllers\SamochodController.cs" />
     <Compile Include="Areas\Adm\Controllers\WydarzenieController.cs" />
     <Compile Include="Areas\Adm\Controllers\WypozyczenieController.cs" />
+    <Compile Include="Areas\Adm\Controllers\WypozyczenieTempController.cs" />
     <Compile Include="Areas\Adm\Controllers\WypSamController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -4091,6 +4092,7 @@
     <Content Include="Areas\Adm\Views\Samochod\_SamochodyForWypozyczenie.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\CarsForAjax.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\_SamochodyForWypozyczenieTemp.cshtml" />
+    <Content Include="Areas\Adm\Views\WypozyczenieTemp\_Delete.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

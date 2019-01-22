@@ -28,16 +28,25 @@
                     @item.Samochod.Model
                 </div>
                 <div class="col-md-2">
-                    @*@Html.IconActionLink("fa fa-trash", "Usuń", "DeleteAjax", "OrderService", new { id = item.OrderServiceID }, new { data_toggle = "modal", data_target = "#modal", @class = "btn btn-sm btn-danger" })*@
-                    <a data-toggle="modal" data-remote="@Url.Action("DeleteSamochodAjax", "WypSam", new { id = item.WypozyczenieTempId }, null)" href="#" data-target="#modal"><i class="fa fa-trash-o"></i> Usuń</a>
+                    <a data-toggle="modal" data-remote="@Url.Action("DeleteAjax", "WypozyczenieTemp", new { id = item.WypozyczenieTempId }, null)" href="#" data-target="#modal2"><i class="fa fa-trash-o"></i> Usuń</a>
                 </div>
             </div>
             count++;
         }
         <hr />
+
+        <script>
+            document.getElementById("DataWypozyczenia").disabled = true;
+            document.getElementById("DataZwrotu").disabled = true;
+        </script>
     }
     else
     {
+        <script>
+            document.getElementById("DataWypozyczenia").disabled = false;
+            document.getElementById("DataZwrotu").disabled = false;
+        </script>
+
         <div>
             Brak samochodów...
         </div>

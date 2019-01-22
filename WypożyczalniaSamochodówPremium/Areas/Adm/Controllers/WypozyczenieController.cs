@@ -28,14 +28,28 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
         public ActionResult Create(int id)
         {
+
             List<SelectListItem> wydarzenieList = new SelectList(wydarzenieRepository.FindAllWydarzenie(), "WydarzenieId", "NazwaWydarzenia").ToList();
             ViewData["wydarzenieList"] = wydarzenieList;
 
+            var search = wypozyczenieTempRepository.FindWypozyczenieTempForOsobaId(id);
+
             Wypozyczenie wypozyczenie = new Wypozyczenie();
-            wypozyczenie.DataWypozyczenia = DateTime.Now;
-            wypozyczenie.DataZwrotu = DateTime.Now.AddDays(1);
-            wypozyczenie.OsobaId = id;
-            ViewBag.OsobaId = id;
+            if (search.Count() > 0)
+            {
+                wypozyczenie.DataWypozyczenia = search.FirstOrDefault().DataWypozyczenia;
+                wypozyczenie.DataZwrotu = search.FirstOrDefault().DataZwrotu; ;
+                wypozyczenie.OsobaId = id;
+                ViewBag.OsobaId = id;
+            }
+            else
+            {
+                wypozyczenie.DataWypozyczenia = DateTime.Now;
+                wypozyczenie.DataZwrotu = DateTime.Now.AddDays(1);
+                wypozyczenie.OsobaId = id;
+                ViewBag.OsobaId = id;
+            }
+            
 
             return View(wypozyczenie);
         }
