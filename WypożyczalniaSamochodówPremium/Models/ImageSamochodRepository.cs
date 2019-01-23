@@ -22,6 +22,11 @@ namespace WypożyczalniaSamochodówPremium.Models
             return entities.imagesSamochod.SingleOrDefault(o => o.ImageId == id);
         }
 
+        public ImageSamochod GetDefaultImageIdForSamochodId(int id)
+        {
+            return entities.imagesSamochod.FirstOrDefault(x => x.SamochodId == id);
+        }
+
         public void Add(ImageSamochod image)
         {
             entities.imagesSamochod.Add(image);

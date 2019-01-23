@@ -116,6 +116,10 @@
                                     <a id="nav-link-pages" class="nav-link g-py-7 g-px-0" href="#!" aria-haspopup="true" aria-expanded="false" aria-controls="nav-submenu-pages">Menu</a>
 
                                     <ul class="hs-sub-menu list-unstyled u-shadow-v11 g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-mt-18 g-mt-8--lg--scrolling" id="nav-submenu-pages" aria-labelledby="nav-link-pages" style="display: none;">
+
+                                        <li class="dropdown-item ">
+                                            <a class="nav-link" href="/Cars/Index">Flota samochodów</a>
+                                        </li>
                                         <!-- Pages - About -->
                                         <li class="dropdown-item hs-has-sub-menu ">
                                             <a id="nav-link--pages--about" class="nav-link" href="#!" aria-haspopup="true" aria-expanded="false" aria-controls="nav-submenu--pages--about">About</a>
@@ -155,10 +159,11 @@
                                             </ul>
                                             <!-- End Submenu (level 2) -->
                                         </li>
-                                        <li class="dropdown-item ">
-                                            <a class="nav-link" href="../../unify-main/pages/page-pricing-1.html">Pricing</a>
-                                        </li>
+
                                     </ul>
+                                </li>
+                                <li class="nav-item  g-mx-10--lg g-mx-15--xl">
+                                    <a href="/Cars/SearchCar" class="nav-link g-py-7 g-px-0" style="color:dodgerblue">Wypożycz samochów!</a>
                                 </li>
                             </ul>
                         </div>
@@ -172,13 +177,12 @@
         </header>
 
     </main>
-    <div class="container body-content">
+    <div></div>
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Wypożyczalnia samochodów premium</p>
+            @RenderPage("~/Views/Shared/_Footer.cshtml")
         </footer>
-    </div>
 
     
 

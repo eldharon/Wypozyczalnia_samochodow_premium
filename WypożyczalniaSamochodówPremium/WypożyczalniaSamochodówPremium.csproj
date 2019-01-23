@@ -421,6 +421,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\hs-icons.svg" />
     <Content Include="Content\Graphics\100z100.jpg" />
+    <Content Include="Content\Graphics\car-banner1.jpg" />
     <Content Include="Content\Graphics\HomeLogo.jpg" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\editor.png" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\imagebrowser.png" />
@@ -4157,6 +4158,10 @@
     <Content Include="Views\Account\UserList.cshtml" />
     <Content Include="Views\Account\EditUser.cshtml" />
     <Content Include="Views\Cars\Index.cshtml" />
+    <Content Include="Views\Cars\Details.cshtml" />
+    <Content Include="Views\Cars\RentCar.cshtml" />
+    <Content Include="Views\Cars\SearchCar.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Adm\Models\" />

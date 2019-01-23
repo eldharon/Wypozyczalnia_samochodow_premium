@@ -336,13 +336,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ShowPhoto(int id)
         {
-            //This is my method for getting the image information
-            // including the image byte array from the image column in
-            // a database.
-            PhotoViewModel image = imageRepository.GetImageVMById(id);
-            //As you can see the use is stupid simple.  Just get the image bytes and the
-            //  saved content type.  See this is where the contentType comes in real handy.
-            ImageResult result = new ImageResult(image.Image, image.ContentType);
+                PhotoViewModel image = imageRepository.GetImageVMById(id);
+                ImageResult result = new ImageResult(image.Image, image.ContentType);
 
             return result;
         }

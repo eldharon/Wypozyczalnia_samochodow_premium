@@ -19,8 +19,8 @@
                         <!-- Listing - Agents -->
                         <div class="u-shadow-v11 text-center">
                             <div class="g-bg-white g-pa-20">
-                                <div class="g-width-130 g-height-130 mx-auto mb-4">
-                                    <img  src="/Adm/Samochod/ShowPhoto/@item.SamochodId"  alt="Zdjęcie główne" height="100%" width="100%"   />
+                                <div class="mb-3">
+                                    <img src="/Adm/Samochod/ShowPhoto/@item.PhotoId"  alt="Zdjęcie główne" style="height:80%;width:80%" />
                                 </div>
                                 <div class="mb-3">
                                     <h3 class="h5"><a class="g-color-black" href="#">@item.Marka @item.Model</a></h3>
@@ -29,10 +29,10 @@
                                 <span class="d-block g-font-weight-500 g-font-size-13"><i class="fa fa-cogs"></i> skrzynia @item.SkrzyniaBiegow</span>
                                 <span class="d-block g-font-weight-500 g-font-size-13"><i class="fa fa-car"></i> @item.LiczbaDrzwi</span>
                             </div>
-                            <a class="btn btn-block u-btn-primary g-color-white--hover g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="page-contacts-1.html">
+                            <a class="btn btn-block u-btn-primary g-color-white--hover g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="/Cars/RentCar/@item.SamochodId">
                                 Zarezerwuj!
                             </a>
-                            <a class="btn btn-block g-color-black g-bg-white g-bg-secondary--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15 mt-0" href="#">Więcej</a>
+                            <a class="btn btn-block g-color-black g-bg-white g-bg-secondary--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15 mt-0" href="/Cars/Details/@item.SamochodId">Więcej</a>
                         </div>
                         <!-- End Listing - Agents -->
                     </div>

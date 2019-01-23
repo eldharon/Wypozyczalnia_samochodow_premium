@@ -12,6 +12,7 @@ namespace WypożyczalniaSamochodówPremium.Models
     [MetadataType(typeof(SamochodValidation))]
     public partial class Samochod
     {
+        public virtual int PhotoId { get; set; }
     }
 
     public class SamochodValidation
