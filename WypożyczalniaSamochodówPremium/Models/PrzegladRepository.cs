@@ -13,10 +13,16 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             return entities.przeglady;
         }
+        
 
         public Przeglad GetPrzegladById(int id)
         {
-            return entities.przeglady.SingleOrDefault(p => p.PrzegladId == id);
+            return entities.przeglady.SingleOrDefault(s => s.PrzegladId == id);
+        }
+
+        public IQueryable<Przeglad> ShowPrzegladForSamochod(int id)
+        {
+            return entities.przeglady.Where(s => s.SamochodId == id).OrderByDescending(x => x.DataPrzegladu);
         }
 
         public void Add(Przeglad przeglad)

@@ -296,8 +296,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             ViewBag.SamochodId = id;
            
             PhotoProp model = new PhotoProp();
-            model.AlternateText = "d";
-            model.Name = "a";
+            model.AlternateText = "";
+            model.Name = "";
             return PartialView("Upload", model);
 
         }

@@ -1,0 +1,63 @@
+﻿@model WypożyczalniaSamochodówPremium.Models.Przeglad
+@using WypożyczalniaSamochodówPremium.Helpers
+@{
+    ViewBag.Title = "Osoba";
+    Layout = "~/Areas/Adm/Views/Shared/_LayoutScript.cshtml";
+}
+
+
+<div class="container-fluid mt-5">
+    <div class="animated fadeIn">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-male"></i> Edytuj Przeglad
+                </div>
+                @{Html.EnableClientValidation();}
+                @using (Html.BeginForm("Edit", "Przeglad", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="card-body">
+                        @Html.ValidationSummary(true)
+                        <div class="form-horizontal">
+                            <h4>Przeglad</h4>
+                            <hr />
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.DataPrzegladu, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.DataKolejnegoPrzegladu, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DataKolejnegoPrzegladu)
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.DataKolejnegoPrzegladu, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.DataKolejnegoPrzegladu, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DataKolejnegoPrzegladu)
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Uwagi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.Uwagi, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Uwagi)
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" value="Zapisz" class="btn btn-primary" /> &nbsp; @Html.ActionLink("Wróć do listy", "ShowPrzegladyForSamochod", "Przeglad", new { id = Model.SamochodId }, new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
