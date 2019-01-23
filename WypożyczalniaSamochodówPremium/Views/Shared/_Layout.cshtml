@@ -98,7 +98,7 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-                                    <a href="/Home/Index" class="nav-link g-py-7 g-px-0" style="color:dodgerblue">Wypożycz samochów!</a>
+                                    <a href="/Cars/SearchCar" class="nav-link g-py-7 g-px-0" style="color:dodgerblue">Wypożycz samochów!</a>
                                 </li>
                             </ul>
 </div>
@@ -114,10 +114,8 @@
 
         @RenderBody()
 
-
-    <hr />
     <footer>
-        <p>&copy; @DateTime.Now.Year - Wypożyczalnia samochodów premium</p>
+        @RenderPage("~/Views/Shared/_Footer.cshtml")
     </footer>
 
 

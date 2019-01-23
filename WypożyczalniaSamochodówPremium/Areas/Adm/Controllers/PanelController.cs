@@ -9,7 +9,7 @@ using WypożyczalniaSamochodówPremium.Models;
 
 namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 {
-    [Authorize(Roles = "Admin, Manager, Employee")]
+    //[Authorize(Roles = "Admin, Manager, Employee")]
     public class PanelController : Controller
     {
         public Boolean isAdminUser()
