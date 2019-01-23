@@ -13,6 +13,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         WydarzenieRepository wydarzenieRepository = new WydarzenieRepository();
         WypSamRepository WypSamRepository = new WypSamRepository();
         WypozyczenieTempRepository wypozyczenieTempRepository = new WypozyczenieTempRepository();
+        OsobaRepository osobaRepository = new OsobaRepository();
         // GET: Adm/Wydarzenie
         public ActionResult Index()
         {

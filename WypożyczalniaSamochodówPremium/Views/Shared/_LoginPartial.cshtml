@@ -7,16 +7,16 @@
 
     <ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto">
         <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Moje konto", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
-        <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
     </ul>
     }
 }
 else
 {
     <ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto">
-        <li class="nav-item  g-mx-10--lg g-mx-15--xl">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li class="nav-item  g-mx-10--lg g-mx-15--xl">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li class="nav-item  g-mx-10--lg g-mx-15--xl">@Html.ActionLink("Zarejestruj", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li class="nav-item  g-mx-10--lg g-mx-15--xl">@Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

@@ -382,6 +382,18 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             }
         }
 
+        public ActionResult SamochodyForWypozyczenieForDetails(int wypId)
+        {
+
+            var model = new WypSam();
+            var list = wypSamRepository.FindWypSamForIdWypozyczenie(wypId);
+            if (list != null)
+            {
+                model.WypSamList = list;
+            }
+            return PartialView("_SamochodyForWypozyczenieForDetails", model);
+        }
+
         public ActionResult SamochodyForWypozyczenie(int wypId)
         {
 
