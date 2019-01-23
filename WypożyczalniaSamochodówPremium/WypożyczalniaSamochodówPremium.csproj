@@ -220,8 +220,10 @@
     <Compile Include="Areas\Adm\Controllers\SamochodController.cs" />
     <Compile Include="Areas\Adm\Controllers\WydarzenieController.cs" />
     <Compile Include="Areas\Adm\Controllers\WypozyczenieController.cs" />
+    <Compile Include="Areas\Adm\Controllers\WypozyczenieTempController.cs" />
     <Compile Include="Areas\Adm\Controllers\WypSamController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -4094,6 +4096,8 @@
     <Content Include="Areas\Adm\Views\Samochod\CarsForAjax.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\_SamochodyForWypozyczenieTemp.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\Upload.cshtml" />
+    <Content Include="Areas\Adm\Views\WypozyczenieTemp\_Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Samochod\_SamochodyForWypozyczenieForDetails.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\DisplayZdjecia.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -4154,6 +4158,7 @@
     <Content Include="Views\Account\EmailNotConfirm.cshtml" />
     <Content Include="Views\Account\UserList.cshtml" />
     <Content Include="Views\Account\EditUser.cshtml" />
+    <Content Include="Views\Cars\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Adm\Models\" />

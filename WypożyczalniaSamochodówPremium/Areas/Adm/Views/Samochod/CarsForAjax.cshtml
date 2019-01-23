@@ -63,12 +63,12 @@
 }
 
 <script>
-     $('#Marka').change(function () {
+    $('#Marka').change(function () {
                 var selectedMarka = $("#Marka").val();
                 var modeleSelect = $('#Model');
-                var from = "@Model.from.ToString()";
-                var to = "@Model.to.ToString()";
-                var osobaId = "@Model.OsobaId"   
+                var from = "@ViewBag.DataWyp.ToString()";
+                var to = "@ViewBag.DataZwr.ToString()";
+                var osobaId = "@ViewBag.OsobaId"   
                 modeleSelect.empty();
         if (selectedMarka != null && selectedMarka != '') {
             $.getJSON('@Url.Action("PopulateModeleDropdownAJAX","Samochod")', { marka: selectedMarka, startDate : from, endDate : to, osobaId : osobaId }, function (modele) {

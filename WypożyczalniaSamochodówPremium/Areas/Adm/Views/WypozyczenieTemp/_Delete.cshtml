@@ -1,0 +1,31 @@
+﻿@model WypożyczalniaSamochodówPremium.Models.WypozyczenieTemp
+@using WypożyczalniaSamochodówPremium.Helpers
+
+@using (Ajax.BeginForm("Delete", "WypozyczenieTemp", new { id = Model.WypozyczenieTempId }, new AjaxOptions
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "samochodyWypozyczenie",
+    LoadingElementId = "autaBazaLoading",
+    OnComplete = "",
+    OnBegin = "HideModal2",
+    OnFailure = "",
+    OnSuccess = ""
+}))
+{
+
+    @Html.HiddenFor(model => model.WypozyczenieTempId)
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" onclick="HideModal()"><span aria-hidden="true"><i class="fa fa-times"></i></span><span class="sr-only">Close</span></button>
+    </div>
+    <div class="modal-body">
+
+        <h4 class="modal-title">Czy na pewno chesz usunąć samochód?</h4>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" data-dismiss="modal" onclick="HideModal()">Anuluj</button>
+        <button type="submit" class="btn btn-primary btn-danger">Usuń</button>
+    </div>
+}

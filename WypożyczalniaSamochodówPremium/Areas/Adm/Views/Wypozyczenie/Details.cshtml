@@ -34,6 +34,22 @@
                             <h4>Wypożyczenie</h4>
                             <hr>
                             <hr />
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.Osoba.Imie, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.Osoba.Imie)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.Osoba.Nazwisko, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.Osoba.Nazwisko)
+                                </div>
+                            </div>
+
+
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.DataWypozyczenia, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
                                 <div class="col-md-10">
@@ -53,17 +69,30 @@
                                     @Html.DisplayFor(model => model.CzyDostarczany)
                                 </div>
                             </div>
-                            <div class="row form-group line">
-                                @Html.LabelFor(model => model.CzyKierowca, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-10">
-                                    @Html.DisplayFor(model => model.CzyKierowca)
-                                </div>
-                            </div>
-                            <div class="row form-group line">
-                                @Html.LabelFor(model => model.AdresDojazdu, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                                <div class="col-md-10">
-                                    @Html.DisplayFor(model => model.AdresDojazdu)
-                                </div>
+
+                            @{
+                                if (Model.CzyDostarczany == true)
+                                {
+                                    <div class="row form-group line">
+                                        @Html.LabelFor(model => model.CzyKierowca, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                        <div class="col-md-10">
+                                            @Html.DisplayFor(model => model.CzyKierowca)
+                                        </div>
+                                    </div>
+                                    <div class="row form-group line">
+                                        @Html.LabelFor(model => model.AdresDojazdu, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                        <div class="col-md-10">
+                                            @Html.DisplayFor(model => model.AdresDojazdu)
+                                        </div>
+                                    </div>
+
+
+                                }
+                            }
+
+
+                            <div id="samochodyWypozyczenie">
+                                @Html.Action("SamochodyForWypozyczenieForDetails", "Samochod", new { wypId = Model.WypozyczenieId })
                             </div>
                         </div>
                     </div>
