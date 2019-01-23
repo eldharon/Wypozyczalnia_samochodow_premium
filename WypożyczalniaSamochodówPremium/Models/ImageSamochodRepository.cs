@@ -9,8 +9,6 @@ namespace WypożyczalniaSamochodówPremium.Models
     public class ImageSamochodRepository
     {
         WypozyczenieEntities entities = new WypozyczenieEntities();
-        //ImageRepository imageRepository = new ImageRepository();
-        //ImageSamochodRepository imageSamochodRepository = new ImageSamochodRepository();
 
         public IQueryable<ImageSamochod> FindAllImages()
         {
@@ -20,6 +18,16 @@ namespace WypożyczalniaSamochodówPremium.Models
         public ImageSamochod GetImageById(int id)
         {
             return entities.imagesSamochod.SingleOrDefault(o => o.ImageId == id);
+        }
+        public IEnumerable<PhotoProp> GetPhotoPropsForSamochodId(int id)
+        {
+            return entities.imagesSamochod.Where(x => x.SamochodId == id).Select(c => new PhotoProp
+            {
+                id = c.ImageId,
+                Name = c.Image.ImageName,
+                AlternateText = c.Image.ImageAlt,
+                ReferencedObjectId = c.SamochodId
+            }).AsEnumerable();
         }
 
         public void Add(ImageSamochod image)

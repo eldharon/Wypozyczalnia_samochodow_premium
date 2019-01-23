@@ -252,6 +252,7 @@
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DostepnoscRepository.cs" />
+    <Compile Include="Models\ImageValidation.cs" />
     <Compile Include="Models\DostepnoscValidation.cs" />
     <Compile Include="Models\DowodOsobisty.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
@@ -4093,6 +4094,7 @@
     <Content Include="Areas\Adm\Views\Samochod\CarsForAjax.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\_SamochodyForWypozyczenieTemp.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\Upload.cshtml" />
+    <Content Include="Areas\Adm\Views\Samochod\DisplayZdjecia.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

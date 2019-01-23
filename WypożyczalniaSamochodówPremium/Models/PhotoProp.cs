@@ -10,5 +10,6 @@ namespace WypożyczalniaSamochodówPremium.Models
         public int id { get; set; }
         public string Name { get; set; }
         public string AlternateText { get; set; }
+        public int ReferencedObjectId { get; set; }
     }
 }

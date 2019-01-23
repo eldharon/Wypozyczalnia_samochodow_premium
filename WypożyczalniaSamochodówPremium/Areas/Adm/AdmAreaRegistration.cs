@@ -14,6 +14,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
+
             context.MapRoute(
             "adm_CarsForAjax", // Pages route
             "adm/Samochod/CarsForAjax/{from}/{to}/{osobaId}", //URL with parameters

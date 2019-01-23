@@ -4,7 +4,6 @@
 @using (Ajax.BeginForm("Upload", "Samochod",
 new
 {
-
     Name = ViewBag.Name,
     AlternateText = ViewBag.AlternateText,
     id = ViewBag.SamochodId
@@ -13,7 +12,7 @@ new AjaxOptions
 {
     HttpMethod = "POST",
     InsertionMode = InsertionMode.Replace,
-    UpdateTargetId = "",
+    UpdateTargetId = "updatephoto",
     LoadingElementId = "autaBazaLoading",
     OnComplete = "",
     OnBegin = "HideModal",

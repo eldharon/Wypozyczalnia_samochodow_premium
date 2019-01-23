@@ -31,9 +31,9 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             return View(samochod);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int samId)
         {
-            var samochod = samochodRepository.GetSamochodById(id);
+            var samochod = samochodRepository.GetSamochodById(samId);
 
             return View(samochod);
 
@@ -294,57 +294,66 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         public ActionResult Upload(int id)
         {
             ViewBag.SamochodId = id;
-           
+            var sam = samochodRepository.GetSamochodById(id);
+            var samimg = imageSamochodRepository.GetPhotoPropsForSamochodId(id).Count()+1;
             PhotoProp model = new PhotoProp();
-            model.AlternateText = "d";
-            model.Name = "a";
+            model.AlternateText = sam.Marka + " " + sam.Model + " " + sam.PojemnoscSilnika + " " + sam.Kolor + " " + sam.RokProdukcji.Year + " " + samimg;
+            model.Name = sam.Marka + " " + sam.Model + " " + samimg;
             return PartialView("Upload", model);
 
         }
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Upload(string Name, string AlternateText, int id)
         {
-            PhotoViewModel photoVM = new PhotoViewModel();
-            HttpPostedFileBase file = Request.Files["OriginalLocation"];
-            photoVM.Name = Name;
-            photoVM.AlternateText = AlternateText;
+            try
+            {
+                PhotoViewModel photoVM = new PhotoViewModel();
+                HttpPostedFileBase file = Request.Files["OriginalLocation"];
+                photoVM.Name = Name;
+                photoVM.AlternateText = AlternateText;
 
-            photoVM.ContentType = file.ContentType;
+                photoVM.ContentType = file.ContentType;
 
-            Int32 length = file.ContentLength;
-            byte[] tempImg = new byte[length];
-            file.InputStream.Read(tempImg, 0, length);
-            photoVM.Image = tempImg;
-            Image image = new Image();
-            image.ImageName = photoVM.Name;
-            image.ImageAlt = photoVM.AlternateText;
-            image.ContentType = photoVM.ContentType;
-            image.ImageData = photoVM.Image;
-            imageRepository.Add(image);
-            imageRepository.Save();
+                Int32 length = file.ContentLength;
+                byte[] tempImg = new byte[length];
+                file.InputStream.Read(tempImg, 0, length);
+                photoVM.Image = tempImg;
+                Image image = new Image();
+                image.ImageName = photoVM.Name;
+                image.ImageAlt = photoVM.AlternateText;
+                image.ContentType = photoVM.ContentType;
+                image.ImageData = photoVM.Image;
+                imageRepository.Add(image);
+                imageRepository.Save();
 
-            ImageSamochod imageSamochod = new ImageSamochod();
-            imageSamochod.Opis = photoVM.AlternateText;
-            imageSamochod.ImageId = image.ImageId;
-            imageSamochod.SamochodId = id;
-            imageSamochodRepository.Add(imageSamochod);
-            imageSamochodRepository.Save();
+                ImageSamochod imageSamochod = new ImageSamochod();
+                imageSamochod.Opis = photoVM.AlternateText;
+                imageSamochod.ImageId = image.ImageId;
+                imageSamochod.SamochodId = id;
+                imageSamochodRepository.Add(imageSamochod);
+                imageSamochodRepository.Save();
 
-            return RedirectToAction("Details", "Samochod", new { SamochodId = id });
-
+                return RedirectToAction("Details", "Samochod", new { samId = id });
+            }catch(Exception e)
+            {
+                TempData["errorMessage"] = "Nie udało się dodać zdjęcia!\n" + e;
+                return RedirectToAction("Details", "Samochod", id);
+                
+            }
         }
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ShowPhoto(int id)
         {
-            //This is my method for getting the image information
-            // including the image byte array from the image column in
-            // a database.
             PhotoViewModel image = imageRepository.GetImageVMById(id);
-            //As you can see the use is stupid simple.  Just get the image bytes and the
-            //  saved content type.  See this is where the contentType comes in real handy.
-            ImageResult result = new ImageResult(image.Image, image.ContentType);
+            return File(image.Image, image.ContentType);
+        }
+        public ActionResult DisplayZdjecia(int id)
+        {
 
-            return result;
+            var model = imageSamochodRepository.GetPhotoPropsForSamochodId(id);
+            return PartialView(model);
+
+            
         }
         public ActionResult CarsForAjax(string from, string to, int osobaId)
         {
