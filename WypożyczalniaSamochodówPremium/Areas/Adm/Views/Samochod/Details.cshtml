@@ -132,7 +132,9 @@
                 </div>
                 <div class="card-footer">
                     @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" }) &nbsp; <a data-toggle="modal" data-remote="@Url.Action("Upload", "Samochod", new { id = Model.SamochodId })" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie</a>
-                    @Html.IconActionLink("fa fa-plus-circle", "Dodaj Opis", "Create", "Opis", new { id = Model.SamochodId }, new { @class = "btn btn-primary", @style = "float: right" })                   
+                    @Html.IconActionLink("fa fa-plus-circle", "Dodaj Opis", "Create", "Opis", new { id = Model.SamochodId }, new { @class = "btn btn-primary", @style = "float: right" })
+                    @Html.IconActionLink("fa fa-info-circle", "Serwisy", "ShowSerwisyForSamochod", "Serwis", new { id = Model.SamochodId }, new { @class = "btn btn-primary", @style = "float: right" })
+                    @Html.IconActionLink("fa fa-info-circle", "Przeglady", "ShowPrzegladyForSamochod", "Przeglad", new { id = Model.SamochodId }, new { @class = "btn btn-primary", @style = "float: right" })
                 </div>
             </div>
         </div>
