@@ -1,97 +1,126 @@
-﻿
+﻿@model WypożyczalniaSamochodówPremium.Models.SearchViewModel
 @{
     ViewBag.Title = "SearchCar";
     Layout = "~/Views/Shared/_LayoutScript.cshtml";
 }
 
-<div class="container mt-5">
-    <div class="row">
+@using (Ajax.BeginForm("SearchCar", "Cars", new
+{
+    dWyp = Model.dataWyp.ToString(),
+    dZwr = Model.dataZwr.ToString()
+}, new AjaxOptions
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "carsPartial",
+    LoadingElementId = "autaBazaLoading",
+    OnComplete = "",
+    OnBegin = "",
+    OnFailure = "",
+    OnSuccess = ""
+}))
+{
+    <div class="container mt-5">
+        <div class="row">
 
-        <div class="col-md-12">
-            <div id="shortcode11">
-                <div class="shortcode-html">
-                    <form class="g-brd-around g-brd-gray-light-v4 g-pa-30 g-mb-30">
-                        <h4 class="h6 g-font-weight-700 g-mb-20">Wybierz okres wypożyczenia</h4>
+            <div class="col-md-12">
+                <div id="shortcode2">
+                    <div class="shortcode-html">
+                        <!-- Textual Inputs -->
+                        <div class="g-brd-around g-brd-gray-light-v4 g-pa-30 g-mb-30">
 
-                        <!-- Select Date Range -->
-                        <div class="form-group mb-0">
-                            <div class="row">
-                                <div class="col-xl-6 g-mb-40 g-mb-0--xl">
-                                    <!-- Datepicker -->
-                                    <div class="input-group g-brd-primary--focus">
-                                        <input id="datepickerFrom" class="form-control form-control-md u-datepicker-v1 g-brd-right-none rounded-0 hasDatepicker" type="text" placeholder="Data wypożyczenia" data-range="true" data-to="datepickerTo">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text rounded-0 g-color-gray-dark-v5"><i class="icon-calendar"></i></span>
-                                        </div>
-                                    </div>
-                                    <!-- End Datepicker -->
+
+
+                            <div class="form-group row g-mb-25">
+                                <label for="example-date-input" class="col-2 col-form-label">Data wypożyczenia</label>
+                                <div class="col-4">
+                                    @Html.EditorFor(model => model.dataWyp, new { htmlAttributes = new { @class = "form-control rounded-0 form-control-md" } })
+                                    @Html.ValidationMessageFor(model => model.dataWyp)
                                 </div>
-
-                                <div class="col-xl-6">
-                                    <!-- Datepicker -->
-                                    <div class="input-group g-brd-primary--focus">
-                                        <input id="datepickerTo" class="form-control form-control-md u-datepicker-v1 g-brd-right-none rounded-0 hasDatepicker" type="text" placeholder="Data zwrotu">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text rounded-0 g-color-gray-dark-v5"><i class="icon-calendar"></i></span>
-                                        </div>
-                                    </div>
-                                    <!-- End Datepicker -->
+                                <label for="example-date-input" class="col-2 col-form-label">Data zwrotu</label>
+                                <div class="col-4">
+                                    @Html.EditorFor(model => model.dataZwr, new { htmlAttributes = new { @class = "form-control rounded-0 form-control-md" } })
+                                    @Html.ValidationMessageFor(model => model.dataZwr)
                                 </div>
                             </div>
+
+                            @{
+                                ViewBag.DataWyp = Model.dataWyp;
+                                ViewBag.DataZwr = Model.dataZwr;
+                            }
+
+                            <div class="form-group row g-mb-25">
+                                <div class="col-12 text-right">
+                                    @if (Model.wypTemp.Count() > 0)
+                                    {
+                                        <script>
+                                            document.getElementById("dataWyp").disabled = true;
+                                            document.getElementById("dataZwr").disabled = true;
+                                        </script>
+                                        @Html.ActionLink("Nowe wypożyczenie", "DeleteCarFromCart", "Cars", null, new { @class = "btn btn-primary" });
+
+                                    }
+                                    else
+                                    {
+                                        <script>
+                                            document.getElementById("dataWyp").disabled = false;
+                                            document.getElementById("dataZwr").disabled = false;
+                                        </script>
+                                        <input type="submit" value="Szukaj" class="btn btn-primary" />
+
+                                    }
+                                </div>
+                            </div>
+
+
                         </div>
-                        <!-- End Select Date Range -->
 
-
-                    </form>
-                </div>
-
-                @*<div class="shortcode-styles">
-                        <!-- CSS Implementing Plugins -->
-                        <link type="text/plain" rel="stylesheet" href="../../../assets/vendor/jquery-ui/themes/base/jquery-ui.min.css">
+                        <!-- End Textual Inputs -->
                     </div>
-
-                    <div class="shortcode-scripts">
-                        <!-- jQuery UI Core -->
-                        <script type="text/plain" src="../../../assets/vendor/jquery-ui/ui/widget.js">
-                        </script>
-                        <script type="text/plain" src="../../../assets/vendor/jquery-ui/ui/version.js">
-                        </script>
-                        <script type="text/plain" src="../../../assets/vendor/jquery-ui/ui/keycode.js">
-                        </script>
-                        <script type="text/plain" src="../../../assets/vendor/jquery-ui/ui/position.js">
-                        </script>
-                        <script type="text/plain" src="../../../assets/vendor/jquery-ui/ui/unique-id.js">
-                        </script>
-                        <script type="text/plain" src="../../../assets/vendor/jquery-ui/ui/safe-active-element.js">
-                        </script>
-
-                        <!-- jQuery UI Helpers -->
-                        <script type="text/plain" src="../../../assets/vendor/jquery-ui/ui/widgets/menu.js">
-                        </script>
-                        <script type="text/plain" src="../../../assets/vendor/jquery-ui/ui/widgets/mouse.js">
-                        </script>
-
-                        <!-- jQuery UI Widgets -->
-                        <script type="text/plain" src="../../../assets/vendor/jquery-ui/ui/widgets/datepicker.js">
-                        </script>
-
-                        <!-- JS Unify -->
-                        <script type="text/plain" src="../../../assets/js/components/hs.datepicker.js">
-                        </script>
-
-                        <!-- JS Plugins Init. -->*@
+                </div>
 
             </div>
         </div>
+    </div>
 
-        <div>
-            @*Tu będzie partial View*@
+    <div id="carsPartial">
+        @Html.Action("CarsForTimeRange", "Cars", new { dataWyp = Model.dataWyp, dataZwr = Model.dataWyp })
+    </div>
+
+}
+
+
+    <div class="modal inmodal in" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 60%">
+            <div class="modal-content">
+            </div>
         </div>
     </div>
-</div>
-<script type="text/plain">
-    $(document).on('ready', function () {
-    // initialization of forms
-    $.HSCore.components.HSDatepicker.init('#datepickerDefault, #datepickerInline, #datepickerInlineFrom, #datepickerFrom');
-    });
-</script>
+
+
+    <script>
+        $('#modal').on('show.bs.modal', function (e) {
+
+            var button = $(e.relatedTarget);
+            var modal = $(this);
+
+            // load content from HTML string
+            //modal.find('.modal-body').html("Nice modal body baby...");
+
+            // or, load content from value of data-remote url
+            modal.find('.modal-content').load(button.data("remote"));
+
+        });
+        function HideModal() {
+
+            $('#modal').modal('hide');
+            $(document.body).on('hidden.bs.modal', function () {
+                $('#modal').removeData('bs.modal')
+            });
+            $('#modal').data('modal', null);
+        }
+
+        $(document.body).on('hidden.bs.modal', function () {
+            $('#modal').removeData('bs.modal')
+        });
+    </script>

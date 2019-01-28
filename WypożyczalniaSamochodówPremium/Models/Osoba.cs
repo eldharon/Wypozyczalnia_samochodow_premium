@@ -30,7 +30,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         public int OsobaId { get; set; }
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
-        public System.DateTime DataUrodzenia { get; set; }
+        public Nullable<System.DateTime> DataUrodzenia { get; set; }
         public string Adres { get; set; }
         public string KodPocztowy { get; set; }
         public string Kraj { get; set; }

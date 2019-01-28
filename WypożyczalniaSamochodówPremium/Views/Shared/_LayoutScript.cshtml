@@ -8,9 +8,9 @@
 
 
     @*@Styles.Render("BootstrapUNIFY")
-    @Styles.Render("IconsUNIFY")
+        @Styles.Render("IconsUNIFY")
 
-    @Scripts.Render("JQueryUNIFY")*@
+        @Scripts.Render("JQueryUNIFY")*@
 
 
 
@@ -24,12 +24,19 @@
 
 
     @Styles.Render("~/Content/UnifyCSS")
-        @Styles.Render("~/Content/UnifyCustomCSS")
+    @Styles.Render("~/Content/UnifyCustomCSS")
+
+
     @Scripts.Render("~/bundles/WWW_js_global_compulsory")
-        @Scripts.Render("~/bundles/WWW_js_implementing_plugins_home")
-        @Scripts.Render("~/bundles/WWW_js_unify")
-        @Scripts.Render("~/bundles/WWW_js_custom")
-        @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+
+    @Scripts.Render("~/bundles/WWW_js_implementing_plugins_home")
+    @Scripts.Render("~/bundles/Unify/jquery-ui")
+
+    @Scripts.Render("~/bundles/WWW_js_unify")
+    @Scripts.Render("~/bundles/WWW_js_custom")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+
+
     @RenderSection("scripts", required: false)
 
     @*@Scripts.Render("~/bundles/jquery")
@@ -163,10 +170,17 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-                                    <a href="/Cars/SearchCar" class="nav-link g-py-7 g-px-0" style="color:dodgerblue">Wypożycz samochów!</a>
+                                    <a href="/Cars/SearchCar" class="nav-link g-py-7 g-px-0" style="color:dodgerblue">Wypożycz samochód!</a>
                                 </li>
                             </ul>
                         </div>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <div id="CarsInCart">
+                                @Html.Action("CarInCart", "Cars")
+                            </div>
+
+                        }
                         @Html.Partial("_LoginPartial")
 
                         <!-- End Navigation -->

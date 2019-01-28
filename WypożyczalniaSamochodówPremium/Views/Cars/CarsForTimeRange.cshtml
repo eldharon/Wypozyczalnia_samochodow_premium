@@ -1,0 +1,91 @@
+﻿@model IPagedList<WypożyczalniaSamochodówPremium.Models.Samochod>
+@using PagedList;
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+<div class="container mt-5">
+    <div id="shortcode16">
+        <div class="mb-5">
+            <input class="form-control" id="myInput" type="text" placeholder="Wyszukaj..">
+
+        </div>
+
+
+
+        <div class="shortcode-html">
+            <div class="row g-mb-70" id="updateId">
+                @if (Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+
+                        <div class="col-md-4 g-mb-30" id="update2">
+                            <!-- Listing - Agents -->
+                            <div class="u-shadow-v11 text-center">
+                                <div class="g-bg-white g-pa-20">
+                                    <div class="mb-3">
+                                        <article class="text-center g-color-white g-overflow-hidden">
+                                            <div class="u-block-hover--scale g-min-height-200 g-flex-middle g-bg-cover g-bg-size-cover g-bg-bluegray-opacity-0_3--after g-transition-0_5" data-bg-img-src="/Adm/Samochod/ShowPhoto/@item.PhotoId" style="background-image: url(/Adm/Samochod/ShowPhoto/@item.PhotoId);">
+                                                <div class="g-flex-middle-item g-pos-rel g-z-index-1 g-py-50 g-px-20">
+                                                    @*<em class="d-inline-block info-v3-1__title g-font-style-normal g-font-size-18 text-uppercase">Klasa</em>
+                                                    <h3 class="text-uppercase g-mb-15">premium</h3>*@
+
+                                                    <a data-toggle="modal" data-remote="@Url.Action("Details", "Cars", new { id = item.SamochodId })" href="#" data-target="#modal" class="btn btn-md u-btn-outline-white g-font-weight-600 g-font-size-11 text-uppercase">Więcej</a>
+
+                                                </div>
+                                            </div>
+                                        </article>                                    </div>
+                                    <div class="mb-3">
+                                        <h3 class="h5"><a class="g-color-black" href="#">@item.Marka @item.Model</a></h3>
+                                        <span class="d-block g-color-gray-dark-v5 g-font-size-13 mb-1">@item.Wersja</span>
+                                    </div>
+                                    <span class="d-block g-font-weight-500 g-font-size-13"><i class="fa fa-cogs"></i> skrzynia @item.SkrzyniaBiegow</span>
+                                    <span class="d-block g-font-weight-500 g-font-size-13"><i class="fa fa-car"></i> @item.LiczbaDrzwi</span>
+                                </div>
+                                @Html.ActionLink("Dodaj", "AddCarToCart", "Cars", new { samId = item.SamochodId, dataWyp = ViewBag.dataWyp, dataZwr = ViewBag.dataZwr }, new { @class = "btn btn-block u-btn-primary g-color-white--hover g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" })
+
+                            </div>
+                            <!-- End Listing - Agents -->
+                        </div>
+                    }
+                    <hr />
+
+
+
+
+
+
+                }
+                else
+                {
+
+
+                    <div>
+                        Brak wolnych samochodów we wskazanym terminie...
+                    </div>
+                }
+            </div>
+
+            @Html.PagedListPager(Model, page => Url.Action("CarsForTimeRange", "Cars", new { page = page, dataWyp = ViewBag.dataWyp, dataZwr = ViewBag.dataZwr }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "carsPartial" }))
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#updateId #update2").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+

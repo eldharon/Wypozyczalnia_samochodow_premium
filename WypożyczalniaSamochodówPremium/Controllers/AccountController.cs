@@ -20,6 +20,7 @@ namespace WypożyczalniaSamochodówPremium.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         ApplicationDbContext context;
+        OsobaRepository osobaRepository = new OsobaRepository();
 
         public AccountController()
         {
@@ -163,10 +164,13 @@ namespace WypożyczalniaSamochodówPremium.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            Osoba osoba = new Osoba();
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserHash = Guid.NewGuid(), };
                 model.UserRoles = "Customer";
+                
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -178,6 +182,23 @@ namespace WypożyczalniaSamochodówPremium.Controllers
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+
+
+                    osoba.Imie = model.Imie;
+                    osoba.Nazwisko = model.Nazwisko; 
+                    osoba.DataUrodzenia = model.DataUrodzenia;
+                    osoba.Hash = user.UserHash;
+
+                    osobaRepository.Add(osoba);
+                    osobaRepository.Save();
+
+                    ViewBag.UserEmail = user.Email;
+
+                    if (!UserManager.IsEmailConfirmed(user.Id))
+                    {
+                        return View("EmailNotConfirm");
+                    }
+
 
                     return RedirectToAction("Index", "Home");
                 }

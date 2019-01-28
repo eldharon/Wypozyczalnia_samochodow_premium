@@ -17,6 +17,11 @@ namespace WypożyczalniaSamochodówPremium.Models
             return entities.imagesSamochod;
         }
 
+        public IQueryable<ImageSamochod> FindImegerForSamochodId(int id)
+        {
+            return entities.imagesSamochod.Where(i => i.SamochodId == id);
+        }
+
         public ImageSamochod GetImageById(int id)
         {
             return entities.imagesSamochod.SingleOrDefault(o => o.ImageId == id);

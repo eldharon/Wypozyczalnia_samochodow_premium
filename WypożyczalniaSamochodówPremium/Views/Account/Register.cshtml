@@ -19,34 +19,52 @@
                         <!-- Form -->
                         @Html.ValidationSummary("", new { @class = "text-danger" })
 
-                        <form class="g-py-15">
+                    <form class="g-py-15">
 
-                            <div class="mb-4">
-                                @Html.LabelFor(m => m.Email, new { @class = "g-color-gray-dark-v2 g-font-weight-600 g-font-size-13" })
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" })
+                        <div class="mb-4">
+                            @Html.LabelFor(m => m.Imie, new { @class = "g-color-gray-dark-v2 g-font-weight-600 g-font-size-13" })
+                            @Html.TextBoxFor(m => m.Imie, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" })
 
+                        </div>
+
+                        <div class="mb-4">
+                            @Html.LabelFor(m => m.Nazwisko, new { @class = "g-color-gray-dark-v2 g-font-weight-600 g-font-size-13" })
+                            @Html.TextBoxFor(m => m.Nazwisko, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" })
+
+                        </div>
+
+                        <div class="mb-4">
+                            @Html.LabelFor(m => m.DataUrodzenia, new { @class = "g-color-gray-dark-v2 g-font-weight-600 g-font-size-13" })
+                            @Html.EditorFor(m => m.DataUrodzenia, new { htmlAttributes = new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" }})
+
+                        </div>
+
+                        <div class="mb-4">
+                            @Html.LabelFor(m => m.Email, new { @class = "g-color-gray-dark-v2 g-font-weight-600 g-font-size-13" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" })
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 mb-4">
+                                @Html.LabelFor(m => m.Password, new { @class = "g-color-gray-dark-v2 g-font-weight-600 g-font-size-13" })
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" })
                             </div>
 
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 mb-4">
-                                    @Html.LabelFor(m => m.Password, new { @class = "g-color-gray-dark-v2 g-font-weight-600 g-font-size-13" })
-                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" })
-                                </div>
-
-                                <div class="col-xs-12 col-sm-6 mb-4">
-                                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "g-color-gray-dark-v2 g-font-weight-600 g-font-size-13" })
-                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" })
-                                </div>
+                            <div class="col-xs-12 col-sm-6 mb-4">
+                                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "g-color-gray-dark-v2 g-font-weight-600 g-font-size-13" })
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" })
                             </div>
+                        </div>
 
-                            <div class="row justify-content-between mb-5">
-                                <div class="col-8 align-self-center">
-                                </div>
-                                <div class="col-4 align-self-center text-right">
-                                    <input type="submit" class="btn btn-md u-btn-primary rounded g-py-13 g-px-25" value="Register" />
-                                </div>
+                        <div class="row justify-content-between mb-5">
+                            <div class="col-8 align-self-center">
                             </div>
-                        </form>
+                            <div class="col-4 align-self-center text-right">
+                                <input type="submit" class="btn btn-md u-btn-primary rounded g-py-13 g-px-25" value="Register" />
+                            </div>
+                        </div>
+                    </form>
                     }
                     <!-- End Form -->
 
