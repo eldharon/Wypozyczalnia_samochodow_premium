@@ -260,6 +260,7 @@
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DostepnoscRepository.cs" />
+    <Compile Include="Models\ImageValidation.cs" />
     <Compile Include="Models\DostepnoscValidation.cs" />
     <Compile Include="Models\DowodOsobisty.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
@@ -4811,6 +4812,7 @@
     <Content Include="Content\Unify\jquery-ui\composer.json" />
     <Content Include="Content\Unify\jquery-ui\README.md" />
     <Content Include="Content\Unify\jquery-ui\ui\.jshintrc" />
+    <Content Include="Areas\Adm\Views\Samochod\DisplayZdjecia.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

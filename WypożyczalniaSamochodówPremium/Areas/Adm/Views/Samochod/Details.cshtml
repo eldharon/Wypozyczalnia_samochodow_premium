@@ -4,7 +4,22 @@
     ViewBag.Title = "Samochody";
     Layout = "~/Areas/Adm/Views/Shared/_LayoutScript.cshtml";
 }
+<style>
+    img {
+        border: 1px solid #ddd; /* Gray border */
+        border-radius: 4px; /* Rounded border */
+        padding: 5px; /* Some padding */
+        width: 150px; /* Set a small width */
+    }
 
+        /* Add a hover effect (blue shadow) */
+        img:hover {
+            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+        }
+    .fa-trash:before {
+        color: black;
+    }
+</style>
 
 <div class="container-fluid mt-5">
     <div class="animated fadeIn">
@@ -90,7 +105,7 @@
                                 @Html.DisplayFor(model => model.Przebieg)
                             </div>
                         </div>
-                        
+
 
 
                         @*@Html.IconActionLink("fa fa-plus-circle", "Opisy", "Index", "Opis", new { id = Model.SamochodId }, new { @class = "btn btn-primary" })*@
@@ -102,6 +117,16 @@
                             }
                         </div>
                         @Html.Action("DisplayOpisy", "Opis", new { id = Model.SamochodId })
+
+                        <div class="form-group row">
+                            @if (Model.Opis.Count() > 0)
+                            {
+                                @Html.LabelFor(model => model.ImageSamochod.ElementAt(0).Image.ImageData, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                            }
+                        </div>
+                        <div id="updatePhoto">
+                            @Html.Action("DisplayZdjecia", "Samochod", new { id = Model.SamochodId })
+                        </div>
 
                     </div>
                 </div>

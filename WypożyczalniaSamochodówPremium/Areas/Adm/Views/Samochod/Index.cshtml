@@ -79,7 +79,7 @@
                                         </button>
                                         <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
                                             @Html.IconActionLink("fa fa-edit", "Edytuj", "Edit", "Samochod", new { id = item.SamochodId }, new { @class = "dropdown-item" })
-                                            @Html.IconActionLink("fa fa-list-ol", "Szczegóły", "Details", "Samochod", new { id = item.SamochodId }, new { @class = "dropdown-item" })
+                                            @Html.IconActionLink("fa fa-list-ol", "Szczegóły", "Details", "Samochod", new { samId = item.SamochodId }, new { @class = "dropdown-item" })
                                             @Html.IconActionLink("fa fa-trash", "Usuń", "Delete", "Samochod", new { id = item.SamochodId }, new { @class = "dropdown-item" })
                                         </div>
 
