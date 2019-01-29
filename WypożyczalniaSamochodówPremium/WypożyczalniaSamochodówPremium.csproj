@@ -4880,12 +4880,15 @@
     <Content Include="Views\Cars\CarsForTimeRange.cshtml" />
     <Content Include="Views\Cars\_CarInCart.cshtml" />
     <Content Include="Views\Cars\_Details.cshtml" />
+    <Content Include="Views\Manage\UpdatePersonDetails.cshtml" />
+    <Content Include="Views\Manage\PersonDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Adm\Models\" />
     <Folder Include="Areas\Adm\Views\Cennik\" />
     <Folder Include="Areas\Adm\Views\WypSam\" />
     <Folder Include="Content\CleverAdmin\img\" />
+    <Folder Include="Content\images\" />
     <Folder Include="Content\Unify\icon-awesome\fonts\" />
     <Folder Include="Content\Unify\icon-awesome\less\" />
     <Folder Include="Content\Unify\icon-awesome\scss\" />

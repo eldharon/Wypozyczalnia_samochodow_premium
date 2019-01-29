@@ -24,23 +24,62 @@ namespace WypożyczalniaSamochodówPremium.Controllers
         public object PagedList { get; private set; }
 
         // GET: Cars
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var model = samochodyRepository.FindAllSamochod().OrderBy(m => m.Marka);
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.MarkaSortParm = String.IsNullOrEmpty(sortOrder) ? "Marka_desc" : "";
+            ViewBag.ModelSortParm = sortOrder == "Model" ? "Model_desc" : "Model";
 
+            var model = samochodyRepository.FindAllSamochod();
+            var opisy = opisRepository.GetAllOpisy();
+            var images = imageSamochodRepository.FindAllImages();
 
             foreach (var item in model)
             {
-                if (imageSamochodRepository.GetDefaultImageIdForSamochodId(item.SamochodId) != null)
-                {
-                    item.PhotoId = imageSamochodRepository.GetDefaultImageIdForSamochodId(item.SamochodId).ImageId;
-                }
-
+                item.opisy = opisy.Where(s => s.SamochodId == item.SamochodId);
+                item.photos = images.Where(s => s.SamochodId == item.SamochodId);
             }
-            return View(model);
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Marka.Contains(searchString) || x.Model.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "Marka_desc":
+                    model = model.OrderByDescending(s => s.Marka);
+                    break;
+                case "Model":
+                    model = model.OrderBy(s => s.Model);
+                    break;
+                case "Model_desc":
+                    model = model.OrderByDescending(s => s.Model);
+                    break;
+                default:
+                    model = model.OrderBy(s => s.Marka);
+                    break;
+            }
+
+
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+
+            return View(model.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult Details(int id)
+        public ActionResult DetailsAjax(int id)
         {
             var samochod = samochodyRepository.GetSamochodById(id);
             var opisy = opisRepository.GetOpisForSamochodId(id);
@@ -51,6 +90,19 @@ namespace WypożyczalniaSamochodówPremium.Controllers
         
 
             return PartialView("_Details", samochod);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var samochod = samochodyRepository.GetSamochodById(id);
+            var opisy = opisRepository.GetOpisForSamochodId(id);
+            var images = imageSamochodRepository.FindImegerForSamochodId(id);
+            samochod.opisy = opisy;
+            samochod.photos = images;
+
+
+
+            return View(samochod);
         }
 
         public ActionResult RentCar(int id)
