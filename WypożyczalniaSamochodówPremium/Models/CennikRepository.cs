@@ -17,6 +17,12 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             return entities.cenniki.SingleOrDefault(h => h.CennikId == id);
         }
+
+        public IQueryable<Cennik> ShowCennikiForSamochod(int id)
+        {
+            return entities.cenniki.Where(s => s.SamochodId == id).OrderByDescending(x => x.Opis);
+        }
+ 
         public void Add(Cennik cennik)
         {
             entities.cenniki.Add(cennik);
