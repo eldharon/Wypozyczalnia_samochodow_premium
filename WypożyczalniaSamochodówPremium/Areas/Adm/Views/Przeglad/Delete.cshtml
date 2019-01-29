@@ -1,0 +1,57 @@
+﻿@model WypożyczalniaSamochodówPremium.Models.Przeglad
+@using WypożyczalniaSamochodówPremium.Helpers;
+@{
+    ViewBag.Title = "Usuń";
+}
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-trash"></i> Usuń Przeglad
+                </div>
+                @using (Html.BeginForm("Delete", "Przeglad", new { id = Model.PrzegladId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="card-body">
+                        <h3>Czy na pewno chcesz usunąć ten przeglad?</h3>
+                        <div class="form-horizontal mt-5">
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.DataPrzegladu, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.DataPrzegladu)
+
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.DataKolejnegoPrzegladu, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.DataKolejnegoPrzegladu)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.Uwagi, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.Uwagi)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="editor-field" style="text-align:left;">
+                            <p>
+                                <input type="submit" class="btn btn-secondary" value="Usuń" />&nbsp;
+                                @Html.ActionLink("Anuluj", "ShowPrzegladyForSamochod", "Serwis", new { id = Model.SamochodId }, new { @class = "btn btn-primary" })
+                            </p>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

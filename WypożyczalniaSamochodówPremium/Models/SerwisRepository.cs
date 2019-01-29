@@ -19,9 +19,9 @@ namespace WypożyczalniaSamochodówPremium.Models
             return entities.serwisy.SingleOrDefault(s => s.SerwisId == id);
         }
 
-        public IQueryable<Serwis> FindSerwisForSamochodId(int id)
+        public IQueryable<Serwis> ShowSerwisyForSamochod(int id)
         {
-            return entities.serwisy.Where(s => s.SamochodId == id);
+            return entities.serwisy.Where(s => s.SamochodId == id).OrderByDescending(x => x.DataOdbioru);
         }
 
         public void Add(Serwis serwis)

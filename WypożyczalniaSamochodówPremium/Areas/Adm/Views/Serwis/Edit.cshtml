@@ -1,0 +1,71 @@
+﻿@model WypożyczalniaSamochodówPremium.Models.Serwis
+@using WypożyczalniaSamochodówPremium.Helpers
+@{
+    ViewBag.Title = "Osoba";
+    Layout = "~/Areas/Adm/Views/Shared/_LayoutScript.cshtml";
+}
+
+
+<div class="container-fluid mt-5">
+    <div class="animated fadeIn">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-male"></i> Edytuj Serwis
+                </div>
+                @{Html.EnableClientValidation();}
+                @using (Html.BeginForm("Edit", "Serwis", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="card-body">
+                        @Html.ValidationSummary(true)
+                        <div class="form-horizontal">
+                            <h4>Serwis</h4>
+                            <hr />
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.DataOddania, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.DataOddania, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DataOddania)
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.DataOdbioru, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.DataOdbioru, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DataOdbioru)
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Koszt, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.Koszt, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Koszt)
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Uwagi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.Uwagi, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Uwagi)
+                                </div>
+                            </div>
+
+                    
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" value="Zapisz" class="btn btn-primary" /> &nbsp; @Html.ActionLink("Wróć do listy", "ShowSerwisyForSamochod", "Serwis", new { id = Model.SamochodId } , new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
