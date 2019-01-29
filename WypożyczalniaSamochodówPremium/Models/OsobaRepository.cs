@@ -19,6 +19,11 @@ namespace WypożyczalniaSamochodówPremium.Models
             return entities.osoby.SingleOrDefault(o => o.OsobaId == id);
         }
 
+        public Osoba GetOsobaByHash(Guid hash)
+        {
+            return entities.osoby.SingleOrDefault(o => o.Hash == hash);
+        }
+
         public void Add(Osoba osoba)
         {
             entities.osoby.Add(osoba);

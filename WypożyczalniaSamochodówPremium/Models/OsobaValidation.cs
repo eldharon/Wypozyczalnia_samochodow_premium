@@ -23,15 +23,15 @@ namespace WypożyczalniaSamochodówPremium.Models
         public string Nazwisko { get; set; }
         [Required(ErrorMessage = "Proszę podać datę urodzenia"), DataType(DataType.Date), DisplayName("Data urodzenia")]
         public System.DateTime DataUrodzenia { get; set; }
-        [Required(ErrorMessage = "Proszę podać adres"), MaxLength(64)]
+        //[Required(ErrorMessage = "Proszę podać adres"), MaxLength(64)]
         public string Adres { get; set; }
-        [Required(ErrorMessage = "Proszę podać kod pocztowy"), MaxLength(32)]
+        //[Required(ErrorMessage = "Proszę podać kod pocztowy"), MaxLength(32)]
         public string KodPocztowy { get; set; }
-        [Required(ErrorMessage = "Proszę podać kraj"), MaxLength(64)]
+        //[Required(ErrorMessage = "Proszę podać kraj"), MaxLength(64)]
         public string Kraj { get; set; }
-        [Required(ErrorMessage = "Proszę podać numer telefonu"), MaxLength(32), DisplayName("Numer telefonu")]
+        //[Required(ErrorMessage = "Proszę podać numer telefonu"), MaxLength(32), DisplayName("Numer telefonu")]
         public string NrTelefonu { get; set; }
-        [Required(ErrorMessage = "Proszę podać miasto"), MaxLength(64)]
+        //[Required(ErrorMessage = "Proszę podać miasto"), MaxLength(64)]
         public string Miasto { get; set; }
     }
 }

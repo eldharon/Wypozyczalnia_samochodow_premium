@@ -144,12 +144,12 @@
           <Property Name="OsobaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Imie" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="Nazwisko" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="DataUrodzenia" Type="datetime" Nullable="false" />
-          <Property Name="Adres" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="KodPocztowy" Type="varchar" MaxLength="32" Nullable="false" />
-          <Property Name="Kraj" Type="varchar" MaxLength="32" Nullable="false" />
-          <Property Name="NrTelefonu" Type="varchar" MaxLength="32" Nullable="false" />
-          <Property Name="Miasto" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="DataUrodzenia" Type="datetime" />
+          <Property Name="Adres" Type="varchar" MaxLength="64" />
+          <Property Name="KodPocztowy" Type="varchar" MaxLength="32" />
+          <Property Name="Kraj" Type="varchar" MaxLength="32" />
+          <Property Name="NrTelefonu" Type="varchar" MaxLength="32" />
+          <Property Name="Miasto" Type="varchar" MaxLength="32" />
           <Property Name="Hash" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Paszport">
@@ -1555,12 +1555,12 @@
           <Property Name="OsobaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Imie" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="DataUrodzenia" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Adres" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="KodPocztowy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="Kraj" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="NrTelefonu" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="Miasto" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DataUrodzenia" Type="DateTime" Precision="3" />
+          <Property Name="Adres" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="KodPocztowy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Kraj" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="NrTelefonu" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Miasto" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="Hash" Type="Guid" Nullable="false" />
           <NavigationProperty Name="DowodOsobisty" Relationship="WypozyczenieModel.FK__DowodOsob__Osoba__7B264821" FromRole="Osoba" ToRole="DowodOsobisty" />
           <NavigationProperty Name="KlientFirma" Relationship="WypozyczenieModel.FK__KlientFir__Osoba__3D2915A8" FromRole="Osoba" ToRole="KlientFirma" />

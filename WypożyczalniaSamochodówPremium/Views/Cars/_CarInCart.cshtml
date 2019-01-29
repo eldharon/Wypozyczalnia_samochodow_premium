@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WypożyczalniaSamochodówPremium.Models.WypozyczenieTemp>
+
+<style>
+    .fa[data-count] {
+        position: relative;
+    }
+
+        .fa[data-count]:after {
+            position: absolute;
+            right: -0.75em;
+            top: -.75em;
+            content: attr(data-count);
+            padding: .5em;
+            border-radius: 10em;
+            line-height: .9em;
+            color: white;
+            background: rgba(255,0,0,.75);
+            text-align: center;
+            min-width: 2em;
+            font: bold .4em sans-serif;
+        }
+</style>
+
+@if (Model.Count() > 0)
+{
+    <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--lg" id="navBar">
+        <ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto">
+            <li class="hs-has-sub-menu nav-item  g-mx-10--lg g-mx-15--xl" data-animation-in="fadeIn" data-animation-out="fadeOut">
+                <a id="nav-link-pages" class="nav-link g-py-7 g-px-0" href="#!" aria-haspopup="true" aria-expanded="false" aria-controls="nav-submenu-pages">
+
+                    @if (Model.Count() > 0)
+                    {
+                        <i class="fa fa-car fa-2x" data-count="@Model.Count()"></i>
+                    }
+                    else
+                    {
+                        <i class="fa fa-car" style="font-size:2em"></i>
+                    }
+
+
+                    &nbsp;&nbsp;
+                </a>
+                @if (Model.Count() > 0)
+                {
+                    <ul class="hs-sub-menu list-unstyled u-shadow-v11 g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-mt-18 g-mt-8--lg--scrolling" id="nav-submenu-pages" aria-labelledby="nav-link-pages" style="display: none;">
+                        @{
+                            var count = 1;
+                            foreach (var item in Model)
+                            {
+                                <li class="dropdown-item ">
+                                    <a class="nav-link" href="/Cars/Index">@count. @item.Samochod.Marka @item.Samochod.Model</a>
+                                </li>
+                                count++;
+                            }
+
+
+                        }
+
+                    </ul>
+                }
+            </li>
+        </ul>
+    </div>
+}
+else
+{
+
+}
+
+

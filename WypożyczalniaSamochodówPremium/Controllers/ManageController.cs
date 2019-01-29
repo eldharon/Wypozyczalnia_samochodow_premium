@@ -15,6 +15,7 @@ namespace WypożyczalniaSamochodówPremium.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        OsobaRepository osobaRepository = new OsobaRepository();
 
         public ManageController()
         {
@@ -55,8 +56,8 @@ namespace WypożyczalniaSamochodówPremium.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                message == ManageMessageId.ChangePasswordSuccess ? "Twoje hasło zostało zmienione."
+                : message == ManageMessageId.SetPasswordSuccess ? "Twoje hasło zostało ustawione."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
@@ -64,6 +65,7 @@ namespace WypożyczalniaSamochodówPremium.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
@@ -333,7 +335,45 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        public ActionResult PersonDetails()
+        {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var osoba = osobaRepository.GetOsobaByHash(user.UserHash);
+
+            return View(osoba);
+        }
+
+        public ActionResult UpdatePersonDetails()
+        {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var osoba = osobaRepository.GetOsobaByHash(user.UserHash);
+
+            return View(osoba);
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePersonDetails(int id, FormCollection collection)
+        {
+            var osoba = osobaRepository.GetOsobaById(id);
+
+            if(TryUpdateModel(osoba))
+            {
+                osobaRepository.Save();
+                TempData["okMessage"] = "Twoje dane zostały zapisane!";
+                return RedirectToAction("PersonDetails");
+
+            }
+            else
+            {
+                TempData["errorMessage"] = "Erro! Twoje dane nie zostały zapisane";
+                return View();
+
+            }
+        }
+
+
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

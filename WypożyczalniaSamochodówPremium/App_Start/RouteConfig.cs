@@ -20,8 +20,6 @@ namespace WypożyczalniaSamochodówPremium
             new[] { "WypożyczalniaSamochodówPremium.Controllers" }
             );
 
-            
-
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
