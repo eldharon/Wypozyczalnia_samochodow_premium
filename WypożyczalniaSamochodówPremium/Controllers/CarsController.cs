@@ -205,7 +205,8 @@ namespace WypożyczalniaSamochodówPremium.Controllers
 
         }
 
-
+        [Authorize]
+        [AllowAnonymous]
         public ActionResult CarInCart()
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
