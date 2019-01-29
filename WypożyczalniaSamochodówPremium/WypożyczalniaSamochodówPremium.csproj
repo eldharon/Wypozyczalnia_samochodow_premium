@@ -217,6 +217,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Adm\AdmAreaRegistration.cs" />
     <Compile Include="Areas\Adm\Controllers\AutaBazaController.cs" />
+    <Compile Include="Areas\Adm\Controllers\CennikController.cs" />
     <Compile Include="Areas\Adm\Controllers\KlientFirmaController.cs" />
     <Compile Include="Areas\Adm\Controllers\OpisController.cs" />
     <Compile Include="Areas\Adm\Controllers\OsobaController.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Areas\Adm\Controllers\RozliczenieController.cs" />
     <Compile Include="Areas\Adm\Controllers\SamochodController.cs" />
     <Compile Include="Areas\Adm\Controllers\SerwisController.cs" />
+    <Compile Include="Areas\Adm\Controllers\UbezpieczenieController.cs" />
     <Compile Include="Areas\Adm\Controllers\WydarzenieController.cs" />
     <Compile Include="Areas\Adm\Controllers\WypozyczenieController.cs" />
     <Compile Include="Areas\Adm\Controllers\WypozyczenieTempController.cs" />
@@ -256,6 +258,7 @@
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CennikRepository.cs" />
+    <Compile Include="Models\CennikSelectList.cs" />
     <Compile Include="Models\CennikValidation.cs" />
     <Compile Include="Models\CustomDataAnnotations.cs" />
     <Compile Include="Models\Dostepnosc.cs">
@@ -4826,6 +4829,16 @@
     <Content Include="Content\Unify\jquery-ui\README.md" />
     <Content Include="Content\Unify\jquery-ui\ui\.jshintrc" />
     <Content Include="Areas\Adm\Views\Samochod\DisplayZdjecia.cshtml" />
+    <Content Include="Areas\Adm\Views\Ubezpieczenie\ShowUbezpieczeniaForSamochod.cshtml" />
+    <Content Include="Areas\Adm\Views\Ubezpieczenie\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Ubezpieczenie\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Ubezpieczenie\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Ubezpieczenie\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Cennik\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Cennik\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Cennik\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Cennik\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Cennik\ShowCennikiForSamochod.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -4898,7 +4911,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Adm\Models\" />
-    <Folder Include="Areas\Adm\Views\Cennik\" />
     <Folder Include="Areas\Adm\Views\WypSam\" />
     <Folder Include="Content\CleverAdmin\img\" />
     <Folder Include="Content\images\" />

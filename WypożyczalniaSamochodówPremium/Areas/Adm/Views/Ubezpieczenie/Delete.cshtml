@@ -1,0 +1,58 @@
+﻿@model WypożyczalniaSamochodówPremium.Models.Ubezpieczenie
+@using WypożyczalniaSamochodówPremium.Helpers;
+@{
+    ViewBag.Title = "Usuń";
+}
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-trash"></i> Usuń Ubezpieczenie
+                </div>
+                @using (Html.BeginForm("Delete", "Ubezpieczenie", new { id = Model.UbezpieczenieId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="card-body">
+                        <h3>Czy na pewno chcesz usunąć te ubezpieczenie?</h3>
+                        <div class="form-horizontal mt-5">
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.NumerPolisy, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.NumerPolisy)
+
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.WazneOd, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.WazneOd)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.WazneDo, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.WazneDo)
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="editor-field" style="text-align:left;">
+                            <p>
+                                <input type="submit" class="btn btn-secondary" value="Usuń" />&nbsp;
+                                @Html.ActionLink("Anuluj", "ShowUbezpieczeniaForSamochod", "Ubezpieczenie", new { id = Model.SamochodId }, new { @class = "btn btn-primary" })
+                            </p>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
