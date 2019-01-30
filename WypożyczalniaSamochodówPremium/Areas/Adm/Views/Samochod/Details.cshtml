@@ -118,12 +118,6 @@
                         </div>
                         @Html.Action("DisplayOpisy", "Opis", new { id = Model.SamochodId })
 
-                        <div class="form-group row">
-                            @if (Model.Opis.Count() > 0)
-                            {
-                                @Html.LabelFor(model => model.ImageSamochod.ElementAt(0).Image.ImageData, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                            }
-                        </div>
                         <div id="updatephoto">
                             @Html.Action("DisplayZdjecia", "Samochod", new { id = Model.SamochodId })
                         </div>

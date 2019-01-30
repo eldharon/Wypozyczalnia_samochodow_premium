@@ -2,8 +2,25 @@
 @using WypożyczalniaSamochodówPremium.Helpers;
 @{
     ViewBag.Title = "Samochody";
-    Layout = "~/Areas/Adm/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Adm/Views/Shared/_LayoutScript.cshtml";
 }
+<style>
+    img {
+        border: 1px solid #ddd; /* Gray border */
+        border-radius: 4px; /* Rounded border */
+        padding: 5px; /* Some padding */
+        width: 150px; /* Set a small width */
+    }
+
+        /* Add a hover effect (blue shadow) */
+        img:hover {
+            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+        }
+
+    .fa-trash:before {
+        color: black;
+    }
+</style>
 
 
 @if (TempData["okMessage"] != null)
@@ -30,6 +47,9 @@
                         <i class="fa fa-male"></i> Szczegóły
                     </div>
                     <div class="card-body">
+                        <div id="autaBazaLoading" style="display:none; text-align:center; position:relative;">
+                            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                        </div>
                         <div class="form-horizontal">
                             <h4>Osoba</h4>
                             <hr>
@@ -89,24 +109,62 @@
                                     @Html.DisplayFor(model => model.Miasto)
                                 </div>
                             </div>
-                           
+
                             <div class="row form-group line">
 
-                               <div class="control-label col-md-2 font-weight-bold">
-                                   Wypożyczenie
-                               </div>
+                                <div class="control-label col-md-2 font-weight-bold">
+                                    Wypożyczenie
+                                </div>
                                 <div class="col-md-10">
                                     @Html.IconActionLink("fa fa-plus-circle", "Dodaj wypożyczenie", "Create", "Wypozyczenie", new { id = Model.OsobaId }, new { @class = "btn btn-primary" })
                                 </div>
                             </div>
-
+                            <div id="updatephoto">
+                                @Html.Action("DisplayZdjecia", "Osoba", new { OsobaId = Model.OsobaId })
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })&nbsp; <a data-toggle="modal" data-remote="@Url.Action("Upload", "Osoba", new { id = Model.OsobaId, mode = 1 })" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie dowodu</a>&nbsp; <a data-toggle="modal" data-remote="@Url.Action("Upload", "Osoba", new { id = Model.OsobaId, mode = 2 })" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie paszportu</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="modal inmodal in" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $('#modal').on('show.bs.modal', function (e) {
+
+        var button = $(e.relatedTarget);
+        var modal = $(this);
+
+        // load content from HTML string
+        //modal.find('.modal-body').html("Nice modal body baby...");
+
+        // or, load content from value of data-remote url
+        modal.find('.modal-content').load(button.data("remote"));
+
+    });
+    function HideModal() {
+
+        $('#modal').modal('hide');
+        $(document.body).on('hidden.bs.modal', function () {
+            $('#modal').removeData('bs.modal')
+        });
+        $('#modal').data('modal', null);
+    }
+
+    $(document.body).on('hidden.bs.modal', function () {
+        $('#modal').removeData('bs.modal')
+    });
+
+
+
+</script>

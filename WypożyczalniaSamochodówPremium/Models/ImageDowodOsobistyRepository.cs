@@ -13,6 +13,21 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             return entities.imagesDowodOsobisty;
         }
+        
+        public IQueryable<ImageDowodOsobisty> FindAllImagesForOsobaId(int id)
+        {
+            return entities.imagesDowodOsobisty.Where(x=>x.DowodOsobisty.OsobaId==id);
+        }
+        public IEnumerable<PhotoProp> GetPhotoPropsForOsobaId(int id)
+        {
+            return entities.imagesDowodOsobisty.Where(x => x.DowodOsobisty.OsobaId == id).Select(c => new PhotoProp
+            {
+                id = c.ImageId,
+                Name = c.Image.ImageName,
+                AlternateText = c.Image.ImageAlt,
+                ReferencedObjectId = id
+            }).AsEnumerable();
+        }
 
         public ImageDowodOsobisty GetImageById(int id)
         {
