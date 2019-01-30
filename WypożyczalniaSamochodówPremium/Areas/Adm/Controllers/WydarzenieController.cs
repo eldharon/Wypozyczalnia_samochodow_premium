@@ -10,6 +10,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
     public class WydarzenieController : Controller
     {
         WydarzenieRepository wydarzenieRepository = new WydarzenieRepository();
+        WypozyczenieRepository wypozyczenieRepository = new WypozyczenieRepository();
         // GET: Adm/Wydarzenie
         public ActionResult Index()
         {
@@ -65,6 +66,42 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             {
                 TempData["errorMessage"] = "Wydarzenie " + wydarzenie.NazwaWydarzenia + "nie zostało zapisane!";
                 return View(wydarzenie);
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var wydarzenie = wydarzenieRepository.GetWydarzenieById(id);
+            return View(wydarzenie);
+        }
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+
+            var wyp = wypozyczenieRepository.FindAllWypozyczeniaForWydarzenieId(id);
+
+            try
+            {
+
+                if (wyp.Count() == 0)
+                {
+                    var wydarzenie = wydarzenieRepository.GetWydarzenieById(id);
+                    wydarzenieRepository.Delete(wydarzenie);
+                    wydarzenieRepository.Save();
+                    TempData["okMessage"] = "Usunięto wydarzenie!";
+                    return RedirectToAction("Index", "Wydarzenie");
+                }
+                else
+                {
+
+                    TempData["errorMessage"] = "Nie usunięto wydarzenia - rekord znajduje sie w innych tabelach!";
+                    return RedirectToAction("Index", "Wydarzenie");
+                }
+            }
+            catch (Exception e)
+            {
+                TempData["errorMessage"] = "Wystąpił błąd : " + e;
+                return RedirectToAction("Index", "Wydarzenie");
             }
         }
     }
