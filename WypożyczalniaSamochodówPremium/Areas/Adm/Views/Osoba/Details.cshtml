@@ -125,7 +125,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })&nbsp; <a data-toggle="modal" data-remote="@Url.Action("Upload", "Osoba", new { id = Model.OsobaId, mode = 1 })" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie dowodu</a>&nbsp; <a data-toggle="modal" data-remote="@Url.Action("Upload", "Osoba", new { id = Model.OsobaId, mode = 2 })" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie paszportu</a>
+                        @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })&nbsp; <a data-toggle="modal" data-remote="@Url.Action("Upload", "Osoba", new { id = Model.OsobaId, mode = ViewBag.modedowod })" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie dowodu</a>&nbsp; <a data-toggle="modal" data-remote="@Url.Action("Upload", "Osoba", new { id = Model.OsobaId, mode = ViewBag.modepaszport })" href="#" data-target="#modal"><i class="fa fa-plus-circle"></i> Dodaj zdjęcie paszportu</a>
                     </div>
                 </div>
             </div>

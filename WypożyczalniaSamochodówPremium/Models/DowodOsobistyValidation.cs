@@ -17,11 +17,8 @@ namespace WypożyczalniaSamochodówPremium.Models
     {
         [HiddenInput(DisplayValue = false), ScaffoldColumn(false)]
         public int DowodOsobistyId { get; set; }
-        [Required(ErrorMessage = "Proszę podać numer PESEL"), MaxLength(11)]
         public int PESEL { get; set; }
-        [Required(ErrorMessage = "Proszę podać numer PESEL"), DisplayName("Numer dowodu")]
         public string NrDowodu { get; set; }
-        [Required(ErrorMessage = "Proszę podać do kiedy dowód jest ważny"), DataType(DataType.Date), DisplayName("Termin ważności")]
-        public System.DateTime TerminWaznosci { get; set; }
+        public DateTime TerminWaznosci { get; set; }
     }
 }

@@ -25,6 +25,8 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         public ActionResult Details(int id)
         {
             var osoba = osobaRepository.GetOsobaById(id);
+            ViewBag.modedowod = "1";
+            ViewBag.modepaszport = "2";
             return View(osoba);
         }
 
@@ -99,7 +101,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             }
         }
 
-        public ActionResult Upload(int id, int mode)
+        public ActionResult Upload(int id, string mode)
         {
             ViewBag.OsobaId = id;
             ViewBag.mode = mode;
@@ -109,12 +111,12 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             //var samimg = imageSamochodRepository.GetPhotoPropsForSamochodId(id).Count()+1;
             switch (mode)
             {
-                case 1:
+                case "1":
                     imgid = imageDowodOsobistyRepository.FindAllImagesForOsobaId(id).Count() + 1;
                     model.AlternateText = "Dowod osobisty " + sam.Imie + " " + sam.Nazwisko + " " + imgid;
                     model.Name = sam.OsobaId + "_DowodOsobisty_" + imgid;
                     break;
-                case 2:
+                case "2":
                     imgid = imagePaszportRepository.FindAllImagesForOsobaId(id).Count() + 1;
                     model.AlternateText = "Paszport " + sam.Imie + " " + sam.Nazwisko + " " + imgid;
                     model.Name = sam.OsobaId + "_paszport_" + imgid;
@@ -128,7 +130,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Upload(string Name, string AlternateText, int id, int mode)
+        public ActionResult Upload(string Name, string AlternateText, int id, string mode)
         {
             try
             {
@@ -153,7 +155,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
                 switch (mode)
                 {
-                    case 1:
+                    case "1":
                         ImageDowodOsobisty imageDowodOsobisty = new ImageDowodOsobisty();
                         DowodOsobisty dowod = new DowodOsobisty();
                         dowod.NrDowodu = "tbd";
@@ -170,7 +172,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                         imageDowodOsobistyRepository.Save();
 
                         break;
-                    case 2:
+                    case "2":
                         ImagePaszport imagePaszport = new ImagePaszport();
                         Paszport paszport = new Paszport();
                         paszport.NrPaszportu = "tbd";
