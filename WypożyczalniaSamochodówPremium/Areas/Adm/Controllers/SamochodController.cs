@@ -333,7 +333,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 imageSamochodRepository.Add(imageSamochod);
                 imageSamochodRepository.Save();
 
-                return RedirectToAction("Details", "Samochod", new { samId = id });
+                return RedirectToAction("DisplayZdjecia", "Samochod", new { samId = id });
             }catch(Exception e)
             {
                 TempData["errorMessage"] = "Nie udało się dodać zdjęcia!\n" + e;
@@ -347,11 +347,11 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             PhotoViewModel image = imageRepository.GetImageVMById(id);
             return File(image.Image, image.ContentType);
         }
-        public ActionResult DisplayZdjecia(int id)
+        public ActionResult DisplayZdjecia(int samId)
         {
 
-            var model = imageSamochodRepository.GetPhotoPropsForSamochodId(id);
-            return PartialView(model);
+            var model = imageSamochodRepository.GetPhotoPropsForSamochodId(samId);
+            return PartialView("DisplayZdjecia", model);
 
             
         }
