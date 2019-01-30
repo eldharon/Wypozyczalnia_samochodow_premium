@@ -76,7 +76,7 @@
 
                     </div>
                     <div class="card-footer">
-                        @Html.ActionLink("Wróć do samochodu", "Details", "Samochod", new { id = ViewBag.SamochodId }, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("Wróć do samochodu", "Details", "Samochod", new { samId = ViewBag.SamochodId }, new { @class = "btn btn-secondary" })
                         @Html.IconActionLink("fa fa-plus-circle ", "Nowy Cennik", "Create", "Cennik", new { id = ViewBag.SamochodId }, new { @class = "btn btn-primary" })
                     </div>
                 </div>

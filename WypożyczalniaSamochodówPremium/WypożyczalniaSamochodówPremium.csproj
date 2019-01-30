@@ -441,6 +441,7 @@
     <Content Include="Content\Graphics\BMW.jpg" />
     <Content Include="Content\Graphics\BMW2.jpg" />
     <Content Include="Content\Graphics\car-banner1.jpg" />
+    <Content Include="Content\Graphics\happy_client.jpg" />
     <Content Include="Content\Graphics\HomeLogo.jpg" />
     <Content Include="Content\Graphics\Mercedes.jpg" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\editor.png" />
