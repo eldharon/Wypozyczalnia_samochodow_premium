@@ -18,7 +18,7 @@ new AjaxOptions
     OnBegin = "HideModal",
     OnFailure = "",
     OnSuccess = ""
-}, 
+},
 new { enctype = "multipart/form-data" }))
 {
 
@@ -53,10 +53,14 @@ new { enctype = "multipart/form-data" }))
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-white" data-dismiss="modal" onclick="HideModal()">Anuluj</button>
-        <span>
-            <input type="file" id="OriginalLocation" name="OriginalLocation" />
-        </span>
-        <button type="submit" class="btn btn-primary btn-danger">Dodaj</button>
+        <div align="right">
+            <span>
+                <input type="file" id="OriginalLocation" name="OriginalLocation" />
+            </span>
+        </div>
+        <div align="left">
+            <button type="button" class="btn btn-white" data-dismiss="modal" onclick="HideModal()">Anuluj</button>
+            <button type="submit" class="btn btn-primary btn-danger">Dodaj</button>
+        </div>
     </div>
 }

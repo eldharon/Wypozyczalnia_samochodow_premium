@@ -28,6 +28,12 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm
             );
 
             context.MapRoute(
+            "adm_hrefPhoto", // Pages route
+            "adm/Samochod/Details/{samId}", //URL with parameters "/Adm/Samochod/Details/@item.ReferencedObjectId"
+            new { controller = "Samochod", action = "Details", samId = "" }
+
+            );
+            context.MapRoute(
                 "adm_default",
                 "adm/{controller}/{action}/{id}",
                 new { controller = "Panel", action = "Index", id = UrlParameter.Optional }
