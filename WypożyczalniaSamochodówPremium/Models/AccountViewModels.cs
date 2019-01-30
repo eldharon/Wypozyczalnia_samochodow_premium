@@ -83,7 +83,13 @@ namespace WypożyczalniaSamochodówPremium.Models
 
         public Guid UserHash { get; set; }
 
-        public string aaa { get; set; }
+        [Required]
+        public string Imie { get; set; }
+        [Required]
+        public string Nazwisko { get; set; }
+        [Required(ErrorMessage = "Proszę podać datę wypożyczenia"), DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime DataUrodzenia { get; set; }
 
         public string UserRoles { get; set; }
     }

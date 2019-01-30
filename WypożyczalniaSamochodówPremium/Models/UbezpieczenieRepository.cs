@@ -19,6 +19,11 @@ namespace WypożyczalniaSamochodówPremium.Models
             return entities.ubezpieczenia.SingleOrDefault(u => u.UbezpieczenieId == id);
         }
 
+        public IQueryable<Ubezpieczenie> ShowUbezpieczeniaForSamochod(int id)
+        {
+            return entities.ubezpieczenia.Where(s => s.SamochodId == id).OrderByDescending(x => x.WazneDo);
+        }
+
         public void Add(Ubezpieczenie ubezpieczenie)
         {
             entities.ubezpieczenia.Add(ubezpieczenie);

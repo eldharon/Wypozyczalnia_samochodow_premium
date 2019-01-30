@@ -70,6 +70,10 @@ namespace WypożyczalniaSamochodówPremium
             bundles.Add(new StyleBundle("~/Content/toastrCSS").Include(
                 "~/Content/CleverAdmin/toastr.css"
                 ));
+
+            bundles.Add(new StyleBundle("~/Content/Unify/jquery-ui").Include(
+               "~/Content/Unify/jquery-ui/themes/base/jquery-ui.min.css"
+               ));
             //END ADM
 
 
@@ -111,6 +115,7 @@ namespace WypożyczalniaSamochodówPremium
                  "~/Content/Unify/dzsparallaxer/dzsparallaxer.css",
                  "~/Content/Unify/dzsparallaxer/dzsscroller/scroller.css",
                  "~/Content/Unify/dzsparallaxer/advancedscroller/plugin.css",
+                 "~/Content/Unify/jquery-ui/themes/base/jquery-ui.min.css",
                  "~/Content/Unify/slick-carousel/slick/slick.css",
                  "~/Content/Unify/customcss/animate.css",
                  "~/Content/Unify/hs-megamenu/src/hs.megamenu.css",
@@ -179,6 +184,19 @@ namespace WypożyczalniaSamochodówPremium
 
             bundles.Add(new ScriptBundle("~/bundles/WWW_js_custom").Include(
                 "~/Content/Unify/customjs/custom.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/Unify/jquery-ui").Include(
+                "~/Content/Unify/jquery-ui/ui/widget.js",
+                "~/Content/Unify/jquery-ui/ui/version.js",
+                "~/Content/Unify/jquery-ui/ui/keycode.js",
+                "~/Content/Unify/jquery-ui/ui/position.js",
+                "~/Content/Unify/jquery-ui/ui/unique-id.js",
+                "~/Content/Unify/jquery-ui/ui/safe-active-element.js",
+                "~/Content/Unify/jquery-ui/ui/widgets/menu.js",
+                "~/Content/Unify/jquery-ui/ui/widgets/mouse.js",
+                "~/Content/Unify/jquery-ui/ui/widgets/datepicker.js",
+                "~/Content/Unify/jquery-ui/js/components/hs.datepicker.js"
                 ));
         }
 
