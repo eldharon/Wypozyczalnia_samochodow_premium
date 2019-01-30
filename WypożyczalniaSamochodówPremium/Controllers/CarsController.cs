@@ -137,19 +137,19 @@ namespace WypożyczalniaSamochodówPremium.Controllers
         [Authorize]
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult SearchCar(string dWyp, string dZwr)
+        public ActionResult SearchCar(SearchViewModel svm, FormCollection collection)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             var osoba = osobaRepository.GetOsobaByHash(user.UserHash);
 
 
-            return RedirectToAction("CarsForTimeRange", "Cars", new { dataWyp = DateTime.Parse(dWyp), dataZwr = DateTime.Parse(dZwr) });
+            return RedirectToAction("CarsForTimeRange", "Cars", new { dataWyp = svm.dataWyp, dataZwr = svm.dataZwr });
         }
 
 
         [Authorize]
         [AllowAnonymous]
-        public ActionResult CarsForTimeRange(int? page,DateTime dataWyp, DateTime dataZwr)
+        public ActionResult CarsForTimeRange(int? page, DateTime dataWyp, DateTime dataZwr)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             var osoba = osobaRepository.GetOsobaByHash(user.UserHash);
@@ -164,11 +164,7 @@ namespace WypożyczalniaSamochodówPremium.Controllers
 
                 foreach (var item in list)
                 {
-                    if (imageSamochodRepository.GetDefaultImageIdForSamochodId(item.SamochodId) != null)
-                    {
-                        item.PhotoId = imageSamochodRepository.GetDefaultImageIdForSamochodId(item.SamochodId).ImageId;
-                    }
-
+                        item.photos = imageSamochodRepository.FindAllImages().Where(x => x.SamochodId == item.SamochodId);
                 }
 
                 ViewBag.dataWyp = wypTemp.FirstOrDefault().DataWypozyczenia;
@@ -188,11 +184,7 @@ namespace WypożyczalniaSamochodówPremium.Controllers
 
                 foreach (var item in list)
                 {
-                    if (imageSamochodRepository.GetDefaultImageIdForSamochodId(item.SamochodId) != null)
-                    {
-                        item.PhotoId = imageSamochodRepository.GetDefaultImageIdForSamochodId(item.SamochodId).ImageId;
-                    }
-
+                        item.photos = imageSamochodRepository.FindAllImages().Where(x => x.SamochodId == item.SamochodId);
                 }
 
                 ViewBag.dataWyp = dataWyp;

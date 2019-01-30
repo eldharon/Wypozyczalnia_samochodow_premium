@@ -74,7 +74,7 @@
                                     <span class="d-block g-font-weight-500 g-font-size-13"><i class="fa fa-cogs"></i> skrzynia @item.SkrzyniaBiegow</span>
                                     <span class="d-block g-font-weight-500 g-font-size-13"><i class="fa fa-car"></i> @item.LiczbaDrzwi</span>
                                 </div>
-                                @Html.ActionLink("Dodaj", "AddCarToCart", "Cars", new { samId = item.SamochodId, dataWyp = ViewBag.dataWyp, dataZwr = ViewBag.dataZwr }, new { @class = "btn btn-block u-btn-primary g-color-white--hover g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" })
+                                @Html.ActionLink("Sprawdź dostępność", "AvailabilityCar", "Cars", new { samId = item.SamochodId, dataWyp = ViewBag.dataWyp, dataZwr = ViewBag.dataZwr }, new { @class = "btn btn-block u-btn-primary g-color-white--hover g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" })
 
                             </div>
                             <!-- End Listing - Agents -->
