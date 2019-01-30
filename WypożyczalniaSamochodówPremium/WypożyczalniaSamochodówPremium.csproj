@@ -236,6 +236,7 @@
     <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -349,6 +350,7 @@
     </Compile>
     <Compile Include="Models\PrzegladRepository.cs" />
     <Compile Include="Models\PrzegladValidation.cs" />
+    <Compile Include="Models\RentCarViewModel.cs" />
     <Compile Include="Models\Rozliczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -4908,6 +4910,10 @@
     <Content Include="Views\Cars\_Details.cshtml" />
     <Content Include="Views\Manage\UpdatePersonDetails.cshtml" />
     <Content Include="Views\Manage\PersonDetails.cshtml" />
+    <Content Include="Views\Rent\RentCar.cshtml" />
+    <Content Include="Views\Rent\Summary.cshtml" />
+    <Content Include="Views\Rent\AddYourPersonalData.cshtml" />
+    <Content Include="Views\Rent\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Adm\Models\" />
