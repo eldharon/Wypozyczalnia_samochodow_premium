@@ -22,8 +22,10 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -436,9 +438,13 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\hs-icons.svg" />
     <Content Include="Content\Graphics\100z100.jpg" />
+    <Content Include="Content\Graphics\BMW.jpg" />
+    <Content Include="Content\Graphics\BMW2.jpg" />
     <Content Include="Content\Graphics\car-banner1.jpg" />
+    <Content Include="Content\Graphics\happy_client.jpg" />
     <Content Include="Content\Graphics\HomeLogo.jpg" />
     <Content Include="Content\Graphics\przelewy24.jpg" />
+    <Content Include="Content\Graphics\Mercedes.jpg" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\editor.png" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\imagebrowser.png" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\indeterminate.gif" />
@@ -4842,6 +4848,7 @@
     <Content Include="Areas\Adm\Views\Cennik\Edit.cshtml" />
     <Content Include="Areas\Adm\Views\Cennik\Delete.cshtml" />
     <Content Include="Areas\Adm\Views\Cennik\ShowCennikiForSamochod.cshtml" />
+    <Content Include="Areas\Adm\Views\Wydarzenie\Delete.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
