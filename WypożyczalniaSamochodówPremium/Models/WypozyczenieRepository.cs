@@ -98,6 +98,11 @@ namespace WypożyczalniaSamochodówPremium.Models
             return entities.wypozyczenia;
         }
 
+        public IQueryable<Wypozyczenie> FindAllWypozyczeniaForOsobaId(int id)
+        {
+            return entities.wypozyczenia.Where(o => o.OsobaId == id);
+        }
+
         public Wypozyczenie GetWypozyczenieById(int id)
         {
             return entities.wypozyczenia.SingleOrDefault(w => w.WypozyczenieId == id);

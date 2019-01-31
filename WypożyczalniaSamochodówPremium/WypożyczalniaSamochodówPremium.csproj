@@ -438,6 +438,7 @@
     <Content Include="Content\Graphics\100z100.jpg" />
     <Content Include="Content\Graphics\car-banner1.jpg" />
     <Content Include="Content\Graphics\HomeLogo.jpg" />
+    <Content Include="Content\Graphics\przelewy24.jpg" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\editor.png" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\imagebrowser.png" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\indeterminate.gif" />
@@ -4903,7 +4904,6 @@
     <Content Include="Views\Account\EditUser.cshtml" />
     <Content Include="Views\Cars\Index.cshtml" />
     <Content Include="Views\Cars\Details.cshtml" />
-    <Content Include="Views\Cars\RentCar.cshtml" />
     <Content Include="Views\Cars\SearchCar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Cars\CarsForTimeRange.cshtml" />
@@ -4915,6 +4915,8 @@
     <Content Include="Views\Rent\Summary.cshtml" />
     <Content Include="Views\Rent\AddYourPersonalData.cshtml" />
     <Content Include="Views\Rent\Delete.cshtml" />
+    <Content Include="Views\Rent\RentList.cshtml" />
+    <Content Include="Views\Rent\RentDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Adm\Models\" />

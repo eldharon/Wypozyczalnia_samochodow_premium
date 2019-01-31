@@ -19,8 +19,9 @@ namespace WypożyczalniaSamochodówPremium.Models
         public bool CzyKierowca { get; set; }
         public string AdresDojazdu { get; set; }
         public int WydarzenieId { get; set; }
-        public Osoba Osoba { get; set; }
+        public int OsobaId { get; set; }
         public IEnumerable<Pracownik> KierowcyList { get; set; }
+        public string PaymentMethod { get; set; }
 
     }
 }

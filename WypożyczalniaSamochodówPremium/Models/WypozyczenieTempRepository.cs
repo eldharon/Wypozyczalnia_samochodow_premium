@@ -24,6 +24,17 @@ namespace WypożyczalniaSamochodówPremium.Models
             return entities.wypozyczeniaTemp.Where(x => x.OsobaId == id);
         }
 
+        public IQueryable<WypozyczenieTemp> FindAllWypozyczenieTempForDate(DateTime from, DateTime to)
+        {
+            var wypTemp = (from wypozyczeniaTemp in entities.wypozyczeniaTemp
+                           select wypozyczeniaTemp).Where(x => (x.DataWypozyczenia <= from && x.DataZwrotu >= to)
+                           || (x.DataWypozyczenia >= from && x.DataZwrotu <= to)
+                           || (x.DataWypozyczenia <= from && x.DataZwrotu <= to && x.DataZwrotu >= from)
+                           || (x.DataWypozyczenia >= from && x.DataZwrotu >= to && x.DataWypozyczenia <= to));
+
+            return wypTemp;
+        }
+
         public void Add(WypozyczenieTemp wypozyczenieTemp)
         {
             entities.wypozyczeniaTemp.Add(wypozyczenieTemp);

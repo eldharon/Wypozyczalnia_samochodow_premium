@@ -1,12 +1,154 @@
 ﻿@model WypożyczalniaSamochodówPremium.Models.RentCarViewModel
+@using WypożyczalniaSamochodówPremium.Helpers
 
 @{
-    ViewBag.Title = "RentCar";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Podsumowanie wypożyczenia";
+    Layout = "~/Views/Shared/_LayoutScript.cshtml";
+
 }
 
-<div class="container mt-5 mb-5">
-    <b>@Model.Osoba.Imie @Model.Osoba.Nazwisko</b> oto Twoje podsumowanie wypozyczenia!
 
+<div class="container mt-5 mb-5">
+    <div class="animated fadeIn">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-user"></i> <b>@*@Model.Osoba.Imie @Model.Osoba.Nazwisko*@</b> potwierdź swoje zamówienie
+                </div>
+                @{Html.EnableClientValidation();}
+                @using (Html.BeginForm("RentCar", "Rent", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                <div class="card-body" id="updateTargetId">
+
+                    <div class="form-group row">
+                        <div class="control-label col-md-2 font-weight-bold">
+                            <i class="fa fa-calendar"></i> Data wypożyczenia
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(model => model.DataWypozyczenia)
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="control-label col-md-2 font-weight-bold">
+                            <i class="fa fa-calendar"></i> Data zwrotu
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(model => model.DataZwrotu)
+
+                        </div>
+                    </div>
+
+                    <div class="row form-group line font-weight-bold">
+                        @Html.LabelFor(model => model.CzyDostarczany, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CzyDostarczany, new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(model => model.CzyDostarczany)
+                        </div>
+                    </div>
+                    <div id="autoUpdate" class="autoUpdate" style="display:none">
+                        <div class="row form-group line line font-weight-bold">
+                            @Html.LabelFor(model => model.CzyKierowca, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.CzyKierowca, new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(model => model.CzyKierowca)
+                            </div>
+                        </div>
+
+                        <div class="row form-group line line font-weight-bold">
+                            @Html.LabelFor(model => model.AdresDojazdu, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.AdresDojazdu, new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(model => model.AdresDojazdu)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group line line font-weight-bold">
+                        <div class="col-md-2">
+                            Rodzaj wypożyczenia
+                        </div>
+                        <div class="col-md-10">
+                            @Html.DropDownList("WydarzenieId", (IEnumerable<SelectListItem>)ViewData["wydarzenieList"], string.Empty, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.WydarzenieId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row form-group line ">
+                        <div class="col-md-2 line font-weight-bold">
+                            Metoda płatności
+                        </div>
+                        <div class="col-md-10">
+                            <label class="control-label agreement">
+                                @Html.RadioButtonFor(model => model.PaymentMethod, "Przy odbiorze",new { @checked = true})
+                                Płatność przy odbiorze
+                            </label>
+                            <br />
+
+                            <label class="control-label agreement">
+                                @Html.RadioButtonFor(model => model.PaymentMethod, "Przelewy24")
+                                <img src="~/Content/Graphics/przelewy24.jpg" style="width:20%" />
+                            </label>
+                        </div>
+                    </div>
+
+                    <hr />
+
+
+                    <div class="form-group row mt-5">
+                        <div class="control-label col-md-10 font-weight-bold">
+                            <i class="fa fa-car"></i> Lista samochodów:
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+                    @{
+                        var count = 1;
+                        foreach (var item in Model.CarInCartList)
+                        {
+                            <div class="form-group row">
+                                <div class="control-label col-md-1 font-weight-bold">
+                                    @count.
+                                </div>
+                                <div class="col-md-3">
+                                    @item.Samochod.Marka @item.Samochod.Model
+                                </div>
+                                <div class="col-md-3">
+                                </div>
+                            </div>
+
+                            count++;
+                        }
+                    }
+
+                </div>
+                    <div class="card-footer text-right">
+                        <input type="submit" value="Potiwerdź!" class="btn btn-primary" /> &nbsp;
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
 </div>
 
+
+<script>
+    $(document).ready(function () {
+        $('#CzyDostarczany').change(function () {
+            if (this.checked)
+                $('#autoUpdate').fadeIn('slow');
+            else {
+                $('#autoUpdate').fadeOut('slow');
+                document.getElementById('CzyKierowca').checked = false;
+                document.getElementById('AdresDojazdu').value = "";
+            }
+
+        });
+    });
+</script>

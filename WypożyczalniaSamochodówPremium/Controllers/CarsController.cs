@@ -105,11 +105,6 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             return View(samochod);
         }
 
-        public ActionResult RentCar(int id)
-        {
-            return View();
-        }
-
         [Authorize]
         public ActionResult SearchCar()
         {

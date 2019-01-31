@@ -12,6 +12,7 @@ namespace WypożyczalniaSamochodówPremium.Models
     [MetadataType(typeof(WypozyczenieValidation))]
     public partial class Wypozyczenie
     {
+        public virtual IEnumerable<WypSam> wypSamList { get; set; }
     }
 
     public class WypozyczenieValidation

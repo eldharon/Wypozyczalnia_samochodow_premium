@@ -16,6 +16,8 @@ namespace WypożyczalniaSamochodówPremium.Controllers
         WypozyczenieTempRepository wypozyczenieTempRepository = new WypozyczenieTempRepository();
         WydarzenieRepository wydarzenieRepository = new WydarzenieRepository();
         OsobaRepository osobaRepository = new OsobaRepository();
+        DostepnoscRepository dostepnoscRepository = new DostepnoscRepository();
+        WypSamRepository wypSamRepository = new WypSamRepository();
         // GET: Rent
         public ActionResult RentCar()
         {
@@ -36,16 +38,104 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             rentCar.CarInCartList = wypTemp;
             rentCar.DataWypozyczenia = wypTemp.FirstOrDefault().DataWypozyczenia;
             rentCar.DataZwrotu = wypTemp.FirstOrDefault().DataZwrotu;
-            rentCar.Osoba = osoba;
+            rentCar.OsobaId = osoba.OsobaId;
 
             return View(rentCar);
         }
 
         [HttpPost]
-        public ActionResult RentCar(RentCarViewModel rentCar, FormCollection collection)
+        public ActionResult RentCar(RentCarViewModel rcv, FormCollection collection)
         {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var osoba = osobaRepository.GetOsobaByHash(user.UserHash);
 
-            return View();
+            var wypTemp = wypozyczenieTempRepository.FindWypozyczenieTempForOsobaId(osoba.OsobaId);
+            Wypozyczenie wypozyczenie = new Wypozyczenie();
+
+            rcv.DataWypozyczenia = wypTemp.FirstOrDefault().DataWypozyczenia;
+            rcv.DataZwrotu = wypTemp.FirstOrDefault().DataZwrotu;
+            rcv.OsobaId = osoba.OsobaId;
+            rcv.CarInCartList = wypTemp;
+
+            if (ModelState.IsValid)
+            {
+                wypozyczenie.OsobaId = rcv.OsobaId;
+                wypozyczenie.DataWypozyczenia = rcv.DataWypozyczenia;
+                wypozyczenie.DataZwrotu = rcv.DataZwrotu;
+                wypozyczenie.CzyDostarczany = rcv.CzyDostarczany;
+                wypozyczenie.CzyKierowca = rcv.CzyKierowca;
+                wypozyczenie.AdresDojazdu = rcv.AdresDojazdu;
+                wypozyczenie.WydarzenieId = rcv.WydarzenieId;
+
+                wypozyczenieRepository.Add(wypozyczenie);
+                wypozyczenieRepository.Save();
+
+                
+                //wypozyczenie.MetodaPlatnosci = rcv.PaymentMethod; <<-- Nie ma takiego pola w bazie
+                
+                foreach (var item in rcv.CarInCartList)
+                {
+                    Dostepnosc dostepnosc = new Dostepnosc();
+                    dostepnosc.NiedostepnyOd = rcv.DataWypozyczenia;
+                    dostepnosc.NiedostepnyDo = rcv.DataZwrotu;
+                    dostepnosc.SamochodId = item.SamochodId;
+
+                    dostepnoscRepository.Add(dostepnosc);
+                }
+                dostepnoscRepository.Save();
+
+                foreach (var item in wypTemp)
+                {
+                    WypSam wypSam = new WypSam();
+                    wypSam.SamochodId = item.SamochodId;
+                    wypSam.WypozyczenieId = wypozyczenie.WypozyczenieId;
+
+                    wypSamRepository.Add(wypSam);
+
+                }
+                wypSamRepository.Save();
+
+
+
+                var wypTempForDate = wypozyczenieTempRepository.FindAllWypozyczenieTempForDate(rcv.DataWypozyczenia, rcv.DataZwrotu);
+
+                foreach (var item in wypTempForDate)
+                {
+                    wypozyczenieTempRepository.Delete(item);
+                }
+
+                //foreach (var item in wypTemp)
+                //{
+                //    wypozyczenieTempRepository.Delete(item);
+                //}
+
+                wypozyczenieTempRepository.Save();
+                
+
+                return RedirectToAction("RentDetails", new {id =  wypozyczenie.WypozyczenieId});
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult RentDetails(int id)
+        {
+            var wypozyczenie = wypozyczenieRepository.GetWypozyczenieById(id);
+            wypozyczenie.wypSamList = wypSamRepository.FindWypSamForIdWypozyczenie(wypozyczenie.WypozyczenieId);
+
+            return View(wypozyczenie);
+        }
+
+        public ActionResult RentList()
+        {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var osoba = osobaRepository.GetOsobaByHash(user.UserHash);
+
+            var model = wypozyczenieRepository.FindAllWypozyczeniaForOsobaId(osoba.OsobaId); 
+
+            return View(model);
         }
 
         public ActionResult Summary()
@@ -60,7 +150,7 @@ namespace WypożyczalniaSamochodówPremium.Controllers
 
             RentCarViewModel rentCar = new RentCarViewModel();
             rentCar.CarInCartList = wypTemp;
-            rentCar.Osoba = osoba;
+            rentCar.OsobaId = osoba.OsobaId;
             rentCar.DataWypozyczenia = wypTemp.FirstOrDefault().DataWypozyczenia;
             rentCar.DataZwrotu = wypTemp.FirstOrDefault().DataZwrotu;
 
