@@ -238,6 +238,7 @@
     <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -351,6 +352,7 @@
     </Compile>
     <Compile Include="Models\PrzegladRepository.cs" />
     <Compile Include="Models\PrzegladValidation.cs" />
+    <Compile Include="Models\RentCarViewModel.cs" />
     <Compile Include="Models\Rozliczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -436,8 +438,13 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\hs-icons.svg" />
     <Content Include="Content\Graphics\100z100.jpg" />
+    <Content Include="Content\Graphics\BMW.jpg" />
+    <Content Include="Content\Graphics\BMW2.jpg" />
     <Content Include="Content\Graphics\car-banner1.jpg" />
+    <Content Include="Content\Graphics\happy_client.jpg" />
     <Content Include="Content\Graphics\HomeLogo.jpg" />
+    <Content Include="Content\Graphics\przelewy24.jpg" />
+    <Content Include="Content\Graphics\Mercedes.jpg" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\editor.png" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\imagebrowser.png" />
     <Content Include="Content\kendoui.2018.2.620\Bootstrap\indeterminate.gif" />
@@ -4844,6 +4851,7 @@
     <Content Include="Areas\Adm\Views\Osoba\DisplayZdjecia.cshtml" />
     <Content Include="Areas\Adm\Views\Osoba\Upload.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\_DeleteZdjecie.cshtml" />
+    <Content Include="Areas\Adm\Views\Wydarzenie\Delete.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -4906,7 +4914,6 @@
     <Content Include="Views\Account\EditUser.cshtml" />
     <Content Include="Views\Cars\Index.cshtml" />
     <Content Include="Views\Cars\Details.cshtml" />
-    <Content Include="Views\Cars\RentCar.cshtml" />
     <Content Include="Views\Cars\SearchCar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Cars\CarsForTimeRange.cshtml" />
@@ -4914,6 +4921,12 @@
     <Content Include="Views\Cars\_Details.cshtml" />
     <Content Include="Views\Manage\UpdatePersonDetails.cshtml" />
     <Content Include="Views\Manage\PersonDetails.cshtml" />
+    <Content Include="Views\Rent\RentCar.cshtml" />
+    <Content Include="Views\Rent\Summary.cshtml" />
+    <Content Include="Views\Rent\AddYourPersonalData.cshtml" />
+    <Content Include="Views\Rent\Delete.cshtml" />
+    <Content Include="Views\Rent\RentList.cshtml" />
+    <Content Include="Views\Rent\RentDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Adm\Models\" />

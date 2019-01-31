@@ -42,7 +42,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 opisRepository.Save();
 
                 TempData["okMessage"] = "Opis został dodany.";
-                return RedirectToAction("Details","Samochod",new { id = opis.SamochodId});
+                return RedirectToAction("Details","Samochod",new { samId = opis.SamochodId});
             }
             else
             {
@@ -68,7 +68,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 opisRepository.Delete(opis);
                 opisRepository.Save();
                 TempData["okMessage"] = "Usunięto Opis!";
-                return RedirectToAction("Details", "Samochod", new { id = samid });
+                return RedirectToAction("Details", "Samochod", new { samId = samid });
             }
             catch (Exception e)
             {

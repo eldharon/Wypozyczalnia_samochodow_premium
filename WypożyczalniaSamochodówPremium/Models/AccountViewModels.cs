@@ -34,7 +34,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Zapamiętać tą przeglądarke?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -56,10 +56,10 @@ namespace WypożyczalniaSamochodówPremium.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Zapamiętaj mnie?")]
         public bool RememberMe { get; set; }
     }
 
@@ -73,12 +73,12 @@ namespace WypożyczalniaSamochodówPremium.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potwierdź hasło")]
+        [Compare("Password", ErrorMessage = "Pole hasło i powtórz hasło nie są takie same")]
         public string ConfirmPassword { get; set; }
 
         public Guid UserHash { get; set; }
@@ -104,12 +104,12 @@ namespace WypożyczalniaSamochodówPremium.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potwierdź hasło")]
+        [Compare("Password", ErrorMessage = "Pole hasło i powtórz hasło nie są takie same")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

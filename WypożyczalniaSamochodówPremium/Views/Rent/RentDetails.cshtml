@@ -1,0 +1,117 @@
+﻿@model WypożyczalniaSamochodówPremium.Models.Wypozyczenie
+@using WypożyczalniaSamochodówPremium.Helpers;
+@{
+    ViewBag.Title = "Samochody";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container mt-5 mb-5">
+    <div class="mb-3">
+        @Html.IconActionLink("fa fa-arrow-left", "Powrót", "Index", "Manage", null, new { @class = "btn btn-primary" })
+
+    </div>
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-road"></i> Szczegóły
+                    </div>
+                    <div class="card-body">
+                        <div class="form-horizontal">
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.Osoba.Imie, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.Osoba.Imie)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.Osoba.Nazwisko, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.Osoba.Nazwisko)
+                                </div>
+                            </div>
+
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.DataWypozyczenia, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.DataWypozyczenia)
+                                </div>
+                            </div>
+
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.DataZwrotu, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.DataZwrotu)
+                                </div>
+                            </div>
+                            <div class="row form-group line">
+                                @Html.LabelFor(model => model.CzyDostarczany, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.CzyDostarczany)
+                                </div>
+                            </div>
+
+                            @{
+                                if (Model.CzyDostarczany == true)
+                                {
+                                    <div class="row form-group line">
+                                        @Html.LabelFor(model => model.CzyKierowca, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                        <div class="col-md-10">
+                                            @Html.DisplayFor(model => model.CzyKierowca)
+                                        </div>
+                                    </div>
+                                    <div class="row form-group line">
+                                        @Html.LabelFor(model => model.AdresDojazdu, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                                        <div class="col-md-10">
+                                            @Html.DisplayFor(model => model.AdresDojazdu)
+                                        </div>
+                                    </div>
+
+
+                                }
+                            }
+
+
+                            <hr />
+
+
+                            <div class="form-group row mt-5">
+                                <div class="control-label col-md-10 font-weight-bold">
+                                    <i class="fa fa-car"></i> Lista samochodów:
+                                </div>
+                                <div class="col-md-6">
+
+                                </div>
+                            </div>
+                            @{
+                                var count = 1;
+                                foreach (var item in Model.wypSamList)
+                                {
+                                    <div class="form-group row">
+                                        <div class="control-label col-md-1 font-weight-bold">
+                                            @count.
+                                        </div>
+                                        <div class="col-md-3">
+                                            @item.Samochod.Marka @item.Samochod.Model
+                                        </div>
+                                        <div class="col-md-3">
+                                        </div>
+                                    </div>
+
+                                    count++;
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

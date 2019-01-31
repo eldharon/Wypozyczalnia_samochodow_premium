@@ -1,0 +1,116 @@
+﻿@model WypożyczalniaSamochodówPremium.Models.RentCarViewModel
+@using WypożyczalniaSamochodówPremium.Helpers
+
+@{
+    ViewBag.Title = "Podsumowanie wypożyczenia";
+    Layout = "~/Views/Shared/_LayoutScript.cshtml";
+
+}
+
+
+<div class="container mt-5 mb-5">
+    <div class="animated fadeIn">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-user"></i> Twoje wybrane samochody!
+                </div>
+                <div class="card-body" id="updateTargetId">
+
+
+                    <div class="form-group row">
+                        <div class="control-label col-md-2 font-weight-bold">
+                            <i class="fa fa-calendar"></i> Data wypożyczenia
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(model => model.DataWypozyczenia)
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="control-label col-md-2 font-weight-bold">
+                            <i class="fa fa-calendar"></i> Data zwrotu
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(model => model.DataZwrotu)
+
+                        </div>
+                    </div>
+
+                    <hr />
+
+
+                    <div class="form-group row mt-5">
+                        <div class="control-label col-md-10 font-weight-bold">
+                            <i class="fa fa-car"></i> Lista samochodów:
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+                    @{
+                        var count = 1;
+                        foreach (var item in Model.CarInCartList)
+                        {
+                            <div class="form-group row">
+                                <div class="control-label col-md-1 font-weight-bold">
+                                    @count.
+                                </div>
+                                <div class="col-md-3">
+                                    @item.Samochod.Marka @item.Samochod.Model
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="modal" data-remote="@Url.Action("DeleteAjax", "Rent", new { id = item.WypozyczenieTempId }, null)" href="#" data-target="#modal"><i class="fa fa-trash-o"></i> Usuń</a>
+                                </div>
+                            </div>
+
+                            count++;
+                        }
+                    }
+
+                </div>
+                <div class="card-footer">
+                    <div class="text-right">
+                        @Html.ActionLink("Dalej", "RentCar", "Rent", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal inmodal in" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#modal').on('show.bs.modal', function (e) {
+
+        var button = $(e.relatedTarget);
+        var modal = $(this);
+
+        // load content from HTML string
+        //modal.find('.modal-body').html("Nice modal body baby...");
+
+        // or, load content from value of data-remote url
+        modal.find('.modal-content').load(button.data("remote"));
+
+    });
+    function HideModal() {
+
+        $('#modal').modal('hide');
+        $(document.body).on('hidden.bs.modal', function () {
+            $('#modal').removeData('bs.modal')
+        });
+        $('#modal').data('modal', null);
+    }
+
+    $(document.body).on('hidden.bs.modal', function () {
+        $('#modal').removeData('bs.modal')
+    });
+</script>
