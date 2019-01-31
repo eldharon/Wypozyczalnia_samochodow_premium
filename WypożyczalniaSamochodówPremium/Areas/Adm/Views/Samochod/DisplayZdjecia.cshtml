@@ -20,7 +20,7 @@
                         </a>
                     </div>
                     <div>
-                        @Html.IconActionLink("fa fa-trash", "Usuń", "Delete", "Image", new { id = item.id }, new { @class = "btn btn-secondary", style = "margin-top: 10px" })
+                        <a data-toggle="modal" data-remote="@Url.Action("DeleteZdjecie", "Samochod", new { id = item.id, ObjId = item.ReferencedObjectId }, null)" href="#" data-target="#modal"><i class="fa fa-trash" style = "margin-top: 10px"></i> Usuń</a>
                     </div>
                 </div>
             }
@@ -36,26 +36,4 @@
         <hr />
     }
 </div>
-
-
-
-@*<div class="row form-group">
-            <div class="col-md-3">
-                <b>@item.Name</b>
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-md-3">
-                <a target="_blank" href="/Adm/Samochod/Details/@item.ReferencedObjectId">
-                    <img src="/Adm/Samochod/ShowPhoto/@item.id" alt="@item.AlternateText" />
-                </a>
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-md-3">
-
-            </div>
-
-        </div>
-    }*@
 
