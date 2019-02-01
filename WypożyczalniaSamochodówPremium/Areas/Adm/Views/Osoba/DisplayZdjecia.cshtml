@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WypożyczalniaSamochodówPremium.Models.PhotoProp>
+@using WypożyczalniaSamochodówPremium.Helpers;
+<div id="OpisTarget">
+    @if (Model.Count() > 0)
+    {
+        <h3>
+            Zdjęcia
+        </h3>
+        <hr />
+        <div class="row" >
+            @foreach (var item in Model )
+            {
+                <div class="col-md-2" align="center">
+                    <div>
+                        <b style="margin-bottom: 10px">@item.Name</b>
+                    </div>
+                    <div>
+                        <a target="_blank" href="/Adm/Osoba/Details/@item.ReferencedObjectId">
+                            <img src="/Adm/Osoba/ShowPhoto/@item.id" alt="@item.AlternateText" />
+                        </a>
+                    </div>
+                    <div>
+                        @Html.IconActionLink("fa fa-trash", "Usuń", "Delete", "Image", new { id = item.id }, new { @class = "btn btn-secondary", style = "margin-top: 10px" })
+                    </div>
+                </div>
+            }
+
+        </div>
+        <hr />
+    }
+    else
+    {
+        <div>
+            Brak zdjęć...
+        </div>
+        <hr />
+    }
+</div>
+
+
+
+@*<div class="row form-group">
+            <div class="col-md-3">
+                <b>@item.Name</b>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3">
+                <a target="_blank" href="/Adm/Samochod/Details/@item.ReferencedObjectId">
+                    <img src="/Adm/Samochod/ShowPhoto/@item.id" alt="@item.AlternateText" />
+                </a>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3">
+
+            </div>
+
+        </div>
+    }*@
+

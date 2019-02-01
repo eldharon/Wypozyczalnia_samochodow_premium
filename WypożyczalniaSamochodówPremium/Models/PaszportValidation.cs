@@ -17,9 +17,7 @@ namespace WypożyczalniaSamochodówPremium.Models
     {
         [HiddenInput(DisplayValue = false), ScaffoldColumn(false)]
         public int PaszportId { get; set; }
-        [Required(ErrorMessage = "Proszę podać numer paszportu"), DisplayName("Numer paszportu")]
         public string NrPaszportu { get; set; }
-        [DataType(DataType.Date), DisplayName("Termin ważności")]
-        public Nullable<System.DateTime> TerminWaznosci { get; set; }
+        public DateTime TerminWaznosci { get; set; }
     }
 }
