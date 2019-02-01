@@ -303,7 +303,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Upload(string Name, string AlternateText, int id, int mode)
+        public ActionResult Upload(string Name, string AlternateText, int id)
         {
             try
             {
