@@ -13,8 +13,9 @@ namespace WypożyczalniaSamochodówPremium.Models
     public partial class Samochod
     {
         public virtual int PhotoId { get; set; }
-        public IEnumerable<Opis> opisy { get; set; }
-        public IEnumerable<ImageSamochod> photos { get; set; }
+        public virtual IEnumerable<Opis> opisy { get; set; }
+        public virtual IEnumerable<ImageSamochod> photos { get; set; }
+        public virtual double PriceFrom { get; set; }
     }
 
     public class SamochodValidation

@@ -355,6 +355,40 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
             
         }
+        public ActionResult DeleteZdjecie(int id, int ObjId)
+        {
+            ViewBag.PhotoId = id;
+            ViewBag.ObjId   = ObjId;
+            PhotoProp photoProp = new PhotoProp();
+            return PartialView("_DeleteZdjecie");
+        }
+        [HttpPost]
+        public ActionResult DeletePhoto(int id, FormCollection collection)
+        {
+            var Zdjecie = imageRepository.GetImageById(id);
+            var ObjId = Zdjecie.ImageSamochod.First().SamochodId;
+            var ZdjecieASOC = imageSamochodRepository.GetSamochodImageBySamochodId(id);
+
+            try
+            {
+                
+                imageSamochodRepository.Delete(ZdjecieASOC);                  
+                imageSamochodRepository.Save();
+                //imageRepository.Delete(Zdjecie);
+                //imageRepository.Save();
+
+
+
+                TempData["okMessage"] = "Pomyślnie usunięto zdjęcie";
+                return RedirectToAction("Samochod", "Details", new { samId = ObjId });
+            }
+            catch(Exception e)
+            {
+                var ex = e;
+                TempData["errorMessage"] = "Nie usunięto zdjęcia!";
+                return View();
+            }
+        }
         public ActionResult CarsForAjax(string from, string to, int osobaId)
         {
             SamochodTimeRangeSelectionVM model = new SamochodTimeRangeSelectionVM();

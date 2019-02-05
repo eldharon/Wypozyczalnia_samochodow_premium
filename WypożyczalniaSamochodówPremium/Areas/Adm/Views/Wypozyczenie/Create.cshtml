@@ -109,7 +109,7 @@
 
 <div class="modal inmodal in" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content2">
         </div>
     </div>
 </div>
@@ -119,7 +119,7 @@
 
         var button = $(e.relatedTarget);
         var modal = $(this);
-        modal.find('.modal-content').load(button.data("remote"));
+        modal.find('.modal-content2').load(button.data("remote"));
 
     });
     function HideModal2() {
@@ -128,7 +128,7 @@
         $(document.body).on('hidden.bs.modal', function () {
             $('#modal2').removeData('bs.modal')
         });
-        $('#modal2').data('modal', null);
+        $('#modal2').data('modal2', null);
     }
 
     $(document.body).on('hidden.bs.modal', function () {

@@ -14,6 +14,12 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
+            ///adm/Samochod/DeletePhoto/41
+            context.MapRoute(
+            "adm_DeletePhoto", // Pages route
+            "adm/Samochod/DeletePhoto/{id}", //URL with parameters
+            new { controller = "Samochod", action = "DeletePhoto", id = "" }
+            );
 
             context.MapRoute(
             "adm_CarsForAjax", // Pages route

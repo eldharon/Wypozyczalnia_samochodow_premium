@@ -24,6 +24,10 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             return entities.imagesSamochod.SingleOrDefault(o => o.ImageId == id);
         }
+        public ImageSamochod GetSamochodImageBySamochodId(int id)           
+        {
+            return entities.imagesSamochod.Where(x => x.ImageId == id).FirstOrDefault();
+        }
         public IEnumerable<PhotoProp> GetPhotoPropsForSamochodId(int id)
         {
             return entities.imagesSamochod.Where(x => x.SamochodId == id).Select(c => new PhotoProp

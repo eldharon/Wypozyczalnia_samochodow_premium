@@ -61,6 +61,9 @@
                                     @item.Samochod.Marka @item.Samochod.Model
                                 </div>
                                 <div class="col-md-3">
+                                    @item.PricePerDay zł/dzień
+                                </div>
+                                <div class="col-md-3">
                                     <a data-toggle="modal" data-remote="@Url.Action("DeleteAjax", "Rent", new { id = item.WypozyczenieTempId }, null)" href="#" data-target="#modal"><i class="fa fa-trash-o"></i> Usuń</a>
                                 </div>
                             </div>
@@ -68,6 +71,17 @@
                             count++;
                         }
                     }
+                    <hr />
+                    <div class="form-group row">
+                        <div class="control-label col-md-4 font-weight-bold">
+                            <i class="fa fa-dollar"></i> Suma:
+                        </div>
+                        <div class="col-md-6">
+                            @Model.TotalPrice zł
+                            
+                        </div>
+                    </div>
+
 
                 </div>
                 <div class="card-footer">

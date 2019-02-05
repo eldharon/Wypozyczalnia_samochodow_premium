@@ -25,19 +25,36 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             return View(pracownik);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(Guid UserHash)
         {
             List<SelectListItem> stanowiskoList = new SelectList(PracownikSelectList.StanowikoList, "Key", "Value").ToList();
             ViewData["stanowiskoList"] = stanowiskoList;
 
-            List<SelectListItem> osobaList = new SelectList(osobaRepository.FindAllOsoba(), "OsobaId", "Nazwisko").ToList();
-            ViewData["osobaList"] = osobaList;
-
+            var osoba = osobaRepository.GetOsobaByHash(UserHash);
 
             Pracownik pracownik = new Pracownik();
+            pracownik.OsobaId = osoba.OsobaId;
 
             return View(pracownik);
         }
+
+        [HttpPost]
+        public ActionResult Create (Pracownik pracownik, FormCollection collection)
+        {
+            if(ModelState.IsValid)
+            {
+                pracownikRepository.Add(pracownik);
+                pracownikRepository.Save();
+
+                TempData["okMessage"] = "Pracownik: " + pracownik.Osoba.Imie + " " + pracownik.Osoba.Nazwisko + " został zapisany";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(pracownik);
+            }
+        }
+     
 
 
     }
