@@ -11,6 +11,7 @@ namespace WypożyczalniaSamochodówPremium.Models
     public partial class WypozyczenieTemp
     {
         public IEnumerable<WypozyczenieTemp> WypTempList { get; set; }
+        public virtual double PricePerDay { get; set; }
 
     }
 

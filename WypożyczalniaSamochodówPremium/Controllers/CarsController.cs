@@ -38,6 +38,23 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             {
                 item.opisy = opisy.Where(s => s.SamochodId == item.SamochodId);
                 item.photos = images.Where(s => s.SamochodId == item.SamochodId);
+
+                if (item.Cennik.Count() > 0)
+                {
+                    if (item.Cennik.Where(c => c.Opis == "miesiac").Count() > 0)
+                    {
+                        item.PriceFrom = (item.Cennik.Where(c => c.Opis == "miesiac").SingleOrDefault().Cena);
+                    }
+                    else if (item.Cennik.Where(c => c.Opis == "tydzien").Count() > 0)
+                    {
+                        item.PriceFrom = (item.Cennik.Where(c => c.Opis == "tydzien").SingleOrDefault().Cena);
+                    }
+                    else if (item.Cennik.Where(c => c.Opis == "dzien").Count() > 0)
+                    {
+                        item.PriceFrom = (item.Cennik.Where(c => c.Opis == "dzien").SingleOrDefault().Cena);
+                    }
+
+                }
             }
 
             if (searchString != null)
@@ -150,16 +167,48 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             var osoba = osobaRepository.GetOsobaByHash(user.UserHash);
             var wypTemp = wypozyczenieTempRepository.FindWypozyczenieTempForOsobaId(osoba.OsobaId);
 
+            var lengthOfRent = dataZwr.Date.Day - dataWyp.Date.Day;
+
             if (wypTemp.Count() > 0)
             {
                 int pageSize = 18;
                 int pageNumber = page ?? 1;
+                
 
                 var list = wypozyczenieRepository.FindCarsForTimeRange(dataWyp, dataZwr, osoba.OsobaId).ToList().ToPagedList(pageNumber, pageSize);
 
                 foreach (var item in list)
                 {
-                        item.photos = imageSamochodRepository.FindAllImages().Where(x => x.SamochodId == item.SamochodId);
+                    item.photos = imageSamochodRepository.FindAllImages().Where(x => x.SamochodId == item.SamochodId);
+
+
+                    if (item.Cennik.Count() > 0)
+                    {
+                        if (lengthOfRent < 7)
+                        {
+                            if (item.Cennik.Where(c => c.Opis == "dzien").Count() > 0)
+                            {
+                                item.PriceFrom = (item.Cennik.Where(c => c.Opis == "dzien").SingleOrDefault().Cena);
+                            }
+                        }
+                        else if (lengthOfRent >= 7 && lengthOfRent < 30)
+                        {
+                            if (item.Cennik.Where(c => c.Opis == "tydzien").Count() > 0)
+                            {
+                                item.PriceFrom = (item.Cennik.Where(c => c.Opis == "tydzien").SingleOrDefault().Cena);
+                            }
+                        }
+                        else if (lengthOfRent >= 30)
+                        {
+                            if (item.Cennik.Where(c => c.Opis == "miesiac").Count() > 0)
+                            {
+                                item.PriceFrom = (item.Cennik.Where(c => c.Opis == "miesiac").SingleOrDefault().Cena);
+                            }
+                        }
+                    }
+
+
+
                 }
 
                 ViewBag.dataWyp = wypTemp.FirstOrDefault().DataWypozyczenia;
@@ -180,6 +229,32 @@ namespace WypożyczalniaSamochodówPremium.Controllers
                 foreach (var item in list)
                 {
                         item.photos = imageSamochodRepository.FindAllImages().Where(x => x.SamochodId == item.SamochodId);
+
+                    if (item.Cennik.Count() > 0)
+                    {
+                        if (lengthOfRent < 7)
+                        {
+                            if (item.Cennik.Where(c => c.Opis == "dzien").Count() > 0)
+                            {
+                                item.PriceFrom = (item.Cennik.Where(c => c.Opis == "dzien").SingleOrDefault().Cena);
+                            }
+                        }
+                        else if (lengthOfRent >= 7 && lengthOfRent < 30)
+                        {
+                            if(item.Cennik.Where(c => c.Opis == "tydzien").Count() > 0)
+                            {
+                                item.PriceFrom = (item.Cennik.Where(c => c.Opis == "tydzien").SingleOrDefault().Cena);
+                            }
+                        }
+                        else if (lengthOfRent >= 30)
+                        {
+                            if (item.Cennik.Where(c => c.Opis == "miesiac").Count() > 0)
+                            {
+                                item.PriceFrom = (item.Cennik.Where(c => c.Opis == "miesiac").SingleOrDefault().Cena);
+                            }
+                        }
+                    }
+
                 }
 
                 ViewBag.dataWyp = dataWyp;

@@ -1,34 +1,58 @@
 ﻿@using System.Web.UI.WebControls
+@using WypożyczalniaSamochodówPremium.Helpers
 @using Microsoft.AspNet.Identity
 @model WypożyczalniaSamochodówPremium.Models.UserListViewModel
 
 
 @{
-    ViewBag.Title = "EditUser";
+    ViewBag.Title = "Użytkownicy";
     Layout = "~/Areas/Adm/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EditUser</h2>
+<div class="container-fluid mt-5">
+    <div class="animated fadeIn">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-male"></i> Edytuj role użytkowników
+                </div>
+                @{Html.EnableClientValidation();}
+                @using (Html.BeginForm("EditUser", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="card-body">
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+                            <h4>Wydarzenie</h4>
+                            <hr />
+                            @Html.HiddenFor(model => model.UserId)
 
-@{Html.EnableClientValidation();}
-@using (Html.BeginForm("EditUser", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    <table id="ChooseRole" class="table table-bordered table-hover" style="width: 100%">
+                            <div class="form-group row">
+                                <div class="col-md-2">
+                                    Rola użytkownika
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.DropDownListFor(model => model.Role, Model.RolesList, "Select Role ...")
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-2">
+                                    Zarejestruj jako pracownika
+                                </div>
+                                <div class="col-md-6">
 
-        @Html.HiddenFor(model => model.UserId)
-        <thead>
-            <tr>
-                <th>
+                                    @Html.IconActionLink("fa fa-plus-circle", "Dodaj", "Create", "Pracownik", new { area = "Adm", UserHash = Model.UserHash }, new { @class = "btn btn-primary mr-2"})
 
+                                </div>
+                            </div>
 
-                        @Html.DropDownListFor(model => model.Role, Model.RolesList, "Select Role ...")
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" value="Zapisz" class="btn btn-primary" /> @Html.ActionLink("Anuluj", "UserList", null, new { @class = "btn btn-secondary" })
 
-                </th>
-            </tr>
-        </thead>
-
-
-    </table>
-    <input type="submit" value="Zapisz" class="btn btn-primary" /> @Html.ActionLink("Anuluj", "UserList", null, new { @class = "btn btn-secondary" })
-}
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

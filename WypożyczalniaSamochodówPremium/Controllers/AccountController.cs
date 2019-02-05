@@ -500,6 +500,7 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             UserListViewModel user = new UserListViewModel();
             user.UserId = appUser.Id;
             user.Username = appUser.Email;
+            user.UserHash = appUser.UserHash;
             user.RolesList = context.Roles.ToList().Select(r => new SelectListItem
             {
                 Selected = userRoles.Contains(r.Name),

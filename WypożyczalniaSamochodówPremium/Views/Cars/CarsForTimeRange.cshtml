@@ -32,7 +32,7 @@
                                                 <div class="u-block-hover--scale g-min-height-200 g-flex-middle g-bg-cover g-bg-size-cover g-bg-bluegray-opacity-0_3--after g-transition-0_5" data-bg-img-src="/Adm/Samochod/ShowPhoto/@item.photos.FirstOrDefault().ImageId" style="background-image: url(/Adm/Samochod/ShowPhoto/@item.photos.FirstOrDefault().ImageId);">
                                                     <div class="g-flex-middle-item g-pos-rel g-z-index-1 g-py-50 g-px-20">
                                                         @*<em class="d-inline-block info-v3-1__title g-font-style-normal g-font-size-18 text-uppercase">Klasa</em>
-                                                            <h3 class="text-uppercase g-mb-15">premium</h3>*@
+                            <h3 class="text-uppercase g-mb-15">premium</h3>*@
 
                                                         <a data-toggle="modal" data-remote="@Url.Action("DetailsAjax", "Cars", new { id = item.SamochodId })" href="#" data-target="#modal" class="btn btn-md u-btn-outline-white g-font-weight-600 g-font-size-11 text-uppercase">Więcej</a>
 
@@ -44,7 +44,7 @@
                                                 <div class="u-block-hover--scale g-min-height-200 g-flex-middle g-bg-cover g-bg-size-cover g-bg-bluegray-opacity-0_3--after g-transition-0_5" data-bg-img-src="" style="background-image: url();">
                                                     <div class="g-flex-middle-item g-pos-rel g-z-index-1 g-py-50 g-px-20">
                                                         @*<em class="d-inline-block info-v3-1__title g-font-style-normal g-font-size-18 text-uppercase">Klasa</em>
-                                                            <h3 class="text-uppercase g-mb-15">premium</h3>*@
+                            <h3 class="text-uppercase g-mb-15">premium</h3>*@
 
                                                         <a data-toggle="modal" data-remote="@Url.Action("DetailsAjax", "Cars", new { id = item.SamochodId })" href="#" data-target="#modal" class="btn btn-md u-btn-outline-white g-font-weight-600 g-font-size-11 text-uppercase">Więcej</a>
 
@@ -60,6 +60,8 @@
                                     </div>
                                     <span class="d-block g-font-weight-500 g-font-size-13"><i class="fa fa-cogs"></i> skrzynia @item.SkrzyniaBiegow</span>
                                     <span class="d-block g-font-weight-500 g-font-size-13"><i class="fa fa-car"></i> @item.LiczbaDrzwi</span>
+                                    <span class="d-block g-font-weight-500 g-font-size-15"><i class="fa fa-dollar"></i> @item.PriceFrom zł/dzień</span>
+
                                 </div>
                                 @Html.ActionLink("Dodaj", "AddCarToCart", "Cars", new { samId = item.SamochodId, dataWyp = ViewBag.dataWyp, dataZwr = ViewBag.dataZwr }, new { @class = "btn btn-block u-btn-primary g-color-white--hover g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" })
 

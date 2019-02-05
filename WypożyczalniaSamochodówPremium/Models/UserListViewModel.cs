@@ -8,6 +8,7 @@ namespace WypożyczalniaSamochodówPremium.Models
 {
     public class UserListViewModel
     {
+        public Guid UserHash { get; set; }
         public string UserId { get; set; }
         public string Username { get; set; }
         public string Role { get; set; }

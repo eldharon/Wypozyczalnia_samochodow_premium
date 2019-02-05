@@ -37,6 +37,9 @@
                                             <th>
                                                 Data zwrotu
                                             </th>
+                                            <th>
+                                                Całkowity koszt
+                                            </th>
 
 
                                         </tr>
@@ -62,6 +65,10 @@
                                             <td>
                                                 @item.DataZwrotu
                                             </td>
+                                            <td>
+                                                @item.Rozliczenie.Where(x => x.WypozyczenieId == item.WypozyczenieId).SingleOrDefault().CalkowityKoszt zł
+                                            </td>
+
                                         </tr>
 
                                     }

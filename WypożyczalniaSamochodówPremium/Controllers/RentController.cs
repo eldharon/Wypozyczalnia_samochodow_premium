@@ -18,6 +18,7 @@ namespace WypożyczalniaSamochodówPremium.Controllers
         OsobaRepository osobaRepository = new OsobaRepository();
         DostepnoscRepository dostepnoscRepository = new DostepnoscRepository();
         WypSamRepository wypSamRepository = new WypSamRepository();
+        RozliczenieRepository rozliczenieRepository = new RozliczenieRepository();
         // GET: Rent
         public ActionResult RentCar()
         {
@@ -30,12 +31,48 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             }
 
             var wypTemp = wypozyczenieTempRepository.FindWypozyczenieTempForOsobaId(osoba.OsobaId);
+            var lengthOfRent = wypTemp.FirstOrDefault().DataZwrotu.Date.Day - wypTemp.FirstOrDefault().DataWypozyczenia.Date.Day;
+
 
             List<SelectListItem> wydarzenieList = new SelectList(wydarzenieRepository.FindAllWydarzenie(), "WydarzenieId", "NazwaWydarzenia").ToList();
             ViewData["wydarzenieList"] = wydarzenieList;
 
             RentCarViewModel rentCar = new RentCarViewModel();
             rentCar.CarInCartList = wypTemp;
+
+            foreach (var item in rentCar.CarInCartList)
+            {
+                if (item.Samochod.Cennik.Count() > 0)
+                {
+                    if (lengthOfRent < 7)
+                    {
+                        if (item.Samochod.Cennik.Where(c => c.Opis == "dzien").Count() > 0)
+                        {
+                            item.PricePerDay = (item.Samochod.Cennik.Where(c => c.Opis == "dzien").SingleOrDefault().Cena);
+                            rentCar.TotalPrice += item.PricePerDay * lengthOfRent;
+                        }
+                    }
+                    else if (lengthOfRent >= 7 && lengthOfRent < 30)
+                    {
+                        if (item.Samochod.Cennik.Where(c => c.Opis == "tydzien").Count() > 0)
+                        {
+                            item.PricePerDay = (item.Samochod.Cennik.Where(c => c.Opis == "tydzien").SingleOrDefault().Cena);
+                            rentCar.TotalPrice += item.PricePerDay * lengthOfRent;
+
+                        }
+                    }
+                    else if (lengthOfRent >= 30)
+                    {
+                        if (item.Samochod.Cennik.Where(c => c.Opis == "miesiac").Count() > 0)
+                        {
+                            item.PricePerDay = (item.Samochod.Cennik.Where(c => c.Opis == "miesiac").SingleOrDefault().Cena);
+                            rentCar.TotalPrice += item.PricePerDay * lengthOfRent;
+
+                        }
+                    }
+                }
+            }
+
             rentCar.DataWypozyczenia = wypTemp.FirstOrDefault().DataWypozyczenia;
             rentCar.DataZwrotu = wypTemp.FirstOrDefault().DataZwrotu;
             rentCar.OsobaId = osoba.OsobaId;
@@ -57,6 +94,8 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             rcv.OsobaId = osoba.OsobaId;
             rcv.CarInCartList = wypTemp;
 
+
+
             if (ModelState.IsValid)
             {
                 wypozyczenie.OsobaId = rcv.OsobaId;
@@ -75,14 +114,24 @@ namespace WypożyczalniaSamochodówPremium.Controllers
                 
                 foreach (var item in rcv.CarInCartList)
                 {
+
                     Dostepnosc dostepnosc = new Dostepnosc();
                     dostepnosc.NiedostepnyOd = rcv.DataWypozyczenia;
                     dostepnosc.NiedostepnyDo = rcv.DataZwrotu;
                     dostepnosc.SamochodId = item.SamochodId;
 
                     dostepnoscRepository.Add(dostepnosc);
+
+                    Rozliczenie rozliczenie = new Rozliczenie();
+                    rozliczenie.WypozyczenieId = wypozyczenie.WypozyczenieId;
+                    rozliczenie.Zaliczka = 0;
+                    rozliczenie.CalkowityKoszt = rcv.TotalPrice;
+
+                    rozliczenieRepository.Add(rozliczenie);
+
                 }
                 dostepnoscRepository.Save();
+                rozliczenieRepository.Save();
 
                 foreach (var item in wypTemp)
                 {
@@ -143,13 +192,49 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             var osoba = osobaRepository.GetOsobaByHash(user.UserHash);
             var wypTemp = wypozyczenieTempRepository.FindWypozyczenieTempForOsobaId(osoba.OsobaId);
-            if(wypTemp.Count()==0)
+
+            if (wypTemp.Count() == 0)
             {
-                return RedirectToAction("SearchCar","Cars");
+                return RedirectToAction("SearchCar", "Cars");
             }
+
+            var lengthOfRent = wypTemp.FirstOrDefault().DataZwrotu.Date.Day - wypTemp.FirstOrDefault().DataWypozyczenia.Date.Day;
+
+            
 
             RentCarViewModel rentCar = new RentCarViewModel();
             rentCar.CarInCartList = wypTemp;
+            foreach (var item in rentCar.CarInCartList)
+            {
+                if (item.Samochod.Cennik.Count() > 0)
+                {
+                    if (lengthOfRent < 7)
+                    {
+                        if (item.Samochod.Cennik.Where(c => c.Opis == "dzien").Count() > 0)
+                        {
+                            item.PricePerDay = (item.Samochod.Cennik.Where(c => c.Opis == "dzien").SingleOrDefault().Cena);
+                            rentCar.TotalPrice += item.PricePerDay * lengthOfRent;
+                        }
+                    }
+                    else if (lengthOfRent >= 7 && lengthOfRent < 30)
+                    {
+                        if (item.Samochod.Cennik.Where(c => c.Opis == "tydzien").Count() > 0)
+                        {
+                            item.PricePerDay = (item.Samochod.Cennik.Where(c => c.Opis == "tydzien").SingleOrDefault().Cena);
+                            rentCar.TotalPrice += item.PricePerDay * lengthOfRent;
+                        }
+                    }
+                    else if (lengthOfRent >= 30)
+                    {
+                        if (item.Samochod.Cennik.Where(c => c.Opis == "miesiac").Count() > 0)
+                        {
+                            item.PricePerDay = (item.Samochod.Cennik.Where(c => c.Opis == "miesiac").SingleOrDefault().Cena);
+                            rentCar.TotalPrice += item.PricePerDay * lengthOfRent;
+                        }
+                    }
+                }
+            }
+            
             rentCar.OsobaId = osoba.OsobaId;
             rentCar.DataWypozyczenia = wypTemp.FirstOrDefault().DataWypozyczenia;
             rentCar.DataZwrotu = wypTemp.FirstOrDefault().DataZwrotu;
