@@ -52,7 +52,16 @@
                             <div class="row form-group line">
                                 @Html.LabelFor(model => model.CzyDostarczany, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
                                 <div class="col-md-10">
-                                    @Html.DisplayFor(model => model.CzyDostarczany)
+                                    @{ 
+                                        if(Model.CzyDostarczany == true)
+                                        {
+                                            <p>TAK</p>
+                                        }
+                                        else
+                                        {
+                                            <p>NIE</p>
+                                        }
+                                    }
                                 </div>
                             </div>
 
@@ -100,12 +109,24 @@
                                             @item.Samochod.Marka @item.Samochod.Model
                                         </div>
                                         <div class="col-md-3">
+
                                         </div>
                                     </div>
 
                                     count++;
                                 }
                             }
+                            <hr />
+                            <div class="form-group row">
+                                <div class="control-label col-md-4 font-weight-bold">
+                                    <i class="fa fa-dollar"></i> Suma:
+                                </div>
+                                <div class="col-md-6">
+                                    @Model.Rozliczenie.Where(x => x.WypozyczenieId == Model.WypozyczenieId).SingleOrDefault().CalkowityKoszt zł
+
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer">

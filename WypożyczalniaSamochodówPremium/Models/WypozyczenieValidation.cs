@@ -27,7 +27,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         [Required(ErrorMessage = "Proszę podać datę zwrotu"), DataType(DataType.Date), DisplayName("Data zwrotu")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime DataZwrotu { get; set; }
-        [Required(ErrorMessage = "Proszę wybrac czy samochod ma byc dostarczony")]
+        [Required(ErrorMessage = "Proszę wybrac czy samochod ma byc dostarczony"), DisplayName("Czy samochód ma być dostarczony?")]
         public bool CzyDostarczany { get; set; }
         [Required(ErrorMessage = "Proszę wybrac czy potrzebny bedzie firmowy kierowca do prowadzenia samochodu")]
         public bool CzyKierowca { get; set; }

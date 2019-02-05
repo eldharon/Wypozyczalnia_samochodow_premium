@@ -172,15 +172,15 @@
                                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">
                                     <a href="/Cars/SearchCar" class="nav-link g-py-7 g-px-0" style="color:dodgerblue">Wypożycz samochód!</a>
                                 </li>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    @Html.Action("CarInCart", "Cars")
+                                }
+                                @Html.Partial("_LoginPartial")
                             </ul>
                         </div>
-                        @if (Request.IsAuthenticated)
-                        {
-                            <div id="CarsInCart">
-                                @Html.Action("CarInCart", "Cars")
-                            </div>
-                        }
-                        @Html.Partial("_LoginPartial")
+                        
+                        
 
                         <!-- End Navigation -->
 

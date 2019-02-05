@@ -2,9 +2,27 @@
     ViewBag.Title = "Confirm Email";
 }
 
-<h2>@ViewBag.Title.</h2>
-<div>
-    <p>
-        Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-    </p>
+
+<div class="container mt-5 mb-5">
+    <div class="animated fadeIn">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+
+
+                    <div class="form-group row">
+                        <div class="control-label col-md-12 font-weight-bold text-center" style="font-size:20px">
+                            Dziękujemy za potwierdzenie maila. Możesz już w pełni korzystać z seriwsu, @Html.ActionLink("zaloguj się!", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
+

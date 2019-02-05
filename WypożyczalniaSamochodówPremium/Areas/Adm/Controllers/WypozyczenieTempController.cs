@@ -7,6 +7,7 @@ using WypożyczalniaSamochodówPremium.Models;
 
 namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 {
+    [Authorize(Roles = "Admin, Manager, Employee")]
     public class WypozyczenieTempController : Controller
     {
         WypozyczenieTempRepository wypozyczenieTempRepository = new WypozyczenieTempRepository();

@@ -10,6 +10,7 @@ using WypożyczalniaSamochodówPremium.Models;
 
 namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 {
+    [Authorize(Roles = "Admin, Manager, Employee")]
     public class SamochodController : Controller
     {
         SamochodRepository samochodRepository = new SamochodRepository();
