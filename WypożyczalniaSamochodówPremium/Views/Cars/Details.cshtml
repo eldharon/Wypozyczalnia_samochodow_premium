@@ -165,7 +165,7 @@
                         {
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                    @foreach (var item in Model.photos)
+                                    @foreach (var item in Model.photos.Skip(1))
                                     {
                                         if (count == 0)
                                         {
@@ -180,7 +180,7 @@
                                 </ol>
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
-                                    @foreach (var item in Model.photos)
+                                    @foreach (var item in Model.photos.Skip(1))
                                     {
                                         if (count2 == 0)
                                         {
