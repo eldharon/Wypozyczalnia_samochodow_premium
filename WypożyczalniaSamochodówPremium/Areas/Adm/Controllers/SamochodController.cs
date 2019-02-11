@@ -13,15 +13,21 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
     [Authorize(Roles = "Admin, Manager, Employee")]
     public class SamochodController : Controller
     {
-        SamochodRepository samochodRepository = new SamochodRepository();
+        //Opis, cennik, ubezpieczenia, serwisy, przeglady
+        OpisRepository          opisRepository                          =                     new OpisRepository();
+        CennikRepository        cennikRepository                       = new CennikRepository();
+        UbezpieczenieRepository ubezpieczenieRepository             = new UbezpieczenieRepository();
+        SerwisRepository        serwisRepository                       = new SerwisRepository();
+        PrzegladRepository      przegladRepository                  = new PrzegladRepository();
+        SamochodRepository      samochodRepository                      =                        new SamochodRepository();
         AutaBazaRepository autaBazaRepository = new AutaBazaRepository();
         ModelRepository modelRepository = new ModelRepository();
         WypozyczenieRepository wypozyczenieRepository = new WypozyczenieRepository();
         WypSamRepository wypSamRepository = new WypSamRepository();
         WypozyczenieTempRepository wypozyczenieTempRepository = new WypozyczenieTempRepository();
         //ImageSamochodRepository imagesSamochodRepository = new ImageSamochodRepository();
-        ImageSamochodRepository imageSamochodRepository = new ImageSamochodRepository();
-        ImageRepository imageRepository = new ImageRepository();
+        ImageSamochodRepository imageSamochodRepository         = new ImageSamochodRepository();
+        ImageRepository         imageRepository                 = new ImageRepository();
 
 
 
@@ -180,8 +186,68 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         {
             try
             {
+                //opisRepository
+                //cennikRepository
+                //ubezpieczenieRepository
+                //serwisRepository
+                //przegladRepository
+                //Opis, cennik, ubezpieczenia, serwisy, przeglady
+
                 var auto = samochodRepository.GetSamochodById(id);
                 samochodRepository.Delete(auto);
+                if(opisRepository.GetOpisForSamochodId(id).Count()>0)
+                {
+                    foreach (var item in opisRepository.GetOpisForSamochodId(id))
+                    {
+                        opisRepository.Delete(item);
+                    }
+                    opisRepository.Save();
+                }
+                if (cennikRepository.ShowCennikiForSamochod(id).Count()>0)
+                {
+                    foreach (var item in cennikRepository.ShowCennikiForSamochod(id))
+                    {
+                        cennikRepository.Delete(item);
+                    }
+                    cennikRepository.Save();
+                }
+                if (ubezpieczenieRepository.ShowUbezpieczeniaForSamochod(id).Count()>0)
+                {
+                    foreach (var item in ubezpieczenieRepository.ShowUbezpieczeniaForSamochod(id))
+                    {
+                        ubezpieczenieRepository.Delete(item);
+                    }
+                    ubezpieczenieRepository.Save();
+                }
+                if (serwisRepository.ShowSerwisyForSamochod(id).Count()>0)
+                {
+                    foreach (var item in serwisRepository.ShowSerwisyForSamochod(id))
+                    {
+                        serwisRepository.Delete(item);
+                    }
+                    serwisRepository.Save();
+                }
+                if (przegladRepository.ShowPrzegladForSamochod(id).Count()>0)
+                {
+                    foreach (var item in przegladRepository.ShowPrzegladForSamochod(id))
+                    {
+                        przegladRepository.Delete(item);
+                    }
+                    przegladRepository.Save();
+                }
+                if (imageSamochodRepository.FindImegerForSamochodId(id).Count()>0)
+                {         
+                    foreach (var item in imageSamochodRepository.FindImegerForSamochodId(id))
+                    {
+                        Image image = imageRepository.GetImageById(item.ImageId);
+                        imageSamochodRepository.Delete(item);
+                        imageRepository.Delete(image);
+                    }
+                    imageSamochodRepository.Save();
+                    imageRepository.Save();                    
+                }
+                
+                
                 samochodRepository.Save();
                 TempData["okMessage"] = "Usunięto " + auto.Marka + " " + auto.Model + "!";
                 return RedirectToAction("Index", "Samochod");
@@ -373,10 +439,10 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             try
             {
                 
-                imageSamochodRepository.Delete(ZdjecieASOC);                  
+                imageSamochodRepository.Delete(ZdjecieASOC);
+                imageRepository.Delete(Zdjecie);
                 imageSamochodRepository.Save();
-                //imageRepository.Delete(Zdjecie);
-                //imageRepository.Save();
+                imageRepository.Save();
 
 
 
