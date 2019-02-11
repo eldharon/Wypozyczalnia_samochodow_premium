@@ -338,7 +338,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             }catch(Exception e)
             {
                 TempData["errorMessage"] = "Nie udało się dodać zdjęcia!\n" + e;
-                return RedirectToAction("Details", "Samochod", id);
+                return RedirectToAction("DisplayZdjecia", "Samochod", new { samId = id });
                 
             }
         }
@@ -381,13 +381,13 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
 
                 TempData["okMessage"] = "Pomyślnie usunięto zdjęcie";
-                return RedirectToAction("Samochod", "Details", new { samId = ObjId });
+                return RedirectToAction("DisplayZdjecia", "Samochod", new { samId = id });
             }
             catch(Exception e)
             {
                 var ex = e;
                 TempData["errorMessage"] = "Nie usunięto zdjęcia!";
-                return View();
+                return RedirectToAction("DisplayZdjecia", "Samochod", new { samId = id });
             }
         }
         public ActionResult CarsForAjax(string from, string to, int osobaId)
