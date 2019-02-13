@@ -87,6 +87,7 @@ namespace WypożyczalniaSamochodówPremium.Models
         public string Imie { get; set; }
         [Required]
         public string Nazwisko { get; set; }
+        [Display(Name = "Data urodzenia")]
         [Required(ErrorMessage = "Proszę podać datę wypożyczenia"), DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataUrodzenia { get; set; }

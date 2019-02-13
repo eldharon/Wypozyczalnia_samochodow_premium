@@ -19,7 +19,7 @@ namespace WypożyczalniaSamochodówPremium.Models
             : base("name=WypozyczenieEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

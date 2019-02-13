@@ -40,6 +40,9 @@
                                             <th>
                                                 Całkowity koszt
                                             </th>
+                                            <th>
+                                                Status
+                                            </th>
 
 
                                         </tr>
@@ -67,6 +70,34 @@
                                             </td>
                                             <td>
                                                 @item.Rozliczenie.Where(x => x.WypozyczenieId == item.WypozyczenieId).SingleOrDefault().CalkowityKoszt zł
+                                            </td>
+                                            <td>
+                                                @{
+                                                    if (item.Status == "nowe")
+                                                    {
+                                                        <i class="fa fa-circle" style="color:blue"></i> @item.Status
+
+                                                    }
+                                                    else if (item.Status == "w realizacji")
+                                                    {
+                                                        <i class="fa fa-circle" style="color:yellow"></i> @item.Status
+
+                                                    }
+                                                    else if (item.Status == "zrealizowane")
+                                                    {
+                                                        <i class="fa fa-circle" style="color:green"></i> @item.Status
+
+                                                    }
+                                                    else if (item.Status == "anulowane")
+                                                    {
+                                                        <i class="fa fa-circle" style="color:red"></i> @item.Status
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <i class="fa fa-exclamation-triangle" style="color:orange"></i>
+                                                    }
+                                                }
                                             </td>
 
                                         </tr>

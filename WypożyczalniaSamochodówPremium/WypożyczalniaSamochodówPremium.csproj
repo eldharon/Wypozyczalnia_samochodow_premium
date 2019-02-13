@@ -22,10 +22,8 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -373,6 +371,7 @@
     </Compile>
     <Compile Include="Models\SerwisRepository.cs" />
     <Compile Include="Models\SerwisValidation.cs" />
+    <Compile Include="Models\StatusSelectList.cs" />
     <Compile Include="Models\Ubezpieczenie.cs">
       <DependentUpon>WypozyczenieModel.tt</DependentUpon>
     </Compile>
@@ -419,10 +418,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\WypozyczalniaSamochodowPremiumLocalDB.mdf" />
-    <Content Include="App_Data\WypozyczalniaSamochodowPremiumLocalDB_log.ldf">
-      <DependentUpon>WypozyczalniaSamochodowPremiumLocalDB.mdf</DependentUpon>
-    </Content>
     <Content Include="BazaKłeriDwa%28local%29.sql" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -4853,6 +4848,9 @@
     <Content Include="Areas\Adm\Views\Osoba\Upload.cshtml" />
     <Content Include="Areas\Adm\Views\Samochod\_DeleteZdjecie.cshtml" />
     <Content Include="Areas\Adm\Views\Wydarzenie\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Wypozyczenie\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Pracownik\Edit.cshtml" />
+    <None Include="Properties\PublishProfiles\lorempremium - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -4930,6 +4928,7 @@
     <Content Include="Views\Rent\RentDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Areas\Adm\Models\" />
     <Folder Include="Areas\Adm\Views\WypSam\" />
     <Folder Include="Content\CleverAdmin\img\" />
