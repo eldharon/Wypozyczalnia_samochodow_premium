@@ -30,7 +30,7 @@
                         <div class="row form-group line">
                             @Html.LabelFor(model => model.Opis, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Opis, new { @class = "form-control" })
+                                @Html.TextAreaFor(model => model.Opis, new { @class = "form-control" })
 
                                 @Html.ValidationMessageFor(model => model.Opis)
                             </div>

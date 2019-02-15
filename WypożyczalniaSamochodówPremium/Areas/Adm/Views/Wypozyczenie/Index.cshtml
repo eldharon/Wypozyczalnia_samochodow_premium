@@ -51,45 +51,93 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.AdresDojazdu)
                                     </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
 
                                 </tr>
                             </thead>
                             @foreach (var item in Model)
                             {
 
-                                <tr>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Akcja
-                                            </button>
-                                            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                @Html.IconActionLink("fa fa-edit", "Edytuj", "Edit", "Wypozyczenie", new { id = item.WypozyczenieId }, new { @class = "dropdown-item" })
-                                                @Html.IconActionLink("fa fa-list-ol", "Szczegóły", "Details", "Wypozyczenie", new { id = item.WypozyczenieId }, new { @class = "dropdown-item" })
-                                                @Html.IconActionLink("fa fa-trash", "Usuń", "Delete", "Wypozyczenie", new { id = item.WypozyczenieId }, new { @class = "dropdown-item" })
-                                            </div>
-
+                            <tr>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Akcja
+                                        </button>
+                                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            @Html.IconActionLink("fa fa-edit", "Edytuj", "Edit", "Wypozyczenie", new { id = item.WypozyczenieId }, new { @class = "dropdown-item" })
+                                            @Html.IconActionLink("fa fa-list-ol", "Szczegóły", "Details", "Wypozyczenie", new { id = item.WypozyczenieId }, new { @class = "dropdown-item" })
+                                            @*@Html.IconActionLink("fa fa-trash", "Usuń", "Delete", "Wypozyczenie", new { id = item.WypozyczenieId }, new { @class = "dropdown-item" })*@
                                         </div>
-                                    </td>
-                                    <td>
-                                        @item.DataWypozyczenia
-                                    </td>
-                                    <td>
-                                        @item.DataZwrotu
-                                    </td>
-                                    <td>
-                                        @item.CzyDostarczany
-                                    </td>
-                                    <td>
-                                        @item.CzyKierowca
-                                    </td>
-                                    <td>
-                                        @item.CzyKierowca
-                                    </td>
-                                    <td>
-                                        @item.AdresDojazdu
-                                    </td>
-                                </tr>
+                                    </div>
+                                </td>
+                                <td>
+                                    @item.DataWypozyczenia
+                                </td>
+                                <td>
+                                    @item.DataZwrotu
+                                </td>
+                                <td>
+                                    @{ 
+                                        if(item.CzyDostarczany == false)
+                                        {
+                                            <p>NIE</p>
+                                        }
+                                        else
+                                        {
+                                            <p>TAK</p>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                                        if (item.CzyKierowca == false)
+                                        {
+                                            <p>NIE</p>
+                                        }
+                                        else
+                                        {
+                                            <p>TAK</p>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @item.AdresDojazdu
+                                </td>
+                                <td>
+                                    @{
+                                        if (item.Status == "nowe")
+                                        {
+                                            <i class="fa fa-circle" style="color:blue"></i> @item.Status
+
+                                        }
+                                        else if (item.Status == "w realizacji")
+                                        {
+                                            <i class="fa fa-circle" style="color:yellow"></i> @item.Status
+
+                                        }
+                                        else if (item.Status == "zrealizowane")
+                                        {
+                                            <i class="fa fa-circle" style="color:green"></i> @item.Status
+
+                                        }
+                                        else if (item.Status == "anulowane")
+                                        {
+                                            <i class="fa fa-circle" style="color:red"></i> @item.Status
+
+                                        }
+                                        else
+                                        {
+                                            <i class="fa fa-exclamation-triangle" style="color:orange"></i>
+                                        }
+                                    }
+
+                                </td>
+
+
+                            </tr>
 
                             }
                         </table>

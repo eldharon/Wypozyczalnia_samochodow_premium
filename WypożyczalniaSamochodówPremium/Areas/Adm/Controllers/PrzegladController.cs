@@ -12,10 +12,18 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
     {
         PrzegladRepository przegladRepository = new PrzegladRepository();
 
-        public ActionResult Index()
+        public ActionResult Index(int? idP)
         {
-            var model = przegladRepository.FindAllPrzeglad();
-            return View(model);
+            if (idP.HasValue)
+            {
+                return RedirectToAction("ShowPrzegladyForSamochod", new { id = idP.Value });
+            }
+            else
+            {
+                var model = przegladRepository.FindAllPrzeglad();
+                return View(model);
+
+            }
         }
 
         public ActionResult ShowPrzegladyForSamochod(int id)

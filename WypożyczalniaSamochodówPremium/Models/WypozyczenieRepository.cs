@@ -37,11 +37,20 @@ namespace WypożyczalniaSamochodówPremium.Models
                            || (x.DataWypozyczenia <= from && x.DataZwrotu <= to && x.DataZwrotu >= from)
                            || (x.DataWypozyczenia >= from && x.DataZwrotu >= to && x.DataWypozyczenia <= to)).Select(x => x.Samochod);
 
+            var Dostepnosc = (from samochod in entities.samochody
+                               join dostepnosc in entities.dostepnosci
+                               on samochod.SamochodId equals dostepnosc.SamochodId
+                               select dostepnosc).Where(x => (x.NiedostepnyOd <= from && x.NiedostepnyDo >= to)
+                               || (x.NiedostepnyOd >= from && x.NiedostepnyDo <= to)
+                               || (x.NiedostepnyOd <= from && x.NiedostepnyDo <= to && x.NiedostepnyDo >= from)
+                               || (x.NiedostepnyOd >= from && x.NiedostepnyDo >= to && x.NiedostepnyOd <= to)).Select(x => x.Samochod);
+
 
             var list1 = temp.Select(x => x.SamochodId);
             var list2 = wypTemp.Select(x => x.SamochodId);
+            var list3 = Dostepnosc.Select(x => x.SamochodId);
 
-            var result = entities.samochody.Where(x => !list1.Contains(x.SamochodId) && !list2.Contains(x.SamochodId));
+            var result = entities.samochody.Where(x => !list1.Contains(x.SamochodId) && !list2.Contains(x.SamochodId) && !list3.Contains(x.SamochodId));
             var check2 = result.ToList();
 
             return result;

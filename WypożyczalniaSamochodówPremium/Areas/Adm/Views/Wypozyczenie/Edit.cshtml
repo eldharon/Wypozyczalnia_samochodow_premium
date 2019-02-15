@@ -1,7 +1,7 @@
 ﻿@model WypożyczalniaSamochodówPremium.Models.Wypozyczenie
 @using WypożyczalniaSamochodówPremium.Helpers
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Areas/Adm/Views/Shared/_LayoutScript.cshtml";
 }
 
@@ -13,7 +13,7 @@
                     <i class="fa fa-male"></i> Dodaj Wypożyczenie
                 </div>
                 @{Html.EnableClientValidation();}
-                @using (Html.BeginForm("Create", "Wypozyczenie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("Edit", "Wypozyczenie", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                 <div class="card-body" id="newajax">
                     <div id="autaBazaLoading" style="display:none; text-align:center; position:relative;">
@@ -25,6 +25,7 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     @Html.HiddenFor(model => model.OsobaId)
+                    @Html.HiddenFor(model => model.WypozyczenieId)
 
 
                     <div class="row form-group line">
@@ -46,9 +47,9 @@
 
                             @Html.ValidationMessageFor(model => model.DataZwrotu)
                         </div>
-                        <div class="col-md-5">
+                        @*<div class="col-md-5">
                             <a data-toggle="modal" data-remote="false" href="@Url.Action("CarsForAjax", "Samochod", null)" data-target="#modal"><i class="fa fa-plus-circle"></i>Wybierz auto</a>
-                        </div>
+                        </div>*@
                     </div>
 
                     <div class="row form-group line">
@@ -95,13 +96,12 @@
                         </div>
                     </div>
 
-
                     <div id="samochodyWypozyczenie">
-                        @Html.Action("SamochodyForWypozyczenieTemp", "Samochod", new { osobaId = Model.OsobaId })
+                        @Html.Action("SamochodyForWypozyczenieForDetails", "Samochod", new { wypId = Model.WypozyczenieId })
                     </div>
                 </div>
                     <div class="card-footer">
-                        <input type="submit" value="Dodaj" class="btn btn-primary" /> &nbsp; @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })
+                        <input type="submit" value="Zapisz" class="btn btn-primary" /> &nbsp; @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-secondary" })
                     </div>
 
                 }
@@ -236,7 +236,7 @@
             if (this.checked)
                 $('#autoUpdate').fadeIn('slow');
             else
-            { 
+            {
                 $('#autoUpdate').fadeOut('slow');
                 document.getElementById('CzyKierowca').checked = false;
                 document.getElementById('AdresDojazdu').value = "";

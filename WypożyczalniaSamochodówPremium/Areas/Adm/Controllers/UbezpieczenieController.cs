@@ -12,10 +12,21 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
     {
         UbezpieczenieRepository ubezpieczenieRepository = new UbezpieczenieRepository();
 
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var model = ubezpieczenieRepository.FindAllUbezpieczenie();
-            return View(model);
+            if (id.HasValue)
+            {
+                var model = ubezpieczenieRepository.ShowUbezpieczeniaForSamochod(id.Value);
+                ViewBag.SamochodId = id;
+                return View("ShowUbezpieczeniaForSamochod",model);
+            }
+            else
+            {
+                var model = ubezpieczenieRepository.FindAllUbezpieczenie();
+                return View(model);
+            }
+
+
         }
 
         public ActionResult ShowUbezpieczeniaForSamochod(int id)
