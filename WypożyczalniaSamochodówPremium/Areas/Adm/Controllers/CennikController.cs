@@ -12,10 +12,18 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
     {
         CennikRepository cennikRepository = new CennikRepository();
 
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var model = cennikRepository.GetAllCenniki();
-            return View(model);
+            if (id.HasValue)
+            {
+                return RedirectToAction("ShowCennikiForSamochod", new { id = id.Value });
+            }
+            else
+            {
+                var model = cennikRepository.GetAllCenniki();
+                return View(model);
+            }
+            
         }
 
         public ActionResult ShowCennikiForSamochod(int id)

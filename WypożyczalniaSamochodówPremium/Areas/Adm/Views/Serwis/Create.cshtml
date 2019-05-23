@@ -48,7 +48,7 @@
                         <div class="row form-group line">
                             @Html.LabelFor(model => model.Uwagi, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Uwagi, new { @class = "form-control" })
+                                @Html.TextAreaFor(model => model.Uwagi, new { @class = "form-control" })
 
                                 @Html.ValidationMessageFor(model => model.Uwagi)
                             </div>

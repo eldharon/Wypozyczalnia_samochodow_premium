@@ -17,6 +17,12 @@ namespace WypożyczalniaSamochodówPremium.Models
         {
             return entities.dostepnosci.SingleOrDefault(h => h.DostepnoscId == id);
         }
+
+        public Dostepnosc GetDostepnoscByDate(DateTime from, DateTime to)
+        {
+            return entities.dostepnosci.Where(x => x.NiedostepnyOd == from && x.NiedostepnyDo == to).SingleOrDefault();
+        }
+
         public void Add(Dostepnosc dostepnosc)
         {
             entities.dostepnosci.Add(dostepnosc);

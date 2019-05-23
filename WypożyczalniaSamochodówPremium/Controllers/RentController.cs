@@ -86,7 +86,10 @@ namespace WypożyczalniaSamochodówPremium.Controllers
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             var osoba = osobaRepository.GetOsobaByHash(user.UserHash);
 
+
             var wypTemp = wypozyczenieTempRepository.FindWypozyczenieTempForOsobaId(osoba.OsobaId);
+            var lengthOfRent = wypTemp.FirstOrDefault().DataZwrotu - wypTemp.FirstOrDefault().DataWypozyczenia;
+
             Wypozyczenie wypozyczenie = new Wypozyczenie();
 
             rcv.DataWypozyczenia = wypTemp.FirstOrDefault().DataWypozyczenia;
@@ -105,6 +108,8 @@ namespace WypożyczalniaSamochodówPremium.Controllers
                 wypozyczenie.CzyKierowca = rcv.CzyKierowca;
                 wypozyczenie.AdresDojazdu = rcv.AdresDojazdu;
                 wypozyczenie.WydarzenieId = rcv.WydarzenieId;
+                wypozyczenie.Uwagi = rcv.Uwagi;
+                wypozyczenie.Status = "nowe";
 
                 wypozyczenieRepository.Add(wypozyczenie);
                 wypozyczenieRepository.Save();
@@ -121,15 +126,19 @@ namespace WypożyczalniaSamochodówPremium.Controllers
                     dostepnosc.SamochodId = item.SamochodId;
 
                     dostepnoscRepository.Add(dostepnosc);
-
-                    Rozliczenie rozliczenie = new Rozliczenie();
-                    rozliczenie.WypozyczenieId = wypozyczenie.WypozyczenieId;
-                    rozliczenie.Zaliczka = 0;
-                    rozliczenie.CalkowityKoszt = rcv.TotalPrice;
-
-                    rozliczenieRepository.Add(rozliczenie);
-
                 }
+
+                Rozliczenie rozliczenie = new Rozliczenie();
+                rozliczenie.WypozyczenieId = wypozyczenie.WypozyczenieId;
+                rozliczenie.Zaliczka = 0;
+                rozliczenie.CalkowityKoszt = rcv.TotalPrice;
+
+                if (rcv.CzyKierowca == true)
+                {
+                    rozliczenie.CalkowityKoszt = rozliczenie.CalkowityKoszt + (100 * lengthOfRent.Days);
+                }
+
+                rozliczenieRepository.Add(rozliczenie);
                 dostepnoscRepository.Save();
                 rozliczenieRepository.Save();
 

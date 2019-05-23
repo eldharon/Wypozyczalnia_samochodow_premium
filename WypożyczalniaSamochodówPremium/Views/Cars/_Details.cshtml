@@ -6,7 +6,7 @@
     /* Make the image fully responsive */
     .carousel-inner img {
         width: 100%;
-        height: 100%;
+        height: 50%;
     }
 </style>
 
@@ -156,7 +156,7 @@
                     }
                 </div>
 
-                <div class="tab-pane fade" id="nav-1-1-accordion-default-ver-big-icons--3" role="tabpanel" style="width:800px;height:400px">
+                <div class="tab-pane fade" id="nav-1-1-accordion-default-ver-big-icons--3" role="tabpanel" >
                     @{
                         var count = 0;
                         var count2 = 0;
@@ -164,7 +164,7 @@
                         {
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                    @foreach (var item in Model.photos)
+                                    @foreach (var item in Model.photos.Skip(1))
                                     {
                                         if (count == 0)
                                         {
@@ -179,7 +179,7 @@
                                 </ol>
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
-                                    @foreach (var item in Model.photos)
+                                    @foreach (var item in Model.photos.Skip(1))
                                     {
                                         if (count2 == 0)
                                         {

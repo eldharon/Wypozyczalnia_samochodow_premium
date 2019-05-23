@@ -34,6 +34,10 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             List<SelectListItem> wydarzenieList = new SelectList(wydarzenieRepository.FindAllWydarzenie(), "WydarzenieId", "NazwaWydarzenia").ToList();
             ViewData["wydarzenieList"] = wydarzenieList;
 
+            List<SelectListItem> StatusList = new SelectList(StatusSelectList.StatusList, "Key", "Value").ToList();
+            ViewData["StatusList"] = StatusList;
+
+
             var search = wypozyczenieTempRepository.FindWypozyczenieTempForOsobaId(id);
 
             Wypozyczenie wypozyczenie = new Wypozyczenie();
@@ -61,6 +65,10 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         {
             List<SelectListItem> wydarzenieList = new SelectList(wydarzenieRepository.FindAllWydarzenie(), "WydarzenieId", "NazwaWydarzenia").ToList();
             ViewData["wydarzenieList"] = wydarzenieList;
+
+            List<SelectListItem> StatusList = new SelectList(StatusSelectList.StatusList, "Key", "Value").ToList();
+            ViewData["StatusList"] = StatusList;
+
 
             var wypTemp = wypozyczenieTempRepository.FindWypozyczenieTempForOsobaId(wypozyczenie.OsobaId);
             try
@@ -103,6 +111,47 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
             {
                 TempData["errorMessage"] = "Wystąpił błąd : " + e;
                 return View();
+            }
+
+        }
+
+        public ActionResult Edit(int id)
+        {
+            List<SelectListItem> wydarzenieList = new SelectList(wydarzenieRepository.FindAllWydarzenie(), "WydarzenieId", "NazwaWydarzenia").ToList();
+            ViewData["wydarzenieList"] = wydarzenieList;
+
+            List<SelectListItem> StatusList = new SelectList(StatusSelectList.StatusList, "Key", "Value").ToList();
+            ViewData["StatusList"] = StatusList;
+
+
+            var wypozyczenie = wypozyczenieRepository.GetWypozyczenieById(id);
+            return View(wypozyczenie);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+
+            List<SelectListItem> wydarzenieList = new SelectList(wydarzenieRepository.FindAllWydarzenie(), "WydarzenieId", "NazwaWydarzenia").ToList();
+            ViewData["wydarzenieList"] = wydarzenieList;
+
+            List<SelectListItem> StatusList = new SelectList(StatusSelectList.StatusList, "Key", "Value").ToList();
+            ViewData["StatusList"] = StatusList;
+
+
+            var wypozyczenie = wypozyczenieRepository.GetWypozyczenieById(id);
+
+
+            if (TryUpdateModel(wypozyczenie))
+            {
+                wypozyczenieRepository.Save();
+                TempData["okMessage"] = "Wypozyczenie zostało zapisane!";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["errorMessage"] = "Wypozyczenie nie zostało zapisane!";
+                return View(wypozyczenie);
             }
 
         }

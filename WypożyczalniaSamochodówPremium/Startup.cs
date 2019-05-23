@@ -51,14 +51,14 @@ namespace WypożyczalniaSamochodówPremium
                 }
             }
 
-            // creating Creating Manager role 
-            if (!roleManager.RoleExists("Manager"))
-            {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Manager";
-                roleManager.Create(role);
+            //// creating Creating Manager role 
+            //if (!roleManager.RoleExists("Manager"))
+            //{
+            //    var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+            //    role.Name = "Manager";
+            //    roleManager.Create(role);
 
-            }
+            //}
 
             // creating Creating Employee role 
             if (!roleManager.RoleExists("Employee"))

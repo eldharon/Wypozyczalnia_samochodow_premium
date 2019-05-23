@@ -11,11 +11,20 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
     public class SerwisController : Controller
     {
         SerwisRepository serwisRepository = new SerwisRepository();
+        DostepnoscRepository dostepnoscRepository = new DostepnoscRepository();
        
-        public ActionResult Index()
+        public ActionResult Index(int? idS)
         {
-            var model = serwisRepository.FindAllSerwis();
-            return View(model);
+            if(idS.HasValue)
+            {
+                return RedirectToAction("ShowSerwisyForSamochod", new { id = idS.Value});
+            }
+            else
+            {
+                var model = serwisRepository.FindAllSerwis();
+                return View(model);
+
+            }
         }
 
         public ActionResult ShowSerwisyForSamochod(int id)
@@ -44,10 +53,20 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
         public ActionResult Create(Serwis serwis, FormCollection collection)
         {
             var samid = serwis.SamochodId;
+            Dostepnosc dostepnosc = new Dostepnosc();
+            dostepnosc.NiedostepnyOd = serwis.DataOddania;
+            dostepnosc.NiedostepnyDo = serwis.DataOdbioru;
+            dostepnosc.SamochodId = serwis.SamochodId;
+
             if (ModelState.IsValid)
             {
+                dostepnoscRepository.Add(dostepnosc);
+                dostepnoscRepository.Save();
+
                 serwisRepository.Add(serwis);
                 serwisRepository.Save();
+
+
 
                 TempData["okMessage"] = "Serwis został zapisany.";
                 return RedirectToAction("ShowSerwisyForSamochod", "Serwis", new { id = samid });
@@ -97,8 +116,12 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
 
             var serwis = serwisRepository.GetUSeriwsById(id);
             var samid = serwis.SamochodId;
+
+            var dostepnosc = dostepnoscRepository.GetDostepnoscByDate(serwis.DataOddania, serwis.DataOdbioru);
             try
             {
+                dostepnoscRepository.Delete(dostepnosc);
+                dostepnoscRepository.Save();
 
                 serwisRepository.Delete(serwis);
                 serwisRepository.Save();

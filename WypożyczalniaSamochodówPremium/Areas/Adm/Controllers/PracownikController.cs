@@ -47,7 +47,7 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 pracownikRepository.Add(pracownik);
                 pracownikRepository.Save();
 
-                TempData["okMessage"] = "Pracownik: " + pracownik.Osoba.Imie + " " + pracownik.Osoba.Nazwisko + " został zapisany";
+                TempData["okMessage"] = "Pracownik został zapisany";
                 return RedirectToAction("Index");
             }
             else
@@ -55,7 +55,40 @@ namespace WypożyczalniaSamochodówPremium.Areas.Adm.Controllers
                 return View(pracownik);
             }
         }
-     
+
+        public ActionResult Edit(int id)
+        {
+            List<SelectListItem> stanowiskoList = new SelectList(PracownikSelectList.StanowikoList, "Key", "Value").ToList();
+            ViewData["stanowiskoList"] = stanowiskoList;
+
+            var pracownik = pracownikRepository.GetPracownikById(id);
+
+            return View(pracownik);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            List<SelectListItem> stanowiskoList = new SelectList(PracownikSelectList.StanowikoList, "Key", "Value").ToList();
+            ViewData["stanowiskoList"] = stanowiskoList;
+
+            var pracownik = pracownikRepository.GetPracownikById(id);
+
+            if(TryUpdateModel(pracownik))
+            {
+                pracownikRepository.Save();
+
+                TempData["okMessage"] = "Pracownik został zapisany";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(pracownik);
+            }
+
+
+        }
+
 
 
     }

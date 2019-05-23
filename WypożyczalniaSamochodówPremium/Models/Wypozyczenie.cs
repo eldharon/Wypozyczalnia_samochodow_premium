@@ -31,6 +31,8 @@ namespace WypożyczalniaSamochodówPremium.Models
         public string AdresDojazdu { get; set; }
         public int WydarzenieId { get; set; }
         public int OsobaId { get; set; }
+        public string Uwagi { get; set; }
+        public string Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Akcesoria> Akcesoria { get; set; }

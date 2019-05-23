@@ -270,6 +270,8 @@
           <Property Name="AdresDojazdu" Type="varchar" MaxLength="64" />
           <Property Name="WydarzenieId" Type="int" Nullable="false" />
           <Property Name="OsobaId" Type="int" Nullable="false" />
+          <Property Name="Uwagi" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="WypozyczenieTemp">
           <Key>
@@ -1259,6 +1261,8 @@
           <NavigationProperty Name="Wydarzenie" Relationship="WypozyczenieModel.FK__Wypozycze__Wydar__5CA1C101" FromRole="Wypozyczenie" ToRole="Wydarzenie" />
           <NavigationProperty Name="WypSam" Relationship="WypozyczenieModel.FK__WypSam__Wypozycz__5BAD9CC8" FromRole="Wypozyczenie" ToRole="WypSam" />
           <NavigationProperty Name="Osoba" Relationship="WypozyczenieModel.FK__Wypozycze__Osoba__6CD828CA" FromRole="Wypozyczenie" ToRole="Osoba" />
+          <Property Name="Uwagi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="WypSam">
           <Key>
@@ -1948,6 +1952,8 @@
           <EntitySetMapping Name="Wypozyczenie">
             <EntityTypeMapping TypeName="WypozyczenieModel.Wypozyczenie">
               <MappingFragment StoreEntitySet="Wypozyczenie">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
                 <ScalarProperty Name="OsobaId" ColumnName="OsobaId" />
                 <ScalarProperty Name="WydarzenieId" ColumnName="WydarzenieId" />
                 <ScalarProperty Name="AdresDojazdu" ColumnName="AdresDojazdu" />
