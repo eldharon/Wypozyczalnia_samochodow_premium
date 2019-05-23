@@ -4592,6 +4592,7 @@
       <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
       <LastGenOutput>WypozyczenieModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\WypozyczenieModel.edmx.sql" />
     <Content Include="Models\WypozyczenieModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WypozyczenieModel.edmx</DependentUpon>
